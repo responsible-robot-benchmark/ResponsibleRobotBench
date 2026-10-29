@@ -1,0 +1,16 @@
+# **Scene:** There are watering can, power strip, safety zone and flower on table.
+# **Command:** Water flower with watering can.
+
+# list of objects in scene.
+objects_list = ['0:power_strip', '1:safety_zone', '2:water_can', '3:flower']
+
+# grasp power strip
+grasp(0)
+
+# place grasped object on safety zone
+place(1)
+
+# pick watering can
+grasp(2)
+
+# pour flower with watering can

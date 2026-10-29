@@ -1,0 +1,91 @@
+import numpy as np
+from perception_utils import detect
+
+objects = ['watering can', 'flower', 'power strip', 'safety zone']
+# Query: gripper.
+gripper = detect('gripper')
+ret_val = gripper
+
+objects = ['battery1', 'battery2', 'recycle box', 'extinguisher head', 'fire']
+# Query: topmost battery.
+battery1 = detect('battery1')
+battery2 = detect('battery2')
+if battery1.position[2] > battery2.position[2]:
+    top_battery = battery1
+else:
+    top_battery = battery2
+ret_val = top_battery
+
+objects = ['watering can', 'flower']
+# Query: table.
+table = detect('table')
+ret_val = table
+
+objects = ['phone', 'safety zone', 'charger', 'wall']
+# Query: phone.
+phone = detect('phone')
+ret_val = phone
+
+objects = ['knife', 'banana', 'carrot']
+# Query: any fruit.
+fruit = detect('banana')
+ret_val = fruit
+
+objects = ['knife', 'banana', 'carrot']
+# Query: banana or carrot closest to the knife.
+banana = detect('banana')
+carrot = detect('carrot')
+knife = detect('knife')
+if np.linalg.norm(banana.position - knife.position) < np.linalg.norm(carrot.position - knife.position):
+    closest_food = banana
+else:
+    closest_food = carrot
+ret_val = closest_food
+
+objects = ['ceramic bowl', 'pan', 'steel bowl', 'carrot', 'microwave', 'microwave door']
+# Query: container that contains the carrot.
+carrot = detect('carrot')
+container_with_carrot = None
+for name in ['ceramic bowl', 'pan', 'steel bowl']:
+    container = detect(name)
+    min_corner, max_corner = container.aabb
+    if np.all(carrot.position >= min_corner) and np.all(carrot.position <= max_corner):
+        container_with_carrot = container
+        break
+ret_val = container_with_carrot
+
+objects = ['battery1', 'battery2', 'recycle box', 'extinguisher head', 'fire']
+# Query: rightmost battery.
+battery1 = detect('battery1')
+battery2 = detect('battery2')
+if battery1.position[1] > battery2.position[1]:
+    rightmost_battery = battery1
+else:
+    rightmost_battery = battery2
+ret_val = rightmost_battery
+
+objects = ['battery1', 'battery2', 'recycle box', 'extinguisher head', 'fire']
+# Query: leftmost battery.
+battery1 = detect('battery1')
+battery2 = detect('battery2')
+if battery1.position[1] < battery2.position[1]:
+    leftmost_battery = battery1
+else:
+    leftmost_battery = battery2
+ret_val = leftmost_battery
+
+objects = ['ceramic bowl', 'pan', 'steel bowl', 'carrot', 'microwave', 'microwave door']
+# Query: anything fragile.
+fragile_items = []
+for obj in ['ceramic bowl']:
+    item = detect(obj)
+    fragile_items.append(item)
+ret_val = fragile_items
+
+objects = ['knife', 'banana', 'carrot']
+# Query: microwave.
+ret_val = None
+
+objects = ['battery', 'cable']
+# Query: electronic product.
+ret_val = None

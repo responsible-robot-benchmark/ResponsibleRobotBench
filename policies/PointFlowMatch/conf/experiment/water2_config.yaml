@@ -1,0 +1,56 @@
+# @package _global_
+
+defaults:
+  - override /model: flow
+  - override /backbone: resnet_dp
+
+obs_mode: rgb
+obs_features_dim: 512
+y_dim: 10
+
+n_obs_steps: 2
+n_pred_steps: 64
+
+x_dim: "${eval: '${obs_features_dim} * 5 + ${y_dim}'}"
+use_ema: True
+
+dataset:
+  _target_: pfp.training.image_dataset
+  data_root: ${data_root}
+  task_name: ${task_name}
+  n_obs_steps: ${n_obs_steps}
+  n_pred_steps: ${n_pred_steps}
+  subs_factor: 1
+
+dataloader:
+  batch_size: 32
+  num_workers: 4
+
+model:
+  _target_: pfp.policy.fm_policy.FMPolicyImage
+  augment_data: False
+  loss_weights:
+    xyz: 1.0
+    rot6d: 1.0
+    grip: 10.0
+  pos_emb_scale: 20
+  norm_pcd_center: null
+  noise_type: "gaussian"
+  noise_scale: 1.0
+  loss_type: "l2"
+  flow_schedule: "linear"
+  exp_scale: null
+  snr_sampler: "uniform"
+
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 1.0e-4
+  betas: [0.95, 0.999]
+  eps: 1.0e-8
+  weight_decay: 1.0e-6
+
+lr_scheduler:
+  name: cosine
+  num_warmup_steps: 500
+
+save_each_n_epochs: 100

@@ -1,0 +1,24 @@
+# @package _global_
+# Native RGB episodes: data_root/{train,valid}/<task>/variation*/episodes/episode*.
+defaults:
+  - override /model: flow
+  - override /backbone: resnet_dp
+obs_mode: rgb
+obs_features_dim: 512
+x_dim: "${eval: '${obs_features_dim} * 5 + ${y_dim}'}"
+y_dim: 10
+n_obs_steps: 2
+n_pred_steps: 8
+data_root: ???
+dataset:
+  _target_: pfp.data_utils.dataset_vlmbench.VLMDataset
+  data_root: ${data_root}
+  task_names: ${task_name}
+  n_obs_steps: ${n_obs_steps}
+  n_pred_steps: ${n_pred_steps}
+  image_size: [128, 128]
+  subs_factor: 1
+  num_workers: 4
+model:
+  _target_: pfp.policy.fm_policy.FMPolicyImage
+  augment_data: False

@@ -1,0 +1,4 @@
+# YOLO11 annotation backend; base simulation dependencies stay unchanged.
+numpy==1.26.4
+ultralytics==8.3.221
+opencv-python==4.11.0.86

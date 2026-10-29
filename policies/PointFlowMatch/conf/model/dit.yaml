@@ -1,0 +1,28 @@
+  _target_: pfp.policy.dit_policy.DiTPolicy
+  x_dim: ${x_dim}
+  y_dim: ${y_dim}
+  n_obs_steps: ${n_obs_steps}
+  n_pred_steps: ${n_pred_steps}
+  num_k_infer: 10
+  norm_pcd_center: [0.4, 0.0, 1.4]
+  augment_data: False
+
+  diffusion_steps: 100
+  obs_encoder: ${backbone}
+
+  dit_net:
+    _target_: pfp.policy.dit_policy._DiTNoiseNet
+    ac_dim: ${y_dim}
+    ac_chunk: ${n_pred_steps}
+    time_dim: 256
+    hidden_dim: 512
+    num_blocks: 6
+    dropout: 0.1
+    dim_feedforward: 2048
+    nhead: 8
+    activation: gelu
+
+  loss_weights:
+    xyz: 10.0
+    rot6d: 10.0
+    grip: 1.0

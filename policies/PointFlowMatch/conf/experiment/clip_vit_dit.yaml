@@ -1,0 +1,26 @@
+# @package _global_
+defaults:
+  - override /model: dit
+  - override /backbone: clip_vit
+
+obs_mode: rgb  # pcd | rgb
+obs_features_dim: 512
+x_dim: 3594 # 5*512 + 1024 + 10
+
+dataset:
+  use_pcd_color: null
+  n_points: null
+  use_language: True
+  fix_instruction: True
+
+dataloader:
+  batch_size: 32
+  num_workers: 12
+  prefetch_factor: 1
+  pin_memory: True
+  drop_last: True
+
+model:
+  _target_: pfp.policy.dit_policy.DiTPolicy
+  augment_data: False  # done in backbone
+  n_obs_steps: 2

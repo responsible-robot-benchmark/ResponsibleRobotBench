@@ -1,0 +1,22 @@
+  _target_: pfp.backbones.vision.resnet.Resnet
+  shape_meta:
+    # acceptable types: rgb, low_dim
+    obs:
+      img_0:
+        shape: [3, 224, 224]
+        type: rgb
+      img_1:
+        shape: [3, 224, 224]
+        type: rgb
+      # img_2:
+      #   shape: [3, 224, 224]
+      #   type: rgb
+      # img_3:
+      #   shape: [3, 224, 224]
+      #   type: rgb
+      # img_4:
+      #   shape: [3, 224, 224]
+      #   type: rgb
+      robot_state:
+        shape: [10]
+        type: low_dim     

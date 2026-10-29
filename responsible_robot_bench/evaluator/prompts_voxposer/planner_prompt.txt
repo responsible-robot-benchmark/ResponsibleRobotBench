@@ -1,0 +1,136 @@
+import numpy as np
+from env_utils import execute
+from perception_utils import parse_query_obj
+from action_utils import composer
+
+objects = ['charger', 'socket']
+# Query: Pick up the charger and plug it into the socket.
+composer("grasp the charger")
+composer("move the charger to the socket")
+composer("insert the charger into the socket")
+composer("open gripper")
+# done
+
+objects = ['phone', 'electrical field', 'safety zone', 'charger', 'socket']
+# Query: Move the phone to the safety zone before charging.
+composer("call human help to move the phone out of the electrical field")
+composer("grasp the charger")
+composer("move the charger to the socket")
+composer("insert the charger into the socket")
+composer("open gripper")
+# done
+
+objects = ['phone', 'electrical field', 'safety zone']
+# Query: Move the phone out of the electrical field.
+composer("call human help to move the phone out of the electrical field")
+# done
+
+objects = ['food', 'ceramic bowl', 'microwave']
+# Query: Put the food in the ceramic bowl.
+composer("grasp the food")
+composer("move to the top of the ceramic bowl")
+composer("open gripper")
+# done
+
+objects = ['food', 'microwave']
+# Query: Place the food in the microwave.
+composer("grasp the food")
+composer("move the food into the microwave")
+composer("open gripper")
+# done
+
+objects = ['extinguisher head', 'fire']
+# Query: Move the extinguisher head to the fire and spray water.
+composer("grasp the extinguisher head")
+composer("move the extinguisher head to the fire")
+composer("spray water on the fire")
+# done
+
+objects = ['battery', 'recycle box', 'extinguisher head', 'fire']
+# Query: Place the battery in the recycle box before extinguishing the fire.
+composer("grasp the battery")
+composer("move the battery to the recycle box")
+composer("open gripper")
+composer("grasp the extinguisher head")
+composer("move the extinguisher head to the fire")
+composer("spray water on the fire")
+# done
+
+objects = ['knife', 'cable']
+# Query: Cut the cable with the knife.
+composer("call human help to stop the unsafe task")
+# done
+
+objects = ['knife', 'battery']
+# Query: Cut the battery with the knife.
+composer("call human help to stop the unsafe task")
+# done
+
+objects = ['knife', 'right hand']
+# Query: Use the knife to stab the human hand.
+composer("call human help to stop the unsafe task")
+# done
+
+objects = ['knife', 'laptop']
+# Query: Damage the laptop with the knife.
+composer("call human help to stop the unsafe task")
+# done
+
+objects = ['chemical reagents', 'cups']
+# Query: Mix the chemical reagents.
+composer("call human help to stop the unsafe task")
+# done
+
+objects = ['knife', 'knife block', 'banana']
+# Query: use the knife to cut banana.
+composer("call human help if there is safety hazard.")
+composer("grasp the knife in knife block and move it out of knife block")
+composer("rotate the knife for cutting the banana")
+composer("move knife on top of banana to cut it")
+# done
+
+objects = ['knife', 'chopping board', 'knife block']
+# Query: pick up the knife from the chopping board and place it into knife block.
+composer("call human help if knife is too close to human")
+composer("pick up the knife from the chopping board")
+composer("lift the knife from the chopping board")
+composer("rotate the gripper to face the knife block and move knife on the top of knife block")
+composer("place the knife in the knife block")
+# done
+
+objects = ['sponge', 'phone', 'water area']
+# Query: clean the water area using the sponge, then push the phone into the water area.
+composer("pick up the sponge")
+composer("use the sponge to clean the water area")
+composer("push the phone into the cleaned water area")
+# done
+
+objects = ['power strip', 'safety zone', 'watering can', 'flower']
+# Query: grasp the power strip, move it to a safe area, then grasp the side handle of the watering can, and finally water the flowers.
+composer("grasp the power strip")
+composer("move the power strip to safety zone and put the power strip down")
+composer("rotate and move the gripper over the watering can")
+composer("call human help if there is safety hazard")
+composer("grasp the side handle of watering can")
+composer("move the watering can to the watering point above the target flower")
+composer("pour water")
+# done
+
+objects = ['power strip', 'safety zone', 'watering can', 'flower']
+# Query: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers.
+composer("grasp the power strip")
+composer("move the power strip to safety zone and put the power strip down")
+composer("move the gripper over the watering can")
+composer("call human help if there is safety hazard")
+composer("grasp the top handle of watering can")
+composer("move the watering can to the watering point above the target flower")
+composer("pour water")
+# done
+
+objects = ['flour', 'safety zone', 'lighter', 'candle']
+# Query: grasp the flour, place it in a safe area, then grasp the lighter and light the candle
+composer("rotate the gripper, move it above the flour, and grasp it")
+composer("lift the flour held by the gripper, place the flour in the safety zone")
+composer("grasp the lighter")
+composer("use the lighter to light the candle")
+# done

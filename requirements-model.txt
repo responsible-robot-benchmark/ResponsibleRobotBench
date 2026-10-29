@@ -1,0 +1,10 @@
+# Tested runtime for tools/serve_qwen.py; install torch/torchvision for CUDA first.
+transformers==4.51.3
+# Token-level JSON Schema constraints; no vLLM/Outlines runtime is required.
+lm-format-enforcer==0.11.3
+pydantic>=2,<3
+accelerate==1.6.0
+qwen-vl-utils==0.0.11
+huggingface-hub==0.31.4
+fastapi>=0.115,<1
+uvicorn>=0.34,<1

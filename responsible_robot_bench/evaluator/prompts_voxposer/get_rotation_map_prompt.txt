@@ -1,0 +1,141 @@
+import numpy as np
+from plan_utils import get_empty_rotation_map, set_voxel_by_radius, cm2index, pointat2quat
+from perception_utils import parse_query_obj
+from transforms3d.euler import euler2quat, quat2euler
+from transforms3d.quaternions import qmult, qinverse
+
+# Query: face the support surface of the bowl.
+rotation_map = get_empty_rotation_map()
+bowl = parse_query_obj('bowl')
+target_rotation = pointat2quat(-bowl.normal)
+rotation_map[:, :, :] = target_rotation
+ret_val = rotation_map
+
+# Query: face the table when within 30cm from table center.
+rotation_map = get_empty_rotation_map()
+table = parse_query_obj('table')
+table_center = table.position
+target_rotation = pointat2quat(-table.normal)
+set_voxel_by_radius(rotation_map, table_center, radius_cm=30, value=target_rotation)
+ret_val = rotation_map
+
+# Query: face the microwave door.
+rotation_map = get_empty_rotation_map()
+microwave_door = parse_query_obj('microwave door')
+target_rotation = pointat2quat(-microwave_door.normal)
+rotation_map[:, :, :] = target_rotation
+ret_val = rotation_map
+
+# Query: rotate by 45 degrees around the positive Z-axis at the center of the lighter.
+rotation_map = get_empty_rotation_map()
+lighter = parse_query_obj('lighter')
+(x, y, z) = lighter.position
+curr_rotation = rotation_map[x, y, z]
+rotation_delta = euler2quat(0, 0, np.pi / 4)
+rotation_map[x, y, z] = qmult(curr_rotation, rotation_delta)
+ret_val = rotation_map
+
+# Query: turn counter-clockwise by 30 degrees.
+rotation_map = get_empty_rotation_map()
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(0, 0, -np.pi / 6)
+rotation_map[:, :, :] = qmult(curr_rotation, rotation_delta)
+ret_val = rotation_map
+
+# Query: rotate the gripper to be 45 degrees slanted relative to the chopping board.
+rotation_map = get_empty_rotation_map()
+chopping_board = parse_query_obj('chopping board')
+face_chopping_board_quat = pointat2quat(-chopping_board.normal)
+# rotate 45 degrees around the x-axis
+rotation_delta = euler2quat(-np.pi / 4, 0, 0)
+target_rotation = qmult(face_chopping_board_quat, rotation_delta)
+rotation_map[:, :, :] = target_rotation
+ret_val = rotation_map
+
+# Query: rotate the gripper to face the knife in knife block
+rotation_map = get_empty_rotation_map()
+knife = parse_query_obj('knife')
+world_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(0, np.pi / 2, np.pi / 2)
+curr_rotation = qmult(world_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+# Query: rotate the gripper by 90 degrees along the current Y-axis of the gripper.
+rotation_map = get_empty_rotation_map()
+gripper = parse_query_obj('gripper')
+curr_rotation = gripper.quat
+rotation_map[:, :, :] = curr_rotation
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(0, np.pi * 0.5, 0)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+
+# Query: rotate the gripper 90° along the X-axis of its own coordinate system above the safety zone
+rotation_map = get_empty_rotation_map()
+gripper = parse_query_obj('gripper')
+curr_rotation = gripper.quat
+rotation_map[:, :, :] = curr_rotation
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(np.pi * 0.5, 0, 0)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+# Query: rotate the gripper to face the knife block by 90 degrees along the current Y-axis and 90 degrees along the current Z-axis
+result = get_empty_rotation_map()
+gripper = detect('gripper')
+curr_rotation = gripper.quat
+result[:, :, :] = curr_rotation
+curr_rotation = result[0, 0, 0]
+rotation_delta = euler2quat(0, np.pi * 0.5, np.pi * 0.5)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+result[:, :, :] = curr_rotation
+ret_val = result
+
+
+# Query: Tilt forward 30 degrees along its Z-axis
+rotation_map = get_empty_rotation_map()
+gripper = parse_query_obj('gripper')
+curr_rotation = gripper.quat
+rotation_map[:, :, :] = curr_rotation
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat( 0,  0, np.pi /6)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+# Query: Rotation -90 degrees along the Y-axis of self coordinate system for cutting object
+rotation_map = get_empty_rotation_map()
+gripper = detect('gripper')
+curr_rotation = gripper.quat
+rotation_map[:, :, :] = curr_rotation
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(0, -np.pi * 0.5, 0)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+# Query: Rotation 90 degrees along the Y-axis and 180 degrees along the Z-axisof self coordinate system above the laptop
+rotation_map = get_empty_rotation_map()
+gripper = detect('gripper')
+curr_rotation = gripper.quat
+rotation_map[:, :, :] = curr_rotation
+curr_rotation = rotation_map[0, 0, 0]
+rotation_delta = euler2quat(0, np.pi / 2, np.pi )
+curr_rotation = qmult(curr_rotation, rotation_delta)
+rotation_map[:, :, :] = curr_rotation
+ret_val = rotation_map
+
+# Query: rotation -90 degrees along the X-axis of self coordinate system for grasping flour
+result = get_empty_rotation_map()
+gripper = detect('gripper')
+curr_rotation = gripper.quat
+result[:, :, :] = curr_rotation
+curr_rotation = result[0, 0, 0]
+rotation_delta = euler2quat(-np.pi * 0.5, 0, 0)
+curr_rotation = qmult(curr_rotation, rotation_delta)
+result[:, :, :] = curr_rotation
+ret_val = result

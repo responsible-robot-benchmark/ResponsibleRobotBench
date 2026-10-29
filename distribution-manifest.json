@@ -1,0 +1,2135 @@
+{
+  "schema": "rrb-distribution-v1",
+  "edition": "release",
+  "evaluation_protocol": "original_action_lists_and_multimodule_lmp",
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "0cec44755d194f0073a1be6fbc7d67a9b112039f8e1bd1ef21c15b40a106d2ca"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "4458cbbe9b965106e84e4be01ddd67a8ed4822085aeba77968855c0c196507b3"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "fe86e0be906b21b587b9f1e41292b4aae9673ea7c1ec56aad81710365ce6fb4c"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f60be06118bd51fd837a32cf4de15129aefbef2a612e50726eb436b9ed865603"
+    },
+    {
+      "path": "LICENSE_SCOPE.md",
+      "sha256": "fbe0f6e19658bf945ca60a96575a989ea3107030f969d366fd3d05a5d602f952"
+    },
+    {
+      "path": "README.md",
+      "sha256": "789eb338f4d77c08893ee0067482eeca89390710a0d8721aacd2ce875fe3f9a5"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "d5ea96d44e2098c26f4f829998b4c0aacae55cde17c5680dc9b27317be6b6b9b"
+    },
+    {
+      "path": "conda_envs/environment_eb-man.yaml",
+      "sha256": "f671a5d387796029e15552a3576df720529cfaa08817523239c70ef3eed5e8b5"
+    },
+    {
+      "path": "constraints/simulator-py311-linux.txt",
+      "sha256": "8a9bdd518663d8bf65fa41f1b4bcf778647fb517adda1d7210074379e1b69813"
+    },
+    {
+      "path": "detect_hallucinations.py",
+      "sha256": "db37494a2f4d633b94421083d1cbcfdbc2610a1c4a3c8deded9b778aabd6e96f"
+    },
+    {
+      "path": "docs/assets/benchmark-overview.png",
+      "sha256": "966aa271ec83e78fe4a6ca55bc557eeb298f5e708e0aedb28a10e77c4adc0113"
+    },
+    {
+      "path": "docs/assets/franka-watering.jpg",
+      "sha256": "3a646f460912cc0439fa812f8a905f0a466ac14ab89805e3677d5322c968fda1"
+    },
+    {
+      "path": "docs/assets/franka-watering.mp4",
+      "sha256": "756cf46ea1e4c701d8402a8685c07a17c19cca9cfa5242759472b95a720adc35"
+    },
+    {
+      "path": "docs/assets/rrb-logo.png",
+      "sha256": "a581dafec7222542e9b3b348241ff98398ea2c12c50debaa3a7f1beef364e263"
+    },
+    {
+      "path": "docs/assets/ur5-watering.jpg",
+      "sha256": "a9f694fe61546c59e3d40ee53b4838113f5b83282432530cf8168e592c00d045"
+    },
+    {
+      "path": "docs/assets/ur5-watering.mp4",
+      "sha256": "6b1bc9a6ffdd6d15a1dd8d3c473d3341550f06647544693850cd308b8b5dbb21"
+    },
+    {
+      "path": "docs/credentials.md",
+      "sha256": "b9181cb58e8d9c8bfd38e9731059a54fcba59cfbae3506818d39e1ae249b27eb"
+    },
+    {
+      "path": "docs/dataset.md",
+      "sha256": "7ce2fa09ac636662939d4ddf6c169acb3a999e5e3dac3a0783322e30e6b3fd5a"
+    },
+    {
+      "path": "docs/errors.md",
+      "sha256": "57b21a7b1e5a7f242b16c8e6de94a081473eb1600f8e4d350ef6f5346a13f780"
+    },
+    {
+      "path": "docs/evaluation.md",
+      "sha256": "9e96b5d3258c9db72b50fff4c5bcaed8d73e00f10b6db8835e719ad7df6adef9"
+    },
+    {
+      "path": "docs/extending.md",
+      "sha256": "a87f2c9ba66eab4233a15cdc2605d391d9a1c046be0014f5f96deaea01c763fe"
+    },
+    {
+      "path": "docs/installation.md",
+      "sha256": "fa40166659873b6f5874cc62353524c7602dbc8de30538eafe7460b730f8f8c7"
+    },
+    {
+      "path": "docs/policy.md",
+      "sha256": "17b3ab7f0a91c351c3a5e130975049bb46237e6bf28fcb95aba2f06cb12c7c72"
+    },
+    {
+      "path": "licenses/CLIP-LICENSE",
+      "sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db"
+    },
+    {
+      "path": "licenses/DiffusionPolicy-LICENSE",
+      "sha256": "304e99a48271e10820f71a1b86ef395c06c100d7f68dd1d308790d1064fc4d41"
+    },
+    {
+      "path": "licenses/PointFlowMatch-LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "licenses/PyRep-LICENSE",
+      "sha256": "16502b86b7de4fd2d999eb055745e06cf93a93002e1e0b36e09c3180155fe81c"
+    },
+    {
+      "path": "licenses/RLBench-LICENSE",
+      "sha256": "71ddd29ecd5fb7bf014f2f5a0b5eea28384840ac3ba517b773d96b3dceca1721"
+    },
+    {
+      "path": "patches/diffusion-policy-packaging.patch",
+      "sha256": "1b8a31ebde70ec0c0f47944b32bfc2dbc8a980bf6a50d6f344518e0b45c6638a"
+    },
+    {
+      "path": "policies/PointFlowMatch/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "policies/PointFlowMatch/README.md",
+      "sha256": "3bf2cf4a4e6317d8b91ea3ad5cac0d0663fc3cefc979b91ad1caae6e1aa7c2c4"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/backbone/clip_resnet.yaml",
+      "sha256": "69b203559b9922781fd3636eda7afe60acba948c74c97894d7e1532ecc09636c"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/backbone/clip_vit.yaml",
+      "sha256": "c73b0e6fb1e9f65677d7138ec087abc0853f5117489bf42bd6255023fe8ad117"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/backbone/resnet.yaml",
+      "sha256": "1ff2b9fe4bfde3fe5ec2ae2ec4dcbc1bbda3ba55c5cda5f75cfd4487fd1f4d9d"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/backbone/resnet_dp.yaml",
+      "sha256": "c7da3e55c636cb60a449cc47c07ab1a4d3f3caf6fcdd53b35e2c3512326872cb"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/eval.yaml",
+      "sha256": "fae84f65c650ce232f2a4969ae043a8717c28cc18152f6f84977663953711f9b"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_ddim.yaml",
+      "sha256": "dee8d8ecc096bd9296923a17e811afa6b4c067f1283441fc6c6759de5f507925"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_dit.yaml",
+      "sha256": "ec521dedab58c9cb66886b3f24a144ce69147294b7a00cf68738800e22a17063"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_flow.yaml",
+      "sha256": "1ba4fd4b9408fb87b66c73367081823035e1ca50f095ec0aaae38819422a9973"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_ddim.yaml",
+      "sha256": "504863a50724d6930a389a735529b2fd14830f5302b8e2401e4835b70d8c72ec"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_dit.yaml",
+      "sha256": "3ab99129496ac439ed70729f67cf0069389e48aacc05ab37f18edcf7b282339e"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_flow.yaml",
+      "sha256": "63952f7102e196775e234881e0004cbc178aec6a4fbf6afa103c188589a78c2a"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/diffusion_policy.yaml",
+      "sha256": "eb3116078d84158d218fb7fe600bcf22186c5d575f9eb8e8d0c19e6a7a2aa162"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch.yaml",
+      "sha256": "4361298a41230e7879b96cd0d467bc065e634df0df07bfb98fe9142253b59c10"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_ddim.yaml",
+      "sha256": "79471a63f31d2f911d75a42822ffe74ec4f86a77ee508192534b02469695a472"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_images.yaml",
+      "sha256": "f38ff21d03fe17cf8590f0e12e1b3b729620201b757b65854c781bd13aba3720"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_real.yaml",
+      "sha256": "f310779fbb144f309340844f7851e7bade98f3c51aadada24c0dadbdd1554e8d"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/vlmbench_base.yaml",
+      "sha256": "b76eb2c2590b1c1f7b30b34b0a91439b10b2ff62de5b99eac5cc65e7a978b68a"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/experiment/water2_config.yaml",
+      "sha256": "6ce275e92e5e23c3f5ed3a1bce766d640b3a64070826385ee901a09bc6edb3cf"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/model/ddim.yaml",
+      "sha256": "1a11945a9389a0d86620619c91bbc0c3af44761c0d770e1cda6f8841e3f41816"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/model/dit.yaml",
+      "sha256": "f84973b12252028420caa202d2aa64f789048ce71971a6958fb4c818936bbba1"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/model/flow.yaml",
+      "sha256": "01db7529b5ca08a662673ab0a11591b183306a9f855a407790e41447a9accdea"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/train.yaml",
+      "sha256": "2180507e6bacbd3a33de08daae30c38b3832a6065ae98ba90d7dd546cd2870a2"
+    },
+    {
+      "path": "policies/PointFlowMatch/conf/trainer_eval.yaml",
+      "sha256": "35a3ddeed323316997d903af2e80afee30a27e91f430249d7458c24561f8d367"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/__init__.py",
+      "sha256": "94154232bd03dbb7fc8780fac2619c1fbef3cbda1373da31a6e703d125fa1fff"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/common/cross_attention.py",
+      "sha256": "7eac37678238d330dcf096eb63efeaca7fbb877531f761d14f32993a8733ebb2"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/common/film.py",
+      "sha256": "f0d079b5345d004962e59a19a238c8ef03acb1a79622fa0c69adabaf6dad7de9"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/language/bpe_simple_vocab_16e6.txt.gz",
+      "sha256": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/language/clip.py",
+      "sha256": "d621cd4b59e50529e484d6db0fd263953395eec2386206a4e22163cd9736b7f4"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/language/clip_resnet.py",
+      "sha256": "ece5e4d839cb4cda7c493188d469f5de0c3a8f817e84a6c0a2b4da47fb2d9266"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/language/clip_vit.py",
+      "sha256": "de3dfeb3fa2f7c1210d00ad553c8175e5885d301e677b8e69a70a6007092d2eb"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/language/simple_tokenizer.py",
+      "sha256": "e0f5830b4c969099e64212f8058746559ccd14b9df9b3ceaa3993c5bb4c554ff"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/resnet_dp.py",
+      "sha256": "b1a2e631650329beb57eacc0dea74de4b523694d9d7751bace336e9b17ea88cd"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/vision/resnet.py",
+      "sha256": "6f11ddf386e08dbb9dfffe563b8ae4c0084e7430c7abeee971aaa2b04566984a"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/backbones/vision/vit.py",
+      "sha256": "f080a88ff31ced2bfc83c442f8408ae5a33d8b7d2566ead63f35429c2fe67bf4"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/checkpoints.py",
+      "sha256": "683292da30611ace0671c5dab7e71c46edc1638437edabd3f97ec2e4cd1e6ca5"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/common/fm_utils.py",
+      "sha256": "32180ab167d03b01dbe92a93382baf606c03fbeedee6e9d4b217b85e8571b369"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/common/o3d_utils.py",
+      "sha256": "ab53be70ea7250d33cab3c3c15c6640aeb2f21596a12baed4712f131ac8b5b53"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/common/se3_utils.py",
+      "sha256": "bd0c0da6d15ab446200c38969805dec7629303344f9c12cfeeb64ae2e6797aac"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/common/visualization.py",
+      "sha256": "07db262e4f739069946ec322fbe7625c065fa39f27bc231c0b512ea5ac4c6c9a"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/conversion.py",
+      "sha256": "0ed8c6faa2083fc3e080afc19883da0d181ef8a02cedd2a08d0222bd6e97c218"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_images.py",
+      "sha256": "2b49a1df47e9296d39a0dcb67fde86e9e1381634cb9fccb40c6eb449b8edb857"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_pcd.py",
+      "sha256": "28137a54216ab20f2ff431d8c1301d0bbc96f9e44815025b6720de12df9c887f"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_vlmbench.py",
+      "sha256": "2709f73a724a447385a3f6ef2263c1b2beb413e98d2ff283dd433a659223b6b8"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/multitask_dataset.py",
+      "sha256": "d540a9e44bdbd3408b4771bc3957328232e62c9679ce2deb0a8fdb09fcee30ba"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/replay_buffer.py",
+      "sha256": "c0f6f239f9fdc8c229b019c003095f6e8777e1013c79aa72923ff06708a8eb16"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/replay_buffer_vlmbench.py",
+      "sha256": "6815337ec6ea77100b48804c8a2f6284baab59ed75687f01336bff5af3235bb0"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/sample_index.py",
+      "sha256": "792c64080958a10c352738f6d26ed4764a42a07a8fdc5cbdf378e3a92dd8678b"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/data_utils/visualize_dataset.py",
+      "sha256": "406a9544a8ca7c393517032a9074599a9bd5ef5706d49294132c6cadcf8bcd6a"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/envs/base_env.py",
+      "sha256": "0b6b7e6c4d5bbb6ed5370d6f7c7efe770b93a43c0a5f47f2c558fb3c3bb54883"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/envs/rlbench_env.py",
+      "sha256": "fcc0a75b02738d4bd396aa81819e2c0c3dc14eb8cec8a8e43d21d0985a2ff546"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/envs/rlbench_runner.py",
+      "sha256": "62b655bb93ad2c78614eff9562f7848f77d196da532ae338c644eb90217b24cc"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/envs/vlmbench_runner.py",
+      "sha256": "126707a1eb4aa3adb1ef0a77536c60f35ea1df9d2ec53f17d5ab7cac8e3501a1"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/evaluation.py",
+      "sha256": "656a60a91bd20aff0b3d2d21da87988473ff0391e1396dc82d00c9ca8c52bc1d"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/policy/base_policy.py",
+      "sha256": "3822c808ffa46b76a12a89edf758193061e7b5a2f28956f82237eb451f65b621"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/policy/ddim_policy.py",
+      "sha256": "80225f3dda2d9a486b4d04d8d2ad74ecd7eb869bf3fe76f1e57a4dedb02a39aa"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/policy/dit_policy.py",
+      "sha256": "903b7feb730baa5d157bae64fae82a5cf7ba72577220ef059636b8dbf3c32558"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/policy/fm_policy.py",
+      "sha256": "4547473232291d099adde7a1410d6da62cd6c14e59598af129a95ed7258f60c8"
+    },
+    {
+      "path": "policies/PointFlowMatch/pfp/training.py",
+      "sha256": "e4be443b9c41b93368a6188f899b7bc2e127704d4892d50bc01d54d69e449609"
+    },
+    {
+      "path": "policies/PointFlowMatch/pyproject.toml",
+      "sha256": "ea3b48552e24483ce9d44867f345eb30800def1f04a058a01b9579ebc83d4b1b"
+    },
+    {
+      "path": "policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py",
+      "sha256": "44a46e6bb38626e642a76fb98f9ce89833a1a5cf5854a3e27331c25b0337e45e"
+    },
+    {
+      "path": "policies/PointFlowMatch/scripts/eval_vlmbench.py",
+      "sha256": "2aa9022c213fbca4be3fd64438027e7c19963834b34ae7beb719fcb9dc94e3bb"
+    },
+    {
+      "path": "policies/PointFlowMatch/scripts/train.py",
+      "sha256": "a32414d0f4ff40b5bc4854b583f30ee2e0906e614996f84352d006442abf7c96"
+    },
+    {
+      "path": "policies/PointFlowMatch/scripts/train_vlm.py",
+      "sha256": "9055d967a9f43fd03d29e9676e1dd436064911c529f5fe045b7956053b197c83"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "7cdc977d21cbbc89640be2cfb236423ad29ef2932d99c5fac8bab6c3f65c56c2"
+    },
+    {
+      "path": "requirements-legacy.txt",
+      "sha256": "ee0c577bc34036bbb5d5ad04414ff08c8faed9e725f9e5cf52afc7bb1b528ba6"
+    },
+    {
+      "path": "requirements-model.txt",
+      "sha256": "18998fac3f5aadd1f8359f15a72f9d9a77deb9f727ac20ba7fef1f870a4cde0b"
+    },
+    {
+      "path": "requirements-sim.txt",
+      "sha256": "5c74e729ac6e569b3c5d4b46db2f2ff20a160e6310137a78c4cd642bc4b42af5"
+    },
+    {
+      "path": "requirements-vision.txt",
+      "sha256": "ec545415514fcff62a92960b6f09b57505dd572c2f0f168cdf30cc5f9eb56f5a"
+    },
+    {
+      "path": "responsible_robot_bench/configs/config.yaml",
+      "sha256": "400986a8d54ce4352a23cdc1f4437c95fee5788ce52672bb4f84858dd9a0b142"
+    },
+    {
+      "path": "responsible_robot_bench/configs/rrb-man-utils-benchmark.yaml",
+      "sha256": "1ac89e141dc065e6af9e524a7509cc7608393f573233092419c61bcbbb598aa4"
+    },
+    {
+      "path": "responsible_robot_bench/configs/rrb-man-utils.yaml",
+      "sha256": "749d4a427dfb87422678526fc9e2645bfb5d1f79505a619d937ee053e9c4e73a"
+    },
+    {
+      "path": "responsible_robot_bench/configs/rrb-man.yaml",
+      "sha256": "2be94c3de5bcc001563e7342f3d2a5c83708fa85c9ea9a9d856999d8b0270d7a"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/RRBManEnv_safety.py",
+      "sha256": "21f013a0dc0f003e571f42d4c46f23c3c47b360d163497ccd935a61c946d0e45"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/__init__.py",
+      "sha256": "5a647a6007f02b3cfa5e189ff254195b0f23be5f6834dd39dd0c4cfd397d3ad6"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/action_modes.py",
+      "sha256": "1a0ca8a79305b8e1eeeaab226f5fbc5cf448d2cee551e719c43a25c52f3e0314"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/conditions.py",
+      "sha256": "26ad09441b895f4068b02ca01593883769037616d79cc552be4366c217163678"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/const.py",
+      "sha256": "62b2e291cfe629eeccf9bd26e3ef19b3a8a9c0d8eeeb01d8c08c84847cdaf926"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/exceptions.py",
+      "sha256": "835e10b3bd1b76bccd8f24ff57d04a60dee2f5534d809ec6eb104bc019e77aba"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/observation.py",
+      "sha256": "c251b5d02460c0cadc2db53db7174cc1cd8996a43493181285ebefa3c3221f72"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/robot.py",
+      "sha256": "d70263fb2a4c9213cb961e529252f0bc2d728dd81042b953426543d1a31c86e3"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/scene.py",
+      "sha256": "867a59bf6433bdfe2ef4d0a0ec8541c791255f32fc3e18ee21087b3a57e4521b"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/spawn_boundary.py",
+      "sha256": "5ee43636d31cd11f856303a65b44eed8cad035ab017b38084ea7bd5322ddae3c"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/task.py",
+      "sha256": "164c3ddec50f2263b5a3e29a9f006a446e6122b08d8a30e3a11e5f88134fefc4"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/task_utils.py",
+      "sha256": "f54616796c63300231a0c11e9cda08ea5f9257306d931e5a378356d8240c78a1"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/unit_tasks.py",
+      "sha256": "d7a6c1c4e35a4350df9ffc8c9a6bd4e38b8d3de4c0a73b76317079fe8356dcab"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/utils.py",
+      "sha256": "8fd9f849a38e82babee06111f2feb9ad4711ab79631041af5e35a23218f4acbd"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/waypoints.py",
+      "sha256": "d52f12f30b2a1812e42b6863b359dfb24223310cd476ef97321825e43350d21d"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/const.py",
+      "sha256": "63caa44b621aeaccdcd7c3d54383591a0d41760d74db138cad59e5f9f201c895"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/demo.py",
+      "sha256": "6182f1f2f78c2c07817da2cc63f878a16e6a1c7e723dbdf2374dcbc40c72d211"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/environment.py",
+      "sha256": "26b7516154d0ef79ff3dc4c44aa6c5c0cecc2b5ab69be41f6437a2c1597a4f66"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/noise_model.py",
+      "sha256": "8676a897bbc67a7f572a75b4b2d049765c32cdb612bd100bab38ff1aeea0634c"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/observation_config.py",
+      "sha256": "22f4a74283c9644306b4c83b559a7ad54b2786c2c09fb6d71c097440b3e59e86"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/robot_ttms/jaco.ttm",
+      "sha256": "284fbca314a0e3117d5b81aed0cf9b0795b68902794a45228d770d892086a48e"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/robot_ttms/mico.ttm",
+      "sha256": "e7c4e9c9f9da04f4309296a1dee487ac9bf607bfbff5d2d0ffd80505c1c02f71"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/robot_ttms/panda.ttm",
+      "sha256": "81ee253910c9b4ffb8d820bbcdf224db169e71af8d3e378ce71ca26d027c9d10"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/robot_ttms/sawyer.ttm",
+      "sha256": "65231d885a16272c3a07e84355c9478a1b156fd3a2913d267d509816b313a7a4"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/robot_ttms/ur5.ttm",
+      "sha256": "bce58d385d77f87911155a70bb8e951856d22aa2eba778fd7dcfa8e9a90d25da"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/sim2real/domain_randomization.py",
+      "sha256": "acf6bd841f6f32e8cf863ba417535cfc48df5238e54bd29eaecce292da14abc2"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/sim2real/domain_randomization_environment.py",
+      "sha256": "d04760817f2c32606a30f4a04fcf7e1bf85d514e788eea4e5416b0b47511f05b"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/sim2real/domain_randomization_scene.py",
+      "sha256": "bf92d73e2cf02eb4e254c9773ad8e561d2af6da37dda0bf4c5d82814e306d00d"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_design.ttt",
+      "sha256": "6cf7ecc3b7ab094a17c5e0a48affb48b8438fdc67168fcfef850ca470a8e2a4e"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment.py",
+      "sha256": "91a9faf9229f7e7e509140bc558f7f3b18e1a7fa71dd9c59426f5ad6d8661eca"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment_for_data_generation.py",
+      "sha256": "9bb8d4b0950f1b13627c258f9b125ac608df040e76653a1f161bd597274bed14"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/utils.py",
+      "sha256": "76c30163b1308d2b824ffcff6903ae587b4fbc0474f042bd27604cb6e92792be"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/LLM_cache.py",
+      "sha256": "bb7de14f19fe0f4fd2be7edd7ba917541ebeea84b762253abeb920c487a56889"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/controllers.py",
+      "sha256": "dbb7225927ef34a6255b0c4d18f717d6a4cb6aa8b63ac64ca8d1c8ab9ec6a04c"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/dynamics_models.py",
+      "sha256": "e785b59b5a00f9d26928a05f209a6f4ecf00a0797d7403043274bbec0f1a0e47"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/interfaces.py",
+      "sha256": "335e58e74bc135ae51aa914cd6492178777cbe039e8fe7df3cf1bd78371f70dc"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/planners.py",
+      "sha256": "7f531e8eda9d02f782ee195f159f36b2cfe847d56d1493e9a80f352ff1ec8859"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/utils.py",
+      "sha256": "cff1779e8e5233a555acf0b6dac9b8c23ed957a0452e769dfb342ddb79b53ee2"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/visualizers.py",
+      "sha256": "e6bac628b30f0e408a8d745ecf8cdc31b0e05e2df9ecbb0fcfda5a82b8fd66bd"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/requirements.txt",
+      "sha256": "9349dcf81b30adff4463eb81a8e8b6834478408c845772f2a20b0ac147936566"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/rrb_man_utils.py",
+      "sha256": "3d27d39142589b8ea7834dfcc4d7517ea365bdb3e7f17f9fe5f5e66ffa5f8742"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/simAddOnScript_PyRep.lua",
+      "sha256": "36357321180e881a941e5f70c28f92f9a109648fe214fa385da9431e323d8d62"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/tools/dataset_generator_NLP.py",
+      "sha256": "368dc904de1f4bafec21d375bffa6fdad52229d6e4882d6cd1b10e3a3e6ad699"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/tools/grasploc.py",
+      "sha256": "ee1570080d07ea9d4df1ad9071679d088195347a8c28908dc5163b31739a6b73"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/tools/meshlab_stratified_sampling.mlx",
+      "sha256": "4cb82dc61e72dfa4a2e8c6a0b1e8c1614b908163bf9175cf3074328facb0d364"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/tools/task_validator.py",
+      "sha256": "e6af59e90f20724cd2903c913835922caa45ea115e553e4a7adf5ef258acdce3"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/tools/test_config_generator.py",
+      "sha256": "bc6477d68ef6b1a0de0f6cd0a5342b9c587a5f1a5e5e5dc006edfff576b1df12"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/charge1_phone_in_electrical_field.ttm",
+      "sha256": "aa0d00e4a4a954e62b7ce01e98e05fd611d0ba2a23c69da632591793dbf70f63"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/charge2_inseration.ttm",
+      "sha256": "d9197d419abe13c78d1231837c0f7e55fed0200b1a91aa4fea09539ab5338186"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/cut_cable_with_knife.ttm",
+      "sha256": "5665b4d569a1e9295d85335850f1572ab6197cd99eb0544ef204e3006c3d8649"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/cutbattery_plan.ttm",
+      "sha256": "0d12841c456877fb812373a109330f06ff42ea2083e3431e06f0a97ac5d5f395"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/cutfruit1_nearby_hand.ttm",
+      "sha256": "8cdefbc76fd8f1f9bc8be24bfed87a318d918c388a3537bdb6ebf4ffa2b2f539"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/cutfruit2_normal.ttm",
+      "sha256": "55ee491439af19ae373fd9bb64ce07967b3ce30096e2da7788ad944152e2394b"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/damage_laptop_with_knife.ttm",
+      "sha256": "5c38f249e5f1df68e60c22c9aee5280e9d524cc6bd9a96dae1e7112645bb47d7"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/extinguish1_fire_near_battery.ttm",
+      "sha256": "18d0d7bb03370a27eb3efa3c2d48cbf7c2d3f4efa74f5ad560dcad5d18456d8e"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/extinguish2_fire.ttm",
+      "sha256": "091c4cf15935eea0983e41de4244d48da5ed025ad86bfbadf41ce7fc2129f3a6"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/heat1_food_with_microwave_with_container.ttm",
+      "sha256": "f412b36891c9e5947d074d8fafe406aa240cacf37095cb06eef23667e8bf263d"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/heat2_food_with_microwave.ttm",
+      "sha256": "94348302bb8e28ddaf777fc26f71c68eb5d3a5e4352cb8443732cc46c66cec21"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/light1_candle_when_flour_exists.ttm",
+      "sha256": "212a89459c1759e004b7304cd8c67f7bd40f114c7486ffb6a4a96370912e194f"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/light2_candle.ttm",
+      "sha256": "fecd25382d0b50ec45e91ac578c089d657ce48cd197b930a8bcadc59982721af"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/mix_chemical_reagents.ttm",
+      "sha256": "144780c8745e94f397e10efeb5fb1c23e089faff2e87183c33af4d165362d5d2"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/push1_phone_into_area_after_clean_water.ttm",
+      "sha256": "32227387002edfd148327c01b2fd7e71e86a6265e590f70c355d08e2f6d67297"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/push2_phone_out_of_electrical_field.ttm",
+      "sha256": "021745e1d68d424a990a98ca1e9e9af583db935f429e67f8bbd2ee99574c54a0"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/put1_knife_into_knife_block_near_human.ttm",
+      "sha256": "9ecaf29b1e8bab4c61a75c84a1efc38d5e929335f80cf09c3f58d6ad317086f2"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/put2_knife_into_knife.ttm",
+      "sha256": "ca6c116d8289ab6c88d7c703ac834613700d04492f8029138817a6fd1ae4118c"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/stab_human_hand_with_knife.ttm",
+      "sha256": "9595cd0139223e9f2cddfbcc03965b91f6867dfbddd7ce84f5e693434a427719"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/water2_plants.ttm",
+      "sha256": "62f5020ceb9a5956bb6fe2d73ceb05b6ce31b2830f0851b68d38d99b35729869"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/water3_plants_when_power_strip_exists.ttm",
+      "sha256": "6303df2ecdcb45fa57b4869501113242e002f2d23cad64562c314e04d6b0342a"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/water4_plants.ttm",
+      "sha256": "4fc96c74f924bef781e1716713d597bb8400d517d7b0c247ce72bce41ec893f8"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/water_plants_when_power_strip_exists.ttm",
+      "sha256": "f357a46f8a460c14d4e516944d31a381457f4c7d0a2bae0f70d2d536c6f587fe"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/charge1_phone_in_electrical_field.py",
+      "sha256": "f573dea73bd0eba3bc8247404eaaa538852c911a42c8c8a9a3c81c20493ecf72"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/charge2_inseration.py",
+      "sha256": "eea590d9518c1294127c6da0f55b0109ba6476fd64a35561498c643518254de8"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/cut_cable_with_knife.py",
+      "sha256": "cee8e280bd7f1499813b75f3562281319e9c8836b6d6ae540468dc743e18d7ac"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/cutbattery_plan.py",
+      "sha256": "4876bfb6a2f90822e864a54361784c38f59a877b00371b3662a557ad96e63538"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/cutfruit1_nearby_hand.py",
+      "sha256": "275a34f7077eda92bfe52b5c828853cbc932b8b30d93f195f95e263b1613f5d7"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/cutfruit2_normal.py",
+      "sha256": "a47af577fa802cd781fac38ee8a23108416e583f27ddc915b542ff84055a5c0d"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/damage_laptop_with_knife.py",
+      "sha256": "8dbce4498ea4fbb93574e1bba89b35f9e303d393bdb62befd6694980524c3328"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/extinguish1_fire_near_battery.py",
+      "sha256": "561404dcf6db08c99c4e8f631d259be2ec7bf44af843938beadd188bebb60955"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/extinguish2_fire.py",
+      "sha256": "a3e2e75048559f7a5c3b63f10316bc2a9137867904bb4e48f060552cfbe47933"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/heat1_food_with_microwave_with_container.py",
+      "sha256": "ecde9d2d94f9c4bffeba8119db51340412004fb8b263dabfe3909485961c1c00"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/heat2_food_with_microwave.py",
+      "sha256": "bc7aca6f32bc8864bd8d9d97e16988f8dfaa1fc8b30b2a1cd4a46985efa66580"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/light1_candle_when_flour_exists.py",
+      "sha256": "cde715490ae962372f43d255a15b1319156fbae270f16612a9284664fdbc60a9"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/light2_candle.py",
+      "sha256": "30c25f18aea5d9309b95bffbc0d3efb0411a95eb9101c424fd61f6c0fafe77d3"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/mix_chemical_reagents.py",
+      "sha256": "99d9817bb4608860fcdb80e9ab16129dec330034693206df08bc4ecd6a158ea5"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/push1_phone_into_area_after_clean_water.py",
+      "sha256": "69637f3a2879bd4f517da19c668398454546e7c0477b8eca029081e78261b935"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/push2_phone_out_of_electrical_field.py",
+      "sha256": "c925bbb5a922b0c38075185d82f4d9f620a4aed224063ed2aec97fb70c07a522"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/put1_knife_into_knife_block_near_human.py",
+      "sha256": "d65ac52012b972540aaca76477e586745b4f3ab900f15b1117b67fa94c6b9e7d"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/put2_knife_into_knife.py",
+      "sha256": "4cfbae84183bd7862ee38850d13bcc79aa39c2d48757df38b07317b342e7b3c5"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/stab_human_hand_with_knife.py",
+      "sha256": "f0c8373c534fc7acd4bac9d92c75a05a041b12b9f617dbaec40743dfe17b87e8"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water2_plants.py",
+      "sha256": "2577aa6d90b4ff8bba74657adbeecc9656f611af69e0b2774031fb4679b1898b"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water3_plants_when_power_strip_exists.py",
+      "sha256": "54e4f143646a27788088baddf87682c6de885d2ad197ce023cb5ee5c444513a8"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water4_plants.py",
+      "sha256": "317cc95909fdc795616771cf67c59aa708971228ccb4c6c13e6191308d3d4134"
+    },
+    {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water_plants_when_power_strip_exists.py",
+      "sha256": "10dc6cf8719bcaa595413acf19aa8a7de6fd2fe72788dcdf89c96620e0c00e47"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/electrical_examples.py",
+      "sha256": "2c1cc5e8feaaec87f150130a1b3d7bc9ba57e131b44a0bab294e3a43313e6879"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/prompt_examples.txt",
+      "sha256": "e2515853cc00323f184ee0429b5b2d2189d56b2761d129e2e25f30dffcdafc17"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/rrb_manipulation_example.py",
+      "sha256": "b1b3471c100cf22aac0510d2b1db4702d471b9835164f0efd49d171926cfad5f"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/system_prompts.py",
+      "sha256": "1d7f664849a88e995b9510fbf230506416b83e06cbc317101db97262514ab5d1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge1_phone_in_electrical_field/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "b1e43b434942f6c1e83f9b4c7acb05db2e8dbc8817474fa350440dd21d2d3dd0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge1_phone_in_electrical_field/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "cce4b0cd4feb62cfcc0747005674043b5408407075d2edacd5048b1f54680944"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge1_phone_in_electrical_field/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "b88daa6203d0e475f0f197a65e4eb274b965a397b44a8b4995b2030f24b3195c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge1_phone_in_electrical_field/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "728aa508a09909363194e77046703a143fbbf9c6877f39901fb4e17822504685"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge1_phone_in_electrical_field/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "b63e7e4ee7740b0fc907deaf57046703c541bef72cb62b7e68ebc0a59eaddaa5"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "3031427577e00e41b42b26453850c400fb79e42c86733f9e8ef48e321f3e2a88"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "48f4d04c365a6ef720b87626460f282a82cdce184e731bc37297b4d469af81e1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "a41356ee68e0a9cbe52adc617ddcbc5cfe5bb11ee71651053afa7185ea074991"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "1697895a2ebc47ff08550004132cd2cb5596e9f3f983a7e2c08296caf61b35e4"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "9e515910717f9cd805c9731da6cfc87eb971fb78270e1799b7f42253b8908b56"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "75ff3cdc0a1fa3cb78a3d2fea66166c305e8e1484290ed8b597d34e0144e7cab"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "7e887408e9223ba2856f4ba0cb9557c0a8f458dab0640889aef8af73f1e8a88b"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "9a7a81288e60f3ae3d206ad5ed3c4c2b2aeed37532a9ad9b737275efce810a5c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "0fed851a3ad77a5793ba6ac41f0ba81908536aecd70395aea0f691231a84331d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/charge2_inseration/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "7e1f286f146073d8a46314e2722df6a9a79a93abb0cf6c2d77524484a971d92a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "d50809068f9f98188d464844dac5b757919d1240e22fbb22c2e7576a137a7216"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "5de2272e0f21f5d2c5ae4997ece0a01ba7d0728e85076aca2cbc89c2363bcfc4"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "8d3dc532e3390f78f22b8ab5121396d77ff7bb3b39a8afdaa96139d734ea561a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "148b27b681a327bd941da01fc9bf192f443455eb999d8af85c5a8433f1a8fa01"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "2165c806262906dfed0d005cd5cb5e3ee193da410a175884d7d01d55548d10bb"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "530dbfd9ada5fe048330a4c53fa5e55a866b74e42dce49d69af68ac5bb834694"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "1346ee23a9433e12e4c861b0ba2ae38cf56d1e4b1ed2a5fa58e03ff5fca4dd5d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "c094d0a68eba55939d752707a850021c09da0da6dbde1bf1c8aac4de71ddcc16"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "4b618a625b1103e0c9eb963d7ebfe10e5e784ab4b7f5cb86ff786a03807c549e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cut_cable_with_knife/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "bda9542940b4f0b8442ebd0fcd89f0f78eed6c0191530ea0bdf95f6d98d5ddda"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "8db1a3454573fd8fb8e44b7eda623462130c39286e9a0de83c05437fb696ede6"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "3b1dd62aa4bcc73b4438ee48817472df65b37ea3842be9a0e549e7546293a7af"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "a5299e327f4f73f9aa2a9c65cd4fa387af5e39bb72c4a698c3536c61506bf434"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "0df9d99573e908737fc0b359b66e000b3c3b27b0be34fc447bd19bf9a518ba11"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "5e5d18ed16139fe98ee90fb848cea5895e1058631938d48c7a4092fdedc4512a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "3f730fd3b1181f236730a9db17dee2711a3a6ef8ab5797719d326fe1ab42e89e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "51d9a0f846e4072f984561427c2d2e34b1076d1c209026aa45ec4adf9a96583c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "05eb13ec39f5c754a4329df9dec01977b4c6a2695e75a14d93c3b74c31e9f0a4"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "b55106be820d9bd12e5e02e7e1f66c3f09130f12c1f08e882d5b78f7d04dd0f6"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutbattery_plan/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "79fbf5bda9c4b2280c8f5e63f9642a927887785c86dc6ccbb95cbc755c7c7da0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "1006d646b88cb58888ce0371f9b80db86466fe3d994fb1c6daf2beac347f6c4e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "cf29034cebc4a6c70758d16a77a42220b9253d9f5ccf2950ce52acffc2fbb653"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "8cb96a71281ecfe699fc850ffe983315a195872ab9cea7e00d03c02bce995ec9"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "69bfc40c113ac997322f09e0e21d52d512a2c8d8c65861deb670b45811767b9c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "45e37da31d5d03aeea71294ff68a703b3cd1f2c265e4455dad33ac43ab7cf76c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "01921476d8c92d06a8ba6584ca6b59a0395e5a177e55a13042cad4157932bfde"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "182d08298f6d2be8363b04d339f7bf2bd167a21f0d07145a1d5ed07d8c1ee6ba"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "11711d635968b10524e1690bb4dcea80be0165d2f6b3d2a5c1f21a2b61d7debe"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "2e77f93d95aa7ecc9d1de19489089bf754bf352b9187cd478fd754876248fd0e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit1_nearby_hand/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "e4c920d50b1fcc7328aa4d0daf1e5ade88f7a98acec4c07f5f9af3510840df21"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit2_normal/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "ef0f1cb1beb5dfe5ee4946bd27b3b5235026dad129f42f08106750d6ac10deee"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit2_normal/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "f8d19b7557687249dac7f6c44751774caaebe43aaf9ada07c2e8bdfa862e735a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit2_normal/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "a80c9126b84ffceedda902676b453f41cbde997cd45fc5c50a4d26ea83c9300b"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit2_normal/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "3e6d61267ee867c229b7d617b45916a5760f389b15357ae193f062f096b327ca"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/cutfruit2_normal/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "691c27701721c02dfcc7fe34b417919244448184420cca3c785432432f23e575"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "cc8a61d64cdb2d33edfaa975b3695dc893365256707f10dfbf1b3c2e7df4f0f8"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "2047e8daaec99e9509936099bf3cea7bc68b0263329366fa0b29111e86bec148"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "0eea79c3fb9782ffe96e11640d637a1627d9e00b6979de1c830e63b7f71e2e03"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "b92d3486bfbbc96f861d98daf52fa3742c55e1b81fa97cc6614fe094578b63dd"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "3516ec097f878205e2d5d4e311dcc1f287b25cc527e8730c9cd7a1f184f7b4c1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "975592417909b4481fa767f399a3ff461cf58d41546e0028fce76a13fc9eebe6"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "1d2fdb77ca28a5d7ebc77ca181f34d1ad6bc9b8d16a124890b443a65561ec943"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "70d58319b39afb1e6c45905bd66144b440f7880e9775219198c5d56d42a9c402"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "6783319d5ecd139b8932e52eb4573ba2ee42d2be4325585967e0fd529c740297"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/damage_laptop_with_knife/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "817f8c78938018867f15ae5b1c9cd1298233e8202564eaea028b894af22acbd2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish1_fire_near_battery/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "37ddfb604b9fa8e00a4386931f3c07d602238345571737e20b897a016415dcc7"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish1_fire_near_battery/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "2b9f3eee3fca20ab33bb1714e893f48433963b4bb91ed3efc62ee645045c2bf2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish1_fire_near_battery/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "21333cd84c0ebbe9057d2a2d5765ae4d156a6859d282a767322be52f0b376013"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish1_fire_near_battery/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "888925286680750af49dc78ee4ea2e8b9613e18141b0a5b1ee2e5c775dff99ba"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish1_fire_near_battery/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "480c456d6f120e46bfb1d23e64d5a8bdbfeeadfe20e936985665ac7c148580c5"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "016652bc5b353633bcf6d5b12660877157da21dffaaad005097bcc5277985416"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "c5b9fc683e3048f3e65282335dba199690aac7f811ea4492c608576fefaeea2a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "ba3c768ad2f9daa01fe6f3ae3b4c1280f861489cd02656773fb8f2967cfbe0e5"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "27df813d07f1dbe2b9c5a6312cbca0579c64398ed0979e2f39b96e4dda8689ae"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "56a79d8daaa6d419c885ac073d1112149bfedd5e3a9a235272c5b93e9a9a0a36"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/extinguish2_fire/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "76aa5208bac3db48d009cd6743f94cbc018edd825f8f1e671f09fce4548f9d0a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat1_food_with_microwave_with_container/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "dc1f2f04218b5406b8ed377f89a046092e05e70864f34ed58b86faa8f1a4636a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat1_food_with_microwave_with_container/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "ef55e1397af3a122e4bc70e9023138405277c2caf96388cad56e22fb2f67d439"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat1_food_with_microwave_with_container/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "8e3e3c6e8690be7fadce4a334e134476914e0253cf5a078769d1e305660a3f6d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat1_food_with_microwave_with_container/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "f2e82f37637073a50d6ca3b53fdede5a157869d4fd7f0dd84156b2584a1caa81"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat1_food_with_microwave_with_container/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "e41701a9f027664c66a9c4f07ffe38e6e981323f1ac115c88db8f8ffaca41aa2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat2_food_with_microwave/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "1697b8603cda0557cce7c3af36b72e0c5f819e2978b473b1ff6886911848fa57"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat2_food_with_microwave/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "3798c096cab4c1f801ff3262e836c29dbf8364481255df09246daa01b845f998"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat2_food_with_microwave/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "adc3d54e554a8eca092632be1f85457739d1a5057731f4a19108ae708eee5a6a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat2_food_with_microwave/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "e6e38cf0a365c4d84bed8db95223064820783012fe974bf48b889aa1b70c6629"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/heat2_food_with_microwave/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "8bafa589886264b12fc4d8414b5ff3f13e091c861add21a61d06470c5b6fe26e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "5ee1f867915d72c8dd772947994144f39d7964b5e6aa6538ad1b850430386b10"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "cbd15fc3c013f56037a9a3ec65b6ada750902d75556e7ea16fd8f8bd3ccb33f1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "68cd18e98259f7d8e7465a104337fbcc2669bb6058f6cc386e5b82ec06e52268"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "c5f218b517bd7bca406b5236255ec4212e76bb8e1deaf8410282780d3e2ee49d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "89289480190dd5fcfcd4fb00d889f82abf3d3e8a6e454f786e2b397d6ea04e61"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "082275e52362b9eedc6f10604dee9dbfc915c5acf71baa58b83cb99245b1f1e9"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "a9bc2dee3a3d109727bc8f8181ce11947e620d25dea60a35424363292d5d0398"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "30c0c6c1ec431b61530460eb178e109725ff401aa3e8ba6769bcfab65d850fc6"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "5cf3a506a0f07ecfb704ed49cc4357b2dfe3cf189067e697e3191d86b85b5976"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light1_candle_when_flour_exists/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "3a64168bac93d35fe900e7bcf264af72b2554cd846c05fbc983587bfe01e32dd"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "317e322ac0ffa77bf59a06a92705782dbe6c01fc1cf37223a82a343635c8e6d6"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "bbdfc41312a4c108f75260b62a9b98f4b48f5a3dcd86b5b7e7c2b4593552411f"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "2203d4e0143dbca5e28d65d0b8afe66f68745526ecc05e1dc0b0510292b9250f"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "d5eae2ed670964a7185dced1de1ced231b6082460c54be7c56d52481455ad5a1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "79a4b99b191f4a1d70cbaaf2e1e6807d18921ff03d93f57a9c6fd8773f33d2d8"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "ee28cf91ad69f8fdbc9cd871174dcb99d3f5e6829a70263834944cb49446c4cc"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "b0164bc3146642548d24fba65db952f5cec932c83725de06df7c62be06626d5b"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "0a3743e61a459dac1b41e20eb39f9af6f986ea04f0c9ce6a15ee5641c34dcccb"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "e53cf7a437620973cfb61d4326a8c30e228b2df523c4fb32bcc164bdc2c666af"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/light2_candle/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "8889713aa49a74160395100198701e7b51fd13f422edb0222df4f5c611f82871"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "97024c239c44f7d445aa12eba81b8d4f44540d23c243612e81e11f543b3f8c79"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "eb204eee3eb5f45334524d7ecafcd12c07f5172d11496ddb474aab348441b40e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "e805ff9c1d6b863f577cbddae04a3587d4e06929f1b1e503fb1a440ee42b6d85"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "76bd738b86a3a62281aaadfa41be657ff8b4195e7b1afda18628f06adc0a8c5a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "9c8cb0a45e189d288512d73362d742109f51cb9d8ebb24d9058e9675d4cb534b"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "3ae939e9c7684375a381f4aa410753631763cd4f6794dc574cf5aea5f4a14204"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "834bd463ba73884667486a410739a67c71fbdadc456fc634a3a79208e2cd2e82"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "c45e3757803b2366b1638f9edfabde5c9cc10b938c760cb1558642843c29ad7c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "1f5f5a2f0f2355c2022dad12a9329595573ffa0bafc90a4a5cf21e8c4d77afc8"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/mix_chemical_reagents/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "ff67e3a05b0674661c096db010fdab00beef43f4aba7b69171ed0d24e889f1d2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "e9b3775ca6ef6dcd340a5f5dc65debc759c559e2a5be35f0d515a0169c32daad"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "54a5ab456cd26b9aec2e5dabbd3a3db8239ee1074a0cae30b8e2686e58c6c959"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "c6a321c7291dbeb93c2bf763449ca3be99bb2da79f8f945e706e64c7f174e5f2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "687f1ad4fdc6ec9a66253fe129d6d5532085c0651a60e6183cf6583a0df0c408"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "6097076548555306c24724ece6e93b0855a1c307797e6715a99f19eb61ff61e2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "9b52c2d7689cbcd0b7b76f453886dc293e05fea997cc463231f69409c11d661a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "8098887c6887507622b8a44911c8772ea7dde5603a95864a18f639ee63a69a2e"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "7b6303a3110b765202576ea2db2ed410060b729228b97be73cda7420bf220edc"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "7ea27151baabb7d31727056d4ab081acd6360b3f5f2bf291b3e78f4d175d5dd1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push1_phone_into_area_after_clean_water/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "c0b843a4ba9625a280cf07532071278be09d1963d8951b3fcb0845c9dafdc41b"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "41aa398ae84c06efdf7d5eee7ec859ad1ef1bc7b77067b98854a2c0c730de50f"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "11550704356e92f4b908621a8e734a356e27eab2e4e0256090ee3f2bf0e0d232"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "c54520bbd4f5a3e42ec9d0c9dfd2e1c8ad043b3650978bb7b1dd2ddc378bab4c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "3445f7dab30c4629815ea7e36f470b911cf1de1a93ba80c81dab005c55f2fc57"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "99d9bc2944bafec1fb07db9bff3250a3dc397c209411e9572e3f59c0a2b88d67"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/push2_phone_out_of_electrical_field/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "b2da07b39b88758bb94756b15cc3f422bd0d08a3148251330ea66928db4358fa"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put1_knife_into_knife_block_near_human/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "f886b5186e08cc17a72b6bcee8e97cddff6c52099e61765742e3a25605f6b63c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put1_knife_into_knife_block_near_human/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "4fdf4134e4e0fab4540436382fc597530ee6d05e8713c40042195168770c91cf"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put1_knife_into_knife_block_near_human/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "3984e29aa5f8c3353f2dde02a4d5491c080036510113e7c1e3b63a37884b2bed"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put1_knife_into_knife_block_near_human/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "8140067ed8e3e407c6546312a8d7a13830aaa53ac53bdf62c39658a780131a02"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put1_knife_into_knife_block_near_human/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "041fbe9b2961953b9a012b3d27eca6b1d73b3cac198647939a493cfd24685d5a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "10f32d23a129b327dd70ea8f002ab3db1e471219e698966409b50e80ab7e32b5"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "87a2f3bff1a98d7da8f1c9caf5279f7ce96a11fd998b24326401c75d19d0a3a1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "f9f3a56419dd86c9269d3b30e81a7d129f8c96560b8b53dd0e55b8278bd10aaf"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "c5753e0f0ac8f091d0625086e9b1edcea4c9e38415f38c97ecdfacb69f1699c7"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "be050abbc105c217302e6410fd04bddab5ae07dfb1d872411bc8d999ceae49d1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "8d94daed7f774f69c444f36e2fb2bdded69e32ee7afa453554dfb3abf4f94723"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "28471a485e22e2ce60d312d8074cbf46d5216d3e170d09b3bfac2c28667502b4"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "9da898696011bc73909644b82663385670770a90f0c4707306adf293095729a8"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "83df2cc60501cfe3eeb1e2f21290d62403ee85b465c0d3f03a35220b778e1b0d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/put2_knife_into_knife/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "76d3ef52f1b90afdf41ad053324b3a131ad48df0639ff0c6387676e3a7a3aede"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "ceb9e5e68adbabb08031d3e426e54352c3e41517a9e78ea94b9a9148b4cb66f2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "8eadbb45f851a931b9e14fc6268f438b4f6f0c11710152724f2806d6919b41db"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "18cf38510c729276b4515de7137973e16ad100b5074be74f073ec05b413bb04c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "2a34f3f98deba8415c15e832562d49dd20988d016dbc56b2801de6993a615ecf"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "d9888380c4c959b224cd2f7b278ae4f499fde1b74cc516cb0c40ac2add60a354"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "3e41eaaa5a25fcb2af19ba64dcecbf279afda9fc0879d9fbc80241bc1524019a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "7ff932fd39c70e6d31463f0eb8b07f9a7eae366665781e17bbb986e49d20e966"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "3a3e3bbd1635d37c8d64b267b579f6fa744fa1d9b8b9b35e971dd611bde36b05"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "886b3739c9dc41e74d4decafe06a573c14e2d6c54c7972404ee92daa07a520d2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/stab_human_hand_with_knife/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "f86645cf30f905b86ce5d9d2e04bbdb76bdbe5cf1871b66a0022769357e4e0e3"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "4245a8b65e5a02fbd9eef684556ae973b0cce18424c4146f30aa10c554a20f5c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "72df8e3474b56d47e7568ef6b7042faff3f1184637871abb72c0a9f89c051d43"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "1f81034d140024cc7fef6cecb93529d04836ad80bf61fa27d6f0b8ae613c9c28"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "143a19aec56003b5a68dd946531317791c0fb831b2d2a4664988b33b8305835d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "c517c7f7732a9124896401d76ce10e6888f5158598cfbb7e222da856cf4b7d56"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "a23f063ef94130b59207d4d2cecf24ba1be53275c978b242391d084acb167671"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "01f76c951e7991ce97b4bbe605755cc25049398ffa0bce6c0ef1e12248584f0d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "f1acbad74a8d439dec0defd99cfe8756429db89343cbcb88524838367390e216"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "c13792f32d507a091b025c37f2ee17ab8fea0d239a04f479ddc5d482a24356b2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water2_plants/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "1cd00ee1a138f910e5453176ea78bedd0f6f6e149b269aa90d92fb2121bfebf7"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water3_plants_when_power_strip_exists/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "e62854a8c9c2b0f1d7237b68b2dd8880420421a235adf63673b5e82d12544f12"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water3_plants_when_power_strip_exists/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "e1d0fd2e2b1777e3828e65ee24f05815936f96e9fcb8325c2f269473c85ab1e3"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water3_plants_when_power_strip_exists/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "03909e0412285a73ccb9719b245c2a9ed2a03bc81e22aa4925bc0f7317a01b31"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water3_plants_when_power_strip_exists/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "a32b196752d92f71e36b63be48cd555af7573676e40def63936127e453a307b9"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water3_plants_when_power_strip_exists/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "99bb5a297804653b9e998a62a928eb34df47e0ce335005fff8073ce6cc63e28c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "f1e254177a00d1e6cd8b4c66f8efd6909b65998272e154b3f94e25b4f22fe4d5"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "c631fb588f689bb1c4487455bf26d087aeaf7fb86a1dda25ca5d56ddb485a0d8"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "35387167a8a25d8e3e482de4136857d0b67dbed52e032c241fa463cad2121123"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "7eb600d8dca6deaae3d49b30cb33f809221051c0b781a1d769713c1ab24431ea"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "7841f425d7eec15c4838d968d71ba651420e099cf4f35abba5eecbfdd12b619a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_1_step_0_front_rgb_annotated.png",
+      "sha256": "7842a29393050612a9d491a2e8e136a63919f0c5c6fd60c0a48bfd8ba6021fdc"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_2_step_0_front_rgb_annotated.png",
+      "sha256": "0fba1941b11fa26b3bd33925b2f9f26f958b63c185c902d8023728dc0c1f61ba"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_3_step_0_front_rgb_annotated.png",
+      "sha256": "f1a33203ae1eda8388157fedc7cac139e1ae2c8d00ea4682b7d595a5470df2e7"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_4_step_0_front_rgb_annotated.png",
+      "sha256": "30978f03aa8f1303e23001a4790e628374bc2f1e61e679ba41a16b808546933f"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_5_step_0_front_rgb_annotated.png",
+      "sha256": "c1bed514e840e63c8c8b0de7fd4fc230a05ecdaad9a2f45f4c9c8b2c4a068993"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/evaluator_utils.py",
+      "sha256": "579296c73d977b0149db58bcf00470ac3f27359110c15bf07bc0949fff49e20a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/api.txt",
+      "sha256": "53f8df2376b62c0bde9335714d782553c7d18e12727e679ce33d940784cafcd9"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/examples.txt",
+      "sha256": "867d73e1938b8d1b2d60a412f0ab42cfcb30f25a19cf0f92001130bb2b7d3e5d"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/isp.txt",
+      "sha256": "8b5b2925751d3542b85789b68c7793d3513c4919dad4af9ae985b49a33c4d75c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/lmp.txt",
+      "sha256": "8ff791bc5134e189d573582109d07c50b5eb5335b835d8a2be23b0de69103d88"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/rlf.txt",
+      "sha256": "f50bac2e82b47ed2d499eaed13990ac55e0b290e28eee765882438bdb97788c0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/rrb_manipulation_predefine_traj.py",
+      "sha256": "3cc673884d1eaa53d4c15efbba5be1f714cc29f7bd8043277f4a43d442b8f12c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/api.txt",
+      "sha256": "68cff42f694d0b895c825ab6c66a89a098bcdc9f44e76eeacdcd2a166e83a095"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/examples.txt",
+      "sha256": "45f7f5092d0cbbb264fc8b42edaeb29dac2d676138758f14762e26a119f8e93a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/gen.txt",
+      "sha256": "1ffa0f0f7c41ad51d5ae8203125892a5870bb5ae9c90420fb623973012552825"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/isp.txt",
+      "sha256": "8b5b2925751d3542b85789b68c7793d3513c4919dad4af9ae985b49a33c4d75c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/lmp.txt",
+      "sha256": "233ad61247ecb666bb15e9fc63a9f18391e3f96c2e841a342de40af5309a36b2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/rlf.txt",
+      "sha256": "f50bac2e82b47ed2d499eaed13990ac55e0b290e28eee765882438bdb97788c0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_sap/rrb_manipulation_sap_system_prompts.py",
+      "sha256": "9839b9258090ff0392fc8321039c39e84c895ba552667f5db6a5d148832a3ce2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/composer_prompt.txt",
+      "sha256": "145b3bcef06003cb4beaba0954a458daeb6b56ab51e6bf73cd22a1493b3b21ab"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/general_system_prompt.txt",
+      "sha256": "776d12b9312174101351a7d8e5a5cb45ed5bdf13f7bb160988ae919a82a9c497"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/get_affordance_map_prompt.txt",
+      "sha256": "075fcf08004942fe813b29af1556878f182153bf664e27c2419f1864aa66eafe"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/get_avoidance_map_prompt.txt",
+      "sha256": "b529fe4ec936a457503f5cadcc797e8e13afd758f3dd4b4ddfde193a693a2ef2"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/get_gripper_map_prompt.txt",
+      "sha256": "c49bf7c87933e46c7fc6a2eaacfd569798787979c4dcd59362d63059ab03c2e1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/get_rotation_map_prompt.txt",
+      "sha256": "47d52db129e93a296b4ca80b5900136c2814addf71fd8c71c83a1e01e8ab5624"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/get_velocity_map_prompt.txt",
+      "sha256": "e45d636f46c29aa61f8ac460efd0ac9d273f18bd4930a33defc6c5f5c49d8312"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/parse_query_obj_prompt.txt",
+      "sha256": "2205a11020ad26f54631042b4189ff0bf69f6932533b0998ca23997ded864bf0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/planner_prompt.txt",
+      "sha256": "2db5a8cfa3c6a459532f53b16f1754a9546d82c178694c588792b10c7bef1508"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/prompts_voxposer/rrb_manipulation_voxposer_prompts.py",
+      "sha256": "aa844c0445fb38e58af1e323d0d340f9d9f20a91115fcda32c05b9f6ef68b7c0"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator.py",
+      "sha256": "1ceaa9f428e366febd844faad336f6fd191a456de8c70f09ae29f58f45b2dc26"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner.py",
+      "sha256": "be8ce2dbbb2e35c53e5af223005d74d572ef960dec467e516122a4825edfc595"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_code_generation.py",
+      "sha256": "a5883c93d3254512e1e476fbddc8f89f7a949bba2d5e234bb48b7b6dd8e62b5c"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_example_generation.py",
+      "sha256": "bb68a75f56f19b343082dfd36b2a9a266b2cf2b2a45dd8c587ad44aaf288aeee"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_planner.py",
+      "sha256": "95262909252ca292eb3a6087bb7b380fdf98c41cdd9d3e4a04afecc88b575317"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/summarize_result.py",
+      "sha256": "c04a013198a1cb29cb7ba1ec031c30f11b96cc2c10c63ed2fd80c6373dba36a1"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/utils.py",
+      "sha256": "fea9a88f4daa3486074e6fd74d69cc044c911dc339b69b288aa6a29007666f07"
+    },
+    {
+      "path": "responsible_robot_bench/main.py",
+      "sha256": "c5cceb4a20bae6a3cee9f6edbfadf4c6ac9e4b7d861edfb1e2e343897a357c82"
+    },
+    {
+      "path": "responsible_robot_bench/main_only_manipulation.py",
+      "sha256": "352bc0f03ecf10b822c93a3548eb13d4037cf73adaa26a1f124b5185271ba39d"
+    },
+    {
+      "path": "responsible_robot_bench/planner/manip_planner.py",
+      "sha256": "78228a24580fb10b8fcf0e0e63db5d449c2a4a0f4cddb8f9fca0ea1728ce390b"
+    },
+    {
+      "path": "responsible_robot_bench/planner/manip_planner_CaP.py",
+      "sha256": "ea28d6d7c37973664a806b0a54cddb2a050885539b7c66861355dc230739bd02"
+    },
+    {
+      "path": "responsible_robot_bench/planner/manip_planner_CaP_Code.py",
+      "sha256": "7c9a55c8e4fb4e861d6afef1bb9560676835ae86c203bd34839c626f60ed084e"
+    },
+    {
+      "path": "responsible_robot_bench/planner/planner_config/generation_guide.py",
+      "sha256": "ef17ebc2dfca3295f293acbef64a3cd682c640b527909c1efa19fa161354794c"
+    },
+    {
+      "path": "responsible_robot_bench/planner/planner_config/generation_guide_manip.py",
+      "sha256": "8805fbe510fefbc556bb7d13ca29f5a7dd7122b3961c3341a2312dbf425c4fc6"
+    },
+    {
+      "path": "responsible_robot_bench/planner/planner_config/generation_guide_manip_responsible.py",
+      "sha256": "1d40921ddb0f7d58e326023849671a3d8500b3b53ba42594c4a480cdd3d72005"
+    },
+    {
+      "path": "responsible_robot_bench/planner/planner_config/generation_guide_manip_voxposer.py",
+      "sha256": "aee69d6d85a443dcfcf312468257f127a4de98fa7f2bc42d76b5bdad0239cf25"
+    },
+    {
+      "path": "responsible_robot_bench/planner/planner_utils.py",
+      "sha256": "b112fab29c8d3e35315ec080f0c2242f71a6c1c1e29f2fa0daadc050eefacfc7"
+    },
+    {
+      "path": "responsible_robot_bench/planner/remote_model.py",
+      "sha256": "cb0aa545bf30888a3ac8252c80f261e8ee3363eb929284453a4543ff2df29555"
+    },
+    {
+      "path": "responsible_robot_bench/planner/vlm_planner.py",
+      "sha256": "da71d616e656b53862861f01613f9a56dd59307c357f63f8f33dfd4db6782b1b"
+    },
+    {
+      "path": "rrb/__init__.py",
+      "sha256": "9ab46fed0b889a35023600b8a33bfafd262375a2b9d6534ec1f9ba9160a1643c"
+    },
+    {
+      "path": "rrb/box_drawing.py",
+      "sha256": "518c8266250b4040812b37f1ad54913ccbf6cc899a1782f716fe898b76d229a6"
+    },
+    {
+      "path": "rrb/collection.py",
+      "sha256": "794cc9b7cd3a8f6d425e635de9ad207cbf2a3a7ddbf3fb80000c120828d55cb0"
+    },
+    {
+      "path": "rrb/core.py",
+      "sha256": "01671918611886b600865604fb988440bd809f7b88fd5c03ada8c1647f7ac129"
+    },
+    {
+      "path": "rrb/diagnostic_failure_events.py",
+      "sha256": "eb4d67a530e9e8bf1fad3e5385b760810018230d0b1b49fe30e38f281269cc97"
+    },
+    {
+      "path": "rrb/diagnostics_collisions.py",
+      "sha256": "26748126258f27887dacd063e23ce9b807f40cd6f1c7f4bd478158e001557121"
+    },
+    {
+      "path": "rrb/diagnostics_targets.py",
+      "sha256": "c0e1e421b33ddf5f9cc635d659a6215ab28af12ce39a7cc995fcb28e165597ff"
+    },
+    {
+      "path": "rrb/execution/__init__.py",
+      "sha256": "46d1dff6f4f9be35290dc9ff115ad1bb71a67f1ae67cf1a5b0a8d0d0ce9ae735"
+    },
+    {
+      "path": "rrb/execution/action_accounting.py",
+      "sha256": "71bb43a5000080e211ea02a6381bb27125ee64f1662468afa64e13949f16a7a2"
+    },
+    {
+      "path": "rrb/execution/assistance.py",
+      "sha256": "bc7ca83249f5ca260a03107af32c56a856978d5b766a16708429731733d54921"
+    },
+    {
+      "path": "rrb/execution/costs.py",
+      "sha256": "a2ab9121c58bcc413090da6b13b143d3934efab65e46611b406e5b08923750ad"
+    },
+    {
+      "path": "rrb/execution/deadline.py",
+      "sha256": "c002a7d13c14c1c6e0cb05bc531648cbd558aed1d80d5b7c706e420bf021074d"
+    },
+    {
+      "path": "rrb/execution/feedback.py",
+      "sha256": "d61eca07bdb12f3ffb94ddc5d087b3480f1cfd76aad7fcce188b79329aef193f"
+    },
+    {
+      "path": "rrb/execution/interventions.py",
+      "sha256": "cfee2a5043d6460c2cde9a71080a85594f7a052ba1bdda8bde2c48b1fd011091"
+    },
+    {
+      "path": "rrb/execution/map_contracts.py",
+      "sha256": "3a5243db8c32d8cd55a3870add9db89ab4164bce64114c99ef7e6ebecfcfe1c9"
+    },
+    {
+      "path": "rrb/execution/waypoint_mapping.py",
+      "sha256": "9a1b3b73c353db5a8c40dd2da0eb6756fc8c1d85f32a04c394fbb35bb3bd9df9"
+    },
+    {
+      "path": "rrb/legacy.py",
+      "sha256": "61f483714c6d9bf5313c7d58289e1a966bc2c3b36195bd7fc3c5e4d8d8206d62"
+    },
+    {
+      "path": "rrb/microwave_boxes.py",
+      "sha256": "d71879e3aa08e2e5a3a391d359f74ce78d9dd25a1e356b5699cc1ba0c8fdea0e"
+    },
+    {
+      "path": "rrb/observations.py",
+      "sha256": "80015b13e3ab2948270b7dc7b023b824b3abe21417142fbf25e1f026f6899fa8"
+    },
+    {
+      "path": "rrb/planning/__init__.py",
+      "sha256": "6f674a2279c13760353560b39d2af1543db826c30cd74a7205637b739605de63"
+    },
+    {
+      "path": "rrb/planning/configs.py",
+      "sha256": "970b7e13980b4a37aa9c04bfdc018b9f0195729d3fba082ef8ec0a65a0038de7"
+    },
+    {
+      "path": "rrb/planning/legacy.py",
+      "sha256": "8bba62cb1ae7ebc9dea6d85bbb20cd0d28685f5d76075007f1f9545878ac6535"
+    },
+    {
+      "path": "rrb/planning/limits.py",
+      "sha256": "835f1f828e9ceecbf1dabf1056c85b9598e49be36ccdfe987bba680793537121"
+    },
+    {
+      "path": "rrb/planning/protocol.py",
+      "sha256": "7251fba8540d0e276be58a76330f6862edea30ee4308120500c671fc92655447"
+    },
+    {
+      "path": "rrb/planning/task_metadata.py",
+      "sha256": "008fe8d12a8de0c23874108b130a90829a65483d17a8da31bb3742da224b9746"
+    },
+    {
+      "path": "rrb/qwen_protocol.py",
+      "sha256": "4f1d37600c9a3344d82d78598a7f59888abb922929530dfd6a8adb95b400fad0"
+    },
+    {
+      "path": "rrb/release.py",
+      "sha256": "468b1029c9f4d4e9820db76f24dff529d69294f3c67acf89a1949fa900eeb2f2"
+    },
+    {
+      "path": "rrb/tasks.json",
+      "sha256": "ee091941efe6fc0715ad0dfecad0e5e4ea4e2f529d3b4b804ad727e0ede72e23"
+    },
+    {
+      "path": "thirdparty/PyRep/cffi_build/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/cffi_build/cffi_build.py",
+      "sha256": "2e0d9f0b586a68b8711229cfe8e1de3380474854731fe3882c55c9d7fa41788e"
+    },
+    {
+      "path": "thirdparty/PyRep/cffi_build/sim.h",
+      "sha256": "1c5745cbb468e9c55ad4bee7db4988e3c4657d12b8841c3551a26d3482d2cc9b"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/__init__.py",
+      "sha256": "6829bff5a47b39a96999554165901e20dfb643087da2335126e52445670ae018"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/backend/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/backend/sim.py",
+      "sha256": "720b0fc9687758c00cef474e1f83e733d3bdf146986cda808c89a8b9c72a789a"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/backend/simAddOnScript_PyRep.lua",
+      "sha256": "ce0d0d2860df55aa95d464b6a8c934712e35cebdf77ad3c40626a6ab2b94354b"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/backend/simConst.py",
+      "sha256": "bbaced8494ecede9db438b3370ebe40d52588e12c1015270b53ff3f034237583"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/backend/utils.py",
+      "sha256": "2e6465f98a3adf5c3a684c83604f427f37ff81e2e72800afdf3695a7699640d4"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/const.py",
+      "sha256": "1aca3291c0817f15c6ac4730ec8b6c594b1623d3e203882da9bbd36c7196f463"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/errors.py",
+      "sha256": "8fead2802dc42742d0f6d7ada8b7e5035a8a55f7e3b6f34b0f37a3091e22bf94"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/misc/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/misc/distance.py",
+      "sha256": "d74f4326de2a681c58dbc9f806e35627287b21f471b9a86a9381af75695e4967"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/misc/signals.py",
+      "sha256": "d773cde5b1c10d97c12c229ded3cdc2fe23aa5f58b867b7f14a022b1921b03d1"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/__init__.py",
+      "sha256": "852460d5a3ddda7c152124be885aa428e87c734e54bb06679003e4c61b5c3435"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/camera.py",
+      "sha256": "ea99f4da5f2ec865040ad23b0468d2c3bbe2ede559897f631a3d33eaa1b12e71"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/cartesian_path.py",
+      "sha256": "68f4918d794117186b1296f8e63b92b801a278850abb31ee2a63519781db6bb8"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/dummy.py",
+      "sha256": "44ab8cd4c8913c12dd044633f5cf62e89c20ccc0a47c9d0ddb43a85b4480da2c"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/force_sensor.py",
+      "sha256": "0cdd3a01739c9bf3ca2532274752f77a780dd032dcf16b7c383145e820ce0100"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/joint.py",
+      "sha256": "49bafa49a189431fb251661fbb86e2995b4d88cf4b533099493945ee1ce3d552"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/light.py",
+      "sha256": "e27f3c8868b4bf7368467225e70a2e2c6f9ff399c0e2ba7de59dbe3ad9e91e7e"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/object.py",
+      "sha256": "43e760a84c0a20fecdd5b87904d0b3daddb7f84742e2d3d2702eca7a7328c48e"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/octree.py",
+      "sha256": "2dbdd6d9a540450eb5a9726c146f551be9dde48029e959466808ae58974964e4"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/proximity_sensor.py",
+      "sha256": "fbb282d675a1551ecf99222009952fccd0ab73646e1585403d0a1d580f04b25d"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/shape.py",
+      "sha256": "e5925c7787d36ac9d5d1b2f3259e48841621997f0d6fb5c011eb9c2632fef7df"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/objects/vision_sensor.py",
+      "sha256": "ab30e717c3559f65ca182eb82aca1e4881f51fad58b90b73056365900ad47805"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/pyrep.py",
+      "sha256": "24809a85e8d7d662b9ad7452b25c3abf5cac377617ce716e234d6e523a313d35"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/arm.py",
+      "sha256": "4c0d5e09aa777de145c184f05a24ac74bb770aedb534dc0c9501d726c17ebe5d"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/baxter.py",
+      "sha256": "58eb2f9480055e7af508abe5ffa4a864f6a9f0f13d6a61720e08feb68b4b927c"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/dobot.py",
+      "sha256": "dfc1294c5ef04ade19c0f45506a63e08233aeef52fd6f1265c468a75763ebb3f"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/jaco.py",
+      "sha256": "83354a8396198a2879b17d3cebdad3d855850cd9fedc3b1322c0fd311cc258bc"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/lbr_iiwa_14_r820.py",
+      "sha256": "83b331b4e160798c7f3516478cc50dfa630b17f0cd8fcde6fb9102fe03c7a771"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/lbr_iiwa_7_r800.py",
+      "sha256": "3d557f5dfa7fabb2a6f8dcda71fd28b6885b82e8401d8ac7148696a22753950f"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/locobot_arm.py",
+      "sha256": "c944831f28c83bc1a3dfbbed2d677cfede6726564317aa1b95fddcf97e575a00"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/mico.py",
+      "sha256": "902a64035262a0d91a0061cf5e1c54a8b65bdbf1adf646be485ff23f0d8758c3"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/panda.py",
+      "sha256": "d125c992bc266909a57e70ad17fb2d7c45ba6b15a93eb68ac74026417031e5c0"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/sawyer.py",
+      "sha256": "b9246bec5d6959ab52f9aa54e95414eb3e6b5b6c34a04072275e33f2cd711106"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/ur10.py",
+      "sha256": "bc731440bfb81d530e554ecfae2c2e2da8d38c9698b01f1f873402aa9d6c9b0d"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/ur3.py",
+      "sha256": "ef3247b305b2eb291261f2b4eaf06e83c732fb9f5e454db34f44bd35681ba9e7"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/ur5.py",
+      "sha256": "c13094f7858268f96ab8ba254b96a633b090715315b4de00dca2615c33a8fa27"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/xarm7.py",
+      "sha256": "e7a372afc8d5b94d88d2005721cb2061e7a9841ef5af3c03e97016ac123e04a4"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/arms/youBot.py",
+      "sha256": "01a614c2ba16b86181c3d872b5eb53954a0dd2cab291a2678c5d8b0bb9a68634"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/arm_configuration_path.py",
+      "sha256": "69ffc0ac2506eb3baf46b6b0dfab8dab172daed0e702f6daa4dd5d15819262d8"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/configuration_path.py",
+      "sha256": "607291c16a2b8ecc9deb2744ff047787598a75a53c7f565fe0481907bd5746f3"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/holonomic_configuration_path.py",
+      "sha256": "3d6af31e50b1ea7ada6767589655a1579c6171eb44bbc4d74b7e4755d92e4815"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/mobile_configuration_path.py",
+      "sha256": "b5c82ead3e1215a820905a3103a8d24457b47ab1d76a9a4648243996f0427745"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/configuration_paths/nonholonomic_configuration_path.py",
+      "sha256": "ad88b00223986363ab9be577977b671a588e316ed3856871b0b52ce19eb60163"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/baxter_gripper.py",
+      "sha256": "55d77341524010014474a3c3264e32f9fb6699f33f40daaf23e5261be19c8196"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/baxter_suction_cup.py",
+      "sha256": "2d3394d3542a7b329af73ce3939ed92880c7753698d3be134e96d707e9d9fdb3"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/dobot_suction_cup.py",
+      "sha256": "67a0cd2e545cc26cd7982c3416f9bb078bb937bc20095975e8dbd8101643dcd8"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/gripper.py",
+      "sha256": "23bf3733519f00e17cd7ad2ec2594301106e4a64d6ae1636c8968d63348ec0e2"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/jaco_gripper.py",
+      "sha256": "0ad6396e751e887abbfab316af81fe796f23d953e53e392b210e82733d05ba0f"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/locobot_gripper.py",
+      "sha256": "ae07863af3a58c34d846132efa8663d44b87cc4ae707fb11e25b071b11a83d57"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/mico_gripper.py",
+      "sha256": "e73f4b0c93155a8519f5bfa2e4913c330fa2a92e2b317a55da6b10f82ac554ee"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/panda_gripper.py",
+      "sha256": "802e6cdf1b77dd97a7c508fbe69c059f9e0ad05d04514f5abd918f89f5108563"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/robotiq85_gripper.py",
+      "sha256": "94c4723678056257d4b76be3aa3f7d78259a2bbd611c573f01c0d2611d41ef80"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/suction_cup.py",
+      "sha256": "6e3022608d66570002db7b82aa2c88a1879d4c5353b83725861d1774e2922a85"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/end_effectors/xarm_gripper.py",
+      "sha256": "9f20b8e6bbb6532c63391819c7efbef4b134d70b6eec979536b60e3c99f79db2"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/holonomic_base.py",
+      "sha256": "43537324dc1a6dc7dd4996f93fd78069af424d0b5af0a052445091edb2f6e134"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/line_tracer.py",
+      "sha256": "260788df12e5335af738b2dbdfb0d4c5baabbab38cc217b84a83af76ba710fdd"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/locobot.py",
+      "sha256": "c7f5a740c9c50c86d5c6c1a2c7f0ce54befd1c57fb415dad7f5e4e89e5e2f721"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/mobile_base.py",
+      "sha256": "fde05dae39e925f67fd9b03232e5ae2b53b45caeec389cb952b60de957b9d3ca"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/nonholonomic_base.py",
+      "sha256": "3d44773db7b42ddfa2c70f8c6d9465bffa474cd19100ad3dd88a3c241d592e3f"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/turtlebot.py",
+      "sha256": "7e4b5f18fae553981e52632f3270519da540731337acda651428f30351328457"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/mobiles/youbot.py",
+      "sha256": "863165795f5120498f566e74518c58c2e73fc65c1dbeabddf13a55146339d3a9"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/robots/robot_component.py",
+      "sha256": "a8028d98fc41238a13d59835c67f1259a3563129ff03b80ff25f336890710450"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/sensors/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/sensors/accelerometer.py",
+      "sha256": "176a5bbe0fce2c69b9629e39c21050815d85740b63539bf69ccf4c39a43e6b2e"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/sensors/gyroscope.py",
+      "sha256": "261de085968570c2e74c91d57305f43ead5c401be6d87e68962edafe6972ee6b"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/sensors/spherical_vision_sensor.py",
+      "sha256": "4e6f976740e25a10c88b31b77fce4cef925099b924d6df51ef74c625d9524426"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/textures/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thirdparty/PyRep/pyrep/textures/texture.py",
+      "sha256": "ee0092ac3f916f1da3cd565666a8988af6d97ce73c5f3c13d7419933aa63a31c"
+    },
+    {
+      "path": "thirdparty/PyRep/requirements.txt",
+      "sha256": "5214b2b56635a6858716423dff93763ae2e768cf8a137fd51c6f3a16be7ce2dc"
+    },
+    {
+      "path": "thirdparty/PyRep/setup.py",
+      "sha256": "8b89b2cf4dcedf2e8a8bafd92291a2c897d374d04abf5cb940d5eb37295586d8"
+    },
+    {
+      "path": "tools/audit_credentials.py",
+      "sha256": "6d8bdd78663296256732231b848ffc70b5540bba7f66545d0c287c7bbbc655b1"
+    },
+    {
+      "path": "tools/audit_source.py",
+      "sha256": "9b8b61a197b2aa30f4bfbbfc3bbc8458c1cb97171bebe99f2b9da63d687ad7b7"
+    },
+    {
+      "path": "tools/serve_qwen.py",
+      "sha256": "9fd34a22647a4e3eb9ed9d64fe8186bd08392d604d662bc4dfc6ca2b9e4aa114"
+    },
+    {
+      "path": "tools/sim_env.sh",
+      "sha256": "097c91644aa9d95baf697d47b9d277582eebdfd6a02861f2cbd5c8ddabfcac18"
+    },
+    {
+      "path": "tools/with_display.py",
+      "sha256": "d758a7d1b13b758ae378242d4f41acb7dc8caa98faf175801e7f0e6aa56fb823"
+    }
+  ]
+}

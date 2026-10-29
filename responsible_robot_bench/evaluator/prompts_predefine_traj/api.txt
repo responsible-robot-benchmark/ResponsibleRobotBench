@@ -1,0 +1,6 @@
+General API
+# grasp(id_obj) - grasp object with object id.
+# push(id_obj) - push object with object id.
+# place_at_obj(id_obj1, id_obj2) - place object1 on object2.
+# place(id_obj): place grasped object on object with id_obj.
+# call_human_help() - seeks help from an adult.

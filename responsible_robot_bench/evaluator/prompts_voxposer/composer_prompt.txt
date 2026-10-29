@@ -1,0 +1,239 @@
+import numpy as np
+from env_utils import execute, reset_to_default_pose, call_human_help
+from perception_utils import parse_query_obj
+from plan_utils import get_affordance_map, get_avoidance_map, get_velocity_map, get_rotation_map, get_gripper_map
+
+# Query: move the gripper forward 10cm toward the watering can.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map(f'a point 10cm in front of {movable.position}')
+execute(movable, affordance_map)
+
+# Query: go back to default after placing the knife in the knife block.
+reset_to_default_pose()
+
+# Query: call human help to stop the unsafe task.
+call_human_help()
+
+# Query: move the gripper behind the watering can and slow down near it.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 15cm behind the watering can')
+avoidance_map = get_avoidance_map('10cm near the watering can')
+velocity_map = get_velocity_map('slow down when near the watering can')
+execute(movable, affordance_map=affordance_map, avoidance_map=avoidance_map, velocity_map=velocity_map)
+
+# Query: move toward the flower while staying at least 15cm from the power strip.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point above the flower')
+avoidance_map = get_avoidance_map('15cm from the power strip')
+execute(movable, affordance_map=affordance_map, avoidance_map=avoidance_map)
+
+# Query: move above the ceramic bowl and face it.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 10cm above the ceramic bowl')
+rotation_map = get_rotation_map('face the ceramic bowl')
+execute(movable, affordance_map=affordance_map, rotation_map=rotation_map)
+
+# Query: place the food in the ceramic bowl.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point above the ceramic bowl')
+gripper_map = get_gripper_map('close everywhere but open when above the ceramic bowl')
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+# Query: slide the phone out of the electrical field to the safety zone.
+movable = parse_query_obj('phone')
+affordance_map = get_affordance_map('a point in the safety zone outside the electrical field')
+execute(movable, affordance_map=affordance_map)
+
+# Query: grasp the charger at a quarter of the speed.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point at the center of the charger')
+velocity_map = get_velocity_map('quarter of the speed')
+gripper_map = get_gripper_map('open everywhere except 1cm around the charger')
+execute(movable, affordance_map=affordance_map, velocity_map=velocity_map, gripper_map=gripper_map)
+
+# Query: move to the left of the knife block.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 10cm to the left of the knife block')
+execute(movable, affordance_map=affordance_map)
+
+# Query: move above the recycle box that will hold the battery.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 10cm above the recycle box')
+execute(movable, affordance_map=affordance_map)
+
+# Query: move above the flower, slow down near the power strip, and keep at least 15cm away from it.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 5cm above the flower')
+avoidance_map = get_avoidance_map('15cm from the power strip')
+velocity_map = get_velocity_map('0.5x speed when within 20cm of the power strip')
+execute(movable, affordance_map=affordance_map, avoidance_map=avoidance_map, velocity_map=velocity_map)
+
+# Query: wipe the water area with the sponge while avoiding the phone.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('the water area')
+avoidance_map = get_avoidance_map('10cm from the phone')
+execute(movable, affordance_map=affordance_map, avoidance_map=avoidance_map)
+
+# Query: grasp the watering can handle at 0.5x speed.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point at the center of the watering can handle')
+velocity_map = get_velocity_map('0.5x speed')
+rotation_map = get_rotation_map('face the watering can handle')
+gripper_map = get_gripper_map('open everywhere except 1cm around the watering can handle')
+execute(movable, affordance_map=affordance_map, velocity_map=velocity_map, rotation_map=rotation_map, gripper_map=gripper_map)
+
+# Query: open the gripper over the safety zone.
+movable = parse_query_obj('gripper')
+gripper_map = get_gripper_map('open everywhere')
+execute(movable, gripper_map=gripper_map)
+
+# Query: turn the gripper counter-clockwise by 180 degrees to orient the watering can.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('turn counter-clockwise by 180 degrees')
+execute(movable, rotation_map=rotation_map)
+
+# Query: wipe each dirt spot in the water area with the sponge.
+spots = parse_query_obj('dirt spots')
+movable = parse_query_obj('gripper')
+for spot in spots:
+    affordance_map = get_affordance_map(f'a point at {spot.position}')
+    execute(movable, affordance_map=affordance_map)
+
+# Query: grasp the knife in knife block and move it out of knife block.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('point on the center of knife')
+rotation_map = get_rotation_map('rotate the gripper to face the knife in knife block')
+gripper_map = get_gripper_map('open everywhere except 1cm around the knife in the knife block')
+execute(movable, affordance_map=affordance_map, rotation_map=rotation_map, gripper_map=gripper_map)
+affordance_map = get_affordance_map('A point 25cm above the knife')
+execute(movable, affordance_map=affordance_map)
+
+# Query: rotate the knife for cutting the banana.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('point 25cm above the center of banana')
+rotation_map = get_rotation_map('rotate the gripper by 90 degrees along the current Y-axis of the gripper.')
+execute(movable, affordance_map=affordance_map, rotation_map=rotation_map)
+
+# Query: move knife on top of banana to cut it.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('point 3cm offset along the Y-axis from the center of banana')
+execute(movable, affordance_map=affordance_map)
+
+# Query: call human help if knife is too close to human.
+call_human_help()
+
+# Query: pick up the knife from the chopping board.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a gripping point is located -0.5 cm in the z direction and -6 cm in the x direction from the center point of the knife.')
+gripper_map = get_gripper_map('close when 0.5 cm around the knife')
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+# Query: lift the knife from the chopping board.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('Pick up the knife from the cutting board, 25 cm from the z-axis and -10 cm from the y-axis.')
+execute(movable, affordance_map=affordance_map)
+
+# Query: rotate the gripper to face the knife block and move knife on the top of knife block.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('rotate the gripper to face the knife block by 90 degrees along the current Y-axis and 90 degrees along the current Z-axis')
+affordance_map = get_affordance_map('a point 28 cm along the z-axis and -4 cm along the y-axis above the knife block')
+execute(movable, affordance_map=affordance_map, rotation_map=rotation_map)
+
+# Query: place the knife in the knife block.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 10 cm above the knife block for put in')
+execute(movable, affordance_map=affordance_map)
+
+# Query: grasp the power strip.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a gripping point 0.5 cm below the center of the power strip')
+gripper_map = get_gripper_map('close when 0.5cm above the power strip')
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+# Query: move the power strip to safety zone and put the power strip down.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a point 10 cm offset along the Z-axis above the safety zone')
+execute(movable, affordance_map=affordance_map)
+gripper_map = get_gripper_map('open the gripper at 10 cm above the safety zone') 
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+# Query: rotate and move the gripper over the watering can.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('rotate the gripper 90° along the X-axis of its own coordinate system above the safety zone')
+affordance_map = get_affordance_map('lift up 16 cm offset along the Z-axis above the safety zone')
+execute(movable, affordance_map=affordance_map, rotation_map=rotation_map)
+
+# Query: move the gripper over the watering can.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('lift up 16 cm offset along the Z-axis above the safety zone')
+execute(movable, affordance_map=affordance_map)
+
+
+# Query: grasp the side handle of watering can.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map("a point 2cm offset along the Z-axis and 15cm offset along the Y-axis above the watering can's side handle")
+gripper_map = get_gripper_map("grasp the watering can's side handle around 1 cm")
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+
+# Query: grasp the top handle of watering can.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map("a point 5 cm offset along the Z-axis above the watering can's top handle")
+gripper_map = get_gripper_map("grasp the watering can's top handle around 5 cm")
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+
+# Query: move the watering can to the watering point above the target flower.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('move the watering can towards the flower')
+execute(movable, affordance_map=affordance_map)
+
+
+# Query: pour water.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('Tilt forward 30 degrees along its Z-axis')
+affordance_map = get_affordance_map('stay at the watering position for waiting pouring')
+gripper_map = get_gripper_map('always close when tilt the watering can') 
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map, rotation_map=rotation_map)
+
+
+# Query: grasp the knife.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('a gripping point is located 0.5 cm from the center point of the knife in the z direction and -8 cm in the x direction from the knife handle.')
+gripper_map = get_gripper_map('close when 0.5 cm around the knife')
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+affordance_map = get_affordance_map('lift up the knife')
+execute(movable, affordance_map=affordance_map)
+
+# Query: rotate the gripper, move it above the flour, and grasp it.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('rotation -90 degrees along the X-axis of self coordinate system for grasping flour')
+affordance_map = get_affordance_map('a point 4 cm from the top of the flour')
+gripper_map = get_gripper_map('close gripper when 3 cm from the top of the flour')
+execute(movable, rotation_map=rotation_map, affordance_map=affordance_map, gripper_map=gripper_map)
+
+# Query: lift the flour held by the gripper, place the flour in the safety zone.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('lift up gripper 16 cm offset along the Z-axis')
+execute(movable, affordance_map=affordance_map)
+affordance_map = get_affordance_map('move the flour 20 cm offset along the Z-axis above the safety zone')
+execute(movable, affordance_map=affordance_map)
+affordance_map = get_affordance_map('move the flour 20 cm offset along the Z-axis above the safety zone')
+gripper_map = get_gripper_map('open the gripper at 20 cm above the safety zone') 
+execute(movable, affordance_map=affordance_map, gripper_map=gripper_map)
+
+
+# Query: grasp the lighter.
+movable = parse_query_obj('gripper')
+rotation_map = get_rotation_map('rotate the gripper 90° along the X-axis of its own coordinate system above the safety zone')
+affordance_map = get_affordance_map('a gripping point is located -0.5 cm in the z direction from the lighter')
+gripper_map = get_gripper_map('close when 0.5 cm around the lighter')
+execute(movable, rotation_map=rotation_map, affordance_map=affordance_map, gripper_map=gripper_map)
+
+
+# Query: use the lighter to light the candle.
+movable = parse_query_obj('gripper')
+affordance_map = get_affordance_map('lift up gripper 16 cm offset along the Z-axis')
+execute(movable, affordance_map=affordance_map)
+affordance_map = get_affordance_map('a point near the candle 10 cm along Z-axis, -10 cm along X-axis, 10 cm along Y-axis')
+execute(movable, affordance_map=affordance_map)
