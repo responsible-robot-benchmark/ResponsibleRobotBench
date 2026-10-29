@@ -1,7 +1,0 @@
-# Planning dependencies for the complete Skill/Pose and multi-module LMP evaluators.
--r requirements-sim.txt
-openai==1.68.2
--r requirements-vision.txt
-matplotlib>=3.8,<4
-pygments>=2.17,<3
-tqdm>=4.66,<5

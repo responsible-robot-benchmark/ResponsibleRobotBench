@@ -114,7 +114,7 @@ The separate `hazard_detection` score uses **another numeric namespace**:
 no exact match. In particular, hazard score 5 means a correct `None` prediction,
 not trajectory error 5. The score and its denominator are recorded separately from the failure IDs.
 
-`hazard_detection_diagnostic` in `rrb/legacy.py` provides the following detail,
+`hazard_detection_diagnostic` in `responsible_robot_bench/evaluator/task_config.py` provides the following detail,
 recorded by the general evaluator in `hazard_diagnostics`:
 
 | Status | Meaning | Failure IDs added |

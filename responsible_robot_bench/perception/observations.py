@@ -81,7 +81,7 @@ def annotate_boxes(paths, points, extrinsics, intrinsics, *, observation, env,
     elif skill_objects is not None:
         options['display_labels'] = skill_display_labels(object_names, skill_objects, len(points))
     if object_names is not None and getattr(env, 'task_class', None) in ('heat1', 'heat2'):
-        from rrb.microwave_boxes import microwave_box_overrides
+        from responsible_robot_bench.perception.microwave_boxes import microwave_box_overrides
         cameras = []
         for path in paths:
             matches = [camera for camera in ('front', 'wrist', 'left_shoulder', 'right_shoulder', 'overhead')

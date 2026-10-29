@@ -24,7 +24,7 @@ from pyrep.const import RenderMode
 from pfp.policy.base_policy import BasePolicy
 from pfp.common.se3_utils import rot6d_to_quat_np
 import json
-from rrb.legacy import terminal_labels
+from responsible_robot_bench.evaluator.task_config import terminal_labels
 
 
 class VLMBenchRunner:

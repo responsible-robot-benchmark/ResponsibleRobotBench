@@ -5,7 +5,7 @@
   "files": [
     {
       "path": ".env.example",
-      "sha256": "0cec44755d194f0073a1be6fbc7d67a9b112039f8e1bd1ef21c15b40a106d2ca"
+      "sha256": "bdd9be3d9ad91756626a3696873d8832b5628f2a4501768da38e7b6ae49154c7"
     },
     {
       "path": ".gitattributes",
@@ -17,19 +17,11 @@
     },
     {
       "path": "LICENSE",
-      "sha256": "f60be06118bd51fd837a32cf4de15129aefbef2a612e50726eb436b9ed865603"
-    },
-    {
-      "path": "LICENSE_SCOPE.md",
-      "sha256": "fbe0f6e19658bf945ca60a96575a989ea3107030f969d366fd3d05a5d602f952"
+      "sha256": "797854c7f287c0b6f4d1ada2b7b4ffccf2802ea5328a89f2cff880bfcc34c9f1"
     },
     {
       "path": "README.md",
-      "sha256": "789eb338f4d77c08893ee0067482eeca89390710a0d8721aacd2ce875fe3f9a5"
-    },
-    {
-      "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "d5ea96d44e2098c26f4f829998b4c0aacae55cde17c5680dc9b27317be6b6b9b"
+      "sha256": "e1ab288587603bcb967344bcca1c98e7c52044356abcd8d41698d27b469869c8"
     },
     {
       "path": "conda_envs/environment_eb-man.yaml",
@@ -38,10 +30,6 @@
     {
       "path": "constraints/simulator-py311-linux.txt",
       "sha256": "8a9bdd518663d8bf65fa41f1b4bcf778647fb517adda1d7210074379e1b69813"
-    },
-    {
-      "path": "detect_hallucinations.py",
-      "sha256": "db37494a2f4d633b94421083d1cbcfdbc2610a1c4a3c8deded9b778aabd6e96f"
     },
     {
       "path": "docs/assets/benchmark-overview.png",
@@ -69,31 +57,31 @@
     },
     {
       "path": "docs/credentials.md",
-      "sha256": "b9181cb58e8d9c8bfd38e9731059a54fcba59cfbae3506818d39e1ae249b27eb"
+      "sha256": "adf9c880ade246c06f75f4bb9df25089f3c3e50b9e1038a8510c22435d6b0fe4"
     },
     {
       "path": "docs/dataset.md",
-      "sha256": "7ce2fa09ac636662939d4ddf6c169acb3a999e5e3dac3a0783322e30e6b3fd5a"
+      "sha256": "39fcfee179992d1f2ff480eb1508c6edb4c5b0c2ec7ee0d10c2fe19b38fe7c83"
     },
     {
       "path": "docs/errors.md",
-      "sha256": "57b21a7b1e5a7f242b16c8e6de94a081473eb1600f8e4d350ef6f5346a13f780"
+      "sha256": "32f7aca2bfc659ddb0a5f7eb773e1b2f717230a5bd481a617afecab8bb924a92"
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "9e96b5d3258c9db72b50fff4c5bcaed8d73e00f10b6db8835e719ad7df6adef9"
+      "sha256": "406bbddd066aee1f3479aec52ca34236ceff79bd69ea73866d291b51b2e4b31f"
     },
     {
       "path": "docs/extending.md",
-      "sha256": "a87f2c9ba66eab4233a15cdc2605d391d9a1c046be0014f5f96deaea01c763fe"
+      "sha256": "4afb5eb4bf370ea3b383b623f7ee0dfdc1f23cacb5a7b124064633bfe4b144a2"
     },
     {
       "path": "docs/installation.md",
-      "sha256": "fa40166659873b6f5874cc62353524c7602dbc8de30538eafe7460b730f8f8c7"
+      "sha256": "52b20cc173610a54838f9a616d37063ed17833e40f7ab9a594bd7b5457e6f2a8"
     },
     {
       "path": "docs/policy.md",
-      "sha256": "17b3ab7f0a91c351c3a5e130975049bb46237e6bf28fcb95aba2f06cb12c7c72"
+      "sha256": "49ce1059bc5a0aa0fa9f032ef59afa30028af1510c7bae0a4408af80e9724606"
     },
     {
       "path": "licenses/CLIP-LICENSE",
@@ -116,16 +104,12 @@
       "sha256": "71ddd29ecd5fb7bf014f2f5a0b5eea28384840ac3ba517b773d96b3dceca1721"
     },
     {
-      "path": "patches/diffusion-policy-packaging.patch",
-      "sha256": "1b8a31ebde70ec0c0f47944b32bfc2dbc8a980bf6a50d6f344518e0b45c6638a"
-    },
-    {
       "path": "policies/PointFlowMatch/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "path": "policies/PointFlowMatch/README.md",
-      "sha256": "3bf2cf4a4e6317d8b91ea3ad5cac0d0663fc3cefc979b91ad1caae6e1aa7c2c4"
+      "sha256": "e50d36cc728b419dd10ceccd42b4c4a236327e8fb255fb5b971f455a612b9855"
     },
     {
       "path": "policies/PointFlowMatch/conf/backbone/clip_resnet.yaml",
@@ -218,6 +202,10 @@
     {
       "path": "policies/PointFlowMatch/conf/trainer_eval.yaml",
       "sha256": "35a3ddeed323316997d903af2e80afee30a27e91f430249d7458c24561f8d367"
+    },
+    {
+      "path": "policies/PointFlowMatch/patches/diffusion-policy-packaging.patch",
+      "sha256": "1b8a31ebde70ec0c0f47944b32bfc2dbc8a980bf6a50d6f344518e0b45c6638a"
     },
     {
       "path": "policies/PointFlowMatch/pfp/__init__.py",
@@ -333,11 +321,11 @@
     },
     {
       "path": "policies/PointFlowMatch/pfp/envs/vlmbench_runner.py",
-      "sha256": "126707a1eb4aa3adb1ef0a77536c60f35ea1df9d2ec53f17d5ab7cac8e3501a1"
+      "sha256": "49fe1fd8236f9e88d6e8bcbdce56cb95aa816187985849012f2da1aecdbb8f38"
     },
     {
       "path": "policies/PointFlowMatch/pfp/evaluation.py",
-      "sha256": "656a60a91bd20aff0b3d2d21da87988473ff0391e1396dc82d00c9ca8c52bc1d"
+      "sha256": "7f3a87077d8511fa55b43f1f15f097ffa62ef18a2126a76e536f58e3e13ceab2"
     },
     {
       "path": "policies/PointFlowMatch/pfp/policy/base_policy.py",
@@ -381,27 +369,23 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "7cdc977d21cbbc89640be2cfb236423ad29ef2932d99c5fac8bab6c3f65c56c2"
+      "sha256": "c1c1bfd0e4eb4beb54e2454c5ae64db889079eb2e3dd5559fbc9840ecf834a8c"
     },
     {
-      "path": "requirements-legacy.txt",
-      "sha256": "ee0c577bc34036bbb5d5ad04414ff08c8faed9e725f9e5cf52afc7bb1b528ba6"
+      "path": "requirements.txt",
+      "sha256": "8e7d4c22e962f210dfc8746526d51f5fb0a6f475d1676bc351cd2c3c9c419647"
     },
     {
-      "path": "requirements-model.txt",
-      "sha256": "18998fac3f5aadd1f8359f15a72f9d9a77deb9f727ac20ba7fef1f870a4cde0b"
-    },
-    {
-      "path": "requirements-sim.txt",
-      "sha256": "5c74e729ac6e569b3c5d4b46db2f2ff20a160e6310137a78c4cd642bc4b42af5"
-    },
-    {
-      "path": "requirements-vision.txt",
-      "sha256": "ec545415514fcff62a92960b6f09b57505dd572c2f0f168cdf30cc5f9eb56f5a"
+      "path": "responsible_robot_bench/__init__.py",
+      "sha256": "9ab46fed0b889a35023600b8a33bfafd262375a2b9d6534ec1f9ba9160a1643c"
     },
     {
       "path": "responsible_robot_bench/configs/config.yaml",
       "sha256": "400986a8d54ce4352a23cdc1f4437c95fee5788ce52672bb4f84858dd9a0b142"
+    },
+    {
+      "path": "responsible_robot_bench/configs/planner.py",
+      "sha256": "32df9ab5be7524f9ea0cd5a8ed206cb400146279cf27e156a98445d1169bca85"
     },
     {
       "path": "responsible_robot_bench/configs/rrb-man-utils-benchmark.yaml",
@@ -416,8 +400,48 @@
       "sha256": "2be94c3de5bcc001563e7342f3d2a5c83708fa85c9ea9a9d856999d8b0270d7a"
     },
     {
+      "path": "responsible_robot_bench/configs/task_metadata.py",
+      "sha256": "10388b69875180be89e4602cd6ec27a20fcc189b6acebe17970a6baa31c24023"
+    },
+    {
+      "path": "responsible_robot_bench/configs/task_registry.py",
+      "sha256": "dd2b1fd237a3216cd095840b6eb99b06084ee6afd82c789a7e2a4864f2fc14f4"
+    },
+    {
+      "path": "responsible_robot_bench/configs/tasks.json",
+      "sha256": "ee091941efe6fc0715ad0dfecad0e5e4ea4e2f529d3b4b804ad727e0ede72e23"
+    },
+    {
+      "path": "responsible_robot_bench/data/__init__.py",
+      "sha256": "53fad06e444136df9f13c3717a3f0c0c7f0ae0379bb15b8a1ab870768ae971f3"
+    },
+    {
+      "path": "responsible_robot_bench/data/collection.py",
+      "sha256": "a3efd358bd34a7ebaf4def29a6046c1c1d762a8db8a7c6f28621718050e94eba"
+    },
+    {
+      "path": "responsible_robot_bench/diagnostics/__init__.py",
+      "sha256": "c58840da6c80369c5cec7f72c5019c396c05500805fcf691da6cd86904f65d9d"
+    },
+    {
+      "path": "responsible_robot_bench/diagnostics/collisions.py",
+      "sha256": "f06ecc9fd3f3f9846cb3fe6c5c7730fc6962a51198f537eca2510d24a8519315"
+    },
+    {
+      "path": "responsible_robot_bench/diagnostics/events.py",
+      "sha256": "eb4d67a530e9e8bf1fad3e5385b760810018230d0b1b49fe30e38f281269cc97"
+    },
+    {
+      "path": "responsible_robot_bench/diagnostics/repetition.py",
+      "sha256": "db37494a2f4d633b94421083d1cbcfdbc2610a1c4a3c8deded9b778aabd6e96f"
+    },
+    {
+      "path": "responsible_robot_bench/diagnostics/targets.py",
+      "sha256": "bfbb7180a967896220b8bde9dd92782e5d2e44a4a7e092b17a09a5b69e321370"
+    },
+    {
       "path": "responsible_robot_bench/envs/rrb_manipulation/RRBManEnv_safety.py",
-      "sha256": "21f013a0dc0f003e571f42d4c46f23c3c47b360d163497ccd935a61c946d0e45"
+      "sha256": "c0988557636f0a7699e5a27067c16d2aa0846392535d88746ce8f42842625f5b"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/__init__.py",
@@ -453,7 +477,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/scene.py",
-      "sha256": "867a59bf6433bdfe2ef4d0a0ec8541c791255f32fc3e18ee21087b3a57e4521b"
+      "sha256": "ce59d18ab2282f0041fd0a7561116e5f4ec4dd6b56d1af2f276b06def752786e"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/spawn_boundary.py",
@@ -461,7 +485,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/task.py",
-      "sha256": "164c3ddec50f2263b5a3e29a9f006a446e6122b08d8a30e3a11e5f88134fefc4"
+      "sha256": "371058d0dc8f0cd42070b491510f0e0614ef7040fb0e9b73b977113ff23f3301"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/task_utils.py",
@@ -537,7 +561,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment.py",
-      "sha256": "91a9faf9229f7e7e509140bc558f7f3b18e1a7fa71dd9c59426f5ad6d8661eca"
+      "sha256": "9e9be71e9713aa82434fe06b20024159dc8e53f325d5f239c6e9093e4eb07368"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment_for_data_generation.py",
@@ -553,7 +577,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/controllers.py",
-      "sha256": "dbb7225927ef34a6255b0c4d18f717d6a4cb6aa8b63ac64ca8d1c8ab9ec6a04c"
+      "sha256": "d47d089686e3b37c7cd13a0c1b224c64e5f605f490c7f47383e61cbf64c31422"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/dynamics_models.py",
@@ -561,7 +585,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/interfaces.py",
-      "sha256": "335e58e74bc135ae51aa914cd6492178777cbe039e8fe7df3cf1bd78371f70dc"
+      "sha256": "f46d0a34b7dd13cd40ebda44b75910f08ea94864d9f4f57c29ed39c535fc906c"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/planners.py",
@@ -581,7 +605,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/rrb_man_utils.py",
-      "sha256": "3d27d39142589b8ea7834dfcc4d7517ea365bdb3e7f17f9fe5f5e66ffa5f8742"
+      "sha256": "c02c9f96adfc88eb4951e7f646157a3c277a44e634007246bf00df8017aaac7c"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/simAddOnScript_PyRep.lua",
@@ -589,7 +613,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/tools/dataset_generator_NLP.py",
-      "sha256": "368dc904de1f4bafec21d375bffa6fdad52229d6e4882d6cd1b10e3a3e6ad699"
+      "sha256": "ff679f998bdb819fc4ec5ec790941ee8b35e3fe72f6603fb37b332aea02716b4"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/tools/grasploc.py",
@@ -605,7 +629,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/tools/test_config_generator.py",
-      "sha256": "bc6477d68ef6b1a0de0f6cd0a5342b9c587a5f1a5e5e5dc006edfff576b1df12"
+      "sha256": "9c24ecff74d00a7fd5f94908ea0d05be2aff906698174d40b31921f823e65370"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/task_ttms/charge1_phone_in_electrical_field.ttm",
@@ -701,7 +725,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/charge1_phone_in_electrical_field.py",
-      "sha256": "f573dea73bd0eba3bc8247404eaaa538852c911a42c8c8a9a3c81c20493ecf72"
+      "sha256": "bca0f4d303052b6c3bd1798fa58c4f6ccc6c6fb8abab9d30dbe6234317a2c0a3"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/charge2_inseration.py",
@@ -729,7 +753,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/extinguish1_fire_near_battery.py",
-      "sha256": "561404dcf6db08c99c4e8f631d259be2ec7bf44af843938beadd188bebb60955"
+      "sha256": "33fbbfa81ed5f4922f0338fb15e1b6b609b514d0fbb5ebee1bc74dd4951f59d9"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/extinguish2_fire.py",
@@ -737,7 +761,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/heat1_food_with_microwave_with_container.py",
-      "sha256": "ecde9d2d94f9c4bffeba8119db51340412004fb8b263dabfe3909485961c1c00"
+      "sha256": "e521c3dd986deac08cfcdab1eae1b5f55acd4d58976dbfd12268e349812b9c77"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/heat2_food_with_microwave.py",
@@ -761,7 +785,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/push2_phone_out_of_electrical_field.py",
-      "sha256": "c925bbb5a922b0c38075185d82f4d9f620a4aed224063ed2aec97fb70c07a522"
+      "sha256": "0b2d65b010cbeab86a8e12d0dbc38bca34d463beb76a02faa57fbc987491c466"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/put1_knife_into_knife_block_near_human.py",
@@ -801,7 +825,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/config/rrb_manipulation_example.py",
-      "sha256": "b1b3471c100cf22aac0510d2b1db4702d471b9835164f0efd49d171926cfad5f"
+      "sha256": "540b78c0151a769a5b573fb071f8973edecf4583b01711701dc9fe0dd7b32c10"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/system_prompts.py",
@@ -1520,6 +1544,10 @@
       "sha256": "579296c73d977b0149db58bcf00470ac3f27359110c15bf07bc0949fff49e20a"
     },
     {
+      "path": "responsible_robot_bench/evaluator/metrics.py",
+      "sha256": "2c5723d6ce72ccdfd757b248038ad17ade2d86d097aa5c58e5fbcb450c55cc5e"
+    },
+    {
       "path": "responsible_robot_bench/evaluator/prompts_predefine_traj/api.txt",
       "sha256": "53f8df2376b62c0bde9335714d782553c7d18e12727e679ce33d940784cafcd9"
     },
@@ -1613,51 +1641,119 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator.py",
-      "sha256": "1ceaa9f428e366febd844faad336f6fd191a456de8c70f09ae29f58f45b2dc26"
+      "sha256": "d6ebd15cffe19489c0f8b88af2cfd5775a8f855aeeb63db8469e08d209fe52a6"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner.py",
-      "sha256": "be8ce2dbbb2e35c53e5af223005d74d572ef960dec467e516122a4825edfc595"
+      "sha256": "a0131ec9add7d56c20d799f0e6cf920299e5d0b0810bc90ba0191d3820e6f849"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_code_generation.py",
-      "sha256": "a5883c93d3254512e1e476fbddc8f89f7a949bba2d5e234bb48b7b6dd8e62b5c"
+      "sha256": "3cc4c8033dc61e29adef4f9dc4129d2072972cc0315ca9ce56794366656cf282"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_example_generation.py",
-      "sha256": "bb68a75f56f19b343082dfd36b2a9a266b2cf2b2a45dd8c587ad44aaf288aeee"
+      "sha256": "1cc56539ddea596270d74326ae0e3e45767cc8d8e596761f1eaefdd993d3d709"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_planner.py",
-      "sha256": "95262909252ca292eb3a6087bb7b380fdf98c41cdd9d3e4a04afecc88b575317"
+      "sha256": "1d2b4c976a5f7120c085f9300062ac8a8061f80e09c321672b7b2895ba8ee693"
     },
     {
       "path": "responsible_robot_bench/evaluator/summarize_result.py",
       "sha256": "c04a013198a1cb29cb7ba1ec031c30f11b96cc2c10c63ed2fd80c6373dba36a1"
     },
     {
+      "path": "responsible_robot_bench/evaluator/task_config.py",
+      "sha256": "9db5b5c73e7654e140c3ff58cd0b8f95a2b84db053b6ae8900e2081e18b938e7"
+    },
+    {
       "path": "responsible_robot_bench/evaluator/utils.py",
       "sha256": "fea9a88f4daa3486074e6fd74d69cc044c911dc339b69b288aa6a29007666f07"
     },
     {
+      "path": "responsible_robot_bench/execution/__init__.py",
+      "sha256": "46d1dff6f4f9be35290dc9ff115ad1bb71a67f1ae67cf1a5b0a8d0d0ce9ae735"
+    },
+    {
+      "path": "responsible_robot_bench/execution/action_accounting.py",
+      "sha256": "71bb43a5000080e211ea02a6381bb27125ee64f1662468afa64e13949f16a7a2"
+    },
+    {
+      "path": "responsible_robot_bench/execution/assistance.py",
+      "sha256": "92971bfa0890b0c459fd754927d4c5e19d4eb5aeefa52879340be18bb2daaa76"
+    },
+    {
+      "path": "responsible_robot_bench/execution/costs.py",
+      "sha256": "b635740003de72e3e64f981573218d7d18e1f383c91e3081ccc5417c390fc7a3"
+    },
+    {
+      "path": "responsible_robot_bench/execution/deadline.py",
+      "sha256": "c002a7d13c14c1c6e0cb05bc531648cbd558aed1d80d5b7c706e420bf021074d"
+    },
+    {
+      "path": "responsible_robot_bench/execution/feedback.py",
+      "sha256": "d61eca07bdb12f3ffb94ddc5d087b3480f1cfd76aad7fcce188b79329aef193f"
+    },
+    {
+      "path": "responsible_robot_bench/execution/interventions.py",
+      "sha256": "cfee2a5043d6460c2cde9a71080a85594f7a052ba1bdda8bde2c48b1fd011091"
+    },
+    {
+      "path": "responsible_robot_bench/execution/map_contracts.py",
+      "sha256": "3a5243db8c32d8cd55a3870add9db89ab4164bce64114c99ef7e6ebecfcfe1c9"
+    },
+    {
+      "path": "responsible_robot_bench/execution/poses.py",
+      "sha256": "9055bc62927d66c5cec606a3aad6ef20fdb95745e5df0a716a138c277bf711cb"
+    },
+    {
+      "path": "responsible_robot_bench/execution/waypoint_mapping.py",
+      "sha256": "9a1b3b73c353db5a8c40dd2da0eb6756fc8c1d85f32a04c394fbb35bb3bd9df9"
+    },
+    {
       "path": "responsible_robot_bench/main.py",
-      "sha256": "c5cceb4a20bae6a3cee9f6edbfadf4c6ac9e4b7d861edfb1e2e343897a357c82"
+      "sha256": "4ab1bd68a5ad41bb285746c7db6d4ed434f2951b7fd3fb0dd9a409390bfebbdd"
     },
     {
       "path": "responsible_robot_bench/main_only_manipulation.py",
       "sha256": "352bc0f03ecf10b822c93a3548eb13d4037cf73adaa26a1f124b5185271ba39d"
     },
     {
+      "path": "responsible_robot_bench/perception/__init__.py",
+      "sha256": "b898f5850b7539bb9a76abf5b1036eca2e575ab2780c4c947b7be81a4975a3a5"
+    },
+    {
+      "path": "responsible_robot_bench/perception/box_drawing.py",
+      "sha256": "518c8266250b4040812b37f1ad54913ccbf6cc899a1782f716fe898b76d229a6"
+    },
+    {
+      "path": "responsible_robot_bench/perception/microwave_boxes.py",
+      "sha256": "d71879e3aa08e2e5a3a391d359f74ce78d9dd25a1e356b5699cc1ba0c8fdea0e"
+    },
+    {
+      "path": "responsible_robot_bench/perception/observations.py",
+      "sha256": "86c0b2edcb066957df9de8bd3e01c8c50358507bbaee14c6c69f72a69faeb322"
+    },
+    {
+      "path": "responsible_robot_bench/planner/__init__.py",
+      "sha256": "6f674a2279c13760353560b39d2af1543db826c30cd74a7205637b739605de63"
+    },
+    {
+      "path": "responsible_robot_bench/planner/limits.py",
+      "sha256": "835f1f828e9ceecbf1dabf1056c85b9598e49be36ccdfe987bba680793537121"
+    },
+    {
       "path": "responsible_robot_bench/planner/manip_planner.py",
-      "sha256": "78228a24580fb10b8fcf0e0e63db5d449c2a4a0f4cddb8f9fca0ea1728ce390b"
+      "sha256": "46effe6f279b213aed8a2bd79269c6e1a41f8857a2ab44c3769e18f42ae1c679"
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP.py",
-      "sha256": "ea28d6d7c37973664a806b0a54cddb2a050885539b7c66861355dc230739bd02"
+      "sha256": "345972f871fdad3174ff1718d05a3993a48d507a93a7a042348a7a6294feaf7d"
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP_Code.py",
-      "sha256": "7c9a55c8e4fb4e861d6afef1bb9560676835ae86c203bd34839c626f60ed084e"
+      "sha256": "68734dbe4d1e29726b0d92e1b1927f36ea8205bb62261a13b3071dad31adcabf"
     },
     {
       "path": "responsible_robot_bench/planner/planner_config/generation_guide.py",
@@ -1680,124 +1776,24 @@
       "sha256": "b112fab29c8d3e35315ec080f0c2242f71a6c1c1e29f2fa0daadc050eefacfc7"
     },
     {
+      "path": "responsible_robot_bench/planner/qwen_protocol.py",
+      "sha256": "4f1d37600c9a3344d82d78598a7f59888abb922929530dfd6a8adb95b400fad0"
+    },
+    {
       "path": "responsible_robot_bench/planner/remote_model.py",
       "sha256": "cb0aa545bf30888a3ac8252c80f261e8ee3363eb929284453a4543ff2df29555"
     },
     {
+      "path": "responsible_robot_bench/planner/requirements.txt",
+      "sha256": "18998fac3f5aadd1f8359f15a72f9d9a77deb9f727ac20ba7fef1f870a4cde0b"
+    },
+    {
+      "path": "responsible_robot_bench/planner/response_parsing.py",
+      "sha256": "053dd4a4b9b8e308f5740918beffcc313ef083ad6a3ed9146c3f989be610e83a"
+    },
+    {
       "path": "responsible_robot_bench/planner/vlm_planner.py",
       "sha256": "da71d616e656b53862861f01613f9a56dd59307c357f63f8f33dfd4db6782b1b"
-    },
-    {
-      "path": "rrb/__init__.py",
-      "sha256": "9ab46fed0b889a35023600b8a33bfafd262375a2b9d6534ec1f9ba9160a1643c"
-    },
-    {
-      "path": "rrb/box_drawing.py",
-      "sha256": "518c8266250b4040812b37f1ad54913ccbf6cc899a1782f716fe898b76d229a6"
-    },
-    {
-      "path": "rrb/collection.py",
-      "sha256": "794cc9b7cd3a8f6d425e635de9ad207cbf2a3a7ddbf3fb80000c120828d55cb0"
-    },
-    {
-      "path": "rrb/core.py",
-      "sha256": "01671918611886b600865604fb988440bd809f7b88fd5c03ada8c1647f7ac129"
-    },
-    {
-      "path": "rrb/diagnostic_failure_events.py",
-      "sha256": "eb4d67a530e9e8bf1fad3e5385b760810018230d0b1b49fe30e38f281269cc97"
-    },
-    {
-      "path": "rrb/diagnostics_collisions.py",
-      "sha256": "26748126258f27887dacd063e23ce9b807f40cd6f1c7f4bd478158e001557121"
-    },
-    {
-      "path": "rrb/diagnostics_targets.py",
-      "sha256": "c0e1e421b33ddf5f9cc635d659a6215ab28af12ce39a7cc995fcb28e165597ff"
-    },
-    {
-      "path": "rrb/execution/__init__.py",
-      "sha256": "46d1dff6f4f9be35290dc9ff115ad1bb71a67f1ae67cf1a5b0a8d0d0ce9ae735"
-    },
-    {
-      "path": "rrb/execution/action_accounting.py",
-      "sha256": "71bb43a5000080e211ea02a6381bb27125ee64f1662468afa64e13949f16a7a2"
-    },
-    {
-      "path": "rrb/execution/assistance.py",
-      "sha256": "bc7ca83249f5ca260a03107af32c56a856978d5b766a16708429731733d54921"
-    },
-    {
-      "path": "rrb/execution/costs.py",
-      "sha256": "a2ab9121c58bcc413090da6b13b143d3934efab65e46611b406e5b08923750ad"
-    },
-    {
-      "path": "rrb/execution/deadline.py",
-      "sha256": "c002a7d13c14c1c6e0cb05bc531648cbd558aed1d80d5b7c706e420bf021074d"
-    },
-    {
-      "path": "rrb/execution/feedback.py",
-      "sha256": "d61eca07bdb12f3ffb94ddc5d087b3480f1cfd76aad7fcce188b79329aef193f"
-    },
-    {
-      "path": "rrb/execution/interventions.py",
-      "sha256": "cfee2a5043d6460c2cde9a71080a85594f7a052ba1bdda8bde2c48b1fd011091"
-    },
-    {
-      "path": "rrb/execution/map_contracts.py",
-      "sha256": "3a5243db8c32d8cd55a3870add9db89ab4164bce64114c99ef7e6ebecfcfe1c9"
-    },
-    {
-      "path": "rrb/execution/waypoint_mapping.py",
-      "sha256": "9a1b3b73c353db5a8c40dd2da0eb6756fc8c1d85f32a04c394fbb35bb3bd9df9"
-    },
-    {
-      "path": "rrb/legacy.py",
-      "sha256": "61f483714c6d9bf5313c7d58289e1a966bc2c3b36195bd7fc3c5e4d8d8206d62"
-    },
-    {
-      "path": "rrb/microwave_boxes.py",
-      "sha256": "d71879e3aa08e2e5a3a391d359f74ce78d9dd25a1e356b5699cc1ba0c8fdea0e"
-    },
-    {
-      "path": "rrb/observations.py",
-      "sha256": "80015b13e3ab2948270b7dc7b023b824b3abe21417142fbf25e1f026f6899fa8"
-    },
-    {
-      "path": "rrb/planning/__init__.py",
-      "sha256": "6f674a2279c13760353560b39d2af1543db826c30cd74a7205637b739605de63"
-    },
-    {
-      "path": "rrb/planning/configs.py",
-      "sha256": "970b7e13980b4a37aa9c04bfdc018b9f0195729d3fba082ef8ec0a65a0038de7"
-    },
-    {
-      "path": "rrb/planning/legacy.py",
-      "sha256": "8bba62cb1ae7ebc9dea6d85bbb20cd0d28685f5d76075007f1f9545878ac6535"
-    },
-    {
-      "path": "rrb/planning/limits.py",
-      "sha256": "835f1f828e9ceecbf1dabf1056c85b9598e49be36ccdfe987bba680793537121"
-    },
-    {
-      "path": "rrb/planning/protocol.py",
-      "sha256": "7251fba8540d0e276be58a76330f6862edea30ee4308120500c671fc92655447"
-    },
-    {
-      "path": "rrb/planning/task_metadata.py",
-      "sha256": "008fe8d12a8de0c23874108b130a90829a65483d17a8da31bb3742da224b9746"
-    },
-    {
-      "path": "rrb/qwen_protocol.py",
-      "sha256": "4f1d37600c9a3344d82d78598a7f59888abb922929530dfd6a8adb95b400fad0"
-    },
-    {
-      "path": "rrb/release.py",
-      "sha256": "468b1029c9f4d4e9820db76f24dff529d69294f3c67acf89a1949fa900eeb2f2"
-    },
-    {
-      "path": "rrb/tasks.json",
-      "sha256": "ee091941efe6fc0715ad0dfecad0e5e4ea4e2f529d3b4b804ad727e0ede72e23"
     },
     {
       "path": "thirdparty/PyRep/cffi_build/__init__.py",
@@ -2112,16 +2108,8 @@
       "sha256": "8b89b2cf4dcedf2e8a8bafd92291a2c897d374d04abf5cb940d5eb37295586d8"
     },
     {
-      "path": "tools/audit_credentials.py",
-      "sha256": "6d8bdd78663296256732231b848ffc70b5540bba7f66545d0c287c7bbbc655b1"
-    },
-    {
-      "path": "tools/audit_source.py",
-      "sha256": "9b8b61a197b2aa30f4bfbbfc3bbc8458c1cb97171bebe99f2b9da63d687ad7b7"
-    },
-    {
       "path": "tools/serve_qwen.py",
-      "sha256": "9fd34a22647a4e3eb9ed9d64fe8186bd08392d604d662bc4dfc6ca2b9e4aa114"
+      "sha256": "36f1bb7208cb5faad9aa978f525e5bdf91724abb66049881d5bd3e821a9bf7f0"
     },
     {
       "path": "tools/sim_env.sh",

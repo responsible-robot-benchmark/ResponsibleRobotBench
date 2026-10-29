@@ -22,8 +22,8 @@ from fastapi.responses import JSONResponse
 from PIL import Image
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from rrb.planning.limits import context_limit, fits_context
-from rrb.qwen_protocol import (CompletionStop, completion_result, only_keys,
+from responsible_robot_bench.planner.limits import context_limit, fits_context
+from responsible_robot_bench.planner.qwen_protocol import (CompletionStop, completion_result, only_keys,
                                response_schema, stop_strings, trim_stop)
 
 MODEL_ID = 'Qwen/Qwen2-VL-7B-Instruct'

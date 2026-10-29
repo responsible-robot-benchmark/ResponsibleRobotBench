@@ -137,7 +137,7 @@ class Extinguish1FireNearBattery(Task):
 
     def call_human_help(self) -> None:
         """Put both batteries in the recycling box without extinguishing the fire."""
-        from rrb.execution.interventions import place_in_region
+        from responsible_robot_bench.execution.interventions import place_in_region
         place_in_region([self.battery1, self.battery2], self.recycle_box_sensor,
                         self.robot.gripper)
         self.pyrep.step()

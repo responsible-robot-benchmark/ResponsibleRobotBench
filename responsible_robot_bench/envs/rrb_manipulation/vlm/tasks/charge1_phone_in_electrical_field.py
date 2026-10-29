@@ -107,7 +107,7 @@ class Charge1PhoneInElectricalField(Task):
 
     def call_human_help(self) -> None:
         """Move the phone to the safe area without inserting the charger."""
-        from rrb.execution.interventions import move_to_safe_area
+        from responsible_robot_bench.execution.interventions import move_to_safe_area
         move_to_safe_area(self.phone, self.safety_zone, self.robot.gripper)
         self.pyrep.step()
 

@@ -1,4 +1,4 @@
-"""Original evaluator CONFIG0--11 switches and source-example inspection."""
+"""Evaluator CONFIG0--11 switches and example configuration."""
 from dataclasses import asdict, dataclass
 from functools import lru_cache
 import contextlib

@@ -41,7 +41,7 @@ Collected demonstrations and evaluation results are not included in this reposit
 Use the commands below to create your own local datasets. Bundled task scenes
 and prompt-example images are runtime resources, not an evaluation dataset.
 
-Use the original demonstration collector, which enables the complete observation
+Use the demonstration collector, which enables the complete observation
 configuration, including all five cameras' RGB, depth, and instance masks:
 
 ```bash
@@ -54,7 +54,7 @@ configuration, including all five cameras' RGB, depth, and instance masks:
 `--episodes_per_task` is the total number of complete episodes per task variation,
 including existing episodes when continuing collection. Use `10`, `50`, or `100`
 to increase that target; `--tasks water4,water2` selects multiple tasks. The
-original RGB/depth/mask folders, low-dimensional observations, and replay configs
+RGB/depth/mask folders, low-dimensional observations, and replay configs
 remain together. The same command also saves YOLO11-annotated images and box
 metadata; no manual annotation step is needed. Failed attempts are saved separately
 and do not count toward the target. The collector retries unfinished tasks by
@@ -90,7 +90,7 @@ refer to the same objects before selecting them for visual ICL.
 
 Write or edit task examples in
 [`rrb_manipulation_example.py`](responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
-The original evaluator selects same-task or cross-task examples using its four
+The evaluator selects same-task or cross-task examples using its four
 selectors. Skill examples use action lists, Pose examples use pose lists, and
 Code uses the shared planner, composer, and map prompts in
 [`prompts_voxposer/`](responsible_robot_bench/evaluator/prompts_voxposer/). CONFIG-11
@@ -101,35 +101,43 @@ lists the required counts and inputs.
 
 ## 3. Evaluate skills, poses, and code
 
-Configure the endpoint and model in the current shell. This example uses the
-Qwen2-VL backend; provide `RRB_API_KEY` through your environment if required.
+Choose a model through the [model API configuration](docs/credentials.md):
+GPT, Claude, Gemini, DashScope Qwen, and supported local backends use the same
+evaluation commands with their corresponding model names and API keys.
+The example below uses a local Qwen2-VL endpoint.
 
 ```bash
 export RRB_BASE_URL="http://127.0.0.1:18017/v1"
 export RRB_MODEL="Qwen/Qwen2-VL-7B-Instruct"
 ```
 
-Evaluate the first independently collected evaluation scene through the original evaluators. This
+Evaluate the first independently collected evaluation scene through the evaluators. This
 example uses CONFIG-5 (an RGB input without demonstrations):
 
 ```bash
-COMMON=(--model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1
-  --data_root runs/water4-evaluation --selected_indexes 0
-  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0
-  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0
-  --example_classification_type same_task_with_hazard)
+.venv/bin/python -m \
+  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner \
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/water4-evaluation --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type pre-defined --output_dir runs/water4-skills
 
 .venv/bin/python -m \
   responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner \
-  "${COMMON[@]}" --traj_type pre-defined --output_dir runs/water4-skills
-
-.venv/bin/python -m \
-  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner \
-  "${COMMON[@]}" --traj_type point --output_dir runs/water4-poses
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/water4-evaluation --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type point --output_dir runs/water4-poses
 
 .venv/bin/python -m \
   responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_code_generation \
-  "${COMMON[@]}" --traj_type code --output_dir runs/water4-code
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/water4-evaluation --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type code --output_dir runs/water4-code
 ```
 
 `--selected_indexes 0` runs the first scene. Set `--selected_indexes ""` to
@@ -190,21 +198,23 @@ Both examples relocate the power strip before watering the plant.
 | [Imitation learning](docs/policy.md) | PFM data, training, checkpoints, and rollout |
 | [Custom tasks & robots](docs/extending.md) | Scene creation, registration, and execution adapters |
 | [API configuration](docs/credentials.md) | Endpoint settings and private credentials |
-| [Third-party notices](THIRD_PARTY_NOTICES.md) | Attribution and component licenses |
 
 ## Code structure
 
 ```text
-rrb/
-  planning/              Configuration and example selection support
-  execution/             Simulator execution, cost, and error records
 responsible_robot_bench/
-  evaluator/             Skill/Pose action lists and full multi-module LMP evaluation
-  envs/rrb_manipulation/ RRBManEnv_safety.py, tasks, scenes, and controllers
-policies/PointFlowMatch/  Dataset conversion, policy training, and evaluation
+  configs/               Task registry, CONFIG-0–11 switches, and Hydra settings
+  evaluator/             Skill, Pose, and Code evaluation; prompt examples and results
+  planner/               Model APIs, prompt assembly, and response parsing
+  envs/rrb_manipulation/  Simulator, tasks, scenes, and motion controllers
+  data/                  Demonstration storage, annotation, and resume handling
+  perception/            Observations, bounding boxes, and object numbering
+  execution/             Action feedback, costs, and human assistance
+  diagnostics/           Repetition, wrong-target, and collision diagnostics
+policies/PointFlowMatch/  Imitation-learning data conversion, training, and rollout
 thirdparty/PyRep/         Simulator binding
-tools/                   Model server, rendering, and environment setup
-docs/                    Guides and project media
+tools/                   Model serving, rendering, and environment setup
+docs/                    User guides and project media
 ```
 
 ## Acknowledgements
@@ -217,12 +227,7 @@ ResponsibleRobotBench builds on the manipulation infrastructure of
 We thank the authors and contributors of these projects for sharing their code,
 tools, and research.
 
-Third-party attribution and component licenses are retained in
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
 ## License
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the component license
-files for applicable terms and attribution. The checkout does not contain a
-repository-wide license; the notices describe the status of the included code
-and assets.
+Original ResponsibleRobotBench code and documentation use the [MIT License](LICENSE).
+Included components retain their own license files and source attributions.

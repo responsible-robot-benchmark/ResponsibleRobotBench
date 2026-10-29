@@ -1,9 +1,9 @@
 # Installation
 
 Set up Python 3.11 and CoppeliaSim for the
-[original demonstration collector](dataset.md#collect-one-demonstration) and
+[demonstration collector](dataset.md#collect-one-demonstration) and
 [evaluation scene collection](dataset.md#evaluation-configurations). Add a model
-service for [original planner evaluation](evaluation.md), and use the separate
+service for [planner evaluation](evaluation.md), and use the separate
 [policy environment](policy.md) for downstream RGB conversion and training.
 Run all commands from the repository root in **Bash on Linux**.
 
@@ -14,8 +14,7 @@ Run all commands from the repository root in **Bash on Linux**.
 
 You need Python 3.11 with `venv` support and development headers, a C compiler,
 and Git. Simulator rendering also needs Xvfb and the system libraries required
-by CoppeliaSim's Qt/OpenGL runtime. Keep this source checkout: the `rrb` package
-alone does not install simulator scenes or policy resources.
+by CoppeliaSim's Qt/OpenGL runtime. Keep this source checkout for the simulator setup scripts and policy resources.
 
 ```bash
 python3.11 -m venv .venv
@@ -42,7 +41,7 @@ detector, and evaluator dependencies, then build the bundled PyRep:
 
 ```bash
 .venv/bin/python -m pip install --upgrade pip setuptools wheel
-.venv/bin/python -m pip install -r requirements-legacy.txt hydra-core omegaconf pyyaml
+.venv/bin/python -m pip install -r requirements.txt
 export COPPELIASIM_ROOT="$PWD/.runtime/CoppeliaSim_Edu_V4_1_0_Ubuntu20_04"
 export LD_LIBRARY_PATH="$COPPELIASIM_ROOT${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export QT_QPA_PLATFORM_PLUGIN_PATH="$COPPELIASIM_ROOT"
@@ -53,9 +52,9 @@ cp responsible_robot_bench/envs/rrb_manipulation/simAddOnScript_PyRep.lua "$COPP
 .venv/bin/python -m pip check
 ```
 
-`requirements-legacy.txt` includes the simulator, detector, and evaluator
+`requirements.txt` includes the simulator, detector, and evaluator
 requirements, keeping NumPy and OpenCV compatible. Hydra and OmegaConf support
-the original configuration entry point. Install platform-specific Qt/OpenGL and
+the Hydra configuration entry point. Install platform-specific Qt/OpenGL and
 PyTorch packages for the chosen environment and verify the imports before use.
 The exports above configure the simulator library and Python import paths;
 repeat them from the repository root in each simulator shell. The PyRep build
@@ -63,7 +62,7 @@ needs write access to the simulator's `system/` directory. YOLO11 annotates coll
 frames and CONFIG-9 observations; `RRB_YOLO_WEIGHTS` can select a local file.
 
 Component terms and attribution are listed in
-[THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). Consult the simulator's own
+[component license files](../licenses/). Consult the simulator's own
 terms when choosing an installation.
 
 ## 3. Configure a display
@@ -114,7 +113,7 @@ export RRB_MODEL="Qwen/Qwen2-VL-7B-Instruct"
 | `RRB_MODEL` | Model ID sent to the endpoint. |
 | `RRB_API_KEY` | Passed to the original Qwen2-VL `RemoteModel` client. Set it in your local environment when the endpoint requires authentication. |
 
-Pass the model ID to the original evaluators as `--model_name "$RRB_MODEL"`.
+Pass the model ID to the evaluators as `--model_name "$RRB_MODEL"`.
 For Qwen2-VL, set `RRB_BASE_URL` before starting Python; the original client
 also accepts `remote_url`, which takes precedence when set. Supply the API base
 URL without the `/chat/completions` suffix. Other model backends retain their
@@ -137,7 +136,7 @@ To host Qwen2-VL-7B on a CUDA 12.4-compatible system:
 python3.11 -m venv .venv-qwen
 .venv-qwen/bin/python -m pip install torch==2.6.0 torchvision==0.21.0 \
   --index-url https://download.pytorch.org/whl/cu124
-.venv-qwen/bin/python -m pip install -r requirements-model.txt
+.venv-qwen/bin/python -m pip install -r responsible_robot_bench/planner/requirements.txt
 .venv-qwen/bin/python -c "from huggingface_hub import snapshot_download; snapshot_download('Qwen/Qwen2-VL-7B-Instruct', local_dir='models/Qwen2-VL-7B-Instruct')"
 export RRB_MODEL_PATH="$(pwd)/models/Qwen2-VL-7B-Instruct"
 CUDA_VISIBLE_DEVICES=0 .venv-qwen/bin/python -m uvicorn tools.serve_qwen:app \
@@ -149,7 +148,7 @@ CUDA version, select a matching PyTorch build. Use loopback or an SSH tunnel;
 follow the provider's authentication and network guidance.
 
 Continue with [evaluation scene collection](dataset.md#evaluation-configurations),
-[original planner evaluation](evaluation.md#run-one-episode), and
+[planner evaluation](evaluation.md#run-one-episode), and
 [100-demonstration policy training](policy.md#prepare-100-demonstrations-per-task).
 For new environments, see [custom tasks and robots](extending.md).
 
@@ -160,7 +159,7 @@ For new environments, see [custom tasks and robots](extending.md).
 | `COPPELIASIM_ROOT not defined` or missing simulator libraries | Set the simulator exports above in the current Bash shell and check the extracted directory. |
 | Xvfb executable is missing | Install Xvfb or use an existing X11 display. |
 | Qt/OpenGL context creation fails | Check `DISPLAY`, the Qt plugin path, and the host's X11/OpenGL libraries. |
-| `FileExistsError` for a run directory | Use separate directories for independent splits and runs. The original demonstration collector continues complete episodes in the same `--save_path`; see [collection resume](dataset.md#continue-an-existing-collection). |
+| `FileExistsError` for a run directory | Use separate directories for independent splits and runs. The demonstration collector continues complete episodes in the same `--save_path`; see [collection resume](dataset.md#continue-an-existing-collection). |
 | Model connection or authentication error | Check the base URL, model ID, service health, and any endpoint-required token. A base URL must not already end in `/chat/completions`. |
 | Context-limit rejection | Check the service context limit and request size. Keep the requested CONFIG's examples intact; changing the shot count changes the experiment. |
 | NumPy or Hugging Face dependency conflicts | Keep simulator, model, and policy environments separate. Simulator package pins do not apply to the policy environment. |

@@ -4,7 +4,7 @@ Full demonstration datasets, model checkpoints, and evaluation outputs are not
 distributed with the source repository. Collect and keep them locally, separate
 from the configuration examples and independent evaluation split.
 
-Use the original demonstration collector at
+Use the demonstration collector at
 [`dataset_generator_NLP.py`](../responsible_robot_bench/envs/rrb_manipulation/tools/dataset_generator_NLP.py).
 It records authored native motion through `get_demos`, with the complete
 `ObservationConfig.set_all(True)` configuration. No model endpoint is needed.
@@ -17,19 +17,19 @@ All commands use the Python 3.11 simulator environment and display from
 ## Task names and artifact types
 
 The canonical short IDs and task module names are listed in
-[tasks.json](../rrb/tasks.json).
+[tasks.json](../responsible_robot_bench/configs/tasks.json).
 
 | Artifact | Producer and consumer |
 | --- | --- |
 | Original demonstration episode | `dataset_generator_NLP.py` writes RGB/depth/mask image folders, `low_dim_obs.pkl`, automatic matched YOLO images and JSON, with replay assets when `save_configs` is enabled. |
 | RGB Zarr dataset | `convert_pickle_to_zarr.py` selects RGB and policy fields from complete recordings; policy training reads per-task `train`/`val` directories. |
-| Planner examples | Task examples are configured in the original example file; visual examples use the matching collected images. Code uses shared LMP module prompts. See [example preparation](evaluation.md#prepare-recorded-examples). |
-| Evaluation configuration | `test_config_generator.py` saves scene, waypoint, and `configs.pkl` assets without recording a demonstration; original evaluators replay them. |
+| Planner examples | Task examples are configured in the example configuration file; visual examples use the matching collected images. Code uses shared LMP module prompts. See [example preparation](evaluation.md#prepare-recorded-examples). |
+| Evaluation configuration | `test_config_generator.py` saves scene, waypoint, and `configs.pkl` assets without recording a demonstration; evaluators replay them. |
 
-The original collector accepts short IDs, such as `water4`, or full registered
+The collector accepts short IDs, such as `water4`, or full registered
 names, such as `water4_plants`. Multiple tasks use a comma-separated `--tasks`
 value. Policy conversion, training, and rollout use full names.
-[tasks.json](../rrb/tasks.json) is the authoritative mapping.
+[tasks.json](../responsible_robot_bench/configs/tasks.json) is the authoritative mapping.
 
 ## Collect one demonstration
 
@@ -44,7 +44,7 @@ This is the same collector used for larger datasets. Its default image size is
 360 × 360; `--image_size 360,360` sets it explicitly. All five views retain RGB,
 depth, and instance masks. Low-dimensional observations retain robot state,
 safety/help fields, camera calibration, and other native observation fields.
-Point clouds are enabled during collection; the original serializer stores depth
+Point clouds are enabled during collection; the serializer stores depth
 and calibration rather than a separate point-cloud array in each saved pickle.
 Keep every modality even when a downstream policy consumes only RGB.
 
@@ -54,7 +54,7 @@ The default weights are `yolo11n.pt`; set `RRB_YOLO_WEIGHTS` to an existing loca
 weights file to avoid a download. `RRB_YOLO_DEVICE` defaults to `cpu` and accepts
 an Ultralytics device such as `0`. No separate annotation command is required.
 Annotation uses the original `form_object_coord_for_input` and
-`draw_bounding_boxes` helpers: object coordinates come from the original four
+`draw_bounding_boxes` helpers: object coordinates come from the four
 matching views (front, left shoulder, right shoulder, wrist) and are projected
 into all five calibrated images to match YOLO predictions. Object numbers follow
 the task's Skill object IDs across camera views and action modes.
@@ -85,7 +85,7 @@ runs/water4-demos/train/water4_plants/variation0/episodes/episode0/
 ```
 
 Images are saved separately; corresponding image and point-cloud attributes in
-`low_dim_obs.pkl` are cleared by the original serializer. A pickle alone is not
+`low_dim_obs.pkl` are cleared by the serializer. A pickle alone is not
 a complete episode. Preserve the companion directories and configuration files.
 The annotation JSON records every frame/view, relative image paths, matched
 pixel `xyxy` boxes, confidence, weights, object names, world points and voxel
@@ -169,7 +169,7 @@ Unsuccessful native collection attempts are saved separately:
 
 ```text
 water4_plants/variation0/
-├── episodes/episode0/          # Goal completed; original observation format
+├── episodes/episode0/          # Goal completed; observation format
 ├── failed_episodes/
 │   ├── attempt000000/          # An unsuccessful attempt, outside the target count
 │   │   ├── failure.json
@@ -181,7 +181,7 @@ water4_plants/variation0/
 └── collection_status.json
 ```
 
-Failed trajectories use the original observation writer and YOLO annotation
+Failed trajectories use the observation writer and YOLO annotation
 path. `failure.json` records the failure cause, seed, frame count, whether the
 trajectory was interrupted, and any missing replay assets or failed annotation.
 If initialization fails before observations exist, only metadata is saved.
@@ -265,7 +265,7 @@ changing image size also requires a compatible policy configuration.
 Use independent saved configurations for evaluation. Demonstration episodes
 with `--save_configs=True` already include all three replay assets. To create
 scene configurations without recording demonstration trajectories, run the
-original scene-configuration generator:
+scene-configuration generator:
 
 ```bash
 .venv/bin/python \
@@ -289,7 +289,7 @@ runs/eval-scenes/water4_plants/variation0/episodes/episode0/
 └── configs.pkl
 ```
 
-For this dataset pass `--data_root runs/eval-scenes` to the original evaluator.
+For this dataset pass `--data_root runs/eval-scenes` to the evaluator.
 Use `--selected_indexes 0` for the first saved scene, `--selected_indexes 0,2`
 for a subset, or `--selected_indexes ""` for all five. The Code CLI defaults to
 `[0]`; explicitly pass `--selected_indexes ""` to run all scenes. See

@@ -1,5 +1,5 @@
 """Hazard groups and assistance eligibility for the 23 benchmark tasks."""
-from ..core import TASKS
+from responsible_robot_bench.configs.task_registry import TASKS
 
 HAZARD_GROUPS = {
     'Electrical': frozenset({'water1', 'water3', 'charge1', 'push1', 'push2',

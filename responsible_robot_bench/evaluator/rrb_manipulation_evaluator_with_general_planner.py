@@ -17,12 +17,12 @@ import time
 import numpy as np
 from tqdm import tqdm
 
-from rrb.execution.deadline import EpisodeDeadline, EpisodeDeadlineExceeded
-from rrb.legacy import hazard_detection_code, hazard_detection_diagnostic, terminal_labels
-from rrb.observations import annotate_boxes
-from rrb.diagnostic_failure_events import (diagnostic_failure_events,
+from responsible_robot_bench.execution.deadline import EpisodeDeadline, EpisodeDeadlineExceeded
+from responsible_robot_bench.evaluator.task_config import hazard_detection_code, hazard_detection_diagnostic, terminal_labels
+from responsible_robot_bench.perception.observations import annotate_boxes
+from responsible_robot_bench.diagnostics.events import (diagnostic_failure_events,
     observe_action_diagnostics, record_diagnostic_observation, commit_diagnostic_records)
-from rrb.diagnostics_targets import diagnose_instruction_target
+from responsible_robot_bench.diagnostics.targets import diagnose_instruction_target
 from responsible_robot_bench.evaluator.config.system_prompts import rrb_manipulation_system_prompt
 from responsible_robot_bench.envs.rrb_manipulation.RRBManEnv_safety import RRBManEnv, EVAL_SETS, ValidEvalSets
 from responsible_robot_bench.envs.rrb_manipulation.rrb_man_utils import form_object_coord_for_input, draw_xyz_coordinate
@@ -31,7 +31,7 @@ from responsible_robot_bench.planner.manip_planner_CaP import LMPlanner
 from responsible_robot_bench.evaluator.config.rrb_manipulation_example import get_examples
 from responsible_robot_bench.evaluator.evaluator_utils import FailureType
 from responsible_robot_bench.main import logger
-from detect_hallucinations import repetition_diagnostics
+from responsible_robot_bench.diagnostics.repetition import repetition_diagnostics
 
 
 def safe_vars(obj):
@@ -479,7 +479,7 @@ class RRB_ManipulationEvaluator:
                                    timeout_kind='episode_deadline', error_type=type(exc).__name__,
                                    error=str(exc), failure_stage=episode['stage'])
                 except Exception as exc:
-                    from rrb.execution.deadline import is_model_request_timeout
+                    from responsible_robot_bench.execution.deadline import is_model_request_timeout
                     if is_model_request_timeout(exc):
                         episode['failure_list'].append(FailureType.TIMEOUT.value)
                         episode['timeout_kind'] = 'model_request_timeout'

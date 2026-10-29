@@ -158,7 +158,7 @@ class LMP_interface:
             obs_dict["position"] = self.get_ee_pos()
             obs_dict["aabb"] = np.array([self.get_ee_pos(), self.get_ee_pos()])
             obs_dict["_position_world"] = self._env.get_ee_pos()
-            from rrb.execution.map_contracts import xyzw_to_wxyz
+            from responsible_robot_bench.execution.map_contracts import xyzw_to_wxyz
             obs_dict["quat"] = xyzw_to_wxyz(self._env.get_ee_quat())
 
         elif obj_name.lower() in TABLE_ALIAS:
@@ -236,7 +236,7 @@ class LMP_interface:
           velocity_map: callable function that generates a 3D numpy array, the velocity voxel map
           gripper_map: callable function that generates a 3D numpy array, the gripper voxel map
         """
-        from rrb.execution.assistance import require_active_task
+        from responsible_robot_bench.execution.assistance import require_active_task
         require_active_task(self._env.task._task)
         # initialize default voxel maps if not specified
         if rotation_map is None:
@@ -447,7 +447,7 @@ class LMP_interface:
                 # traj_world: world_xyz, rotation, velocity, gripper
                 ee_pos_world = traj_world[-1][0]
                 ee_rot_world = traj_world[-1][1]
-                from rrb.execution.map_contracts import wxyz_to_xyzw
+                from responsible_robot_bench.execution.map_contracts import wxyz_to_xyzw
                 ee_pose_world = np.concatenate([ee_pos_world, wxyz_to_xyzw(ee_rot_world)])
                 ee_speed = traj_world[-1][2]
                 gripper_state = traj_world[-1][3]
@@ -462,7 +462,7 @@ class LMP_interface:
                 ee_rot_world = _rotation_map[
                     ee_pos_voxel[0], ee_pos_voxel[1], ee_pos_voxel[2]
                 ]
-                from rrb.execution.map_contracts import wxyz_to_xyzw
+                from responsible_robot_bench.execution.map_contracts import wxyz_to_xyzw
                 ee_pose_world = np.concatenate([ee_pos_world, wxyz_to_xyzw(ee_rot_world)])
                 ee_speed = _velocity_map[
                     ee_pos_voxel[0], ee_pos_voxel[1], ee_pos_voxel[2]
@@ -705,7 +705,7 @@ class LMP_interface:
                 voxel_map = np.zeros(
                     (self._map_size, self._map_size, self._map_size, 4)
                 )
-                from rrb.execution.map_contracts import xyzw_to_wxyz
+                from responsible_robot_bench.execution.map_contracts import xyzw_to_wxyz
                 voxel_map[:, :, :] = xyzw_to_wxyz(self._env.get_ee_quat())
             else:
                 raise ValueError("Unknown voxel map type: {}".format(type))

@@ -324,7 +324,7 @@ def draw_bounding_boxes(image_path_list, world_points, camera_extrinsics_list, c
                                       'weights': os.environ.get('RRB_YOLO_WEIGHTS', 'yolo11n.pt')})
             if display_labels is not None:
                 matched_boxes[-1]['display_label'] = display_labels[box_id]
-            from rrb.box_drawing import draw_numbered_box
+            from responsible_robot_bench.perception.box_drawing import draw_numbered_box
             draw_numbered_box(image_bgr, increased_box,
                               display_labels[box_id] if display_labels is not None else box_id + 1,
                               text_positions, keep_label_visible=display_labels is not None)
@@ -602,7 +602,7 @@ def form_object_coord_for_input(obs, task_class, camera_types, order_by_y = True
     sim_name_to_real_name = task_handler.sim_name_to_real_name  # Get the correspondence of task's sim to real names
     object_labels = None
     if indexed_objects is not None:
-        from rrb.observations import task_object_labels
+        from responsible_robot_bench.perception.observations import task_object_labels
         object_labels = task_object_labels(indexed_objects, sim_name_to_real_name)
         known_ids = [info['id'] for name, info in obs['object_informations'].items()
                      if name in sim_name_to_real_name and 'id' in info]

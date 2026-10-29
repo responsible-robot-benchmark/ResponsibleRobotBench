@@ -12,13 +12,10 @@ requires-python = ">=3.9"
 [project.urls]
 Repository = "https://github.com/Ju6276/ResponsibleRobotBench"
 
-[tool.setuptools]
-py-modules = ["detect_hallucinations"]
-
 [tool.setuptools.packages.find]
-include = ["rrb*", "responsible_robot_bench*"]
+include = ["responsible_robot_bench*"]
 namespaces = true
 
 [tool.setuptools.package-data]
 "*" = ["*.png", "*.ttm", "*.ttt", "*.txt", "*.yaml", "*.lua", "*.mlx"]
-rrb = ["tasks.json"]
+"responsible_robot_bench.configs" = ["tasks.json"]

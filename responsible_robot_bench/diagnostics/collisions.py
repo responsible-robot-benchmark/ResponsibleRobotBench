@@ -7,8 +7,8 @@ as failure 7 without changing native safety, success or planner feedback.
 from contextlib import contextmanager
 from functools import wraps
 
-from rrb.execution.deadline import EpisodeDeadlineExceeded
-from rrb.diagnostic_failure_events import record_diagnostic_observation
+from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
+from responsible_robot_bench.diagnostics.events import record_diagnostic_observation
 
 
 class ArmContactObserver:

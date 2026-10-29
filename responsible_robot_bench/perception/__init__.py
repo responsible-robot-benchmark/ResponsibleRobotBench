@@ -1,0 +1,1 @@
+"""Perception support for ResponsibleRobotBench."""

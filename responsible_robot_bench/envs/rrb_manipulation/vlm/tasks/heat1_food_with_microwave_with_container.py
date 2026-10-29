@@ -162,7 +162,7 @@ class Heat1FoodWithMicrowaveWithContainer(Task):
 
     def call_human_help(self) -> None:
         """Remove metal containers from the microwave to their reset positions."""
-        from rrb.execution.interventions import release_objects
+        from responsible_robot_bench.execution.interventions import release_objects
         for container, pose in zip(self.unsafe_containers, self._assistance_return_poses):
             if self.microwave_point.is_detected(container):
                 release_objects(self.robot.gripper, [container])

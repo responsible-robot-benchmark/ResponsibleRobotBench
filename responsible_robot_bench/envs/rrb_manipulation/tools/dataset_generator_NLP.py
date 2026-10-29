@@ -7,9 +7,9 @@ import sys
 from pathlib import Path
 CURRENT_DIR = dirname(abspath(__file__))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
-from rrb.core import TASKS
-from rrb.planning.task_metadata import task_id
-from rrb.collection import (annotate_native_episode, inventory_native_episodes,
+from responsible_robot_bench.configs.task_registry import TASKS
+from responsible_robot_bench.configs.task_metadata import task_id
+from responsible_robot_bench.data.collection import (annotate_native_episode, inventory_native_episodes,
                             publish_native_episode, variation_lock, write_json,
                             collection_exception, preserve_failed_collection,
                             recover_interrupted_native_episodes)

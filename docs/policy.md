@@ -13,7 +13,7 @@ All commands below use **Python 3.11** and run from the repository root in Bash.
 Prepare native motion trajectories with [the dataset workflow](dataset.md).
 Planner prompt examples require their own interface-specific validation.
 
-This guide uses the original image flow-matching policy: five RGB cameras and
+This guide uses the image flow-matching policy: five RGB cameras and
 observed robot states condition ten-dimensional targets (position, rotation-6D,
 and gripper). Each training sample contains images, observed states, and future
 states. Safety and assistance fields remain dataset metadata; they are not
@@ -43,8 +43,8 @@ Install the pinned Diffusion Policy dependency with the supplied packaging fix:
 mkdir -p .runtime/deps
 git clone https://github.com/chisarie/diffusion_policy.git .runtime/deps/diffusion_policy
 git -C .runtime/deps/diffusion_policy checkout a21dd5cb94dcff5495cb48bb7e3d59cb0b94c014
-git -C .runtime/deps/diffusion_policy apply --check "$(pwd)/patches/diffusion-policy-packaging.patch"
-git -C .runtime/deps/diffusion_policy apply "$(pwd)/patches/diffusion-policy-packaging.patch"
+git -C .runtime/deps/diffusion_policy apply --check "$(pwd)/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
+git -C .runtime/deps/diffusion_policy apply "$(pwd)/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
 .venv-ml/bin/python -m pip install --no-deps .runtime/deps/diffusion_policy
 
 source tools/sim_env.sh
@@ -55,7 +55,7 @@ source tools/sim_env.sh
 Run the clone and patch steps once in a fresh dependency directory. The patch
 includes upstream namespace packages in the installed wheel; it does not change
 policy behavior. Component attribution is in
-[THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).
+[component license files](../licenses/).
 
 The recipe above uses CPU PyTorch. Policy dependencies are specified in
 [pyproject.toml](../policies/PointFlowMatch/pyproject.toml). Keep
@@ -69,14 +69,14 @@ when restoring checkpoints.
 
 ## Prepare 100 demonstrations per task
 
-Use the [original collector](dataset.md#collect-5-10-50-or-100-episodes-per-task)
+Use the [collector](dataset.md#collect-5-10-50-or-100-episodes-per-task)
 to request 100 complete training episodes in `runs/il-train` and 10 validation
 episodes in `runs/il-val`, with separate collection seeds. The target counts
 include existing complete episodes when continuing collection. Inspect collection
 logs, `collection_status.json`, and native outcome/safety fields; missing or incomplete episodes do not
 satisfy the requested count.
 
-For `water4`, the original episode directories are:
+For `water4`, the episode directories are:
 
 ```bash
 export RRB_IL_TRAIN="runs/il-train/water4_plants/variation0/episodes"

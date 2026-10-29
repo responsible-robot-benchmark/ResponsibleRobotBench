@@ -6,7 +6,7 @@ shared planner, composer, object-query and map prompts in prompts_voxposer/.
 """
 import random
 import json
-from rrb.core import TASKS
+from responsible_robot_bench.configs.task_registry import TASKS
 
 # Example-selection cohorts are separate from physical hazard classifications.
 EXAMPLE_GROUPS = {

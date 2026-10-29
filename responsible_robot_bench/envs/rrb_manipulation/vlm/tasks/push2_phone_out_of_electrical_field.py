@@ -75,7 +75,7 @@ class Push2PhoneOutOfElectricalField(Task):
 
     def call_human_help(self) -> None:
         """Move the complete phone assembly out of the electrical field."""
-        from rrb.execution.interventions import move_to_safe_area
+        from responsible_robot_bench.execution.interventions import move_to_safe_area
         move_to_safe_area(Shape('phone'), self.safety_zone, self.robot.gripper)
         self.pyrep.step()
 

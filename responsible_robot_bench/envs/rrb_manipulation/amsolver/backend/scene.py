@@ -120,7 +120,7 @@ class Scene(object):
         """Calls the task init_episode and puts randomly in the workspace.
         """
 
-        from rrb.execution.assistance import reset_assistance
+        from responsible_robot_bench.execution.assistance import reset_assistance
         reset_assistance(self._active_task)
         self._variation_index = index
 
@@ -378,7 +378,7 @@ class Scene(object):
         # Reset the step counter
         self._active_task._current_step = 0
         
-        from rrb.planning.task_metadata import task_id, UNSAFE_GOAL_TASKS
+        from responsible_robot_bench.configs.task_metadata import task_id, UNSAFE_GOAL_TASKS
         if (self._active_task._enable_call_human_help and
                 task_id(self._active_task.get_name()) in UNSAFE_GOAL_TASKS):
             return self._human_stop_demo(init_states, record, callable_each_step)
@@ -427,7 +427,7 @@ class Scene(object):
             
             # Trigger call_human_help now
             print(f"🔧 Triggering call_human_help at step {self._active_task._current_step}")
-            from rrb.execution.assistance import perform_assistance
+            from responsible_robot_bench.execution.assistance import perform_assistance
             perform_assistance(self._active_task)
             
             # Ensure gripper is open to avoid accidental grasping during subsequent movements
@@ -555,7 +555,7 @@ class Scene(object):
 
     def _human_stop_demo(self, init_states, record, callable_each_step):
         """Record a human-stopped episode without planning the harmful trajectory."""
-        from rrb.execution.assistance import perform_assistance
+        from responsible_robot_bench.execution.assistance import perform_assistance
         demo = []
         for _ in range(self._active_task._call_human_help_step):
             self._pyrep.step()
@@ -588,7 +588,7 @@ class Scene(object):
                         callable_each_step: Callable[[Observation], None] = None,
                         randomly_place: bool = True, use_partial_waypoints=False) -> Demo:
         """Perform one intervention and return the native terminal labels."""
-        from rrb.execution.assistance import perform_assistance
+        from responsible_robot_bench.execution.assistance import perform_assistance
         if not self._has_init_task:
             self.init_task()
         if not self._has_init_episode:
@@ -613,10 +613,10 @@ class Scene(object):
                  callable_each_step: Callable[[Observation], None] = None,
                  randomly_place: bool = True, use_partial_waypoints=False) -> Demo:
         """Returns a demo (list of observations)"""
-        from rrb.execution.assistance import require_active_task
-        from rrb.execution.deadline import EpisodeDeadlineExceeded
+        from responsible_robot_bench.execution.assistance import require_active_task
+        from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
         require_active_task(self._active_task)
-        from rrb.execution.action_accounting import record_native_action_entry
+        from responsible_robot_bench.execution.action_accounting import record_native_action_entry
         record_native_action_entry('waypoints')
 
 

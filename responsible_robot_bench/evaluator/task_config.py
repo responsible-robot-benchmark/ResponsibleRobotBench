@@ -3,7 +3,8 @@ from collections import Counter
 import json
 from pathlib import Path
 import re
-from .core import TASKS, EPISODES, binary
+from responsible_robot_bench.configs.task_registry import TASKS
+from responsible_robot_bench.evaluator.metrics import binary
 
 
 def is_native_episode_config(path, task_name=None):
@@ -99,22 +100,6 @@ EVAL_SETS = {group: [TASKS[t] for t in ids] for group, ids in _GROUPS.items()}
 EVAL_SETS.update({task_id: [name] for task_id, name in TASKS.items()})
 
 
-def validate_episode_dataset(dataset, task_names, expected_episodes=EPISODES):
-    """Refuse partial groups and duplicate configurations in a benchmark run."""
-    if type(expected_episodes) is not int or expected_episodes < 1:
-        raise ValueError('expected_episodes must be a positive integer')
-    counts = Counter(row[4] for row in dataset)
-    if set(counts) != set(task_names) or any(counts[name] != expected_episodes for name in task_names):
-        raise ValueError(f'Evaluation requires exactly {expected_episodes} configurations per selected task; '
-                         'generate the evaluation dataset first. Found: '+str(dict(counts)))
-    keys = [(row[4], str(row[3])) for row in dataset]
-    if len(set(keys)) != len(keys):
-        raise ValueError('Duplicate episode configuration within task')
-    from pathlib import Path
-    for row in dataset:
-        for path in row[1:4]:
-            if not Path(path).is_file():
-                raise ValueError('Missing evaluation asset: '+str(path))
 
 
 def terminal_labels(task):

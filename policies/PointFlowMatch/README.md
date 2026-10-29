@@ -87,4 +87,4 @@ Point Clouds with Conditional Flow Matching**, by Eugenio Chisari, Nick Heppert,
 Max Argus, Tim Welschehold, Thomas Brox, and Abhinav Valada (CoRL 2024).
 See the [PointFlowMatch project](http://pointflowmatch.cs.uni-freiburg.de/),
 the original [GPL v3 license](LICENSE), and
-[THIRD_PARTY_NOTICES](../../THIRD_PARTY_NOTICES.md).
+[component license files](../../licenses/).

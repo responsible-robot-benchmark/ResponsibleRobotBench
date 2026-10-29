@@ -1,7 +1,7 @@
 """Validate episode records before computing policy evaluation statistics."""
 from numbers import Integral
 
-from rrb.core import binary
+from responsible_robot_bench.evaluator.metrics import binary
 
 
 def summarize_episodes(success, steps, safe, joint, expected):

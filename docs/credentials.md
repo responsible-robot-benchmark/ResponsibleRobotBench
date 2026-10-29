@@ -2,25 +2,47 @@
 
 [Home](../README.md) · [Installation](installation.md) · [Evaluation](evaluation.md)
 
-The original evaluator's Qwen2-VL backend uses an OpenAI-compatible
-`/chat/completions` endpoint. Set the endpoint in the simulator shell and pass
-the model name to the evaluator:
+The model client is [remote_model.py](../responsible_robot_bench/planner/remote_model.py).
+Choose a backend with `--model_name` and `--model_type remote`. The client retains
+provider-specific message formatting and response parsing.
+
+| Backend | Model-name branch | API-key environment variable |
+| --- | --- | --- |
+| OpenAI | Name containing `gpt` | `OPENAI_API_KEY` |
+| Anthropic | Name containing `claude` | `ANTHROPIC_API_KEY` |
+| Gemini | Name containing `gemini` | `GEMINI_API_KEY` |
+| DashScope | Lowercase name containing `qwen` | `DASHSCOPE_API_KEY` |
+| Local Qwen2-VL | Supported `Qwen2-VL-7B-Instruct` or `Qwen2-VL-72B-Instruct` name | `RRB_API_KEY`; optional for a local endpoint |
+| Fireworks Llama | Name containing `90b-vision-instruct` | `firework_API_KEY` |
+
+Use an available model name from your provider. The current routing is
+case-sensitive; a generic compatible endpoint does not imply support for every
+model's response format. Llama and InternVL branches and the `lmdeploy` local
+path also remain in the client.
+
+For example, configure GPT in your shell, then use `--model_name "$RRB_MODEL"`
+with any of the three evaluation commands:
+
+```bash
+export OPENAI_API_KEY="<your API key>"
+export RRB_MODEL="gpt-4o"
+```
+
+For Claude, Gemini, or DashScope, use the matching key above and model name.
+Claude additionally requires its SDK: `.venv/bin/python -m pip install anthropic`.
+Do not put actual keys in tracked files.
+
+For a local Qwen2-VL server:
 
 ```bash
 export RRB_BASE_URL="http://127.0.0.1:18017/v1"
 export RRB_MODEL="Qwen/Qwen2-VL-7B-Instruct"
 ```
 
-`RRB_MODEL` is a shell variable used in the documented commands; the evaluator
-receives its value through `--model_name`. The client reads `RRB_BASE_URL` when
-Python starts. If `remote_url` is also set, it takes precedence. Supply the base
-URL without `/chat/completions`.
-
-Set `RRB_API_KEY` privately when the Qwen2-VL endpoint requires authentication;
-the backend uses `EMPTY` when it is unset. Other model branches use their own
-settings: GPT uses `OPENAI_API_KEY`, Claude uses `ANTHROPIC_API_KEY`, Gemini
-uses `GEMINI_API_KEY`, and the lowercase `qwen` branch uses `DASHSCOPE_API_KEY`.
-Select the model name and credentials appropriate to the backend.
+`RRB_MODEL` is a shell variable passed through `--model_name`. The client reads
+`RRB_BASE_URL` when Python starts; `remote_url` takes precedence if also set.
+Provide the base URL without `/chat/completions`. The local Qwen2-VL client uses
+`RRB_API_KEY` or the placeholder `EMPTY` when that variable is unset.
 
 If you maintain a local `.env` file, create it yourself and load it before
 starting Python; the evaluator does not load it automatically. Do not commit

@@ -124,7 +124,7 @@ class Controller:
         object_centric = (not movable_obs['name'].lower() in EE_ALIAS)
         # move to target pose directly
         if not object_centric:  # If it's the end effector's motion
-            from rrb.execution.map_contracts import wxyz_to_xyzw
+            from responsible_robot_bench.execution.map_contracts import wxyz_to_xyzw
             target_pose = np.concatenate([target_xyz, wxyz_to_xyzw(target_rotation)])
             continuous_action = np.concatenate([target_pose, [target_gripper]])
 

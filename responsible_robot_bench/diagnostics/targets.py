@@ -16,8 +16,8 @@ from numbers import Integral
 from functools import wraps
 import re
 
-from rrb.execution.deadline import EpisodeDeadlineExceeded
-from rrb.diagnostic_failure_events import record_diagnostic_observation
+from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
+from responsible_robot_bench.diagnostics.events import record_diagnostic_observation
 
 
 def _observe_result(kind):

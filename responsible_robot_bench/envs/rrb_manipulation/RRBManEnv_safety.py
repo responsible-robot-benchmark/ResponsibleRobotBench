@@ -30,11 +30,11 @@ class TaskConfigs(object):
         pass
 
 # Canonical RRB tasks; default groups cover each task exactly once.
-from rrb.legacy import EVAL_SETS, DEFAULT_EVAL_SETS, terminal_labels, is_native_episode_config
-from rrb.execution.assistance import require_active_task, reset_assistance
-from rrb.execution.costs import cost_breakdown, HUMAN_ASSISTANCE_WEIGHT
-from rrb.planning.task_metadata import assistance_available
-from rrb.diagnostics_collisions import record_arm_contacts
+from responsible_robot_bench.evaluator.task_config import EVAL_SETS, DEFAULT_EVAL_SETS, terminal_labels, is_native_episode_config
+from responsible_robot_bench.execution.assistance import require_active_task, reset_assistance
+from responsible_robot_bench.execution.costs import cost_breakdown, HUMAN_ASSISTANCE_WEIGHT
+from responsible_robot_bench.configs.task_metadata import assistance_available
+from responsible_robot_bench.diagnostics.collisions import record_arm_contacts
 ValidEvalSets = DEFAULT_EVAL_SETS
 
 
@@ -334,7 +334,7 @@ class RRBManEnv(gym.Env):
         return descriptions[0], obs, high_level_description_configs
     
     def get_waypoint_from_high_level_action(self, high_level_action):
-        from rrb.execution.waypoint_mapping import refresh_action_mapping, select_waypoints
+        from responsible_robot_bench.execution.waypoint_mapping import refresh_action_mapping, select_waypoints
         assert high_level_action in self.current_task_high_level_description_configs.high_level_descriptions, "Invalid high level action."
         assert self._reset, "Reset the environment before stepping."
         waypoints_list_all = self.task._task._waypoints
@@ -443,10 +443,10 @@ class RRBManEnv(gym.Env):
         info = {}
         self._current_step += 1
         action_success = False
-        from rrb.diagnostics_targets import prepare_grasp_diagnostic, finish_grasp_diagnostic
-        from rrb.execution.deadline import EpisodeDeadlineExceeded
-        from rrb.execution.waypoint_mapping import WaypointMappingError, refresh_action_mapping, select_waypoints
-        from rrb.execution.action_accounting import account_native_action
+        from responsible_robot_bench.diagnostics.targets import prepare_grasp_diagnostic, finish_grasp_diagnostic
+        from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
+        from responsible_robot_bench.execution.waypoint_mapping import WaypointMappingError, refresh_action_mapping, select_waypoints
+        from responsible_robot_bench.execution.action_accounting import account_native_action
         grasp_diagnostic = None
 
         max_attempts = 1
@@ -568,8 +568,8 @@ class RRBManEnv(gym.Env):
     @record_arm_contacts
     def step(self, discrete_action, use_continuous_action=False, speed=None):
         'Currently, the input at this stage is an action, and a function is needed to execute high-level action. According to predefined actions, execute waypoints. self.task: TaskEnvironment'
-        from rrb.execution.deadline import EpisodeDeadlineExceeded
-        from rrb.execution.action_accounting import account_native_action
+        from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
+        from responsible_robot_bench.execution.action_accounting import account_native_action
         assert self._reset, "Reset the environment before stepping."
         info = {}
         require_active_task(self.task._task)
@@ -601,7 +601,7 @@ class RRBManEnv(gym.Env):
 
             print("[RRBManEnv Safety.py | step ]: start self.task.step action {}".format(action))
 
-            from rrb.execution.map_contracts import scaled_arm_speed
+            from responsible_robot_bench.execution.map_contracts import scaled_arm_speed
             with scaled_arm_speed(self.task._scene._robot.arm, speed):
                 with account_native_action(self, 'pose'):
                     obs, reward_waypoint, reward_task, reward_safety, terminate, motion_plan_ret_error_code = self.task.step(action)

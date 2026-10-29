@@ -1,8 +1,8 @@
-from rrb.legacy import terminal_labels, hazard_detection_diagnostic
-from rrb.observations import annotate_boxes
-from rrb.diagnostic_failure_events import (diagnostic_failure_events, observe_action_diagnostics,
+from responsible_robot_bench.evaluator.task_config import terminal_labels, hazard_detection_diagnostic
+from responsible_robot_bench.perception.observations import annotate_boxes
+from responsible_robot_bench.diagnostics.events import (diagnostic_failure_events, observe_action_diagnostics,
                                            commit_diagnostic_records)
-from rrb.execution.deadline import EpisodeDeadline, EpisodeDeadlineExceeded
+from responsible_robot_bench.execution.deadline import EpisodeDeadline, EpisodeDeadlineExceeded
 import re
 import os
 import numpy as np
@@ -28,7 +28,7 @@ from responsible_robot_bench.envs.rrb_manipulation.amsolver.voxposer_planner.int
 from responsible_robot_bench.evaluator.utils import get_config
 from collections import Counter
 from contextlib import contextmanager
-from detect_hallucinations import repetition_diagnostics, partial_code_repetition_diagnostics
+from responsible_robot_bench.diagnostics.repetition import repetition_diagnostics, partial_code_repetition_diagnostics
 
 
 def _code_planner_prompt(prompt, module, n_shots, prompt_module):
@@ -1289,7 +1289,7 @@ class RRB_ManipulationEvaluator():
                         pending_error = error
                         episode_info.update(termination='infrastructure_error',
                                             infrastructure_error=type(error).__name__)
-                        from rrb.execution.deadline import is_model_request_timeout
+                        from responsible_robot_bench.execution.deadline import is_model_request_timeout
                         if is_model_request_timeout(error):
                             lmp_env.episode_info['failure_list'].append(FailureType.TIMEOUT)
                             episode_info['timeout_kind'] = 'model_request_timeout'

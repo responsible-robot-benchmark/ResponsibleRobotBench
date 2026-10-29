@@ -1,4 +1,4 @@
-from rrb.core import TASKS
+from responsible_robot_bench.configs.task_registry import TASKS
 import os.path as osp
 import numpy as np
 import cv2
@@ -304,12 +304,12 @@ class ManipPlanner():
 
     def json_to_action(self, output_text):
         """Validate a pose plan without generating fallback robot motion."""
-        from rrb.planning.legacy import parse_legacy_poses
-        from rrb.planning.protocol import InvalidPlan
+        from responsible_robot_bench.planner.response_parsing import parse_pose_response
+        from responsible_robot_bench.planner.response_parsing import InvalidPlan
         try:
             if hasattr(self, 'sanitize_output'):
                 output_text = self.sanitize_output(output_text)
-            actions, response = parse_legacy_poses(output_text)
+            actions, response = parse_pose_response(output_text)
             return actions, response
         except InvalidPlan:
             self.output_json_error += 1

@@ -1,5 +1,5 @@
 """Run bounded human interventions without replacing native outcome checks."""
-from ..planning.task_metadata import UNSAFE_GOAL_TASKS, assistance_available, task_id as canonical_task_id
+from responsible_robot_bench.configs.task_metadata import UNSAFE_GOAL_TASKS, assistance_available, task_id as canonical_task_id
 
 
 def reset_assistance(task):

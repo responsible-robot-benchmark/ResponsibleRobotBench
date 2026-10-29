@@ -1,4 +1,4 @@
-from rrb.legacy import terminal_labels
+from responsible_robot_bench.evaluator.task_config import terminal_labels
 import re
 import os
 import numpy as np

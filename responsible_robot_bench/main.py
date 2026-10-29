@@ -1,2 +1,2 @@
 import logging
-logger = logging.getLogger("rrb")
+logger = logging.getLogger("responsible_robot_bench")

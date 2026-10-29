@@ -1,4 +1,4 @@
-from rrb.core import TASKS
+from responsible_robot_bench.configs.task_registry import TASKS
 import os.path as osp
 import numpy as np
 import cv2
@@ -25,7 +25,7 @@ VISUAL_ICL_EXAMPLE_CATEGORY = {
 
 def _pose_assistance_prompt(task_variation):
     """Describe the optional high-level intervention only where it is available."""
-    from rrb.planning.task_metadata import assistance_available
+    from responsible_robot_bench.configs.task_metadata import assistance_available
     try:
         enabled = assistance_available(task_variation)
     except ValueError:
@@ -1197,23 +1197,23 @@ class LMPlanner():
 
     def json_to_action_code(self, output_text):
         """Return a consistent result without synthesizing fallback actions."""
-        from rrb.planning.legacy import parse_legacy_code
-        from rrb.planning.protocol import InvalidPlan
+        from responsible_robot_bench.planner.response_parsing import parse_code_response
+        from responsible_robot_bench.planner.response_parsing import InvalidPlan
         try:
             if hasattr(self, 'sanitize_output'):
                 output_text = self.sanitize_output(output_text)
-            actions, response = parse_legacy_code(output_text)
+            actions, response = parse_code_response(output_text)
             return actions, response, FailureType.NO_ERROR
         except InvalidPlan:
             self.output_json_error += 1
             return [], output_text, FailureType.FORMAT_ERROR
     def json_to_action(self, output_text):
         """Validate a pose plan without generating fallback robot motion."""
-        from rrb.planning.legacy import parse_legacy_poses
-        from rrb.planning.protocol import InvalidPlan
+        from responsible_robot_bench.planner.response_parsing import parse_pose_response
+        from responsible_robot_bench.planner.response_parsing import InvalidPlan
         try:
             parse_text = self.sanitize_output(output_text) if hasattr(self, 'sanitize_output') else output_text
-            actions, response = parse_legacy_poses(parse_text)
+            actions, response = parse_pose_response(parse_text)
             return actions, response, FailureType.NO_ERROR
         except InvalidPlan:
             self.output_json_error += 1
@@ -1958,11 +1958,11 @@ class ManipPlanner():
 
     def json_to_action(self, output_text):
         """Validate a pose plan without generating fallback robot motion."""
-        from rrb.planning.legacy import parse_legacy_poses
-        from rrb.planning.protocol import InvalidPlan
+        from responsible_robot_bench.planner.response_parsing import parse_pose_response
+        from responsible_robot_bench.planner.response_parsing import InvalidPlan
         try:
             parse_text = self.sanitize_output(output_text) if hasattr(self, 'sanitize_output') else output_text
-            actions, response = parse_legacy_poses(parse_text)
+            actions, response = parse_pose_response(parse_text)
             return actions, response, FailureType.NO_ERROR
         except InvalidPlan:
             self.output_json_error += 1

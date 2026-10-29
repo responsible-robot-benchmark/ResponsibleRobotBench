@@ -127,11 +127,11 @@ the same placement root. One variation can still have randomized resets.
 
 In the extension fork:
 
-1. Add a distinct short ID to [rrb/tasks.json](../rrb/tasks.json), for example
-   `"custom_place": "place_block"`. The original collector and evaluator task sets use this
+1. Add a distinct short ID to [responsible_robot_bench/configs/tasks.json](../responsible_robot_bench/configs/tasks.json), for example
+   `"custom_place": "place_block"`. The collector and evaluator task sets use this
    mapping. Adding files alone does not register a task.
 2. Classify the task in
-   [task_metadata.py](../rrb/planning/task_metadata.py). Unlisted registered tasks
+   [task_metadata.py](../responsible_robot_bench/configs/task_metadata.py). Unlisted registered tasks
    become hazard-free controls; hazardous tasks need the appropriate group.
    Add inherently unsafe goals to `UNSAFE_GOAL_TASKS`. For conditionally safe
    tasks, provide a meaningful `call_human_help()` callback. The assistance
@@ -144,7 +144,7 @@ In the extension fork:
    original selectors and the Code module prompts. See
    [adding examples](evaluation.md#add-or-edit-examples).
 4. Extend the fork's registry, evaluator sets in
-   [rrb/legacy.py](../rrb/legacy.py), example groups and counterpart mappings in
+   [responsible_robot_bench/evaluator/task_config.py](../responsible_robot_bench/evaluator/task_config.py), example groups and counterpart mappings in
    [rrb_manipulation_example.py](../responsible_robot_bench/evaluator/config/rrb_manipulation_example.py), and relevant
    task inventory and example selection. Verify that the original 23 task mappings
    remain unchanged, and report the extension separately.
@@ -153,7 +153,7 @@ In the extension fork:
 
 After authoring and registering the example task, configure the simulator
 environment and display as in [installation](installation.md), then exercise
-the original collector in the extension fork:
+the collector in the extension fork:
 
 ```bash
 .venv/bin/python \
@@ -167,7 +167,7 @@ the original collector in the extension fork:
 ```
 
 The scene generator does not accept a seed. After checking its saved assets,
-use the [original evaluator commands](evaluation.md#run-one-episode), replacing
+use the [evaluator commands](evaluation.md#run-one-episode), replacing
 `water4` with the registered ID, setting `--data_root runs/custom-place-scenes`
 and using separate output directories.
 
@@ -206,7 +206,7 @@ intend to use. For another simulator or hardware backend, implement an adapter
 with the behavior expected by the original
 [evaluation environment](../responsible_robot_bench/envs/rrb_manipulation/RRBManEnv_safety.py)
 and [LMP interface](../responsible_robot_bench/envs/rrb_manipulation/amsolver/voxposer_planner/interfaces.py).
-Connect it through the original Skill/Pose and Code evaluators described in
+Connect it through the Skill/Pose and Code evaluators described in
 [planner evaluation](evaluation.md#run-one-episode); there is no existing adapter
 factory or registration CLI.
 
@@ -227,7 +227,7 @@ wrist sensors correctly, or adapt the observation backend. Robot models also
 need compatible tip, IK, collision, and gripper behavior for PyRep path planning.
 
 Review native observation and action shapes for the new robot's joint count.
-Keep all RGB, depth, and mask channels enabled in the original collector.
+Keep all RGB, depth, and mask channels enabled in the collector.
 PFM stores a 10-dimensional Cartesian robot state and predicts 12 values including safety
 and help; its representation, normalization, controller, and checkpoint shapes
 must be reviewed for the new robot. No automatic checkpoint transfer or native

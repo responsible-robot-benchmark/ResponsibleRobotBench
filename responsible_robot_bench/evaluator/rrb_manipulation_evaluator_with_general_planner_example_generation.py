@@ -15,7 +15,7 @@ from pathlib import Path
 
 import numpy as np
 
-from rrb.execution.deadline import EpisodeDeadlineExceeded
+from responsible_robot_bench.execution.deadline import EpisodeDeadlineExceeded
 from numbers import Integral
 from responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner import (
     RRB_ManipulationEvaluator as NativeEvaluator, failure_value, safe_vars)
@@ -28,7 +28,7 @@ from responsible_robot_bench.envs.rrb_manipulation.rrb_man_utils import (
 
 def reference_skill_sequence(task_name, available_skills, desired_obj_index=None):
     """Select the native reference actions without treating alternatives as a plan."""
-    from rrb.planning.task_metadata import UNSAFE_GOAL_TASKS, task_id
+    from responsible_robot_bench.configs.task_metadata import UNSAFE_GOAL_TASKS, task_id
     try:
         unsafe_goal = task_id(task_name) in UNSAFE_GOAL_TASKS
     except ValueError:

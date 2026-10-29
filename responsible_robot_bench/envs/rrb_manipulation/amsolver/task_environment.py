@@ -206,7 +206,7 @@ class TaskEnvironment(object):
         # interpolation divides by segment length; identical endpoints can
         # produce nonfinite joint targets and never finish. The caller still
         # executes the gripper command and queries the actual task checkers.
-        from rrb.execution.feedback import poses_equivalent
+        from responsible_robot_bench.execution.feedback import poses_equivalent
         current_pose = self._robot.arm.get_tip().get_pose(relative_to=relative_to)
         if poses_equivalent(action, current_pose):
             return [], []
@@ -286,14 +286,14 @@ class TaskEnvironment(object):
 
     def step(self, action, collision_checking=None, use_auto_move=True, recorder = None, need_grasp_obj = None) -> Tuple[Observation, int, bool]:
         '\n        Input action, output success, reward, termination\n        '
-        from rrb.execution.assistance import require_active_task
+        from responsible_robot_bench.execution.assistance import require_active_task
         require_active_task(self._task)
         # returns observation, reward, done, info
         if not self._reset_called:
             raise RuntimeError(
                 "Call 'reset' before calling 'step' on a task.")
 
-        from rrb.execution.action_accounting import record_native_action_entry
+        from responsible_robot_bench.execution.action_accounting import record_native_action_entry
         record_native_action_entry('pose')
 
         # action should contain 1 extra value for gripper open close state

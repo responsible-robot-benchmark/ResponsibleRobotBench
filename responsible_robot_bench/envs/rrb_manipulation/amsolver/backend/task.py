@@ -197,8 +197,8 @@ class Task(object):
 
     def set_call_human_help_mode(self, enable: bool, trigger_step: int = 10):
         """Enable an eligible task's assistance after a finite number of frames."""
-        from rrb.execution.assistance import reset_assistance
-        from rrb.planning.task_metadata import assistance_available
+        from responsible_robot_bench.execution.assistance import reset_assistance
+        from responsible_robot_bench.configs.task_metadata import assistance_available
         if type(trigger_step) is not int or trigger_step < 0:
             raise ValueError('Human-assistance trigger_step must be a nonnegative integer')
         if enable and not assistance_available(self.get_name()):
@@ -494,7 +494,7 @@ class Task(object):
         assert len(self.high_level_descriptions) > 0, "The high_level_descriptions should not be empty"
         self.num_high_level_actions = len(self.high_level_descriptions)
 
-        from rrb.execution.waypoint_mapping import build_action_mapping
+        from responsible_robot_bench.execution.waypoint_mapping import build_action_mapping
         waypoints = self.get_waypoints(need_feasible=need_feasible)
         return build_action_mapping(waypoints, self.high_level_descriptions,
                                     self.waypoint_ranges_for_high_level_actions)

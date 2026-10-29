@@ -9,8 +9,8 @@ import sys
 from pathlib import Path
 CURRENT_DIR = dirname(abspath(__file__))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
-from rrb.core import TASKS
-from rrb.planning.task_metadata import task_id
+from responsible_robot_bench.configs.task_registry import TASKS
+from responsible_robot_bench.configs.task_metadata import task_id
 
 sys.path.insert(0, join(CURRENT_DIR, '..'))  # Use local amsolver rather than installed
 from amsolver import ObservationConfig

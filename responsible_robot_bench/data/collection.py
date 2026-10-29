@@ -351,7 +351,7 @@ def annotate_native_episode(path, task_name, details, indexed_objects):
         from responsible_robot_bench.envs.rrb_manipulation.rrb_man_utils import (
             CAMERAS as coordinate_cameras, draw_bounding_boxes,
             form_object_coord_for_input)
-        from rrb.planning.task_metadata import task_id
+        from responsible_robot_bench.configs.task_metadata import task_id
 
         with (path / 'low_dim_obs.pkl').open('rb') as stream:
             demo = pickle.load(stream)
@@ -379,7 +379,7 @@ def annotate_native_episode(path, task_name, details, indexed_objects):
             labels = [int(key.split(' ')[-1]) for key in keys]
             options = {'display_labels': labels}
             if hybrid:
-                from rrb.microwave_boxes import microwave_box_overrides
+                from responsible_robot_bench.perception.microwave_boxes import microwave_box_overrides
                 # The override API uses one-based positions in the point list.
                 ordered_names = {f'object {i + 1}': name for i, name in enumerate(names.values())}
                 overrides = microwave_box_overrides(task_name, restored, ordered_names, CAMERAS)

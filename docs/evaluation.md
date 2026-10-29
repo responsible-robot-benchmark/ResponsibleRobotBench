@@ -11,7 +11,7 @@ through the original skill-list, pose-list, and full Language Model Program
 
 ## Prepare evaluation scenes
 
-Collect an independent evaluation split with the original demonstration collector
+Collect an independent evaluation split with the demonstration collector
 or the scene-configuration generator described in [the dataset guide](dataset.md#evaluation-configurations).
 The three replay assets `task_base.ttm`, `waypoint_sets.ttm`, and `configs.pkl`
 must be present for every selected scene. Point `--data_root` at the collection
@@ -27,7 +27,7 @@ three replay assets. Fix the scenes across interface and CONFIG comparisons.
 
 ## Prepare recorded examples
 
-The original evaluators load task examples through
+The evaluators load task examples through
 [`get_examples()`](../responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
 `get_examples()` accepts a short ID or full task name and selects an entry
 keyed by short ID in `examples_database`. Code also
@@ -114,21 +114,27 @@ From the repository root in Bash, run CONFIG-5 on its first scene:
 ```bash
 export RRB_BASE_URL="http://127.0.0.1:18017/v1"
 export RRB_MODEL="Qwen/Qwen2-VL-7B-Instruct"
-COMMON=(--model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1
-  --data_root runs/eval-scenes --selected_indexes 0
-  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0
-  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0
-  --example_classification_type same_task_with_hazard)
-
 .venv/bin/python -m \
   responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner \
-  "${COMMON[@]}" --traj_type pre-defined --output_dir runs/water4-skills
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/eval-scenes --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type pre-defined --output_dir runs/water4-skills
 .venv/bin/python -m \
   responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner \
-  "${COMMON[@]}" --traj_type point --output_dir runs/water4-poses
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/eval-scenes --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type point --output_dir runs/water4-poses
 .venv/bin/python -m \
   responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_code_generation \
-  "${COMMON[@]}" --traj_type code --output_dir runs/water4-code
+  --model_name "$RRB_MODEL" --model_type remote --eval_sets water4 --headless 1 \
+  --data_root runs/eval-scenes --selected_indexes 0 \
+  --language_only 0 --n_shots 0 --cognition 0 --chat_history 0 \
+  --multiview 0 --detection_box 0 --multistep 0 --visual_icl 0 \
+  --example_classification_type same_task_with_hazard --traj_type code --output_dir runs/water4-code
 ```
 
 The Skill/Pose evaluator uses `manip_planner_CaP.LMPlanner`; the Code evaluator
@@ -170,7 +176,7 @@ Code and records its cost separately from ordinary robot actions.
 
 ## Choose a CONFIG
 
-The table gives the paper's configurations. The original evaluators take the
+The table gives the paper's configurations. The evaluators take the
 individual switches directly: map RGB to `--language_only 0` (text-only is `1`),
 requested examples to `--n_shots`, safety knowledge to `--cognition`, and the
 additional inputs to `--chat_history`, `--multiview`, `--detection_box`,
@@ -178,7 +184,7 @@ additional inputs to `--chat_history`, `--multiview`, `--detection_box`,
 above. CONFIG-3 and CONFIG-7 set `--chat_history 1`; CONFIG-8, 9, 10, and 11 set
 `--multiview`, `--detection_box`, `--multistep`, and `--visual_icl`, respectively.
 Only one of chat history, multiview, multistep, and visual ICL may be enabled.
-The definitions are also represented in [`rrb/planning/configs.py`](../rrb/planning/configs.py).
+The definitions are also represented in [`responsible_robot_bench/configs/planner.py`](../responsible_robot_bench/configs/planner.py).
 Check the selected source task's example counts and visual pairs before running.
 Task instructions, object lists, skills, and waypoint ranges are defined in
 [`vlm/tasks/`](../responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/).
@@ -235,7 +241,7 @@ checks alone do not validate the planner or establish task success.
 
 ## Run multiple tasks and configurations
 
-Use the original evaluator commands above for each action interface and set the
+Use the evaluator commands above for each action interface and set the
 CONFIG switches explicitly for each comparison. `--eval_sets water4,water2`
 selects multiple registered sets. Collect the scenes needed for each selected task. Use a separate output directory for
 each experimental configuration. Keep the input scenes fixed and record the
@@ -305,5 +311,5 @@ and SSR fractions. SSR averages the per-episode joint label; it is not the
 product of aggregate Safe and Succ rates. Report the sample size for diagnostic subsets,
 and retain missing or failed episodes when reporting coverage.
 
-The original evaluator separately validates dataset assets and their requested
+The evaluator separately validates dataset assets and their requested
 count before selecting an episode subset.

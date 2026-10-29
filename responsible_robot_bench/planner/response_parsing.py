@@ -1,12 +1,15 @@
-"""Validation adapters for inherited planner response formats."""
+"""Parse and validate model responses before action dispatch."""
 import ast
 import json
-from .protocol import InvalidPlan
-from ..core import discrete_pose
+from responsible_robot_bench.execution.poses import discrete_pose
 
 
-def parse_legacy_poses(text):
-    """Validate inherited discrete plans before any robot action is dispatched."""
+class InvalidPlan(ValueError):
+    pass
+
+
+def parse_pose_response(text):
+    """Validate discrete plans before any robot action is dispatched."""
     try:
         response = json.loads(text)
         entries = response.get('properties', response)['executable_plan']
@@ -29,11 +32,11 @@ def parse_legacy_poses(text):
             discrete_pose(action)
             actions.append(action)
     except (ValueError, KeyError, AttributeError, TypeError, SyntaxError) as error:
-        raise InvalidPlan(f'Invalid legacy pose response: {error}') from error
+        raise InvalidPlan(f'Invalid pose response: {error}') from error
     return actions, response
 
 
-def parse_legacy_code(text):
+def parse_code_response(text):
     """Extract syntactically valid code; never replace malformed output with motion."""
     try:
         response=json.loads(text)
@@ -43,5 +46,5 @@ def parse_legacy_code(text):
             raise ValueError('executable_code must be a nonempty string')
         ast.parse(code)
     except (ValueError,KeyError,AttributeError,TypeError,SyntaxError) as error:
-        raise InvalidPlan(f'Invalid legacy code response: {error}') from error
+        raise InvalidPlan(f'Invalid code response: {error}') from error
     return [code],response
