@@ -191,8 +191,8 @@ class LMPlannerCodeInterface:
 
 
         kwargs_cache = {}
-        # Do not reuse code cached before model truncation was checked.
-        kwargs_cache['protocol'] = 'lmp-complete-request-v6-no-truncation'
+        # Do not reuse code cached before truncation and code-block checks.
+        kwargs_cache['protocol'] = 'lmp-complete-request-v7-complete-fences'
         kwargs_cache['messages'] = json.loads(json.dumps(self.lmp_planner.episode_messages))
         kwargs_cache['user_prompt'] = task_prompt
         kwargs_cache['model'] = self.lmp_planner.model_name
@@ -1641,13 +1641,14 @@ class LMPlanner():
             # execute the first complete block rather than subsequent prose.
             fenced = re.search(r'```(?:python)?[ \t]*\n(.*?)```', out,
                                flags=re.IGNORECASE | re.DOTALL)
+            incomplete_fence = fenced is None and re.search(r'(?m)^[ \t]*```', out) is not None
             action = json_output = (fenced.group(1) if fenced else out).strip("`\n ")
 
 
             # action, json_output = self.json_to_action_code(out) # Do not parse first
             metadata = getattr(self.model, 'last_response_metadata', None)
             truncated = isinstance(metadata, dict) and metadata.get('finish_reason') == 'length'
-            if truncated or not action.strip():  # Never execute an incomplete program.
+            if truncated or incomplete_fence or not action.strip():  # Reject incomplete programs.
                 output_error_type = FailureType.FORMAT_ERROR
             else:
                 try:
