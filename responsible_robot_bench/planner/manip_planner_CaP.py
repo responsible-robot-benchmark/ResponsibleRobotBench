@@ -109,7 +109,7 @@ class LMPlanner():
         self.system_prompt = system_prompt
         self.examples = examples
         self.n_shot = n_shot
-        self.chat_history = chat_history # whether to include all the chat history for prompting
+        self.chat_history = chat_history
         # Instantiate LLM VLM model, input model name, model type
         self.model = RemoteModel(model_name=model_name, model_type=model_type, language_only=language_only, tp=tp, task_type='manip', traj_type=traj_type)
         self.planner_steps = 0
@@ -434,7 +434,7 @@ class LMPlanner():
                     }
                     ]
 
-        # # History is empty
+        # History is empty
         # Create input message
         # get role
         role = "user"
@@ -444,7 +444,7 @@ class LMPlanner():
             content.append({"type": "text", "text": task_prompt})
         else:
             if self.multi_step_image:
-                # use the last three imags as multi-step images
+
                 pass
             else:
                 #
@@ -683,7 +683,7 @@ class LMPlanner():
                     }
                 ]
 
-                # use the last three imags as multi-step images
+
                 if len(images) >= 3:
                     multi_step_images = images[-3:-1]
                     current_message[0]["content"].append(
@@ -908,7 +908,7 @@ class LMPlanner():
                     }
                 }
             )
-        pass  # Removed an interactive debug checkpoint.
+        pass
         # The requested examples precede the current task.
         # Now add task prompt (current task)
         # add the task prompt
@@ -1236,7 +1236,7 @@ class LMPlanner():
                                                                        available_skills=available_skills,
                                                                        implicit_name_to_real_name=implicit_name_to_real_name)  # If using point, available_skills is None
             # Print when filtering out the prompt content of the image, because it's too long
-            pass  # Removed an interactive debug checkpoint.
+            pass
 
             if 'claude' in self.model_name or 'InternVL' in self.model_name or 'Qwen2-VL-72B-Instruct' in self.model_name:
                 task_prompt += "\n\n"
@@ -1303,7 +1303,7 @@ class LMPlanner():
 
             if len(self.episode_messages) == 0:
                 self.episode_messages = self.get_message_general(obs, full_example_prompt, task_prompt)
-                pass  # Removed an interactive debug checkpoint.
+                pass
             else:
                 if self.chat_history:   # If using historical data
                     self.episode_messages = self.get_message_general(obs, full_example_prompt, task_prompt, self.episode_messages)
@@ -1610,7 +1610,7 @@ class ManipPlanner():
         self.system_prompt = system_prompt
         self.examples = examples
         self.n_shot = n_shot
-        self.chat_history = chat_history # whether to include all the chat history for prompting
+        self.chat_history = chat_history
         # Instantiate LLM VLM model, input model name, model type
         self.model = RemoteModel(model_name, model_type, language_only, tp, 'manip')
         self.planner_steps = 0
@@ -1715,7 +1715,7 @@ class ManipPlanner():
                     }
                 ]
 
-                # use the last three imags as multi-step images
+
                 if len(images) >= 3:
                     multi_step_images = images[-3:-1]
                     current_message[0]["content"].append(

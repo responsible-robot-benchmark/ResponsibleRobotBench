@@ -162,7 +162,7 @@ class RRB_ManipulationEvaluator():
                 # Call Planner Act to predict actions and Reasoning analysis
                 print("rrb_manipulation_evaluator.py : Start: Calling planner.act")
                 # Input the current average coordinates of the object
-                pass  # Removed an interactive debug checkpoint.
+                pass
 
                 # and user's instructions, get Planner's output
                 if self.config['multistep']:
@@ -182,7 +182,7 @@ class RRB_ManipulationEvaluator():
                 # If there is an action, execute it one by one
                 else:
                     for action_single in action[:min(self.env._max_episode_steps - self.env._current_step, len(action))]:
-                        pass  # Removed an interactive debug checkpoint.
+                        pass
                         # Input action, get environment feedback
                         # Action is a 7-dimensional vector, discrete action
 

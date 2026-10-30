@@ -27,7 +27,7 @@ class ManipPlanner():
         self.system_prompt = system_prompt
         self.examples = examples
         self.n_shot = n_shot
-        self.chat_history = chat_history # whether to include all the chat history for prompting
+        self.chat_history = chat_history
         # Instantiate LLM VLM model, input model name, model type
         self.model = RemoteModel(model_name, model_type, language_only, tp, 'manip')
         self.planner_steps = 0
@@ -129,7 +129,7 @@ class ManipPlanner():
                     }
                 ]
 
-                # use the last three imags as multi-step images
+
                 if len(images) >= 3:
                     multi_step_images = images[-3:-1]
                     current_message[0]["content"].append(

@@ -816,7 +816,7 @@ class RRB_ManipulationEvaluator():
                 composer_interface = LMPlannerCodeInterface(composer_planner, "composer", lmps_config["composer"], fixed_vars, variable_vars, False, env_name)
                 variable_vars["composer"] = composer_interface
 
-                # # creating the LMP that deals w/ high-level language commands
+                # creating the LMP that deals w/ high-level language commands
 
 
                 example_prompt_planner = _code_planner_prompt(
@@ -893,7 +893,7 @@ class RRB_ManipulationEvaluator():
                 get_gripper_map_ui.lmp_planner.reset()
 
 
-                # # Check if the task is completed, if completed, exit
+                # Check if the task is completed, if completed, exit
 
 
                 # If the experiment fails, it should be repeated.

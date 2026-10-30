@@ -126,7 +126,7 @@ class RRB_ManipulationEvaluator():
 
             # Reset Virtual Environment: The environment OBS contains the coordinates of objects, as well as object properties, robot information, and camera information.
             _, obs, high_level_description_configs = self.env.reset()
-            pass  # Removed an interactive debug checkpoint.
+            pass
             if self.config['multiview']:
                 # Obtain Multiple Camera Views
                 camera_views = ['front_rgb', 'wrist_rgb']
@@ -175,7 +175,7 @@ class RRB_ManipulationEvaluator():
                 # Call Planner Act to predict actions and Reasoning analysis
                 print("rrb_manipulation_evaluator.py : Start: Calling planner.act")
                 # Input the current average coordinates of the object
-                pass  # Removed an interactive debug checkpoint.
+                pass
 
                 if self.config['traj_type'] == "pre-defined":
                     # load current environment status
@@ -208,7 +208,7 @@ class RRB_ManipulationEvaluator():
                         action, reasoning = self.planner.act_from_pre_defined_skills(image_history, user_instruction, str(avg_obj_coord), self.env.current_task_variation, object_list, available_skills)
                     else:
                         action, reasoning = self.planner.act_from_pre_defined_skills(img_path_list, user_instruction, str(avg_obj_coord), self.env.current_task_variation, object_list, available_skills)
-                pass  # Removed an interactive debug checkpoint.
+                pass
                 # action result represents the midpoint in pixel space
                 print(f"Planner Output Action: {action}")
                 # store this round's Reasoning analysis

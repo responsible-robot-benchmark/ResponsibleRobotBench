@@ -145,10 +145,10 @@ class Scene(object):
                 attempts += 1
                 if attempts >= max_attempts:
                     raise e
-        # # call update_episode to update the task
 
 
-        # Match the original scene initialization: let objects settle only
+
+        # Let objects settle only
         # after the task's own placement and validation have completed.
         [self._pyrep.step() for _ in range(STEPS_BEFORE_EPISODE_START)]
 
@@ -769,7 +769,7 @@ class Scene(object):
     #             'No subtask_waypoints were found.', self._active_task)
 
 
-    # # Iterate over all waypoints
+    # Iterate over all waypoints
 
 
     #                                 and s not in self._robot_shapes and s.is_collidable()
@@ -805,7 +805,7 @@ class Scene(object):
     #                             demo, record, callable_each_step)
 
 
-    # # If not repeated, run here, key point has been reached, stop directly
+    # If not repeated, run here, key point has been reached, stop directly
 
     #             break
 
@@ -813,7 +813,7 @@ class Scene(object):
     #     # (e.g. ball rowling to goal)
 
 
-    # # Check the information of 20 steps
+    # Check the information of 20 steps
 
 
     #             success_task, term = self._active_task.success()
@@ -829,7 +829,7 @@ class Scene(object):
     #         #                 self._active_task)
 
 
-    # # Save high_level_instructions
+    # Save high_level_instructions
 
     #     #
 

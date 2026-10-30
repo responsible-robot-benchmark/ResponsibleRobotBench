@@ -99,7 +99,7 @@ class VLMBenchRunner:
         obs_config.wrist_camera.render_mode = RenderMode.OPENGL
         obs_config.front_camera.render_mode = RenderMode.OPENGL
         
-        # Create environment (uses end-effector pose control mode with path planning, consistent with original code)
+        # Create the environment with end-effector pose control and path planning.
         self.env = Environment(
             action_mode=ActionMode(arm=ArmActionMode.ABS_EE_POSE_PLAN_WORLD_FRAME),
             obs_config=obs_config,
@@ -421,7 +421,7 @@ class VLMBenchRunner:
         self._last_action_trace = action_trace
         self._last_terminated_early = skipped_out_workspace
         self._last_terminated_early_by_reason = skipped_out_workspace_by_reason
-        # Retain the old reporting fields: no attempted episode is excluded now.
+        # Compatibility counters remain zero because all attempted episodes are reported.
         self._last_skipped_out_workspace = 0
         self._last_skipped_out_workspace_by_reason = {}
 

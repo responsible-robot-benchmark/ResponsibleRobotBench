@@ -102,7 +102,7 @@ class Water2Plants(Task):
         return self.build_instruction()
 
     def variation_count(self) -> int:
-        return NUM_VAR_STRIP #ORIGINAL 1.
+        return NUM_VAR_STRIP
 
     def step(self) -> None:
 

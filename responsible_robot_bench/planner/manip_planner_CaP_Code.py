@@ -297,8 +297,8 @@ def exec_safe(code_str, gvars=None, lvars=None):
            for node in ast.walk(tree)):
         return FailureType.UNVALID_SKILL_OR_FUNCTION
 
-    # The original commented out the remainder of an import line. Do not
-    # accidentally execute additional semicolon-separated statements there.
+    # Ignore generated imports without executing extra
+    # semicolon-separated statements on the same line.
     statements = [node for node in ast.walk(tree) if isinstance(node, ast.stmt)]
     imports = [node for node in statements if isinstance(node, (ast.Import, ast.ImportFrom))]
     if any(other is not imp and other.lineno == imp.end_lineno
@@ -306,7 +306,7 @@ def exec_safe(code_str, gvars=None, lvars=None):
            for imp in imports for other in statements):
         return FailureType.UNVALID_SKILL_OR_FUNCTION
 
-    # The selected original executor ignored generated imports: APIs are
+    # Generated imports are ignored: APIs are
     # supplied by the LMP environment, not imported by generated programs.
     # Replace statements with pass so nested suites remain valid; never execute
     # imports or bind names that are absent from the supplied environment.
@@ -364,7 +364,7 @@ class LMPlanner():
         self.examples = examples
         self.example_context = example_context    # example have to be included
         self.n_shot = n_shot
-        self.chat_history = chat_history # whether to include all the chat history for prompting
+        self.chat_history = chat_history
         # Instantiate LLM VLM model, input model name, model type
         self.model = RemoteModel(model_name=model_name, model_type=model_type, language_only=language_only, tp=tp, task_type='manip', traj_type=traj_type)
         # Retain the real LMP module identity in request records so visual
@@ -714,7 +714,7 @@ class LMPlanner():
                     }
                     ]
 
-        # # History is empty
+        # History is empty
         # Create input message
         # get role
         role = "user"
@@ -724,7 +724,7 @@ class LMPlanner():
             content.append({"type": "text", "text": task_prompt})
         else:
             if self.multi_step_image:
-                # use the last three imags as multi-step images
+
                 pass
             else:
                 #
@@ -967,7 +967,7 @@ class LMPlanner():
                     }
                 ]
 
-                # use the last three imags as multi-step images
+
                 if len(images) >= 3:
                     multi_step_images = images[-3:-1]
                     current_message[0]["content"].append(
@@ -1459,7 +1459,7 @@ class LMPlanner():
                 full_example_prompt, task_prompt)
             # Print when filtering out the prompt content of the image, because it's too long
 
-            pass  # Removed an interactive debug checkpoint.
+            pass
 
             if 'claude' in self.model_name or 'InternVL' in self.model_name or 'Qwen2-VL-72B-Instruct' in self.model_name:
                 task_prompt += "\n\n"
@@ -1480,7 +1480,7 @@ class LMPlanner():
 
         else:   # If only using language information or VLM without visual ICL
 
-            # # Visualize image
+            # Visualize image
 
 
             if self.text_prompt_with_semantic == 1 or self.text_prompt_with_semantic == True:

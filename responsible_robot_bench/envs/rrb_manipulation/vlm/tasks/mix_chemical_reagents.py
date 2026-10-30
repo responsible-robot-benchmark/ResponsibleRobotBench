@@ -137,8 +137,8 @@ class MixChemicalReagents(Task):
         for point, position in zip(points, poses):
             point.set_position(position.tolist())
             point.set_quaternion(down.as_quat().tolist())
-        # Tilt just past horizontal. The original deeper rotation puts the
-        # gripper below the opening, where it intercepts the falling drops.
+        # Tilt just past horizontal, keeping the gripper above the opening
+        # and clear of the falling drops.
         pour = Rotation.from_euler('x', 100, degrees=True) * down
         points[4].set_quaternion(pour.as_quat().tolist())
 

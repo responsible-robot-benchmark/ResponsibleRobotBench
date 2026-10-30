@@ -57,16 +57,16 @@ class RRBManEnv(gym.Env):
         obs_config.set_all(True)
         obs_config.set_image_size(img_size)
 
-        # Test default action mode: joint control (same as RLBENCH)
 
 
-        # Original paper code (different from RLBENCH): plan using absolute EE position, no collision detection
+
+        # Plan absolute end-effector poses without collision checking.
         action_mode = ActionMode(ArmActionMode.ABS_EE_POSE_PLAN_WORLD_FRAME)      # Plan using absolute EE position, sometimes the arm cannot reach
 
 
-        # # If collision detection is focused, use EE's absolute position planning
 
-        # # If collision checking cannot push objects
+
+
 
 
         # Instantiate environment: Input action mode, observation parameters
@@ -583,7 +583,7 @@ class RRBManEnv(gym.Env):
 
 
 
-            # # Execute actions using Self Task and get feedback
+            # Execute actions using Self Task and get feedback
 
             # obs, reward_waypoint, reward_task, reward_safety, terminate, motion_plan_ret_error_code = self.task.step(action)
             

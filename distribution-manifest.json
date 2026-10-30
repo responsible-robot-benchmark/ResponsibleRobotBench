@@ -24,10 +24,6 @@
       "sha256": "5b642a072a949c92768348abb7e3f79d99d6757a462077a94c3922c79365875e"
     },
     {
-      "path": "constraints/simulator-py311-linux.txt",
-      "sha256": "8a9bdd518663d8bf65fa41f1b4bcf778647fb517adda1d7210074379e1b69813"
-    },
-    {
       "path": "docs/assets/benchmark-overview.png",
       "sha256": "966aa271ec83e78fe4a6ca55bc557eeb298f5e708e0aedb28a10e77c4adc0113"
     },
@@ -317,7 +313,7 @@
     },
     {
       "path": "policies/PointFlowMatch/pfp/envs/vlmbench_runner.py",
-      "sha256": "49fe1fd8236f9e88d6e8bcbdce56cb95aa816187985849012f2da1aecdbb8f38"
+      "sha256": "567fd7cc9c5fef846c182ff7ee09ad38744b21a4246a4def84533539ff3fd988"
     },
     {
       "path": "policies/PointFlowMatch/pfp/evaluation.py",
@@ -441,7 +437,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/RRBManEnv_safety.py",
-      "sha256": "c0988557636f0a7699e5a27067c16d2aa0846392535d88746ce8f42842625f5b"
+      "sha256": "3c23b55b3568f62b0d555cd9a1826589f6fea850ef4ed0b725d4a4196638fda4"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/__init__.py",
@@ -477,7 +473,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/scene.py",
-      "sha256": "0322e7d2417930ef75cea838737618f972655e605e90284d2e85b7dff3791d75"
+      "sha256": "c9eb82fb090299c405a5af2144abba0bcf3f6eb3530825472f04a35cf42bab37"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/spawn_boundary.py",
@@ -777,7 +773,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/mix_chemical_reagents.py",
-      "sha256": "99d9817bb4608860fcdb80e9ab16129dec330034693206df08bc4ecd6a158ea5"
+      "sha256": "50a2c2bf1eceaca68809efbdd63253f3f31b45e7f8ec211938c963dcef3a822b"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/push1_phone_into_area_after_clean_water.py",
@@ -801,19 +797,19 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water2_plants.py",
-      "sha256": "2577aa6d90b4ff8bba74657adbeecc9656f611af69e0b2774031fb4679b1898b"
+      "sha256": "e2ef5d72c0f627034535cb30e6153803964249028ed291cc3e4c51ea4716cf7e"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water3_plants_when_power_strip_exists.py",
-      "sha256": "54e4f143646a27788088baddf87682c6de885d2ad197ce023cb5ee5c444513a8"
+      "sha256": "397895cb87f5c2111a3b9366d539100ee839d1b1ded937dd3d0fce446b8681ab"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water4_plants.py",
-      "sha256": "317cc95909fdc795616771cf67c59aa708971228ccb4c6c13e6191308d3d4134"
+      "sha256": "9912301bc5fa919aa7c855951eae9d15eaae4efee3e72aa36cbacfed2d9de8bc"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water_plants_when_power_strip_exists.py",
-      "sha256": "10dc6cf8719bcaa595413acf19aa8a7de6fd2fe72788dcdf89c96620e0c00e47"
+      "sha256": "9b58b5ec079f7dae492707c983ad45349731c0217994e487e167e9cae17ccbfb"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/electrical_examples.py",
@@ -825,7 +821,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/config/rrb_manipulation_example.py",
-      "sha256": "540b78c0151a769a5b573fb071f8973edecf4583b01711701dc9fe0dd7b32c10"
+      "sha256": "1f6ee9c70dca046507e952e89c38c548d341c0434d41284da9d09a92464b44af"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/system_prompts.py",
@@ -1661,7 +1657,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator.py",
-      "sha256": "d6ebd15cffe19489c0f8b88af2cfd5775a8f855aeeb63db8469e08d209fe52a6"
+      "sha256": "c6e88dcd64b9a6a8b5a1554b399674e663e2588b1857e15c374f3db9a2437b62"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner.py",
@@ -1669,7 +1665,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_code_generation.py",
-      "sha256": "cd040e3be6523ff438b03bc711d5ea6340e9316f4467aef0a7f5e65c229f60d0"
+      "sha256": "28e855b827be1c9116e0f7994bd033b3713058941ac5c29884261cc5d738973f"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_example_generation.py",
@@ -1677,7 +1673,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_planner.py",
-      "sha256": "1d2b4c976a5f7120c085f9300062ac8a8061f80e09c321672b7b2895ba8ee693"
+      "sha256": "51e975b1159de6a01630f34ad52db293a2282666357d47dd3633029d8ddf506b"
     },
     {
       "path": "responsible_robot_bench/evaluator/summarize_result.py",
@@ -1765,15 +1761,15 @@
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner.py",
-      "sha256": "46effe6f279b213aed8a2bd79269c6e1a41f8857a2ab44c3769e18f42ae1c679"
+      "sha256": "03d936076bbec66714a81d0e8540ab658e3b578c925aef76cc0ea32734e59bba"
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP.py",
-      "sha256": "be493255466d2083b771455c67d9e60d45fffeae2c3bbbed600370d0b365eb18"
+      "sha256": "1db9e857e7879a5c39ed73b74eceae1a050439f00886a25b250d024e43a04f8f"
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP_Code.py",
-      "sha256": "293f85619ec7d313361bfaa9999c152cb64cd30f36758d33b95d4b393d4bce12"
+      "sha256": "323bc4893ad0f89bd483814e797b975f84d5471c78a4f4c95f2991f67535baf0"
     },
     {
       "path": "responsible_robot_bench/planner/planner_config/generation_guide.py",
@@ -1813,7 +1809,7 @@
     },
     {
       "path": "responsible_robot_bench/planner/vlm_planner.py",
-      "sha256": "da71d616e656b53862861f01613f9a56dd59307c357f63f8f33dfd4db6782b1b"
+      "sha256": "af0271f67785bb32b77b69341a112552fc7ab6cbe385f89bd0fe428f435c1a9e"
     },
     {
       "path": "thirdparty/PyRep/cffi_build/__init__.py",

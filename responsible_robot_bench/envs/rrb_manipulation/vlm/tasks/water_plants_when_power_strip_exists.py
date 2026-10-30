@@ -142,7 +142,7 @@ class WaterPlantsWhenPowerStripExists(Task):
         return self.build_instruction()
 
     def variation_count(self) -> int:
-        return NUM_VAR_STRIP #ORIGINAL 1.
+        return NUM_VAR_STRIP
 
     def step(self) -> None:
 
@@ -182,7 +182,7 @@ class WaterPlantsWhenPowerStripExists(Task):
                     drop.set_position(pos,
                                       relative_to=self.head)
                     self.drops.append(drop)
-                # # Identify if watering was successful
+                # Identify if watering was successful
 
                 #     [DetectedCondition(self.drops[i], self.success_water) for i
                 #      in range(WATER_NUM)])

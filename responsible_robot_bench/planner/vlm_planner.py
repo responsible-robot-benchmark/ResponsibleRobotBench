@@ -18,7 +18,7 @@ class VLMPlanner():
         self.system_prompt = system_prompt
         self.examples = examples
         self.n_shot = n_shot
-        self.chat_history = chat_history # whether to includ all the chat history for prompting
+        self.chat_history = chat_history
         self.set_actions(actions)
         self.model_type = model_type
         self.model = RemoteModel(model_name, model_type, language_only, tp=tp)
