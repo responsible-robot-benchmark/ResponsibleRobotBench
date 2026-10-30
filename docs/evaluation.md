@@ -95,6 +95,35 @@ and so on, in the same order as the configured examples. Skill, Pose, and Code u
 position. Keep the image, object numbering, and each mode's example text
 consistent.
 
+Copy the first ten collected front-view images into this fixed configuration
+directory with the existing example script:
+
+```bash
+source tools/sim_env.sh
+.venv/bin/python -m \
+  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_example_generation \
+  --copy_example_images --data_root runs/water4-examples \
+  --eval_sets water4 --n_shots 10
+```
+
+This copies `front_rgb_annotated/0.png` from source `episode0` through
+`episode9` to positions 1 through 10 under the task's full name. It replaces
+images already at those positions and preserves the source recordings, image
+bytes, resolution, boxes, and object numbers. No model request or simulator
+episode runs in this mode. No reference answer is generated or changed.
+
+To choose a different scene order, provide `--selected_indexes 3,1,7,0,9`
+with `--n_shots 5`; these images become positions 1 through 5 in that order.
+Use comma-separated short task IDs in `--eval_sets` to prepare several tasks
+with the same selection. All requested images are checked before copying.
+
+Keep the corresponding texts in `rrb_manipulation_example.py` in that same
+order. Copying an image does not establish that an existing answer describes
+its scene. CONFIG-11 reads five image/text examples. CONFIG-4 requires ten
+**text** examples and does not consume these images; a pool of ten images does
+not change any CONFIG's shot count. Collect evaluation scenes independently
+and leave the complete example recordings in their original data directory.
+
 Register a new task and its example-selection relationships before adding it to
 `examples_database`; see the [task guide](extending.md#add-a-task).
 

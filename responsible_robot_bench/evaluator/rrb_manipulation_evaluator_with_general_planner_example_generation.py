@@ -262,6 +262,8 @@ class RRB_ManipulationEvaluator(NativeEvaluator):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate task examples from reference scenes.')
+    parser.add_argument('--copy_example_images', action='store_true',
+                        help='Copy selected collected images to the fixed visual ICL directory; no model or simulation is run.')
     parser.add_argument('--model_name', default='gpt-4o-mini')
     parser.add_argument('--model_type', default='remote')
     parser.add_argument('--eval_sets', default='debug', type=lambda value: value.split(','))
@@ -281,6 +283,20 @@ def main():
     parser.add_argument('--output_dir')
     parser.add_argument('--max_episode_steps', type=int, default=15)
     args = parser.parse_args()
+    if args.copy_example_images:
+        if not args.data_root:
+            parser.error('--copy_example_images requires --data_root')
+        if args.n_shots < 1:
+            parser.error('--copy_example_images requires a positive --n_shots')
+        indexes = args.selected_indexes or list(range(args.n_shots))
+        if len(indexes) != args.n_shots:
+            parser.error('Provide exactly --n_shots episode indexes in the reference-text order')
+        from responsible_robot_bench.data.example_images import copy_example_images
+        copies = copy_example_images(args.data_root, args.eval_sets, indexes)
+        for source, destination in copies:
+            print(f'{source} -> {destination}')
+        print(f'Copied {len(copies)} images; source episodes and reference texts were preserved.')
+        return 0
     config = vars(args)
     config['bbox_source'] = 'yolo'
     evaluator = RRB_ManipulationEvaluator(config)

@@ -21,7 +21,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e1ab288587603bcb967344bcca1c98e7c52044356abcd8d41698d27b469869c8"
+      "sha256": "dfd9cba7a35d84bc53ab9a24e8611b073927dd36906dfd4658fe7da152089dad"
     },
     {
       "path": "conda_envs/environment_eb-man.yaml",
@@ -69,7 +69,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "406bbddd066aee1f3479aec52ca34236ceff79bd69ea73866d291b51b2e4b31f"
+      "sha256": "d33998564e81566a000a5d4bd45b43a6712687d33518882bb9d95ceeafcb963c"
     },
     {
       "path": "docs/extending.md",
@@ -418,6 +418,10 @@
     {
       "path": "responsible_robot_bench/data/collection.py",
       "sha256": "a3efd358bd34a7ebaf4def29a6046c1c1d762a8db8a7c6f28621718050e94eba"
+    },
+    {
+      "path": "responsible_robot_bench/data/example_images.py",
+      "sha256": "7ed08e507ada9ca34d2a024f0ea55985a49600d10dbf75ee57e0feef76c1b905"
     },
     {
       "path": "responsible_robot_bench/diagnostics/__init__.py",
@@ -1653,7 +1657,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_example_generation.py",
-      "sha256": "1cc56539ddea596270d74326ae0e3e45767cc8d8e596761f1eaefdd993d3d709"
+      "sha256": "9bd509418bebd4e2905a7908ab442afe3a931fa6c1cf254479b4ad7c5cfb421a"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_planner.py",

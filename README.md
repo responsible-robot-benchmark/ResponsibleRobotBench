@@ -88,6 +88,22 @@ Use the collected images as visual examples and keep their matching task text
 in the configuration described below. Check that the image labels and text
 refer to the same objects before selecting them for visual ICL.
 
+Copy the selected images into the fixed configuration folder with the existing
+example script:
+
+```bash
+source tools/sim_env.sh
+.venv/bin/python -m \
+  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_example_generation \
+  --copy_example_images --data_root runs/water4-examples \
+  --eval_sets water4 --n_shots 10
+```
+
+This replaces image positions 1–10 using collected episodes 0–9, preserving the
+source data and image resolution. It makes no model calls and does not modify
+reference answers. See the [example guide](docs/evaluation.md#prepare-recorded-examples)
+for selecting other episode indexes and matching their text order.
+
 Write or edit task examples in
 [`rrb_manipulation_example.py`](responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
 The evaluator selects same-task or cross-task examples using its four
