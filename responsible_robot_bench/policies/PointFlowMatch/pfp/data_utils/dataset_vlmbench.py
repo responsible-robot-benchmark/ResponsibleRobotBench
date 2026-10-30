@@ -15,7 +15,7 @@ from pfp.data_utils.sample_index import (
     episode_end_samples, prediction_location, sample_frame_indices,
 )
 
-_project_root = Path(__file__).resolve().parents[4]
+_project_root = Path(__file__).resolve().parents[5]
 _rrb_manipulation = _project_root / 'responsible_robot_bench/envs/rrb_manipulation'
 for _path in [str(_project_root), str(_rrb_manipulation)]:
     if _path not in sys.path:

@@ -27,11 +27,13 @@ class PlannerConfig:
 
 
 CONFIGS = {c.id: c for c in [
-    PlannerConfig(0), PlannerConfig(1, examples=5),
+    PlannerConfig(0),
+    PlannerConfig(1, examples=5),
     PlannerConfig(2, examples=5, safety_knowledge=True),
     PlannerConfig(3, examples=5, safety_knowledge=True, dialogue_history=True),
     PlannerConfig(4, examples=10, safety_knowledge=True),
-    PlannerConfig(5, rgb=True), PlannerConfig(6, rgb=True, examples=5),
+    PlannerConfig(5, rgb=True),
+    PlannerConfig(6, rgb=True, examples=5),
     PlannerConfig(7, rgb=True, examples=5, safety_knowledge=True, dialogue_history=True),
     PlannerConfig(8, rgb=True, examples=5, safety_knowledge=True, multiview=True),
     PlannerConfig(9, rgb=True, examples=5, safety_knowledge=True, boxes=True),

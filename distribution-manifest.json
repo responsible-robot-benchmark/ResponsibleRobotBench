@@ -21,7 +21,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "5b642a072a949c92768348abb7e3f79d99d6757a462077a94c3922c79365875e"
+      "sha256": "ac8b73d4c86ad7b03b3522ef00aea9c933430e42816a709999434b65a4c91650"
     },
     {
       "path": "docs/assets/benchmark-overview.png",
@@ -61,7 +61,7 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "d78d1a242fd407de06b253c960a94c1d185b32cc84d1abf31f02a7ce21296559"
+      "sha256": "fedba2b74940e850169bada56229acf8d7b90e07100e359cd09ad3962701d98a"
     },
     {
       "path": "docs/extending.md",
@@ -73,7 +73,7 @@
     },
     {
       "path": "docs/policy.md",
-      "sha256": "49ce1059bc5a0aa0fa9f032ef59afa30028af1510c7bae0a4408af80e9724606"
+      "sha256": "9e79594f115f3c47419d86dc2602702cf83c38eb76a347f5ce0088c851a810d8"
     },
     {
       "path": "licenses/CLIP-LICENSE",
@@ -96,272 +96,8 @@
       "sha256": "71ddd29ecd5fb7bf014f2f5a0b5eea28384840ac3ba517b773d96b3dceca1721"
     },
     {
-      "path": "policies/PointFlowMatch/LICENSE",
-      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
-    },
-    {
-      "path": "policies/PointFlowMatch/README.md",
-      "sha256": "e50d36cc728b419dd10ceccd42b4c4a236327e8fb255fb5b971f455a612b9855"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/backbone/clip_resnet.yaml",
-      "sha256": "69b203559b9922781fd3636eda7afe60acba948c74c97894d7e1532ecc09636c"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/backbone/clip_vit.yaml",
-      "sha256": "c73b0e6fb1e9f65677d7138ec087abc0853f5117489bf42bd6255023fe8ad117"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/backbone/resnet.yaml",
-      "sha256": "1ff2b9fe4bfde3fe5ec2ae2ec4dcbc1bbda3ba55c5cda5f75cfd4487fd1f4d9d"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/backbone/resnet_dp.yaml",
-      "sha256": "c7da3e55c636cb60a449cc47c07ab1a4d3f3caf6fcdd53b35e2c3512326872cb"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/eval.yaml",
-      "sha256": "fae84f65c650ce232f2a4969ae043a8717c28cc18152f6f84977663953711f9b"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_ddim.yaml",
-      "sha256": "dee8d8ecc096bd9296923a17e811afa6b4c067f1283441fc6c6759de5f507925"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_dit.yaml",
-      "sha256": "ec521dedab58c9cb66886b3f24a144ce69147294b7a00cf68738800e22a17063"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_resnet_flow.yaml",
-      "sha256": "1ba4fd4b9408fb87b66c73367081823035e1ca50f095ec0aaae38819422a9973"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_ddim.yaml",
-      "sha256": "504863a50724d6930a389a735529b2fd14830f5302b8e2401e4835b70d8c72ec"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_dit.yaml",
-      "sha256": "3ab99129496ac439ed70729f67cf0069389e48aacc05ab37f18edcf7b282339e"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/clip_vit_flow.yaml",
-      "sha256": "63952f7102e196775e234881e0004cbc178aec6a4fbf6afa103c188589a78c2a"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/diffusion_policy.yaml",
-      "sha256": "eb3116078d84158d218fb7fe600bcf22186c5d575f9eb8e8d0c19e6a7a2aa162"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch.yaml",
-      "sha256": "4361298a41230e7879b96cd0d467bc065e634df0df07bfb98fe9142253b59c10"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_ddim.yaml",
-      "sha256": "79471a63f31d2f911d75a42822ffe74ec4f86a77ee508192534b02469695a472"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_images.yaml",
-      "sha256": "f38ff21d03fe17cf8590f0e12e1b3b729620201b757b65854c781bd13aba3720"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/pointflowmatch_real.yaml",
-      "sha256": "f310779fbb144f309340844f7851e7bade98f3c51aadada24c0dadbdd1554e8d"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/vlmbench_base.yaml",
-      "sha256": "b76eb2c2590b1c1f7b30b34b0a91439b10b2ff62de5b99eac5cc65e7a978b68a"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/experiment/water2_config.yaml",
-      "sha256": "6ce275e92e5e23c3f5ed3a1bce766d640b3a64070826385ee901a09bc6edb3cf"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/model/ddim.yaml",
-      "sha256": "1a11945a9389a0d86620619c91bbc0c3af44761c0d770e1cda6f8841e3f41816"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/model/dit.yaml",
-      "sha256": "f84973b12252028420caa202d2aa64f789048ce71971a6958fb4c818936bbba1"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/model/flow.yaml",
-      "sha256": "01db7529b5ca08a662673ab0a11591b183306a9f855a407790e41447a9accdea"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/train.yaml",
-      "sha256": "2180507e6bacbd3a33de08daae30c38b3832a6065ae98ba90d7dd546cd2870a2"
-    },
-    {
-      "path": "policies/PointFlowMatch/conf/trainer_eval.yaml",
-      "sha256": "35a3ddeed323316997d903af2e80afee30a27e91f430249d7458c24561f8d367"
-    },
-    {
-      "path": "policies/PointFlowMatch/patches/diffusion-policy-packaging.patch",
-      "sha256": "1b8a31ebde70ec0c0f47944b32bfc2dbc8a980bf6a50d6f344518e0b45c6638a"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/__init__.py",
-      "sha256": "94154232bd03dbb7fc8780fac2619c1fbef3cbda1373da31a6e703d125fa1fff"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/common/cross_attention.py",
-      "sha256": "7eac37678238d330dcf096eb63efeaca7fbb877531f761d14f32993a8733ebb2"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/common/film.py",
-      "sha256": "f0d079b5345d004962e59a19a238c8ef03acb1a79622fa0c69adabaf6dad7de9"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/language/bpe_simple_vocab_16e6.txt.gz",
-      "sha256": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/language/clip.py",
-      "sha256": "d621cd4b59e50529e484d6db0fd263953395eec2386206a4e22163cd9736b7f4"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/language/clip_resnet.py",
-      "sha256": "ece5e4d839cb4cda7c493188d469f5de0c3a8f817e84a6c0a2b4da47fb2d9266"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/language/clip_vit.py",
-      "sha256": "de3dfeb3fa2f7c1210d00ad553c8175e5885d301e677b8e69a70a6007092d2eb"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/language/simple_tokenizer.py",
-      "sha256": "e0f5830b4c969099e64212f8058746559ccd14b9df9b3ceaa3993c5bb4c554ff"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/resnet_dp.py",
-      "sha256": "b1a2e631650329beb57eacc0dea74de4b523694d9d7751bace336e9b17ea88cd"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/vision/resnet.py",
-      "sha256": "6f11ddf386e08dbb9dfffe563b8ae4c0084e7430c7abeee971aaa2b04566984a"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/backbones/vision/vit.py",
-      "sha256": "f080a88ff31ced2bfc83c442f8408ae5a33d8b7d2566ead63f35429c2fe67bf4"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/checkpoints.py",
-      "sha256": "683292da30611ace0671c5dab7e71c46edc1638437edabd3f97ec2e4cd1e6ca5"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/common/fm_utils.py",
-      "sha256": "32180ab167d03b01dbe92a93382baf606c03fbeedee6e9d4b217b85e8571b369"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/common/o3d_utils.py",
-      "sha256": "ab53be70ea7250d33cab3c3c15c6640aeb2f21596a12baed4712f131ac8b5b53"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/common/se3_utils.py",
-      "sha256": "bd0c0da6d15ab446200c38969805dec7629303344f9c12cfeeb64ae2e6797aac"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/common/visualization.py",
-      "sha256": "07db262e4f739069946ec322fbe7625c065fa39f27bc231c0b512ea5ac4c6c9a"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/conversion.py",
-      "sha256": "0ed8c6faa2083fc3e080afc19883da0d181ef8a02cedd2a08d0222bd6e97c218"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_images.py",
-      "sha256": "2b49a1df47e9296d39a0dcb67fde86e9e1381634cb9fccb40c6eb449b8edb857"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_pcd.py",
-      "sha256": "28137a54216ab20f2ff431d8c1301d0bbc96f9e44815025b6720de12df9c887f"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/dataset_vlmbench.py",
-      "sha256": "2709f73a724a447385a3f6ef2263c1b2beb413e98d2ff283dd433a659223b6b8"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/multitask_dataset.py",
-      "sha256": "d540a9e44bdbd3408b4771bc3957328232e62c9679ce2deb0a8fdb09fcee30ba"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/replay_buffer.py",
-      "sha256": "c0f6f239f9fdc8c229b019c003095f6e8777e1013c79aa72923ff06708a8eb16"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/replay_buffer_vlmbench.py",
-      "sha256": "6815337ec6ea77100b48804c8a2f6284baab59ed75687f01336bff5af3235bb0"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/sample_index.py",
-      "sha256": "792c64080958a10c352738f6d26ed4764a42a07a8fdc5cbdf378e3a92dd8678b"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/data_utils/visualize_dataset.py",
-      "sha256": "406a9544a8ca7c393517032a9074599a9bd5ef5706d49294132c6cadcf8bcd6a"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/envs/base_env.py",
-      "sha256": "0b6b7e6c4d5bbb6ed5370d6f7c7efe770b93a43c0a5f47f2c558fb3c3bb54883"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/envs/rlbench_env.py",
-      "sha256": "6c99febedbaa856aa9e79799da1b9babd199015266c4b62b14b4a7f292fcc82f"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/envs/rlbench_runner.py",
-      "sha256": "62b655bb93ad2c78614eff9562f7848f77d196da532ae338c644eb90217b24cc"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/envs/vlmbench_runner.py",
-      "sha256": "567fd7cc9c5fef846c182ff7ee09ad38744b21a4246a4def84533539ff3fd988"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/evaluation.py",
-      "sha256": "7f3a87077d8511fa55b43f1f15f097ffa62ef18a2126a76e536f58e3e13ceab2"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/policy/base_policy.py",
-      "sha256": "3822c808ffa46b76a12a89edf758193061e7b5a2f28956f82237eb451f65b621"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/policy/ddim_policy.py",
-      "sha256": "db2f19de2ef87a52815698f7fdf6a146adbd841e4afdbb220847178b6d1a8065"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/policy/dit_policy.py",
-      "sha256": "903b7feb730baa5d157bae64fae82a5cf7ba72577220ef059636b8dbf3c32558"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/policy/fm_policy.py",
-      "sha256": "4547473232291d099adde7a1410d6da62cd6c14e59598af129a95ed7258f60c8"
-    },
-    {
-      "path": "policies/PointFlowMatch/pfp/training.py",
-      "sha256": "e4be443b9c41b93368a6188f899b7bc2e127704d4892d50bc01d54d69e449609"
-    },
-    {
-      "path": "policies/PointFlowMatch/pyproject.toml",
-      "sha256": "ea3b48552e24483ce9d44867f345eb30800def1f04a058a01b9579ebc83d4b1b"
-    },
-    {
-      "path": "policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py",
-      "sha256": "44a46e6bb38626e642a76fb98f9ce89833a1a5cf5854a3e27331c25b0337e45e"
-    },
-    {
-      "path": "policies/PointFlowMatch/scripts/eval_vlmbench.py",
-      "sha256": "2aa9022c213fbca4be3fd64438027e7c19963834b34ae7beb719fcb9dc94e3bb"
-    },
-    {
-      "path": "policies/PointFlowMatch/scripts/train.py",
-      "sha256": "a32414d0f4ff40b5bc4854b583f30ee2e0906e614996f84352d006442abf7c96"
-    },
-    {
-      "path": "policies/PointFlowMatch/scripts/train_vlm.py",
-      "sha256": "9055d967a9f43fd03d29e9676e1dd436064911c529f5fe045b7956053b197c83"
-    },
-    {
       "path": "pyproject.toml",
-      "sha256": "c1c1bfd0e4eb4beb54e2454c5ae64db889079eb2e3dd5559fbc9840ecf834a8c"
+      "sha256": "5ecef7e274adcd53d2f757ea76d936a519969ab83a62fe7ffcaac7b36162f413"
     },
     {
       "path": "requirements.txt",
@@ -377,7 +113,7 @@
     },
     {
       "path": "responsible_robot_bench/configs/planner.py",
-      "sha256": "32df9ab5be7524f9ea0cd5a8ed206cb400146279cf27e156a98445d1169bca85"
+      "sha256": "38e86ae11498f47cd7dbbfebb21e7389a2c7d318554aae778b004c1e0e08fb31"
     },
     {
       "path": "responsible_robot_bench/configs/rrb-man-utils-benchmark.yaml",
@@ -810,14 +546,6 @@
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/water_plants_when_power_strip_exists.py",
       "sha256": "9b58b5ec079f7dae492707c983ad45349731c0217994e487e167e9cae17ccbfb"
-    },
-    {
-      "path": "responsible_robot_bench/evaluator/config/electrical_examples.py",
-      "sha256": "2c1cc5e8feaaec87f150130a1b3d7bc9ba57e131b44a0bab294e3a43313e6879"
-    },
-    {
-      "path": "responsible_robot_bench/evaluator/config/prompt_examples.txt",
-      "sha256": "e2515853cc00323f184ee0429b5b2d2189d56b2761d129e2e25f30dffcdafc17"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/rrb_manipulation_example.py",
@@ -1810,6 +1538,270 @@
     {
       "path": "responsible_robot_bench/planner/vlm_planner.py",
       "sha256": "af0271f67785bb32b77b69341a112552fc7ab6cbe385f89bd0fe428f435c1a9e"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/README.md",
+      "sha256": "2cdce785ecfad9c80432d103a8f553bcbfde032409a25784d3b2807456791906"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/backbone/clip_resnet.yaml",
+      "sha256": "69b203559b9922781fd3636eda7afe60acba948c74c97894d7e1532ecc09636c"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/backbone/clip_vit.yaml",
+      "sha256": "c73b0e6fb1e9f65677d7138ec087abc0853f5117489bf42bd6255023fe8ad117"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/backbone/resnet.yaml",
+      "sha256": "1ff2b9fe4bfde3fe5ec2ae2ec4dcbc1bbda3ba55c5cda5f75cfd4487fd1f4d9d"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/backbone/resnet_dp.yaml",
+      "sha256": "c7da3e55c636cb60a449cc47c07ab1a4d3f3caf6fcdd53b35e2c3512326872cb"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/eval.yaml",
+      "sha256": "fae84f65c650ce232f2a4969ae043a8717c28cc18152f6f84977663953711f9b"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_resnet_ddim.yaml",
+      "sha256": "dee8d8ecc096bd9296923a17e811afa6b4c067f1283441fc6c6759de5f507925"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_resnet_dit.yaml",
+      "sha256": "ec521dedab58c9cb66886b3f24a144ce69147294b7a00cf68738800e22a17063"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_resnet_flow.yaml",
+      "sha256": "1ba4fd4b9408fb87b66c73367081823035e1ca50f095ec0aaae38819422a9973"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_vit_ddim.yaml",
+      "sha256": "504863a50724d6930a389a735529b2fd14830f5302b8e2401e4835b70d8c72ec"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_vit_dit.yaml",
+      "sha256": "3ab99129496ac439ed70729f67cf0069389e48aacc05ab37f18edcf7b282339e"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/clip_vit_flow.yaml",
+      "sha256": "63952f7102e196775e234881e0004cbc178aec6a4fbf6afa103c188589a78c2a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/diffusion_policy.yaml",
+      "sha256": "eb3116078d84158d218fb7fe600bcf22186c5d575f9eb8e8d0c19e6a7a2aa162"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/pointflowmatch.yaml",
+      "sha256": "4361298a41230e7879b96cd0d467bc065e634df0df07bfb98fe9142253b59c10"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/pointflowmatch_ddim.yaml",
+      "sha256": "79471a63f31d2f911d75a42822ffe74ec4f86a77ee508192534b02469695a472"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/pointflowmatch_images.yaml",
+      "sha256": "f38ff21d03fe17cf8590f0e12e1b3b729620201b757b65854c781bd13aba3720"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/pointflowmatch_real.yaml",
+      "sha256": "f310779fbb144f309340844f7851e7bade98f3c51aadada24c0dadbdd1554e8d"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/vlmbench_base.yaml",
+      "sha256": "b76eb2c2590b1c1f7b30b34b0a91439b10b2ff62de5b99eac5cc65e7a978b68a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/experiment/water2_config.yaml",
+      "sha256": "6ce275e92e5e23c3f5ed3a1bce766d640b3a64070826385ee901a09bc6edb3cf"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/model/ddim.yaml",
+      "sha256": "1a11945a9389a0d86620619c91bbc0c3af44761c0d770e1cda6f8841e3f41816"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/model/dit.yaml",
+      "sha256": "f84973b12252028420caa202d2aa64f789048ce71971a6958fb4c818936bbba1"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/model/flow.yaml",
+      "sha256": "01db7529b5ca08a662673ab0a11591b183306a9f855a407790e41447a9accdea"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/train.yaml",
+      "sha256": "2180507e6bacbd3a33de08daae30c38b3832a6065ae98ba90d7dd546cd2870a2"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/conf/trainer_eval.yaml",
+      "sha256": "35a3ddeed323316997d903af2e80afee30a27e91f430249d7458c24561f8d367"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch",
+      "sha256": "1b8a31ebde70ec0c0f47944b32bfc2dbc8a980bf6a50d6f344518e0b45c6638a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/__init__.py",
+      "sha256": "94154232bd03dbb7fc8780fac2619c1fbef3cbda1373da31a6e703d125fa1fff"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/common/cross_attention.py",
+      "sha256": "7eac37678238d330dcf096eb63efeaca7fbb877531f761d14f32993a8733ebb2"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/common/film.py",
+      "sha256": "f0d079b5345d004962e59a19a238c8ef03acb1a79622fa0c69adabaf6dad7de9"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/language/bpe_simple_vocab_16e6.txt.gz",
+      "sha256": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/language/clip.py",
+      "sha256": "d621cd4b59e50529e484d6db0fd263953395eec2386206a4e22163cd9736b7f4"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/language/clip_resnet.py",
+      "sha256": "ece5e4d839cb4cda7c493188d469f5de0c3a8f817e84a6c0a2b4da47fb2d9266"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/language/clip_vit.py",
+      "sha256": "de3dfeb3fa2f7c1210d00ad553c8175e5885d301e677b8e69a70a6007092d2eb"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/language/simple_tokenizer.py",
+      "sha256": "e0f5830b4c969099e64212f8058746559ccd14b9df9b3ceaa3993c5bb4c554ff"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/resnet_dp.py",
+      "sha256": "b1a2e631650329beb57eacc0dea74de4b523694d9d7751bace336e9b17ea88cd"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/vision/resnet.py",
+      "sha256": "6f11ddf386e08dbb9dfffe563b8ae4c0084e7430c7abeee971aaa2b04566984a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/backbones/vision/vit.py",
+      "sha256": "f080a88ff31ced2bfc83c442f8408ae5a33d8b7d2566ead63f35429c2fe67bf4"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/checkpoints.py",
+      "sha256": "683292da30611ace0671c5dab7e71c46edc1638437edabd3f97ec2e4cd1e6ca5"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/common/fm_utils.py",
+      "sha256": "32180ab167d03b01dbe92a93382baf606c03fbeedee6e9d4b217b85e8571b369"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/common/o3d_utils.py",
+      "sha256": "ab53be70ea7250d33cab3c3c15c6640aeb2f21596a12baed4712f131ac8b5b53"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/common/se3_utils.py",
+      "sha256": "bd0c0da6d15ab446200c38969805dec7629303344f9c12cfeeb64ae2e6797aac"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/common/visualization.py",
+      "sha256": "07db262e4f739069946ec322fbe7625c065fa39f27bc231c0b512ea5ac4c6c9a"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/conversion.py",
+      "sha256": "0ed8c6faa2083fc3e080afc19883da0d181ef8a02cedd2a08d0222bd6e97c218"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/dataset_images.py",
+      "sha256": "2b49a1df47e9296d39a0dcb67fde86e9e1381634cb9fccb40c6eb449b8edb857"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/dataset_pcd.py",
+      "sha256": "28137a54216ab20f2ff431d8c1301d0bbc96f9e44815025b6720de12df9c887f"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/dataset_vlmbench.py",
+      "sha256": "beacb5a9d2687077174a268c995742400b2c9bab8d660856630db8b9e90976f1"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/multitask_dataset.py",
+      "sha256": "d540a9e44bdbd3408b4771bc3957328232e62c9679ce2deb0a8fdb09fcee30ba"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/replay_buffer.py",
+      "sha256": "c0f6f239f9fdc8c229b019c003095f6e8777e1013c79aa72923ff06708a8eb16"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/replay_buffer_vlmbench.py",
+      "sha256": "6815337ec6ea77100b48804c8a2f6284baab59ed75687f01336bff5af3235bb0"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/sample_index.py",
+      "sha256": "792c64080958a10c352738f6d26ed4764a42a07a8fdc5cbdf378e3a92dd8678b"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/data_utils/visualize_dataset.py",
+      "sha256": "6715f81616058609a8a63de8176cfd77a3244145144bd766459a3f837c8bb6b8"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/envs/base_env.py",
+      "sha256": "0b6b7e6c4d5bbb6ed5370d6f7c7efe770b93a43c0a5f47f2c558fb3c3bb54883"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/envs/rlbench_env.py",
+      "sha256": "6c99febedbaa856aa9e79799da1b9babd199015266c4b62b14b4a7f292fcc82f"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/envs/rlbench_runner.py",
+      "sha256": "62b655bb93ad2c78614eff9562f7848f77d196da532ae338c644eb90217b24cc"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/envs/vlmbench_runner.py",
+      "sha256": "d0a7a9d2b98ba01c5012f68578780f90e56ae29cf6c5f7eecba6b3222a560f7d"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/evaluation.py",
+      "sha256": "7f3a87077d8511fa55b43f1f15f097ffa62ef18a2126a76e536f58e3e13ceab2"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/policy/base_policy.py",
+      "sha256": "3822c808ffa46b76a12a89edf758193061e7b5a2f28956f82237eb451f65b621"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/policy/ddim_policy.py",
+      "sha256": "db2f19de2ef87a52815698f7fdf6a146adbd841e4afdbb220847178b6d1a8065"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/policy/dit_policy.py",
+      "sha256": "903b7feb730baa5d157bae64fae82a5cf7ba72577220ef059636b8dbf3c32558"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/policy/fm_policy.py",
+      "sha256": "4547473232291d099adde7a1410d6da62cd6c14e59598af129a95ed7258f60c8"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pfp/training.py",
+      "sha256": "e4be443b9c41b93368a6188f899b7bc2e127704d4892d50bc01d54d69e449609"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/pyproject.toml",
+      "sha256": "ea3b48552e24483ce9d44867f345eb30800def1f04a058a01b9579ebc83d4b1b"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py",
+      "sha256": "979a5c3704d4c6833f22d482d00d7bd1977042a7b3f3b5fcf649b3b7a63d0be4"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/scripts/eval_vlmbench.py",
+      "sha256": "58790c5dc22883ea4da69c51173adf6465d5358a48f12caf279d593f8b7c4f47"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/scripts/train.py",
+      "sha256": "a32414d0f4ff40b5bc4854b583f30ee2e0906e614996f84352d006442abf7c96"
+    },
+    {
+      "path": "responsible_robot_bench/policies/PointFlowMatch/scripts/train_vlm.py",
+      "sha256": "9055d967a9f43fd03d29e9676e1dd436064911c529f5fe045b7956053b197c83"
     },
     {
       "path": "thirdparty/PyRep/cffi_build/__init__.py",

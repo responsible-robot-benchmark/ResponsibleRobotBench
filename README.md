@@ -174,7 +174,7 @@ example, use `--episodes_per_task 100` when collecting `water4`.
 
 The [PFM workflow](docs/policy.md) covers explicit RGB selection from the full
 recordings, conversion, training, checkpoint restoration, and simulator evaluation.
-The complete PFM sources and configurations are available in `policies/PointFlowMatch/`.
+The complete PFM sources and configurations are available in `responsible_robot_bench/policies/PointFlowMatch/`.
 
 ## 5. Add your own tasks or robot
 
@@ -228,7 +228,7 @@ responsible_robot_bench/
   perception/            Observations, bounding boxes, and object numbering
   execution/             Action feedback, costs, and human assistance
   diagnostics/           Repetition, wrong-target, and collision diagnostics
-policies/PointFlowMatch/  Imitation-learning data conversion, training, and rollout
+  policies/PointFlowMatch/  Imitation-learning data conversion, training, and rollout
 thirdparty/PyRep/         Simulator binding
 tools/                   Model serving, rendering, and environment setup
 docs/                    User guides and project media
@@ -239,7 +239,9 @@ docs/                    User guides and project media
 ResponsibleRobotBench builds on the manipulation infrastructure of
 [EmbodiedBench](https://github.com/EmbodiedBench/EmbodiedBench),
 [RLBench](https://github.com/stepjam/RLBench), and
-[PyRep](https://github.com/stepjam/PyRep). Its imitation-learning integration uses
+[PyRep](https://github.com/stepjam/PyRep). Code generation builds on
+[VoxPoser](https://github.com/huangwl18/VoxPoser), including its LMP composition,
+spatial maps, and motion-planning components. The imitation-learning integration uses
 [PointFlowMatch](https://github.com/robot-learning-freiburg/PointFlowMatch).
 We thank the authors and contributors of these projects for sharing their code,
 tools, and research.

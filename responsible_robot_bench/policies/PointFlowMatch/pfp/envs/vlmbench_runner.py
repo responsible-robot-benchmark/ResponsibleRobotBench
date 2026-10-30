@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 # Add necessary paths
-_project_root = Path(__file__).resolve().parents[4]
+_project_root = Path(__file__).resolve().parents[5]
 _rrb_manipulation = _project_root / 'responsible_robot_bench' / 'envs' / 'rrb_manipulation'
 for _path in [str(_project_root), str(_rrb_manipulation)]:
     if _path not in sys.path:

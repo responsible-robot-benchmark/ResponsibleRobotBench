@@ -3,8 +3,8 @@ import argparse
 import json
 from pathlib import Path
 import sys
-ROOT=Path(__file__).resolve().parents[3]
-sys.path[:0]=[str(ROOT),str(ROOT/'responsible_robot_bench/envs/rrb_manipulation'),str(ROOT/'policies/PointFlowMatch')]
+ROOT=Path(__file__).resolve().parents[4]
+sys.path[:0]=[str(ROOT),str(ROOT/'responsible_robot_bench/envs/rrb_manipulation'),str(ROOT/'responsible_robot_bench/policies/PointFlowMatch')]
 from pfp.data_utils.conversion import convert_to_zarr_direct
 
 

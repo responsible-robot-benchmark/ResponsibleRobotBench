@@ -168,8 +168,11 @@ export RRB_MODEL="Qwen/Qwen2-VL-7B-Instruct"
   --example_classification_type same_task_with_hazard --traj_type code --output_dir runs/water4-code
 ```
 
-The Skill/Pose evaluator uses `manip_planner_CaP.LMPlanner`; the Code evaluator
-uses the full LMP chain. The flags above are the evaluator flags, not a numeric
+The Skill/Pose evaluator uses `planner/manip_planner_CaP.py`
+(`LMPlanner`) to produce skill or pose action lists. The Code evaluator uses
+`planner/manip_planner_CaP_Code.py` (`LMPlannerCodeInterface`) for the full
+LMP chain: task planner, composer, object queries, spatial maps, and execution.
+The flags above are the evaluator flags, not a numeric
 preset argument. Use separate output directories and keep the same source scenes
 when comparing interfaces. `--max_episode_steps` sets the evaluator's
 action/step limit (default 15).

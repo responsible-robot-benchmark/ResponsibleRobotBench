@@ -8,24 +8,24 @@ position (3), rotation represented by two matrix columns (6), and gripper (1).
 
 ## Installation
 
-Use Python 3.11 and the dependencies in [the policy guide](../../docs/policy.md).
+Use Python 3.11 and the dependencies in [the policy guide](../../../docs/policy.md).
 Run the commands below from the repository root. The existing training entry
 points are `scripts/train.py` and `scripts/train_vlm.py`. Both use Hydra.
 
 ## Collect and convert demonstrations
 
-Collect data as described in [the dataset guide](../../docs/dataset.md), retaining
+Collect data as described in [the dataset guide](../../../docs/dataset.md), retaining
 the five camera folders and `low_dim_obs.pkl`. Keep training and validation
 episodes separate from prompt examples and evaluation episodes.
 
 Convert each split with the existing converter:
 
 ```bash
-python policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
+python responsible_robot_bench/policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
   --data_root datasets/train/water4_plants/variation0/episodes \
   --task_name water4_plants --output_path datasets/policy/water4_plants/train \
   --split train
-python policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
+python responsible_robot_bench/policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
   --data_root datasets/valid/water4_plants/variation0/episodes \
   --task_name water4_plants --output_path datasets/policy/water4_plants/val \
   --split val
@@ -46,7 +46,7 @@ These annotations are not model inputs or additional prediction dimensions.
 ## Train
 
 ```bash
-python policies/PointFlowMatch/scripts/train_vlm.py \
+python responsible_robot_bench/policies/PointFlowMatch/scripts/train_vlm.py \
   +experiment=pointflowmatch_images task_name=water4_plants \
   "data_root=$PWD/datasets/policy" "checkpoint_dir=$PWD/checkpoints"
 ```
@@ -75,7 +75,7 @@ does not restore weights on its own.
 ## Evaluate
 
 Use `scripts/eval_vlmbench.py --ckpt_dir <checkpoint-directory>` with the options
-documented in [the policy guide](../../docs/policy.md). Evaluation calls the image
+documented in [the policy guide](../../../docs/policy.md). Evaluation calls the image
 policy with RGB and robot state, executes ten-component actions, and records
 actual task success, safety, and action counts from the simulator. A successful
 training or loading check does not establish task success.
@@ -87,4 +87,4 @@ Point Clouds with Conditional Flow Matching**, by Eugenio Chisari, Nick Heppert,
 Max Argus, Tim Welschehold, Thomas Brox, and Abhinav Valada (CoRL 2024).
 See the [PointFlowMatch project](http://pointflowmatch.cs.uni-freiburg.de/),
 the original [GPL v3 license](LICENSE), and
-[component license files](../../licenses/).
+[component license files](../../../licenses/).

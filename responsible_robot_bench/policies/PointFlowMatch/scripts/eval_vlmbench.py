@@ -10,7 +10,7 @@ from omegaconf import ListConfig
 _diffusion_policy_path = os.environ.get('DIFFUSION_POLICY_PATH', None)
 
 # 2. If environment variable does not exist, attempt automatic detection
-_project_root = Path(__file__).resolve().parents[3]
+_project_root = Path(__file__).resolve().parents[4]
 _rrb_manipulation = _project_root / 'responsible_robot_bench' / 'envs' / 'rrb_manipulation'
 
 if _diffusion_policy_path is None:

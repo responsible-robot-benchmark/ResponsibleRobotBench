@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 
 # Add path
-_project_root = Path(__file__).resolve().parents[4]
+_project_root = Path(__file__).resolve().parents[5]
 _rrb_manipulation = _project_root / 'responsible_robot_bench' / 'envs' / 'rrb_manipulation'
 sys.path.insert(0, str(_project_root))
 sys.path.insert(0, str(_rrb_manipulation))

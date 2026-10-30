@@ -32,7 +32,7 @@ python3.11 -m venv .venv-ml
 .venv-ml/bin/python -m pip install --upgrade pip setuptools wheel
 .venv-ml/bin/python -m pip install torch==2.1.2 torchvision==0.16.2 \
   --index-url https://download.pytorch.org/whl/cpu
-.venv-ml/bin/python -m pip install -e ./policies/PointFlowMatch numcodecs==0.13.1
+.venv-ml/bin/python -m pip install -e ./responsible_robot_bench/policies/PointFlowMatch numcodecs==0.13.1
 .venv-ml/bin/python -m pip install -e . cffi pyquaternion==0.9.9 \
   natsort==8.4.0 transforms3d gymnasium==1.4.0 plotly==7.1.0
 ```
@@ -43,8 +43,8 @@ Install the pinned Diffusion Policy dependency with the supplied packaging fix:
 mkdir -p .runtime/deps
 git clone https://github.com/chisarie/diffusion_policy.git .runtime/deps/diffusion_policy
 git -C .runtime/deps/diffusion_policy checkout a21dd5cb94dcff5495cb48bb7e3d59cb0b94c014
-git -C .runtime/deps/diffusion_policy apply --check "$(pwd)/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
-git -C .runtime/deps/diffusion_policy apply "$(pwd)/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
+git -C .runtime/deps/diffusion_policy apply --check "$(pwd)/responsible_robot_bench/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
+git -C .runtime/deps/diffusion_policy apply "$(pwd)/responsible_robot_bench/policies/PointFlowMatch/patches/diffusion-policy-packaging.patch"
 .venv-ml/bin/python -m pip install --no-deps .runtime/deps/diffusion_policy
 
 source tools/sim_env.sh
@@ -58,7 +58,7 @@ policy behavior. Component attribution is in
 [component license files](../licenses/).
 
 The recipe above uses CPU PyTorch. Policy dependencies are specified in
-[pyproject.toml](../policies/PointFlowMatch/pyproject.toml). Keep
+[pyproject.toml](../responsible_robot_bench/policies/PointFlowMatch/pyproject.toml). Keep
 `numcodecs==0.13.1` with the
 retained Zarr stack and the declared `chardet>=3.0.2,<6` bound for Requests
 compatibility.
@@ -102,10 +102,10 @@ unsafe goals cannot supply safe, successful demonstrations.
 After installing policy dependencies, convert the selected data:
 
 ```bash
-.venv-ml/bin/python policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
+.venv-ml/bin/python responsible_robot_bench/policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
   --data_root "$RRB_IL_TRAIN" --task_name water4_plants \
   --output_path runs/il-data/water4_plants/train --split train
-.venv-ml/bin/python policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
+.venv-ml/bin/python responsible_robot_bench/policies/PointFlowMatch/scripts/convert_pickle_to_zarr.py \
   --data_root "$RRB_IL_VAL" --task_name water4_plants \
   --output_path runs/il-data/water4_plants/val --split val
 ```
@@ -141,7 +141,7 @@ other backbones or point-cloud experiments.
 ```bash
 export RRB_POLICY_DATA="$(pwd)/runs/il-data"
 export RRB_POLICY_RUN="$(pwd)/runs/pfm-water4-il100"
-.venv-ml/bin/python policies/PointFlowMatch/scripts/train.py \
+.venv-ml/bin/python responsible_robot_bench/policies/PointFlowMatch/scripts/train.py \
   task_name=water4_plants "data_root=$RRB_POLICY_DATA" \
   "checkpoint_dir=$RRB_POLICY_RUN/checkpoints" \
   +experiment=pointflowmatch_images obs_mode=rgb seed=31 run_name=train \
@@ -149,7 +149,7 @@ export RRB_POLICY_RUN="$(pwd)/runs/pfm-water4-il100"
   train_subset_num_batches=-1 eval_subset_num_batches=-1 \
   "hydra.run.dir=$RRB_POLICY_RUN/hydra-train"
 
-.venv-ml/bin/python policies/PointFlowMatch/scripts/train_vlm.py \
+.venv-ml/bin/python responsible_robot_bench/policies/PointFlowMatch/scripts/train_vlm.py \
   task_name=water4_plants "data_root=$RRB_POLICY_DATA" \
   "checkpoint_dir=$RRB_POLICY_RUN/checkpoints" \
   +experiment=pointflowmatch_images obs_mode=rgb seed=31 run_name=resume \
@@ -177,7 +177,7 @@ With the manual run above, execute the resumed policy:
 ```bash
 source tools/sim_env.sh
 .venv-ml/bin/python tools/with_display.py .venv-ml/bin/python \
-  policies/PointFlowMatch/scripts/eval_vlmbench.py \
+  responsible_robot_bench/policies/PointFlowMatch/scripts/eval_vlmbench.py \
   --ckpt_dir "$RRB_POLICY_RUN/checkpoints/resume" \
   --task_name water4_plants --ckpt_epoch latest \
   --num_episodes 1 --max_steps 16 --num_k_infer 2 --seed 33 --headless
