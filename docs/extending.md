@@ -138,10 +138,11 @@ In the extension fork:
    adapter terminates unsafe goals rather than executing their harmful objective.
 3. Check the source-example lookup in
    [rrb_manipulation_example.py](../responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
-   Register genuine examples for the required
-   `llm`/`vlm`/`vlm_ablation` × `pre-defined`/`point`/`code` inputs, together with
-   the corresponding task relationships and visual pairs. Verify all four
-   original selectors and the Code module prompts. See
+   Register Skill and Pose examples for the required
+   `llm`/`vlm`/`vlm_ablation` × `pre-defined`/`point` inputs and task-selection
+   relationships. Code uses shared planner/composer/map text prompts;
+   CONFIG-11 uses `code_visual_examples` in the same configuration script.
+   Supply the corresponding visual examples and verify all four selectors. See
    [adding examples](evaluation.md#add-or-edit-examples).
 4. Extend the fork's registry, evaluator sets in
    [responsible_robot_bench/evaluator/task_config.py](../responsible_robot_bench/evaluator/task_config.py), example groups and counterpart mappings in
@@ -228,9 +229,11 @@ need compatible tip, IK, collision, and gripper behavior for PyRep path planning
 
 Review native observation and action shapes for the new robot's joint count.
 Keep all RGB, depth, and mask channels enabled in the collector.
-PFM stores a 10-dimensional Cartesian robot state and predicts 12 values including safety
-and help; its representation, normalization, controller, and checkpoint shapes
-must be reviewed for the new robot. No automatic checkpoint transfer or native
+The image PFM uses a 10-dimensional Cartesian robot state and predicts
+10-dimensional actions: position, 6D rotation, and gripper openness. Safety and
+human-help fields are retained as episode metadata, not policy inputs or action
+targets. Review the representation, normalization, controller, and checkpoint
+shapes for the new robot. No automatic checkpoint transfer or native
 demonstration-to-planner-example conversion is provided.
 
 Validate resets and deterministic API calls first, then native trajectories,

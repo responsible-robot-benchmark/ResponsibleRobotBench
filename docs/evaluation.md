@@ -256,7 +256,7 @@ existing number. Install detector dependencies in the simulation environment
 and optionally supply a local checkpoint:
 
 ```bash
-.venv/bin/python -m pip install ultralytics opencv-python
+.venv/bin/python -m pip install -r requirements.txt
 export RRB_YOLO_WEIGHTS=/path/to/yolo11n.pt
 ```
 
@@ -286,7 +286,7 @@ and pass `--selected_indexes ""` to run all of them.
 For `--output_dir runs/water4-skills`, the evaluator writes under
 `runs/water4-skills/water4/`. Inspect `config.txt`,
 `results/episode_*_res.json`, `results/planner_output_episode_*.txt`, and
-`summary.json` where produced. Code may also write module-specific planner
+`results/summary.json` where produced. Code may also write module-specific planner
 output files. Record the source dataset and selected indices separately when
 matching a result to its scene.
 

@@ -24,10 +24,6 @@
       "sha256": "5b642a072a949c92768348abb7e3f79d99d6757a462077a94c3922c79365875e"
     },
     {
-      "path": "conda_envs/environment_eb-man.yaml",
-      "sha256": "f671a5d387796029e15552a3576df720529cfaa08817523239c70ef3eed5e8b5"
-    },
-    {
       "path": "constraints/simulator-py311-linux.txt",
       "sha256": "8a9bdd518663d8bf65fa41f1b4bcf778647fb517adda1d7210074379e1b69813"
     },
@@ -69,11 +65,11 @@
     },
     {
       "path": "docs/evaluation.md",
-      "sha256": "00f579fb8d92f11b874039b1bdd03098321d1c20b9a0cfe345b861e7265fdd72"
+      "sha256": "d78d1a242fd407de06b253c960a94c1d185b32cc84d1abf31f02a7ce21296559"
     },
     {
       "path": "docs/extending.md",
-      "sha256": "4afb5eb4bf370ea3b383b623f7ee0dfdc1f23cacb5a7b124064633bfe4b144a2"
+      "sha256": "832a0b609d54e610b9afc5a027b245025ff6a927ebf10d9cc083b792287c1cd5"
     },
     {
       "path": "docs/installation.md",
@@ -313,7 +309,7 @@
     },
     {
       "path": "policies/PointFlowMatch/pfp/envs/rlbench_env.py",
-      "sha256": "fcc0a75b02738d4bd396aa81819e2c0c3dc14eb8cec8a8e43d21d0985a2ff546"
+      "sha256": "6c99febedbaa856aa9e79799da1b9babd199015266c4b62b14b4a7f292fcc82f"
     },
     {
       "path": "policies/PointFlowMatch/pfp/envs/rlbench_runner.py",
@@ -333,7 +329,7 @@
     },
     {
       "path": "policies/PointFlowMatch/pfp/policy/ddim_policy.py",
-      "sha256": "80225f3dda2d9a486b4d04d8d2ad74ecd7eb869bf3fe76f1e57a4dedb02a39aa"
+      "sha256": "db2f19de2ef87a52815698f7fdf6a146adbd841e4afdbb220847178b6d1a8065"
     },
     {
       "path": "policies/PointFlowMatch/pfp/policy/dit_policy.py",
@@ -381,7 +377,7 @@
     },
     {
       "path": "responsible_robot_bench/configs/config.yaml",
-      "sha256": "400986a8d54ce4352a23cdc1f4437c95fee5788ce52672bb4f84858dd9a0b142"
+      "sha256": "1e6fc99ab41dee655f768b735acc8e3ba891571ae43102780e9f9893bd81658f"
     },
     {
       "path": "responsible_robot_bench/configs/planner.py",
@@ -481,7 +477,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/scene.py",
-      "sha256": "ce59d18ab2282f0041fd0a7561116e5f4ec4dd6b56d1af2f276b06def752786e"
+      "sha256": "0322e7d2417930ef75cea838737618f972655e605e90284d2e85b7dff3791d75"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/spawn_boundary.py",
@@ -777,7 +773,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/light2_candle.py",
-      "sha256": "30c25f18aea5d9309b95bffbc0d3efb0411a95eb9101c424fd61f6c0fafe77d3"
+      "sha256": "ee14ec8414437a164775b7f0e3f17f2db8b951b87412d6cdb16a15908e2c1bf0"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/vlm/tasks/mix_chemical_reagents.py",
@@ -1661,7 +1657,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/prompts_voxposer/rrb_manipulation_voxposer_prompts.py",
-      "sha256": "aa844c0445fb38e58af1e323d0d340f9d9f20a91115fcda32c05b9f6ef68b7c0"
+      "sha256": "a7f9f9ebba2aa8b225e61cf78c06878e2aa55b14d431704a64bcdce072c81e1b"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator.py",
@@ -1673,7 +1669,7 @@
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_code_generation.py",
-      "sha256": "3cc4c8033dc61e29adef4f9dc4129d2072972cc0315ca9ce56794366656cf282"
+      "sha256": "cd040e3be6523ff438b03bc711d5ea6340e9316f4467aef0a7f5e65c229f60d0"
     },
     {
       "path": "responsible_robot_bench/evaluator/rrb_manipulation_evaluator_with_general_planner_example_generation.py",
@@ -1773,11 +1769,11 @@
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP.py",
-      "sha256": "345972f871fdad3174ff1718d05a3993a48d507a93a7a042348a7a6294feaf7d"
+      "sha256": "be493255466d2083b771455c67d9e60d45fffeae2c3bbbed600370d0b365eb18"
     },
     {
       "path": "responsible_robot_bench/planner/manip_planner_CaP_Code.py",
-      "sha256": "787c89ea0dc24875c3f89ba65abb78ec4e5766d57747af24b90032308c84c652"
+      "sha256": "293f85619ec7d313361bfaa9999c152cb64cd30f36758d33b95d4b393d4bce12"
     },
     {
       "path": "responsible_robot_bench/planner/planner_config/generation_guide.py",
@@ -1805,7 +1801,7 @@
     },
     {
       "path": "responsible_robot_bench/planner/remote_model.py",
-      "sha256": "cb0aa545bf30888a3ac8252c80f261e8ee3363eb929284453a4543ff2df29555"
+      "sha256": "e8743b618131d74dd1ae79a305017bec6e490045d95f5a903e7b05fb10ab7332"
     },
     {
       "path": "responsible_robot_bench/planner/requirements.txt",
@@ -1841,7 +1837,7 @@
     },
     {
       "path": "thirdparty/PyRep/pyrep/backend/sim.py",
-      "sha256": "720b0fc9687758c00cef474e1f83e733d3bdf146986cda808c89a8b9c72a789a"
+      "sha256": "b350d582b9384c3d08c1762add30240c8802b8ddf267740e3c717776286317cd"
     },
     {
       "path": "thirdparty/PyRep/pyrep/backend/simAddOnScript_PyRep.lua",
@@ -2069,7 +2065,7 @@
     },
     {
       "path": "thirdparty/PyRep/pyrep/robots/mobiles/holonomic_base.py",
-      "sha256": "43537324dc1a6dc7dd4996f93fd78069af424d0b5af0a052445091edb2f6e134"
+      "sha256": "450ca7eb940edf1d2d8d5e27b1f9634cfd66507a24b56d34289b237824b1fb48"
     },
     {
       "path": "thirdparty/PyRep/pyrep/robots/mobiles/line_tracer.py",
@@ -2081,7 +2077,7 @@
     },
     {
       "path": "thirdparty/PyRep/pyrep/robots/mobiles/mobile_base.py",
-      "sha256": "fde05dae39e925f67fd9b03232e5ae2b53b45caeec389cb952b60de957b9d3ca"
+      "sha256": "d185b8ebdb70dfc9294d98316ba8d54c081dbb6cbc715587379847d56134d51c"
     },
     {
       "path": "thirdparty/PyRep/pyrep/robots/mobiles/nonholonomic_base.py",

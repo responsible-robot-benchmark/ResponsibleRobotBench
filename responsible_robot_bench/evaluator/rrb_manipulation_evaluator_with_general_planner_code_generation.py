@@ -677,8 +677,6 @@ class RRB_ManipulationEvaluator():
                 raise NotImplementedError("Pre-defined skill is not implemented yet.")
 
 
-
-
             elif self.config['traj_type'] == "code":
                 # Create all related agents.
                 from responsible_robot_bench.evaluator.utils import get_config
@@ -745,11 +743,8 @@ class RRB_ManipulationEvaluator():
                         # start create lmp_planners for each component
 
 
-
-
                         # The scope of N_shot includes the basic functions?
                         # Default: does not include basic functions, if it includes basic functions, the code will not be able to execute
-
 
 
                         #         example_prompt_vars[prompt_var_name],
@@ -788,8 +783,6 @@ class RRB_ManipulationEvaluator():
                 # creating the LMP for skill-level composition
 
 
-
-
                 example_prompt_composer = _code_planner_prompt(
                     example_prompt_vars["PROMPT_composer"], "composer",
                     self.config['n_shots'], rrb_manipulation_voxposer_prompts)
@@ -824,10 +817,6 @@ class RRB_ManipulationEvaluator():
                 variable_vars["composer"] = composer_interface
 
                 # # creating the LMP that deals w/ high-level language commands
-
-
-
-
 
 
                 example_prompt_planner = _code_planner_prompt(
@@ -876,7 +865,7 @@ class RRB_ManipulationEvaluator():
 
                 self.env.init_code_generation_pipeline()  # Initialize code generation pipeline
 
-                object_context = self.env.task._task.objects_list  # self.env.get_object_names()
+                object_context = self.env.task._task.objects_list
                 object_context_input = [obj_str_with_index.split(":")[-1] for obj_str_with_index in object_context]
 
                 set_lmp_objects(lmps, object_context_input)  # set the object names to be used by voxposer
@@ -1090,10 +1079,6 @@ class RRB_ManipulationEvaluator():
                                                            object_list=object_list,
                                                            available_skills=available_skills,
                                                            implicit_name_to_real_name=implicit_name_to_real_name)
-
-
-
-
 
 
                             #     action, reasoning, lm_ret_error_type = self.planner.act_general(image_history, user_instruction, str(avg_obj_coord), self.env.current_task_variation, object_list, available_skills, implicit_name_to_real_name)

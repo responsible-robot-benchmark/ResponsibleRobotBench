@@ -82,7 +82,7 @@ class DDIMPolicy(ComposerModel, BasePolicy):
     def _augment_data(self, batch: tuple[torch.Tensor, ...]) -> tuple[torch.Tensor, ...]:
         pcd, robot_state_obs, robot_state_pred = batch
 
-        # xyz1 = self._rand_range(low=0.8, high=1.2, size=(3,))
+
         xyz2 = self._rand_range(low=-0.2, high=0.2, size=(3,))
         pcd[..., :3] = pcd[..., :3] + xyz2  # * xyz1 + xyz2
         robot_state_obs[..., :3] = robot_state_obs[..., :3] + xyz2  # * xyz1 + xyz2

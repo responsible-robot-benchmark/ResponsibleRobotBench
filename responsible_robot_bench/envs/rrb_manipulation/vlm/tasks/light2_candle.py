@@ -45,22 +45,22 @@ class Light2Candle(Task):
                 '0:lighter',
                 '1:candle'
             ]
-            
+
             # Define sequence of high-level actions
             self.high_level_descriptions = [
                 'grasp(0)',  # Grasp lighter
                 'light(1)'   # Light candle
             ]
-            
+
             # Waypoint ranges for each high-level action:
             # [0,2]: waypoints for grasping lighter
             # [2,4]: waypoints for lighting candle
             self.waypoint_ranges_for_high_level_actions = [
-                [0, 2],  # grasp(0)
-                [2, 5]   # light(1)
+                [0, 2],
+                [2, 5]
             ]
             self.reference_objects = ["lighter", "candle"]
-            
+
     def init_instruction_type(self, type: str) -> None:
         self.instruction_type = type
 

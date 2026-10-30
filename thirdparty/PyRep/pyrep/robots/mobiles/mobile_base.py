@@ -119,8 +119,7 @@ class MobileBase(RobotComponent):
         """
 
         # Base dummy required to be parent of the robot tree
-        # self.base_ref.set_parent(None)
-        # self.set_parent(self.base_ref)
+
 
         # Missing the dist1 for intermediate target
 
@@ -137,8 +136,6 @@ class MobileBase(RobotComponent):
                   int(ignore_collisions), path_pts], floats=[boundaries],
                   strings=[algorithm.value])
 
-        # self.set_parent(None)
-        # self.base_ref.set_parent(self)
 
         if len(ret_floats) == 0:
             raise ConfigurationPathError('Could not create path.')

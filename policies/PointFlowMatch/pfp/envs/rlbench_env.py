@@ -42,7 +42,7 @@ class RLBenchEnv(BaseEnv):
     ):
         assert obs_mode in ["pcd", "rgb"], "Invalid obs_mode"
         self.obs_mode = obs_mode
-        # image_size=(128, 128)
+
         self.voxel_size = voxel_size
         self.n_points = n_points
         self.use_pc_color = use_pc_color

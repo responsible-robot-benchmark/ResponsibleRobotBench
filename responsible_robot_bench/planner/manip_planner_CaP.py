@@ -127,64 +127,6 @@ class LMPlanner():
         self.available_skills = None
         self.object_list = None
 
-        # For LLM prediction, no visual understanding required, only [action-reasoning, motion prediction] + [no visual safety understanding, cognition learning-reasoning, (Safety Rate)] + [Safety Success Rate]
-        # For VLM prediction, requires [visual understanding, action-reasoning, action prediction (Success Rate)] + [safety understanding, cognition learning-reasoning, (Safety Rate)] + [Safety Success Rate]
-
-        # Number of Agents
-        # Use a single agent for prediction.
-
-        # LLM
-        # {
-
-
-        #     {
-
-
-
-
-
-
-        #     # {
-
-
-
-
-
-
-        #
-        # Robot successfully executed:
-        # Robot success or failure: factors: task completion, safety
-        # Robot did not execute: (only when the robot cannot execute)
-        # Visual error
-        # Planning error
-
-
-        # VLM
-        # {
-
-
-        #     {
-
-
-
-
-
-
-
-        #     # {
-
-
-
-
-        # The process is safe and the end of execution is safe, but they are two different things.
-
-
-
-
-        # safety checking
-        #
-
-
 
     def process_sample_prompt(self, user_instruction):
         user_instruction = user_instruction.rstrip('.')
@@ -554,11 +496,6 @@ class LMPlanner():
                 role = "user"
                 content.append({"type": "text", "text": instruct + task_prompt})
 
-            #     {
-
-
-            #             {"type": "text", "text": prompt + task_prompt}],
-
 
             return system_messages + [{
                 "role": role,
@@ -568,16 +505,7 @@ class LMPlanner():
             # If visual information is needed
             if self.multi_step_image:
 
-                #     {
 
-
-                #             # {"type": "text", "text": prompt}
-
-
-
-                # system_messages
-
-                # use the last three imags as multi-step images
                 if len(images) >= 3:
 
                     multi_step_images = images[-3:-1]
@@ -586,7 +514,7 @@ class LMPlanner():
                         {
                             "role": "user",
                             "content": [
-                                # {"type": "text", "text": prompt}
+
                                 ],
                         }
                     ]
@@ -653,7 +581,7 @@ class LMPlanner():
                         {
                             "role": "user",
                             "content": [
-                                # {"type": "text", "text": full_prompt}
+
                                 ],
                         }
                     ]
@@ -695,7 +623,7 @@ class LMPlanner():
                     {
                         "role": "user",
                         "content": [
-                            # {"type": "text", "text": full_prompt}
+
                             ],
                     }
                 ]
@@ -895,7 +823,7 @@ class LMPlanner():
                 {
                     "role": "user",
                     "content": [
-                        # {"type": "text", "text": first_prompt}
+
                     ],
                 }
             ]
@@ -1278,7 +1206,6 @@ class LMPlanner():
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
 
 
-
         return action, out
 
     def act_general_for_example_generation(self, observation, user_instruction, avg_obj_coord, task_variation, object_list=None, available_skills=None, implicit_name_to_real_name=None):
@@ -1421,7 +1348,6 @@ class LMPlanner():
             raise ValueError("Invalid trajectory type")
 
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
 
 
         return action, out, output_error_type, task_prompt
@@ -1581,7 +1507,6 @@ class LMPlanner():
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
 
 
-
         return action, out, output_error_type
 
 
@@ -1665,7 +1590,6 @@ class LMPlanner():
         action, json_output, output_error_type = self.json_to_action(out)
 
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
 
 
         return action, out
@@ -2059,7 +1983,6 @@ class ManipPlanner():
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
 
 
-
         return action, out
 
     def update_info(self, info):
@@ -2068,7 +1991,6 @@ class ManipPlanner():
         env_feedback = info['env_feedback']
         action = info['action']
         self.episode_act_feedback.append([action, env_feedback])
-
 
 
         #                                 'place(0, 1)', # 3 to 5

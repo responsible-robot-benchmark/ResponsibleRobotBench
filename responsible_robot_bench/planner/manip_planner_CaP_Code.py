@@ -94,15 +94,6 @@ class LMPlannerCodeInterface:
     def clear_exec_hist(self):
         self.exec_hist = ''
 
-    def build_prompt(self, query):
-        # Import variables
-        # Replace variables
-        # Background knowledge information, all preloaded, do not load here
-        # query_suffix
-        # user_query
-        # Format check
-        # Return prompt and user_query
-        pass
 
     def build_prompt_original(self, query, include_system_prompt=False):
 
@@ -138,42 +129,12 @@ class LMPlannerCodeInterface:
         return prompt, user_query
 
 
-    #     # check whether completion endpoint or chat endpoint is used
-    #     if kwargs['model'] != 'gpt-3.5-turbo-instruct' and \
-
-    #         # add special prompt for chat endpoint
-
-
-    #         # handle given context (this was written originally for completion endpoint)
-
-
-    #             # remove obj_context from user1
-
-    #             # add obj_context to user2
-
-
-    #             {"role": "system", "content": "You are a helpful assistant that pays attention to the user's instructions and writes good python code for operating a robot arm in a tabletop environment."},
-    #             {"role": "user", "content": user1},
-    #             {"role": "assistant", "content": assistant1},
-    #             {"role": "user", "content": user2},
-
-
-
-
-    #             # post processing
-
-
-
-
-
-
-
     def _cached_api_call(self, **kwargs):
         'Load prompt template, replace the example part, check if it exists in Cache, if not, predict'
         print("==== kwargs: {} {}".format(self._name, kwargs))
 
         system_prompt, task_prompt = self.lmp_planner.build_message_for_code_generation(observation=self.image_history,
-                                                                                user_instruction=kwargs['prompt'],  # User's command
+                                                                                user_instruction=kwargs['prompt'],
                                                                                 avg_obj_coord=self.avg_obj_coord,
                                                                                 task_variation=self.task_variation,
                                                                                 object_list=self.object_list,
@@ -209,11 +170,9 @@ class LMPlannerCodeInterface:
         # Agent using an image:
         # Agent not using an image: planner uses description to call composer, composer (breaks down the description into known functions)
         # VLM is needed for planner. Only planner does not need to consider self.cache
-        # VLM is not needed for composer
-        # No need for the remaining agents, as the object already knows.
 
 
-        if self._cfg['load_from_cache'] and kwargs_cache in self._cache:   # If looking in the cache.
+        if self._cfg['load_from_cache'] and kwargs_cache in self._cache:
             print('(using cache)', end=' ')
             print("A cached result already exists")
 
@@ -222,20 +181,7 @@ class LMPlannerCodeInterface:
             print("(using cache) planner name {} planner_steps {}".format(self.lmp_planner.planner_name, self.lmp_planner.planner_steps))
             return self._cache[kwargs_cache]
         else:
-            # Input scene object, object name, input model's message
 
-            # observation: OBS can be deleted, as the cache is already defined
-            # user_instruction: The user command is in messages, can be deleted
-            # avg_obj_coord: The object's position does not affect the code, can be deleted
-            # task_variation：
-            # object_list: Scene objects, do not affect code comparison, can be deleted
-            # available_skills: If using code, this is not needed
-            # implicit_name_to_real_name: TBD
-
-
-            # reflection: Only used in the planner, not needed after the composer, just need to convert to code
-
-            # Agent prediction
 
             self.lmp_planner.model.stop = list(kwargs['stop'])
             self.lmp_planner.model.max_tokens = kwargs['max_tokens']
@@ -829,11 +775,6 @@ class LMPlanner():
                 role = "user"
                 content.append({"type": "text", "text": instruct + task_prompt})
 
-            #     {
-
-
-            #             {"type": "text", "text": prompt + task_prompt}],
-
 
             return system_messages + [{
                 "role": role,
@@ -844,16 +785,7 @@ class LMPlanner():
             # If visual information is needed
             if self.multi_step_image:
 
-                #     {
 
-
-                #             # {"type": "text", "text": prompt}
-
-
-
-                # system_messages
-
-                # use the last three imags as multi-step images
                 if len(images) >= 3:
                     multi_step_images = images[-3:-1]
                     # add the current task prompt and input image
@@ -861,7 +793,7 @@ class LMPlanner():
                         {
                             "role": "user",
                             "content": [
-                                # {"type": "text", "text": prompt}
+
                                 ],
                         }
                     ]
@@ -929,7 +861,7 @@ class LMPlanner():
                         {
                             "role": "user",
                             "content": [
-                                # {"type": "text", "text": full_prompt}
+
                                 ],
                         }
                     ]
@@ -974,7 +906,7 @@ class LMPlanner():
                     {
                         "role": "user",
                         "content": [
-                            # {"type": "text", "text": full_prompt}
+
                             ],
                     }
                 ]
@@ -1177,7 +1109,7 @@ class LMPlanner():
                 {
                     "role": "user",
                     "content": [
-                        # {"type": "text", "text": first_prompt}
+
                     ],
                 }
             ]
@@ -1483,7 +1415,6 @@ class LMPlanner():
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
 
 
-
         return action, out
 
 
@@ -1748,15 +1679,6 @@ class LMPlanner():
                     self.episode_messages = self.get_message(obs, full_example_prompt, task_prompt)
 
 
-        # Task planning has not been performed, directly performed keypoint planning
-        # Planner Output Action: [[73, 15, 18, 0, 0, 0, 1], [73, 15, 18, 0, 0, 0, 0], [66, 38, 18, 0, 0, 0, 0], [66, 38, 18, 0, 0, 0, 1]]
-        # evaluator rrb_manipulation_evaluator: action_single: [73, 15, 18, 0, 0, 0, 1]
-
-
-        # for content_item in entry["content"]:   # Content content
-        # if content_item["type"] == "text":  # If it's text
-
-
         # Use LLM VLM prediction results
         if 'gemini-1.5-pro' in self.model_name or 'gemini-2.0-flash' in self.model_name:
             try:
@@ -1800,7 +1722,6 @@ class LMPlanner():
             raise ValueError("Invalid trajectory type")
 
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
 
 
         return action, out, output_error_type
@@ -1902,7 +1823,6 @@ class LMPlanner():
         action, json_output, output_error_type = self.json_to_action(out)
 
         # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
 
 
         return action, out

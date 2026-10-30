@@ -344,7 +344,6 @@ class Scene(object):
                 self._obs_config.task_low_dim_state else None),
 
 
-            #     if hasattr(self._obs_config, 'record_ignore_collisions') and self._obs_config.record_ignore_collisions else None),
             misc=self._get_misc(),
             object_informations = self._active_task.objects_information(),  # Get object information, intermediate point information, etc.
             is_safe = float(self._active_task.safe()[0]),  # Get the environment's safety state
@@ -374,10 +373,10 @@ class Scene(object):
                               randomly_place=randomly_place)
         init_states = self._active_task.get_base().get_configuration_tree()
         self._has_init_episode = False
-        
+
         # Reset the step counter
         self._active_task._current_step = 0
-        
+
         from responsible_robot_bench.configs.task_metadata import task_id, UNSAFE_GOAL_TASKS
         if (self._active_task._enable_call_human_help and
                 task_id(self._active_task.get_name()) in UNSAFE_GOAL_TASKS):
@@ -385,7 +384,7 @@ class Scene(object):
 
         # Retrieve waypoints (before moving the power strip, so that the feasibility check for waypoints 0-5 can pass)
         waypoints = self._active_task.get_waypoints()   # Get all waypoints
-        
+
         # Print waypoint information for debugging
         if self._active_task._enable_call_human_help:
             print(f"📍 Debug: Waypoints after filtering (call_human_help mode):")
@@ -399,7 +398,7 @@ class Scene(object):
                         print(f"  {i}: {wp.name} - Position: {wp.pose[:3]}")
                 else:
                     print(f"  {i}: {wp.name}")
-        
+
 
         if len(waypoints) == 0:
             raise NoWaypointsError(
@@ -408,12 +407,12 @@ class Scene(object):
         demo = []
         self.low_level_description = waypoints[0].low_level_descriptions if len(waypoints) > 0 else None
         self.current_waypoint_name = 'waypoint0' if len(waypoints) > 0 else None
-        
+
         # If call_human_help is enabled, record a few frames in waiting state, then trigger
         if self._active_task._enable_call_human_help and not self._active_task._call_human_help_triggered:
             num_wait_frames = self._active_task._call_human_help_step  # Wait for the specified number of steps
             print(f"🚨 Call human help enabled - recording {num_wait_frames} waiting frames before triggering")
-            
+
             # Record waiting frames (call_human_help = 1.0)
             for _ in range(num_wait_frames):
                 if record:
@@ -424,18 +423,18 @@ class Scene(object):
                     if callable_each_step is not None:
                         callable_each_step(demo[-1])
                 self._active_task._current_step += 1
-            
+
             # Trigger call_human_help now
             print(f"🔧 Triggering call_human_help at step {self._active_task._current_step}")
             from responsible_robot_bench.execution.assistance import perform_assistance
             perform_assistance(self._active_task)
-            
+
             # Ensure gripper is open to avoid accidental grasping during subsequent movements
             self._robot.gripper.release()
             for _ in range(5):
                 self._robot.gripper.actuate(1.0, 0.04)  # Fully open
                 self._pyrep.step()
-            
+
             # Record observation after triggering (call_human_help = 0.0)
             if record:
                 self._pyrep.step()
@@ -444,7 +443,7 @@ class Scene(object):
                 demo[-1].current_waypoint_name = 'human_help_completed'
                 if callable_each_step is not None:
                     callable_each_step(demo[-1])
-        
+
         if record and len(demo) == 0:
             self._pyrep.step()  # Need this here or get_force doesn't work...
             demo.append(self.get_observation())
@@ -492,10 +491,10 @@ class Scene(object):
                     done = path.step()
                     self.step()
                     self._demo_record_step(demo, record, callable_each_step)
-                    
+
                     # Increase step count
                     self._active_task._current_step += 1
-                    
+
                     success, term = self._active_task.success()
                     safe, safe_term = self._active_task.safe()
 
@@ -644,10 +643,9 @@ class Scene(object):
             demo.append(self.get_observation())
 
 
-
         done_waypoints = False
         while True: # If the trajectory is successfully planned but not executed, the while loop will be executed again
-            
+
             if done_waypoints:
                 break
 
@@ -686,7 +684,7 @@ class Scene(object):
                     safe, safe_term = self._active_task.safe()
                     d = Demo(demo)
                     motion_plan_ret_error_code = FailureType.TRAJ_PLANNING_ERROR
-                    
+
                     return d, success_waypoint, success_task, safe, term, motion_plan_ret_error_code
 
 
@@ -768,21 +766,10 @@ class Scene(object):
     #                  ):
 
 
-
     #             'No subtask_waypoints were found.', self._active_task)
 
 
-
-
-
-
-
-
-
-
     # # Iterate over all waypoints
-
-
 
 
     #                                 and s not in self._robot_shapes and s.is_collidable()
@@ -797,10 +784,8 @@ class Scene(object):
     #                 [s.set_collidable(True) for s in colliding_shapes]
 
 
-
     #                 success_task, term = self._active_task.success()
     #                 safe, safe_term = self._active_task.safe()
-
 
 
     #             #     [s.set_collidable(True) for s in colliding_shapes]
@@ -810,38 +795,11 @@ class Scene(object):
     #             #         self._active_task) from e
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     #             # execite path
 
 
-
-
-
-
-                    
-
     #                 success_task, term = self._active_task.success()
     #                 safe, safe_term = self._active_task.safe()
-
 
 
     #                             demo, record, callable_each_step)
@@ -868,16 +826,12 @@ class Scene(object):
     #     safe, safe_term = self._active_task.safe()
 
 
-
     #         #                 self._active_task)
 
 
     # # Save high_level_instructions
 
-    #     # 
-
-
-
+    #     #
 
 
     def get_observation_config(self) -> ObservationConfig:

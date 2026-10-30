@@ -801,8 +801,8 @@ def simGetObjectType(objectHandle):
 def simGetConfigurationTree(objectHandle):
     config = lib.simGetConfigurationTree(objectHandle)
     _check_null_return(config)
-    # configs = ffi.string(config)
-    # simReleaseBuffer(config)
+
+
     return config
 
 
@@ -931,7 +931,7 @@ def simRMLVel(dofs, smallestTimeStep, flags, currentPosVelAccel, maxAccelJerk,
 
 def simRMLStep(handle, timeStep, dofs):
     newPosVelAccel = ffi.new('double[%d]' % (dofs * 3))
-    # timeStep = ffi.cast('double', timeStep)
+
     state = lib.simRMLStep(handle, timeStep, newPosVelAccel, ffi.NULL, ffi.NULL)
     _check_return(state)
     return state, list(newPosVelAccel)
@@ -1220,7 +1220,7 @@ def simUngroupShape(shapeHandle):
     shapes = lib.simUngroupShape(shapeHandle, count)
     _check_null_return(shapes)
     handles = [shapes[i] for i in range(count[0])]
-    # simReleaseBuffer(shapes)
+
     return handles
 
 
@@ -1479,7 +1479,7 @@ def simGetDecimatedMesh(inVertices, inIndices, decimationPercent):
     outIndices = ffi.new('int **')
     outIndicesCount = ffi.new('int *')
     # outNormals is 3 times the size of outIndicesCount
-    # outNormals = ffi.new('float **')
+
 
     ret = lib.simGetDecimatedMesh(inVertices, len(inVertices),
                                   inIndices, len(inIndices),

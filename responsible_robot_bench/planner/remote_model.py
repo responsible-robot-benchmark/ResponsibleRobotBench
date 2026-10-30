@@ -115,7 +115,7 @@ class RemoteModel:
             response_format = {
                 "type": "json_schema",
                 "json_schema": {
-                    "name": "embodied_planning",
+                    "name": "rrb_planning",
                     "schema": llm_generation_guide_manip if self.language_only else vlm_generation_guide_manip
                 }
             }
@@ -123,7 +123,7 @@ class RemoteModel:
             response_format = {
                 "type": "json_schema",
                 "json_schema": {
-                    "name": "embodied_planning",
+                    "name": "rrb_planning",
                     "schema": llm_generation_guide if self.language_only else vlm_generation_guide
                 }
             }
@@ -150,7 +150,7 @@ class RemoteModel:
             messages=message_history
         )
 
-        return response.content[0].text 
+        return response.content[0].text
 
     def _call_gemini(self, message_history: list):
 
@@ -159,7 +159,7 @@ class RemoteModel:
 
         if self.task_type == 'manip':
             response = self.model.beta.chat.completions.parse(
-                model=self.model_name, 
+                model=self.model_name,
                 messages=message_history,
                 response_format= ActionPlan_lang_manip if self.language_only else ActionPlan_manip,
                 temperature=temperature,
@@ -167,7 +167,7 @@ class RemoteModel:
             )
         else:
             response = self.model.beta.chat.completions.parse(
-                model=self.model_name, 
+                model=self.model_name,
                 messages=message_history,
                 response_format= ActionPlan_lang if self.language_only else ActionPlan,
                 temperature=temperature,
@@ -186,24 +186,24 @@ class RemoteModel:
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide))
         else:   # Utilize LLM model
             if self.task_type == 'manip':
                 if self.traj_type == "code":
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip))  
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip_pre_defined_skills))
 
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide))
-        
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide))
+
         self.last_request_metadata = {
             'response_format': response_format,
             'temperature': temperature,
@@ -226,7 +226,7 @@ class RemoteModel:
         out = response.choices[0].message.content
 
         return out
-    
+
     def _call_qwen7b(self, message_history: list):
         # Keep each data URL's real image type. Relabeling PNG bytes as JPEG
         # makes strict OpenAI-compatible Qwen services reject the request.
@@ -249,23 +249,23 @@ class RemoteModel:
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide))
         else:
             if self.task_type == 'manip':
                 if self.traj_type == "code":
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip))  
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip_pre_defined_skills))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide))
-        
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide))
+
         self.last_request_metadata = {
             'response_format': response_format,
             'temperature': temperature,
@@ -287,7 +287,7 @@ class RemoteModel:
         }
         out = response.choices[0].message.content
         return out
-    
+
     def _call_llama90(self, message_history: list):
         if self.task_type == "manip":
             response = self.model.chat.completions.create(
@@ -297,7 +297,7 @@ class RemoteModel:
                 temperature = temperature
             )
             out = response.choices[0].message.content
-            
+
         else:
             response = self.model.chat.completions.create(
                 model="accounts/fireworks/models/llama-v3p2-90b-vision-instruct",
@@ -307,7 +307,7 @@ class RemoteModel:
             )
             out = response.choices[0].message.content
         return out
-    
+
     def _call_llama11b(self, message_history):
 
         if not self.language_only:
@@ -315,14 +315,14 @@ class RemoteModel:
 
         if not self.language_only:
             if self.task_type == 'manip':
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide))
         else:
             if self.task_type == 'manip':
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide))
 
         response = self.model.chat.completions.create(
             model=self.model_name,
@@ -333,7 +333,7 @@ class RemoteModel:
         )
         out = response.choices[0].message.content
         return out
-    
+
 
     def _call_qwen72b(self, message_history):
 
@@ -347,23 +347,23 @@ class RemoteModel:
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip_pre_defined_skills))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide))
         else:
             if self.task_type == 'manip':
                 if self.traj_type == "code":
 
                     response_format = None
                 elif self.traj_type == "point":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip))  
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip))
                 elif self.traj_type == "pre-defined":
-                    response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip_pre_defined_skills))
+                    response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip_pre_defined_skills))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide))
-        
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide))
+
         response = self.model.chat.completions.create(
             model=self.model_name,
             messages=message_history,
@@ -378,21 +378,21 @@ class RemoteModel:
         out = out.replace('\"s ', "\'s ")
         out = out.replace('```json', '').replace('```', '')
         return out
-    
+
     def _call_intern38b(self, message_history):
 
 
         # no use, lmdeploy use support json schema only if it is pytorch-backended
         if not self.language_only:
             if self.task_type == 'manip':
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide_manip))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide_manip))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=vlm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=vlm_generation_guide))
         else:
             if self.task_type == 'manip':
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide_manip))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide_manip))
             else:
-                response_format=dict(type='json_schema',  json_schema=dict(name='embodied_planning',schema=llm_generation_guide))
+                response_format=dict(type='json_schema',  json_schema=dict(name='rrb_planning',schema=llm_generation_guide))
 
         response = self.model.chat.completions.create(
             model=self.model_name,
@@ -408,41 +408,3 @@ class RemoteModel:
         out = out.replace('\"s ', "\'s ")
         out = out.replace('```json', '').replace('```', '')
         return out
-
-
-if __name__ == "__main__":
-
-    model = RemoteModel(
-        'Qwen/Qwen2-VL-72B-Instruct', #'meta-llama/Llama-3.2-11B-Vision-Instruct',
-        True #False
-    )#'claude-3-5-sonnet-20241022, Qwen/Qwen2-VL-72B-Instruct, meta-llama/Llama-3.2-11B-Vision-Instruct
-
-
-    def encode_image(image_path):
-        with open(image_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode('utf-8')
-        
-
-    base64_image = encode_image("../../evaluator/midlevel/output.png")
-        
-    messages=[
-        {
-            "role": "user",
-            "content": [
-            {
-                "type": "image_url",
-                "image_url": {
-                    "url": f"data:image/png;base64,{base64_image}",
-                }
-            },
-            {
-                "type": "text",
-                "text":f"What do you think for this picture?? {template}?"
-            },
-            ],
-        }
-    ]
-
-    response = model.respond(messages)
-    print(response)
-
