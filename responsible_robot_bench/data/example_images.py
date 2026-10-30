@@ -14,7 +14,7 @@ VISUAL_EXAMPLE_ROOT = (
 
 
 def copy_example_images(data_root, task_ids, episode_indexes, *, destination_root=VISUAL_EXAMPLE_ROOT):
-    """Copy frame zero in the supplied order, without changing images or source data.
+    """Copy frame zero in the supplied order, preserving raw recordings and correcting historical annotation IDs.
 
     All requested source images are checked before copying. Existing destination
     images at the selected positions are replaced. Reference answers remain in
@@ -46,6 +46,11 @@ def copy_example_images(data_root, task_ids, episode_indexes, *, destination_roo
                     raise ValueError(f"Expected a PNG image: {source}")
                 image.verify()
             copies.append((source, destination))
+    from responsible_robot_bench.data.collection import repair_native_annotation_numbering, variation_lock
+    for episode in dict.fromkeys(source.parent.parent for source, _ in copies):
+        if (episode / "bbox_annotations.json").is_file():
+            with variation_lock(episode.parent.parent):
+                repair_native_annotation_numbering(episode)
     for source, destination in copies:
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)

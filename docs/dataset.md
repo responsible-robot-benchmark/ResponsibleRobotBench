@@ -41,7 +41,7 @@ value. Policy conversion, training, and rollout use full names.
 ```
 
 This is the same collector used for larger datasets. Its default image size is
-360 × 360; `--image_size 360,360` sets it explicitly. All five views retain RGB,
+128 × 128; `--image_size 128,128` sets it explicitly. All five views retain RGB,
 depth, and instance masks. Low-dimensional observations retain robot state,
 safety/help fields, camera calibration, and other native observation fields.
 Point clouds are enabled during collection; the serializer stores depth
@@ -58,6 +58,11 @@ Annotation uses the original `form_object_coord_for_input` and
 matching views (front, left shoulder, right shoulder, wrist) and are projected
 into all five calibrated images to match YOLO predictions. Object numbers follow
 the task's Skill object IDs across camera views and action modes.
+When continuing a dataset, stored annotation identities are checked against
+the task object IDs. Older numbering is corrected using the recorded object
+names and box geometry, with labels redrawn from the raw RGB. Raw recordings
+are preserved; this correction does not rerun detection.
+
 Masks identify objects for coordinate matching. Box extents come from YOLO,
 except for the microwave body in heat1 and heat2, where its instance mask
 provides the box. Other objects in those tasks continue to use YOLO.

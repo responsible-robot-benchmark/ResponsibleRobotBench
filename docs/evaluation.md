@@ -108,8 +108,10 @@ source tools/sim_env.sh
 
 This copies `front_rgb_annotated/0.png` from source `episode0` through
 `episode9` to positions 1 through 10 under the task's full name. It replaces
-images already at those positions and preserves the source recordings, image
-bytes, resolution, boxes, and object numbers. No model request or simulator
+images already at those positions and preserves the raw recordings, resolution,
+and detected box geometry. For older collected annotations, task object names
+are used to correct the stored numbers and redraw labels from raw RGB before
+copying. Already aligned images are copied byte for byte. No model request or simulator
 episode runs in this mode. No reference answer is generated or changed.
 
 To choose a different scene order, provide `--selected_indexes 3,1,7,0,9`

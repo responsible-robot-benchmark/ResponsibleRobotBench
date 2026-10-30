@@ -318,6 +318,71 @@ def validate_native_annotations(path, details):
                 boxes=boxes, empty_images=empty, metadata=ANNOTATIONS_FILE)
 
 
+def repair_native_annotation_numbering(path, indexed_objects=None):
+    """Align stored box labels with task IDs, retaining every detected box.
+
+    Re-render changed annotations from raw RGB; old painted labels must not
+    remain underneath the corrected labels. Raw recordings are never changed.
+    """
+    from copy import deepcopy
+    from responsible_robot_bench.configs.task_metadata import task_id
+    from responsible_robot_bench.envs.rrb_manipulation.rrb_man_utils import TASK_HANDLERS
+    from responsible_robot_bench.perception.observations import task_object_labels
+    from responsible_robot_bench.perception.box_drawing import draw_numbered_box
+
+    path = Path(path)
+    metadata_path = path / ANNOTATIONS_FILE
+    metadata = json.loads(metadata_path.read_text())
+    if indexed_objects is None:
+        with (path / "configs.pkl").open("rb") as stream:
+            indexed_objects = pickle.load(stream).task_attributes["objects_list"]
+    registry = TASK_HANDLERS[task_id(metadata["task"])]().sim_name_to_real_name
+    labels = task_object_labels(indexed_objects, registry)
+    corrected = deepcopy(metadata)
+    changed_views = []
+    changed_objects = 0
+    for frame, output_frame in zip(metadata["annotations"], corrected["annotations"]):
+        remap = {key: f"object {labels[value['name']]}" for key, value in frame["objects"].items()}
+        if len(set(remap.values())) != len(remap):
+            raise ValueError("Recorded object names do not identify distinct task objects")
+        changed_objects += sum(key != value for key, value in remap.items())
+        output_frame["objects"] = {remap[key]: value for key, value in output_frame["objects"].items()}
+        for camera, view in output_frame["views"].items():
+            changed = False
+            for box in view["boxes"]:
+                key = box["object"]
+                target = remap[key]
+                label = int(target.split(" ")[1])
+                changed |= key != target or box.get("display_label", int(key.split(" ")[1])) != label
+                box["object"] = target
+                box["display_label"] = label
+            if changed:
+                index = frame["frame"]
+                expected = f"{camera}_rgb_annotated/{index}.png"
+                if camera not in CAMERAS or view["image"] != expected:
+                    raise ValueError("Invalid stored annotation image path")
+                source = path / f"{camera}_rgb/{index}.png"
+                if not source.is_file():
+                    raise FileNotFoundError(source)
+                changed_views.append((source, path / expected, view["boxes"]))
+    if changed_views:
+        import cv2
+        for source, destination, boxes in changed_views:
+            image = cv2.imread(str(source), cv2.IMREAD_COLOR)
+            if image is None:
+                raise ValueError(f"Unreadable raw RGB image: {source}")
+            positions = []
+            for box in boxes:
+                draw_numbered_box(image, box["xyxy"], box["display_label"], positions,
+                                  keep_label_visible=True)
+            if not cv2.imwrite(str(destination), image):
+                raise OSError(f"Could not write corrected annotation: {destination}")
+    corrected["object_numbering"] = "task_index"
+    if corrected != metadata:
+        write_json(metadata_path, corrected)
+    return dict(changed_objects=changed_objects, redrawn_images=len(changed_views))
+
+
 def annotate_native_episode(path, task_name, details, indexed_objects):
     """Backfill saved native data using the original coordinate/YOLO helpers.
 
@@ -343,8 +408,9 @@ def annotate_native_episode(path, task_name, details, indexed_objects):
         if hybrid and any(any((path / f'{camera}_rgb_annotated').glob('*.png')) for camera in CAMERAS):
             raise ValueError('Partial annotation images were preserved; use a separate output for regeneration') from error
     else:
+        numbering = repair_native_annotation_numbering(path, indexed_objects)
         error_path.unlink(missing_ok=True)
-        return dict(state='existing_complete', **result)
+        return dict(state='existing_complete', numbering=numbering, **result)
 
     try:
         import numpy as np
@@ -358,7 +424,7 @@ def annotate_native_episode(path, task_name, details, indexed_objects):
         metadata = dict(schema_version=1, source='yolo_with_microwave_mask' if hybrid else 'yolo', task=task_name,
                         weights=os.environ.get('RRB_YOLO_WEIGHTS', 'yolo11n.pt'),
                         cameras=list(CAMERAS), coordinate_cameras=list(coordinate_cameras),
-                        object_order='y', frames=details['frames'],
+                        object_order='y', object_numbering='task_index', frames=details['frames'],
                         image_size=details['image_size'], annotations=[])
         # Read original images and write annotations directly to their final folders.
         # The JSON is the completion record; partial outputs remain available on failure.
@@ -396,6 +462,7 @@ def annotate_native_episode(path, task_name, details, indexed_objects):
                     if not 0 <= position < len(keys):
                         raise ValueError('Box refers to an unknown ordered point')
                     box['object'] = keys[position]
+                    box['display_label'] = labels[position]
             objects = {name: dict(name=names[name],
                                  world_point=np.asarray(points[i]).tolist(),
                                  voxel_coord=np.asarray(coords[name]).tolist())

@@ -100,7 +100,8 @@ source tools/sim_env.sh
 ```
 
 This replaces image positions 1–10 using collected episodes 0–9, preserving the
-source data and image resolution. It makes no model calls and does not modify
+raw data and image resolution. Historical annotation numbers are corrected
+from recorded task identities before copying. It makes no model calls and does not modify
 reference answers. See the [example guide](docs/evaluation.md#prepare-recorded-examples)
 for selecting other episode indexes and matching their text order.
 

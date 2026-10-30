@@ -48,7 +48,7 @@ flags.DEFINE_string('save_path',
                     'Where to save the demos.')
 flags.DEFINE_list('tasks', list(TASKS.values()),
                   'RRB task IDs or module names. If empty, collect all 23 tasks.')
-flags.DEFINE_list('image_size', [360, 360],
+flags.DEFINE_list('image_size', [128, 128],
                   'The size of the images tp save.')
 flags.DEFINE_enum('renderer',  'opengl', ['opengl', 'opengl3'],
                   'The renderer to use. opengl does not include shadows, '
