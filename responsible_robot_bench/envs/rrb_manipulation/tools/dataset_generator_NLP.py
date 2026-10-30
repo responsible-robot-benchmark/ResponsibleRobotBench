@@ -1,4 +1,4 @@
-from multiprocessing import Process, Manager
+from multiprocessing import get_context
 from time import time, sleep
 
 from pyrep.const import RenderMode
@@ -235,9 +235,9 @@ def collect_variation(task_env, variation_path):
         def annotate_saved(path, details):
             annotation = dict(path=str(path))
             try:
-                if not hasattr(task_env._task, 'objects_list'):
-                    # Existing episodes can be annotated before the first reset;
-                    # initialize the task exactly as the first reset would.
+                if not getattr(task_env._task, 'objects_list', None):
+                    # Existing episodes can precede the first reset. The base task
+                    # already has an empty list, so attribute presence is insufficient.
                     task_env._scene.init_task()
                 annotation.update(annotate_native_episode(path, task_env.get_name(), details, task_env._task.objects_list))
             except Exception as error:
@@ -341,6 +341,10 @@ def collect_variation(task_env, variation_path):
 def run(i, lock, task_index, variation_count, results, file_lock, tasks):
     """Each thread will choose one task and variation, and then gather
     all the episodes_per_task for that variation."""
+
+    # Spawned workers re-import the module and must parse the original CLI flags.
+    if not FLAGS.is_parsed():
+        FLAGS(sys.argv)
 
     # Initialise each thread with random seed
     np.random.seed(None)
@@ -463,7 +467,9 @@ def main(argv):
     queue_path = (Path(FLAGS.queue_status_path) if getattr(FLAGS, 'queue_status_path', None)
                   else Path(FLAGS.save_path) / 'collection_queue.json')
     queue_path.parent.mkdir(parents=True, exist_ok=True)
-    with Manager() as manager:
+    # Fresh worker runtimes avoid inheriting native/CUDA driver state.
+    context = get_context('spawn')
+    with context.Manager() as manager:
         while pending:
             tasks = [task_file_to_task_class(t, parent_folder='vlm') for t in pending]
             result_dict = manager.dict()
@@ -471,7 +477,7 @@ def main(argv):
             lock, file_lock = manager.Lock(), manager.Lock()
             write_json(queue_path, dict(state='collecting', round=round_index, pending=pending,
                                         target_per_task=FLAGS.episodes_per_task))
-            processes = [Process(target=run, args=(
+            processes = [context.Process(target=run, args=(
                 i, lock, task_index, variation_count, result_dict, file_lock, tasks))
                 for i in range(min(FLAGS.processes, len(tasks)))]
             for process in processes:

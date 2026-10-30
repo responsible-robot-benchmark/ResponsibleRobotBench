@@ -52,7 +52,8 @@ The same command automatically annotates every saved frame in all five views
 with YOLO11. Install the detector dependencies described in [installation](installation.md).
 The default weights are `yolo11n.pt`; set `RRB_YOLO_WEIGHTS` to an existing local
 weights file to avoid a download. `RRB_YOLO_DEVICE` defaults to `cpu` and accepts
-an Ultralytics device such as `0`. No separate annotation command is required.
+an Ultralytics device such as `0` with a CUDA-enabled PyTorch installation
+(see [installation](installation.md)). No separate annotation command is required.
 Annotation uses the original `form_object_coord_for_input` and
 `draw_bounding_boxes` helpers: object coordinates come from the four
 matching views (front, left shoulder, right shoulder, wrist) and are projected

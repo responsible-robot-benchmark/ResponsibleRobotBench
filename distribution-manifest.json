@@ -61,7 +61,7 @@
     },
     {
       "path": "docs/dataset.md",
-      "sha256": "407b8e36d7d6382dd17959da34a990a805a5ff90bb67b37082df202254cbdb33"
+      "sha256": "6c38166ac862cd71cd7ac6185b24e2ba4ff6d926460330285402440e5f3d5bef"
     },
     {
       "path": "docs/errors.md",
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/installation.md",
-      "sha256": "52b20cc173610a54838f9a616d37063ed17833e40f7ab9a594bd7b5457e6f2a8"
+      "sha256": "1041171be8e4df2916c4f5a929aaeaffd8e2ba6d5ba0241246e7bb69e11efb7c"
     },
     {
       "path": "docs/policy.md",
@@ -617,7 +617,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/tools/dataset_generator_NLP.py",
-      "sha256": "0757dc5d4829cf4313de19a9c091ca31bd8a6ec22ce606149affc25109a2423d"
+      "sha256": "1d8803b046821b1356025129f645b3221278662eae78e5989c079ac08683d815"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/tools/grasploc.py",
@@ -1504,24 +1504,44 @@
       "sha256": "99bb5a297804653b9e998a62a928eb34df47e0ce335005fff8073ce6cc63e28c"
     },
     {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_10_step_0_front_rgb_annotated.png",
+      "sha256": "750db1af11f795aa22239d346c2252b9989e4ec8908e888c25eda44f457f65ac"
+    },
+    {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_1_step_0_front_rgb_annotated.png",
-      "sha256": "f1e254177a00d1e6cd8b4c66f8efd6909b65998272e154b3f94e25b4f22fe4d5"
+      "sha256": "6024a3bb3989f54da853074ad6c87b4e199c387c55e52f45e15210a39d86e656"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_2_step_0_front_rgb_annotated.png",
-      "sha256": "c631fb588f689bb1c4487455bf26d087aeaf7fb86a1dda25ca5d56ddb485a0d8"
+      "sha256": "6024a3bb3989f54da853074ad6c87b4e199c387c55e52f45e15210a39d86e656"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_3_step_0_front_rgb_annotated.png",
-      "sha256": "35387167a8a25d8e3e482de4136857d0b67dbed52e032c241fa463cad2121123"
+      "sha256": "b63e57fa55229f355bcd0f8b09d8a7cbda296d38efc24249685e2ca8cec6a850"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_4_step_0_front_rgb_annotated.png",
-      "sha256": "7eb600d8dca6deaae3d49b30cb33f809221051c0b781a1d769713c1ab24431ea"
+      "sha256": "efc94722fd8ad5da2d1683d73f4a882290f4987d6abc820f95a7f5f655bf7b62"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_5_step_0_front_rgb_annotated.png",
-      "sha256": "7841f425d7eec15c4838d968d71ba651420e099cf4f35abba5eecbfdd12b619a"
+      "sha256": "c84c86ff4a3825afe4cc021623ffc2ce77cafb1c1aa5c19b9bc07eb003c1f41a"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_6_step_0_front_rgb_annotated.png",
+      "sha256": "a23374ffd400934094b93b09aa39ccdf71d7272ef9b4219a5e9ff1ea7e0cc122"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_7_step_0_front_rgb_annotated.png",
+      "sha256": "0f044db466c2b62022505e1e00fb67f3c59237452cf4e1d157ee82c9d70424c9"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_8_step_0_front_rgb_annotated.png",
+      "sha256": "4d57b75e031487e76811b072434d4c8d2dcb5e104f34e71c1b0231e465fa2ab3"
+    },
+    {
+      "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water4_plants/episode_9_step_0_front_rgb_annotated.png",
+      "sha256": "5fc3a4711b18d4f797301a24bd802a168f978691437d31e643ffccfeb926549b"
     },
     {
       "path": "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation/water_plants_when_power_strip_exists/episode_1_step_0_front_rgb_annotated.png",

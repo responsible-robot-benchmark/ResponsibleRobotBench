@@ -61,6 +61,21 @@ repeat them from the repository root in each simulator shell. The PyRep build
 needs write access to the simulator's `system/` directory. YOLO11 annotates collected
 frames and CONFIG-9 observations; `RRB_YOLO_WEIGHTS` can select a local file.
 
+YOLO supports CPU and NVIDIA GPU inference. For CUDA 12.4-compatible systems,
+install matching PyTorch and torchvision builds in this simulator environment:
+
+```bash
+.venv/bin/python -m pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 \
+  --index-url https://download.pytorch.org/whl/cu124
+.venv/bin/python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+export RRB_YOLO_DEVICE=0
+```
+
+The CUDA check must return `True` before selecting a GPU. Use
+`RRB_YOLO_DEVICE=cpu` for CPU inference, which is the portable default.
+This setting selects the detector device; it does not change the model service,
+camera resolution, task definition, or collection modalities.
+
 Component terms and attribution are listed in
 [component license files](../licenses/). Consult the simulator's own
 terms when choosing an installation.
