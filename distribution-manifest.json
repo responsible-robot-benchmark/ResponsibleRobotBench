@@ -33,7 +33,7 @@
     },
     {
       "path": "docs/assets/franka-watering.mp4",
-      "sha256": "9cf7ccf0f91f8c9c46ae73e91432881ec5270d2e6a4039e7ab38e57e9b081703"
+      "sha256": "687ed67ad39cf9f8402defa926e05da53e0533b4e106ae246253952176d91659"
     },
     {
       "path": "docs/assets/rrb-logo.png",
@@ -45,7 +45,7 @@
     },
     {
       "path": "docs/assets/ur5-watering.mp4",
-      "sha256": "c3c45e65dd729e88764d03d74c448f5fbe66d32e4d4748e4dd0572dfe3d32320"
+      "sha256": "934301faed4ee2b7906ff68dd4ea0e6edd93ea319de8fef57adc30a44a4817b9"
     },
     {
       "path": "docs/credentials.md",
