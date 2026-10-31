@@ -21,7 +21,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0d6ff7172f4373a50d5bee9b31c99c5dae30beb9ffd626ad8d9b79b26a2177ba"
+      "sha256": "fa19bdc27c52cfc3f4636039237eda20e2b42f9aa95c863950f68e53e2720b2e"
     },
     {
       "path": "docs/assets/benchmark-overview.png",
@@ -29,11 +29,11 @@
     },
     {
       "path": "docs/assets/franka-watering.jpg",
-      "sha256": "3a646f460912cc0439fa812f8a905f0a466ac14ab89805e3677d5322c968fda1"
+      "sha256": "082ba7e9a7fc84003fb38cb1b95739e1042bd6d297b5ff901a4a54721bc4e61e"
     },
     {
       "path": "docs/assets/franka-watering.mp4",
-      "sha256": "756cf46ea1e4c701d8402a8685c07a17c19cca9cfa5242759472b95a720adc35"
+      "sha256": "9cf7ccf0f91f8c9c46ae73e91432881ec5270d2e6a4039e7ab38e57e9b081703"
     },
     {
       "path": "docs/assets/rrb-logo.png",
@@ -41,11 +41,11 @@
     },
     {
       "path": "docs/assets/ur5-watering.jpg",
-      "sha256": "a9f694fe61546c59e3d40ee53b4838113f5b83282432530cf8168e592c00d045"
+      "sha256": "4afb9178653905774dcdafa88fb2c9eba8562f3f15f3790764dd8bce30e09f85"
     },
     {
       "path": "docs/assets/ur5-watering.mp4",
-      "sha256": "6b1bc9a6ffdd6d15a1dd8d3c473d3341550f06647544693850cd308b8b5dbb21"
+      "sha256": "c3c45e65dd729e88764d03d74c448f5fbe66d32e4d4748e4dd0572dfe3d32320"
     },
     {
       "path": "docs/credentials.md",
