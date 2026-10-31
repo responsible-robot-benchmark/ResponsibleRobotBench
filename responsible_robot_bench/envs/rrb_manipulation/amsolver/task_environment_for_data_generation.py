@@ -243,7 +243,6 @@ class TaskEnvironment(object):
                 success, terminate = self._task.success()
                 # If the task succeeds while traversing path, then break early
 
-                #     break
                 if success:
                     success_in_path.append(small_step)
                 small_step += 1
@@ -488,9 +487,6 @@ class TaskEnvironment(object):
         new_action = None
 
 
-        #             continue
-
-        #         t_error, r_error = get_errors(target_pose, goal_tip_pose)
 
 
 
@@ -498,7 +494,7 @@ class TaskEnvironment(object):
 
 
 
-                #     break
+
         return success, new_action
             
     def enable_path_observations(self, value: bool) -> None:
@@ -569,7 +565,6 @@ class TaskEnvironment(object):
                         record = record, callable_each_step=callable_each_step)
 
 
-                    # demo, success, success_task, safe, term, _ = self._scene.execute_waypoints(waypoints_list, record = False)
 
                     demo.random_seed = random_seed
                     demos.append(demo)
@@ -613,17 +608,12 @@ class TaskEnvironment(object):
         """
 
 
-            # demos, success_all = self._get_live_demos(amount=1,record=False)
-
-
-            #     self._variation_number, max_attempts=_MAX_RESET_ATTEMPTS,
 
 
 
 
-        #         'Could not place the task %s in the scene. This should not '
-        #         'happen, please raise an issues on this task.'
-        #         % self._task.get_name()) from e
+
+
 
 
         return task_base, waypoint_sets, config

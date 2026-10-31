@@ -13,3 +13,12 @@ exp_name: baseline
 visual_icl: 0
 tp: 1
 traj_type: pre-defined
+cognition: 1
+example_classification_type: different_task_with_hazard
+text_prompt_with_semantic: 1
+instruction_type: normal
+data_root: null
+output_dir: null
+expected_episodes: 100
+selected_indexes: []
+max_episode_steps: 15

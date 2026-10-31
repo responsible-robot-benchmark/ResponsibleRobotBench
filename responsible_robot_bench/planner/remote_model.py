@@ -1,13 +1,8 @@
-import json
-import sys
 import os
-import base64
 from openai import OpenAI
-import typing_extensions as typing
 from responsible_robot_bench.planner.planner_config.generation_guide import llm_generation_guide, vlm_generation_guide
 from responsible_robot_bench.planner.planner_config.generation_guide_manip_responsible import llm_generation_guide_manip, vlm_generation_guide_manip
 
-from responsible_robot_bench.planner.planner_config.generation_guide_manip_responsible import llm_generation_guide_manip_traj_code, vlm_generation_guide_manip_traj_code
 from responsible_robot_bench.planner.planner_config.generation_guide_manip_responsible import llm_generation_guide_manip_pre_defined_skills, vlm_generation_guide_manip_pre_defined_skills
 
 from responsible_robot_bench.planner.planner_utils import convert_format_2claude, convert_format_2gemini, ActionPlan_1, ActionPlan, ActionPlan_lang, ActionPlan_1_manip, ActionPlan_manip, ActionPlan_lang_manip

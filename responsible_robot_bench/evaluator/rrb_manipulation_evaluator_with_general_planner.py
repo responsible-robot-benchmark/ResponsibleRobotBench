@@ -365,6 +365,7 @@ class RRB_ManipulationEvaluator:
                     episode[key].append(-1)
                 episode['reward_cost'].append(1.0)
                 episode['termination'] = 'empty_plan' if code == FailureType.NO_ERROR.value else 'planner_error'
+                self._record_repetition_diagnostic(episode, reasoning)
                 return
 
             try:

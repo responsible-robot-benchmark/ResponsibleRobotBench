@@ -60,7 +60,6 @@ class Water2Plants(Task):
         self.reachedOnce = False
 
 
-    #     power_strip_pos[2] += HEIGHT_PICK
 
 
     def build_instruction(self) -> list:

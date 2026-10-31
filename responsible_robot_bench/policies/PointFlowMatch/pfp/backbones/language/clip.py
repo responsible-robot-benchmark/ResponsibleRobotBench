@@ -24,7 +24,7 @@ from tqdm import tqdm
 from .simple_tokenizer import SimpleTokenizer as _Tokenizer
 
 
-__all__ = ["available_models", "load", "tokenize"]
+__all__ = ["available_models", "load_clip", "tokenize"]
 _tokenizer = _Tokenizer()
 
 _MODELS = {

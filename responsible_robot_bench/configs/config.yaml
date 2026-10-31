@@ -20,3 +20,12 @@ tp: null
 log_level: null
 headless: 1
 traj_type: null
+cognition: null
+example_classification_type: null
+text_prompt_with_semantic: null
+instruction_type: null
+data_root: null
+output_dir: null
+expected_episodes: null
+selected_indexes: null
+max_episode_steps: null

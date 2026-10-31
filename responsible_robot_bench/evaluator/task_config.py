@@ -1,5 +1,4 @@
 """Canonical task selection and protocol checks shared with retained evaluators."""
-from collections import Counter
 import json
 from pathlib import Path
 import re

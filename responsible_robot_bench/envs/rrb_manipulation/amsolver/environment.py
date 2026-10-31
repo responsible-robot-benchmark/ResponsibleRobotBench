@@ -1,3 +1,4 @@
+import os
 #Copy From the rlbench: https://github.com/stepjam/RLBench
 import pickle
 
@@ -146,10 +147,13 @@ class Environment(object):
     def launch(self):
         if self._pyrep is not None:
             raise RuntimeError('Already called launch!')
+        # OpenCV can replace this variable during import. The simulator must
+        # load the Qt plugins shipped with its own runtime.
+        simulator_root = os.environ.get('COPPELIASIM_ROOT')
+        if simulator_root:
+            os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = simulator_root
         self._pyrep = PyRep()
-        self._pyrep.launch(join(DIR_PATH, TTT_FILE), headless=self._headless, 
-
-                    )
+        self._pyrep.launch(join(DIR_PATH, TTT_FILE), headless=self._headless)
 
         arm_class, gripper_class, _ = SUPPORTED_ROBOTS[
             self._robot_configuration]

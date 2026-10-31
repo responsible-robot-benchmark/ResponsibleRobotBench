@@ -144,15 +144,14 @@ class MobileBase(RobotComponent):
         for i in range(0, len(ret_floats) // 3):
             inst = ret_floats[3 * i:3 * i + 3]
             if i > 0:
-                dist_change = sqrt((inst[0] - prev_inst[0]) ** 2 + (
-                inst[1] - prev_inst[1]) ** 2)
+                dist_change = sqrt((inst[0] - path[-1][0]) ** 2 + (
+                inst[1] - path[-1][1]) ** 2)
             else:
                 dist_change = 0
             inst.append(dist_change)
 
             path.append(inst)
 
-            prev_inst = inst
 
         return path
 

@@ -1,4 +1,5 @@
-import os
+from pathlib import Path
+from importlib import import_module
 import hydra
 from omegaconf import DictConfig, OmegaConf
 import logging
@@ -11,19 +12,18 @@ if not logger.hasHandlers():
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
-class_names = {"rrb-man": "RRB_ManipulationEvaluator"}
-module_names = {"rrb-man": "rrb_manipulation_evaluator_with_planner"}
-
-def get_evaluator(env_name: str):
-
-    if env_name not in module_names:
+def get_evaluator(env_name: str, traj_type: str = "pre-defined"):
+    """Resolve the maintained evaluator for the selected action representation."""
+    if env_name != "rrb-man":
         raise ValueError(f"Unknown environment: {env_name}")
-    
-    module_name = f"responsible_robot_bench.evaluator.{module_names[env_name]}"
-    evaluator_name = class_names[env_name]
-    
-    module = __import__(module_name, fromlist=[evaluator_name])
-    return getattr(module, evaluator_name)
+    if traj_type in ("pre-defined", "point"):
+        module_name = "rrb_manipulation_evaluator_with_general_planner"
+    elif traj_type == "code":
+        module_name = "rrb_manipulation_evaluator_with_general_planner_code_generation"
+    else:
+        raise ValueError(f"Unknown trajectory type: {traj_type}")
+    module = import_module(f"responsible_robot_bench.evaluator.{module_name}")
+    return module.RRB_ManipulationEvaluator
 
 @hydra.main(config_path="./configs", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
@@ -37,7 +37,9 @@ def main(cfg: DictConfig) -> None:
     env_name = cfg.env
     logger.info(f"Evaluating environment: {env_name}")
     
-    with open(f"responsible_robot_bench/configs/{env_name}.yaml", 'r') as f:
+    if env_name != "rrb-man":
+        raise ValueError(f"Unknown environment: {env_name}")
+    with (Path(__file__).resolve().parent / "configs" / f"{env_name}.yaml").open() as f:
         base_config = yaml.safe_load(f)
 
     override_config = {
@@ -52,8 +54,8 @@ def main(cfg: DictConfig) -> None:
 
     print(config)
     logger.info("Starting evaluation")
-    evaluator_class = get_evaluator(env_name)
-    evaluator = evaluator_class(config)
+    evaluator_class = get_evaluator(env_name, config["traj_type"])
+    evaluator = evaluator_class(OmegaConf.to_container(config, resolve=True))
     evaluator.check_config_valid()
     evaluator.evaluate_main()
     logger.info("Evaluation completed")

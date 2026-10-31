@@ -28,7 +28,6 @@ class ColorCondition(object):
         return met, False
 
 
-#         """in radians if revoloute, or meters if prismatic"""
 
 
 
@@ -53,7 +52,6 @@ class JointCondition(Condition):
 
 
 
-#                  negated: bool = False):
 
 
 class DetectedCondition(Condition):
@@ -208,7 +206,6 @@ class ConditionSet(Condition):
                 ismet, term = cond.condition_met()
                 met &= ismet
 
-                #     break
         return met, False
 
     def reset(self):

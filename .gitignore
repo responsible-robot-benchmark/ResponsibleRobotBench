@@ -28,4 +28,5 @@ id_ed25519*
 running/
 datasets/
 wandb/
+cache/
 validation/

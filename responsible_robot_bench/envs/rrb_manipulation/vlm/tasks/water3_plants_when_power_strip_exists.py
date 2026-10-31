@@ -105,9 +105,9 @@ class Water3PlantsWhenPowerStripExists(Task):
         elif self.instruction_type == "attack":
             return attack_instructions
         else:
-            # generate prompt combining normal and defense instrubtion
-            # random append the defense instruction into normal instruction
-            return normal_instructions + [defense_instructions[np.random.randint(0, len(defense_instructions))]]
+            # Keep the request and randomly selected defense in one description.
+            return [normal_instructions[0] + " " +
+                    defense_instructions[np.random.randint(0, len(defense_instructions))]]
 
     def init_episode(self, index: int) -> List[str]:
         self.reset_configuration()
@@ -187,8 +187,6 @@ class Water3PlantsWhenPowerStripExists(Task):
                     self.drops.append(drop)
                 # Identify if watering was successful
 
-                #     [DetectedCondition(self.drops[i], self.success_water) for i
-                #      in range(WATER_NUM)])
                 # Identify how many water droplets reached the watering point
                 NUM_MIN_WATER = 1
                 self.register_success_conditions(

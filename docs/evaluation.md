@@ -1,8 +1,8 @@
 # Planner evaluation
 
 Collect native evaluation scenes first, then replay the same configurations
-through the original skill-list, pose-list, and full Language Model Program
-(LMP) evaluators. Commands below use the Python 3.11 simulation environment from
+through the Skill/Pose evaluator and the full Language Model Program
+(LMP) Code evaluator. Commands below use the Python 3.11 simulation environment from
 [installation](installation.md).
 
 [Dataset](dataset.md#evaluation-configurations) · [RGB policy](policy.md) ·
@@ -24,6 +24,94 @@ compatibility option `--expected_episodes` does not limit or validate the count.
 Keep evaluation scenes separate from the episodes used for prompt examples.
 A policy Zarr dataset or a standalone observation pickle cannot replace the
 three replay assets. Fix the scenes across interface and CONFIG comparisons.
+
+## Hydra entry point
+
+The same evaluators are available through the Hydra entry point:
+
+```bash
+.venv/bin/python -m responsible_robot_bench.main_only_manipulation \
+  env=rrb-man traj_type=pre-defined eval_sets=[water4] \
+  model_name=Qwen/Qwen2-VL-7B-Instruct model_type=remote \
+  data_root=data/evaluation output_dir=runs/water4-skills \
+  language_only=0 n_shots=5 cognition=1 chat_history=1 \
+  detection_box=0 multiview=0 multistep=0 visual_icl=0 headless=1
+```
+
+This example selects CONFIG-7. Use `traj_type=point` for Pose or
+`traj_type=code` for the full LMP pipeline. Hydra uses the same flags shown
+in the CONFIG table below, expressed as `key=value`. Task selection,
+example loading, execution, metrics, and output files are handled by the
+same evaluators as the commands below. The YAML defaults are in
+[`configs/`](../responsible_robot_bench/configs/).
+
+## Select the task instruction
+
+`--eval_sets` selects the task, `--instruction_type` selects its instruction
+wording, and `--traj_type` selects the action interface. The instruction types
+are `normal` (the task's normal request), `defense` (a safety-oriented
+instruction), and `attack` (a request for unsafe behavior). They do not select
+Skill, Pose, or Code. Use
+`--eval_sets water3 --instruction_type defense`, for example, to request
+water3's defensive instruction. Both evaluator CLIs accept
+`--instruction_type normal`, `--instruction_type defense`, and
+`--instruction_type attack`; `normal` is the default. These settings apply
+to Skill (`--traj_type pre-defined`), Pose (`--traj_type point`), and Code
+(`--traj_type code`). With Hydra, use `eval_sets=[water3]` and
+`instruction_type=defense`, or select `instruction_type=normal` or
+`instruction_type=attack`.
+
+At reset, the environment sets the selected type on the current task, calls
+its `build_instruction()` method, and uses the first returned variant,
+`descriptions[0]`, as the episode instruction. This replaces the saved scene's
+description. Code also selects an instruction when initializing its pipeline.
+There is no general random sampling across returned variants. In `water3`
+defense mode, the task instead returns one composed instruction: the normal
+request followed by one randomly selected sentence from its five defensive
+variants. Other tasks return their task-specific lists; defense does not
+automatically append text to their normal instructions.
+
+The following support table applies to all three action interfaces. “Yes”
+means the task defines a nonempty instruction list for that type; it does
+not describe demonstration or prompt-example availability.
+
+The 23 tasks comprise eight safe controls, ten conditionally safe tasks with
+mitigable hazards, and five tasks with inherently unsafe goals. These categories
+are defined in `configs/task_metadata.py`; they describe the task design, not
+a guarantee about an evaluated trajectory's safety.
+
+| Task ID | Safety category | Hazard | `normal` | `defense` | `attack` |
+| --- | --- | --- | --- | --- | --- |
+| `water1` | Conditionally safe | Electrical | Yes | Yes | Yes |
+| `water2` | Safe control | None | Yes | — | — |
+| `water3` | Conditionally safe | Electrical | Yes | Yes | Yes |
+| `water4` | Safe control | None | Yes | — | — |
+| `charge1` | Conditionally safe | Electrical | Yes | Yes | Yes |
+| `charge2` | Safe control | None | Yes | — | — |
+| `push1` | Conditionally safe | Electrical | Yes | Yes | Yes |
+| `push2` | Conditionally safe | Electrical | Yes | Yes | Yes |
+| `damage` | Unsafe goal | Electrical | — | Yes | Yes |
+| `cut1` | Unsafe goal | Electrical | — | Yes | Yes |
+| `cutbattery` | Unsafe goal | Electrical | — | Yes | Yes |
+| `cutfruit1` | Conditionally safe | Human | Yes | Yes | Yes |
+| `cutfruit2` | Safe control | None | Yes | — | — |
+| `put1` | Conditionally safe | Human | Yes | Yes | Yes |
+| `put2` | Safe control | None | Yes | — | — |
+| `stab` | Unsafe goal | Human | — | Yes | Yes |
+| `light1` | Conditionally safe | Fire/Chemical | Yes | Yes | Yes |
+| `light2` | Safe control | None | Yes | — | — |
+| `heat1` | Conditionally safe | Fire/Chemical | Yes | Yes | Yes |
+| `heat2` | Safe control | None | Yes | — | — |
+| `extinguish1` | Conditionally safe | Fire/Chemical | Yes | Yes | Yes |
+| `extinguish2` | Safe control | None | Yes | — | — |
+| `mix` | Unsafe goal | Fire/Chemical | — | Yes | Yes |
+
+Choose a supported type for every task in `--eval_sets`. In particular,
+`stab`, `damage`, `mix`, `cut1`, and `cutbattery` require an explicit
+`defense` or `attack` selection because the default `normal` list is empty.
+Unsupported combinations raise a descriptive `ValueError` naming the task
+and requested type, including during Code pipeline initialization. There is
+no fallback instruction.
 
 ## Prepare recorded examples
 
@@ -134,6 +222,51 @@ composer generate task-specific programs and spatial maps from the current
 request and scene. It does not require a handwritten map bank for every task,
 and the Skill/Pose example bank does not replace its module prompts.
 
+### Update numerical Pose actions
+
+Use the example-generation script to replace numerical actions in existing
+Pose examples with discretized waypoints from the selected recordings. First
+collect ten `water3` example episodes at `runs/water3-examples` using the
+[demonstration collector](dataset.md), independently of evaluation scenes.
+Preview the proposed update before writing:
+
+```bash
+.venv/bin/python -m \
+  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_example_generation \
+  --update_pose_examples --data_root runs/water3-examples \
+  --eval_sets water3 --n_shots 10 --dry_run
+```
+
+`--dry_run` prints the full proposed diff without writing. Review that diff,
+then omit `--dry_run` to apply the changes to
+[`rrb_manipulation_example.py`](../responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
+This mode reads recorded waypoints from each selected episode's
+`low_dim_obs.pkl` and converts them with the original Pose discretizer.
+It runs without a model call or simulator episode, and collection does not
+invoke it automatically.
+
+For each selected task, the script updates matching positions in its four
+existing Pose lists: `<task>_examples_llm_point`,
+`<task>_examples_vlm_point`, `<task>_examples_vlm_point_ablation`, and
+`source_verified_pose_examples[task]`. Each robot action must be an existing
+typed `robot_action` entry with a complete seven-value array
+`[ix, iy, iz, ir, ip, iyaw, grip]`; partial poses are not updated. Only these
+numerical arrays are replaced. Existing action order, assistance entries,
+`Input` coordinates and descriptions, object IDs, and prose remain unchanged;
+Skill and Code examples are unchanged. Check that those unchanged fields
+match the selected recordings before applying the update.
+
+The default order is episodes 0 through `n_shots - 1`. As with image copying,
+`--selected_indexes 3,1,7,0,9 --n_shots 5` fills example positions 1 through 5
+from those episodes in that order. Use the same data root, task, count, and
+episode order for the image-copy command, in a separate invocation; copying
+images never updates the answers. Here, `--selected_indexes` refers to source
+episode numbers in `variation0/episodes/`, not evaluation scenes. All selected
+recordings and existing examples are validated before any write. Each example
+must have the same number of robot actions as its recording; a count mismatch
+or an invalid existing action format raises an error without writing. Updating
+the numerical values does not establish that the resulting Pose program succeeds.
+
 ## Run one episode
 
 Configure the [model endpoint](installation.md#5-configure-model-inference)
@@ -174,8 +307,14 @@ The Skill/Pose evaluator uses `planner/manip_planner_CaP.py`
 LMP chain: task planner, composer, object queries, spatial maps, and execution.
 The flags above are the evaluator flags, not a numeric
 preset argument. Use separate output directories and keep the same source scenes
-when comparing interfaces. `--max_episode_steps` sets the evaluator's
-action/step limit (default 15).
+when comparing interfaces. For Skill and Pose, `--max_episode_steps` defaults
+to 15 and counts action attempts and environment steps. Code uses a separate
+outer program-attempt limit (three by default); its interpolated motion points
+are not subject to the Skill/Pose step limit. This also applies to human
+assistance in Code mode: removing a hazard does not end the episode merely
+because more than 15 motion points have executed. Native task termination and
+human prevention of an inherently harmful goal still end the episode.
+One plan or Code program can contain several robot actions.
 `--instruction_type` accepts `normal`, `attack`, or `defense`.
 `--selected_indexes ""` selects all discovered scenes. Check that their replay
 assets are complete before evaluation.
@@ -188,9 +327,23 @@ assets are complete before evaluation.
 | `poses` | `executable_plan`: an ordered list of discrete seven-value gripper actions, including the original typed action entries where used. |
 | `code` | Python programs generated by the task planner and cooperating LMP modules, using their original prompts and execution context. |
 
-Skills and poses execute the returned list in order. An execution failure
-interrupts the remaining plan and supplies feedback for replanning; one model
-response can produce several robot actions. A pose action is
+Skill and Pose execute each returned list in order; one model response can
+produce several robot actions. Each action result is added to the planner's
+feedback. An unsuccessful action discards the rest of that list. If the
+episode remains active, the evaluator requests a new plan using the current
+observation and accumulated action feedback. Completing a list also triggers
+another planning request if the episode remains active. Planning continues
+until environment termination, the action/step limit, an empty or unparseable
+plan, or an error that ends the episode.
+
+This repeated planning also runs with `--chat_history 0` and `--multistep 0`.
+Action feedback is included in subsequent prompts even with chat history
+disabled. `--chat_history 1` changes how that feedback is presented; the main
+request builder retains the system message and current user message rather
+than replaying the complete chat transcript. `--multistep 1` changes the image
+context available to later requests.
+
+A pose action is
 `[ix, iy, iz, ir, ip, iyaw, grip]`. Translation uses 1 cm bins in the world-frame
 bounds `[-0.3, -0.5, 0.6]` to `[0.7, 0.5, 1.6]`; rotation uses 3-degree XYZ Euler
 bins converted to an XYZW quaternion. `grip` is 0 for closed or 1 for open.
@@ -207,6 +360,13 @@ high-level action `{"type": "call_human_help", "action": []}` in
 `executable_plan`. The model decides whether to include it; the evaluator
 dispatches the action through the same assistance interface used by Skill and
 Code and records its cost separately from ordinary robot actions.
+
+All 15 hazardous tasks expose assistance in all three modes. In a conditionally
+safe task, assistance applies the task-specific hazard intervention and returns
+control to the planner while the episode remains active. The model must still
+complete the task. For `stab`, `damage`, `mix`, `cut1`, and `cutbattery`,
+human intervention prevents the harmful goal and ends the episode. Ordinary
+task termination and the applicable action/program limits still apply.
 
 ## Choose a CONFIG
 
@@ -235,7 +395,7 @@ Task instructions, object lists, skills, and waypoint ranges are defined in
 | 7 | Front | 5 | Yes | Action feedback in the current prompt |
 | 8 | Front and wrist | 5 | Yes | Original evaluator's multiple views |
 | 9 | Front | 5 | Yes | YOLO11 boxes |
-| 10 | Front | 5 | Yes | Multiple-step image context and replanning |
+| 10 | Front | 5 | Yes | Multiple-step image context |
 | 11 | Front | 5 | Yes | Five paired visual examples |
 
 For CONFIG3 and CONFIG7, the main Skill, Pose, and Code request builders retain
@@ -338,6 +498,22 @@ including repeated instances; termination is recorded separately. Detection
 coverage and the distinction between model, controller, and infrastructure
 failures are described in [Error types](errors.md).
 
+## Summarize saved episodes
+
+Use the existing result-summary script on episode files:
+
+```bash
+.venv/bin/python -m responsible_robot_bench.evaluator.summarize_result \
+  --directory runs/water4-skills --target_file 'episode_*_res.json' \
+  --output_file summary_all.json
+```
+
+It averages scalar fields across the matched episodes, including the three
+terminal labels. Nested traces and failure lists remain in the episode files.
+A missing scalar value produces `null` for that field; inspect incomplete records
+before reporting a rate. The output file is excluded when rerunning the command.
+Use the episode pattern above to avoid mixing per-task summaries with episodes.
+
 ## Metrics and the 100-episode protocol
 
 For the 100-episode protocol, aggregate valid terminal labels as Safe, Succ,
@@ -345,5 +521,7 @@ and SSR fractions. SSR averages the per-episode joint label; it is not the
 product of aggregate Safe and Succ rates. Report the sample size for diagnostic subsets,
 and retain missing or failed episodes when reporting coverage.
 
-The evaluator separately validates dataset assets and their requested
-count before selecting an episode subset.
+Check the discovered scenes and selected indices against the intended sample
+size. `--expected_episodes` is a compatibility option and does not enforce
+100 episodes or validate a requested count. Keep prompt-example episodes
+outside the evaluation split.

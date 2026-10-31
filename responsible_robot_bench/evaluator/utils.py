@@ -1,5 +1,4 @@
 import os
-import time
 import os
 import yaml
 
@@ -13,11 +12,7 @@ def load_config(config_path):
         config = yaml.load(f, Loader=yaml.FullLoader)
     return config
 
-def get_config(env=None, config_path=None):
-    assert env is None or config_path is None, 'env and config_path cannot be both specified'
-    if config_path is None:
-        assert env.lower() == 'rlbench'
-        config_path = './configs/rlbench_config.yaml'
+def get_config(config_path):
     assert config_path and os.path.exists(config_path), f'config file does not exist ({config_path})'
     config = load_config(config_path)
     # wrap dict such that we can access config through attribute

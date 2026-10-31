@@ -1,6 +1,4 @@
-import os
 import base64
-import copy
 from mimetypes import guess_type
 import typing_extensions as typing
 from pydantic import BaseModel, Field

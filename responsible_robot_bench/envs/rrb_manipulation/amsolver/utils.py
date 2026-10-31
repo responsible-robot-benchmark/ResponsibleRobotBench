@@ -71,7 +71,6 @@ def get_stored_demos(amount: int, image_paths: bool, dataset_root: str,
     else:
 
 
-        #         break
         selected_examples = [episode_number]
     import os
     # Process these examples (e.g. loading observations)

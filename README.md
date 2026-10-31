@@ -105,6 +105,31 @@ from recorded task identities before copying. It makes no model calls and does n
 reference answers. See the [example guide](docs/evaluation.md#prepare-recorded-examples)
 for selecting other episode indexes and matching their text order.
 
+To update numerical Pose actions from collected waypoints, first preview the
+changes with the same script. This example assumes ten `water3` example
+episodes collected at `runs/water3-examples` with the collector above, separate
+from evaluation scenes:
+
+```bash
+.venv/bin/python -m \
+  responsible_robot_bench.evaluator.rrb_manipulation_evaluator_with_general_planner_example_generation \
+  --update_pose_examples --data_root runs/water3-examples \
+  --eval_sets water3 --n_shots 10 --dry_run
+```
+
+`--dry_run` prints the full proposed diff without writing. Review it before
+omitting `--dry_run` to write `rrb_manipulation_example.py`. Only complete
+seven-value arrays in existing `robot_action` entries in the four Pose lists
+are replaced; `Input` coordinates and descriptions, object IDs, prose,
+assistance entries, Skill examples, and Code examples remain unchanged. Keep
+those author-managed fields consistent with the recordings. The script reads
+`low_dim_obs.pkl` waypoints through the original Pose discretizer and uses
+the same `--selected_indexes` order as image copying. It validates all
+requested updates before writing and raises an error if action counts differ
+or existing Pose entries do not have the required format. Collection does not
+invoke this update automatically. No model or simulator runs, and updating action values does
+not establish that the resulting Pose program succeeds.
+
 Write or edit task examples in
 [`rrb_manipulation_example.py`](responsible_robot_bench/evaluator/config/rrb_manipulation_example.py).
 The evaluator selects same-task or cross-task examples using its four
@@ -162,9 +187,53 @@ evaluate all available scenes. The Code CLI defaults to the first scene; pass
 `--selected_indexes ""` explicitly to run all scenes. The compatibility option
 `--expected_episodes` does not limit or validate the dataset size. The
 [evaluation guide](docs/evaluation.md#choose-a-config)
-explains the flags for CONFIG-0–11, examples, and result records. Skills and
-poses execute action lists; Code retains task planning, composition, object
-queries, spatial maps, motion planning, execution, and feedback.
+explains the flags for CONFIG-0–11, examples, and result records. Skill and
+Pose execute ordered action lists and request another plan after a list ends
+or an action fails, while the episode remains active. Subsequent requests use
+the current observation and accumulated action feedback, including with
+`--chat_history 0`. See [planning and feedback](docs/evaluation.md#three-action-interfaces).
+Code retains task planning, composition, object queries, spatial maps,
+motion planning, execution, and feedback.
+
+### Select the task instruction
+
+Instruction type selects the task's wording: `normal` is its normal request,
+`defense` provides a safety-oriented instruction, and `attack` requests unsafe
+behavior. This setting is separate from the action interface, which determines
+how the planner represents and executes its actions.
+
+Skill (`--traj_type pre-defined`), Pose (`--traj_type point`), and Code
+(`--traj_type code`) accept `--instruction_type normal`,
+`--instruction_type defense`, or `--instruction_type attack`.
+The default is `normal`; Hydra uses `instruction_type=normal`,
+`instruction_type=defense`, or `instruction_type=attack`.
+
+| Safety category | Count | Tasks | Supported instruction types |
+| --- | ---: | --- | --- |
+| Conditionally safe: mitigate the hazard, then complete the task | 10 | `water1`, `water3`, `charge1`, `push1`, `push2`, `cutfruit1`, `put1`, `light1`, `heat1`, `extinguish1` | `normal`, `defense`, `attack` |
+| Safe control: no task-specific hazard | 8 | `water2`, `water4`, `charge2`, `cutfruit2`, `put2`, `light2`, `heat2`, `extinguish2` | `normal` |
+| Unsafe goal: the requested goal itself is harmful | 5 | `stab`, `damage`, `mix`, `cut1`, `cutbattery` | `defense`, `attack` |
+
+These 23 task configurations cover electrical, human-injury, and fire/chemical
+hazards plus their safe controls. Task category describes the scenario; the
+recorded safety result still depends on execution. All three action interfaces
+can use each instruction type supported by the selected task.
+
+For all 15 hazardous tasks, the model can choose `call_human_help`. In the
+ten conditionally safe tasks, assistance mitigates the hazard and planning
+continues while the episode remains active; assistance alone does not mean
+the task is complete. For the five unsafe-goal tasks, human intervention
+prevents the harmful goal and ends the episode. See the
+[assistance and action formats](docs/evaluation.md#three-action-interfaces).
+
+The environment selects the requested list from the current task and uses
+its first returned instruction. For `water3`, defense combines the normal
+request with one randomly selected defensive sentence in a single instruction.
+Other tasks return their own variants without automatic concatenation.
+Unsupported combinations raise a descriptive `ValueError` naming the task
+and requested instruction type; no fallback is supplied. See
+[task instruction selection](docs/evaluation.md#select-the-task-instruction)
+for the full task/type table.
 
 ## 4. Train an imitation policy
 

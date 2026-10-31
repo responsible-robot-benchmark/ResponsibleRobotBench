@@ -79,7 +79,6 @@ class BoundaryObject(object):
             self._boundary_bbox.min_y + np.abs(obj_bbox.min_y),
             self._boundary_bbox.max_y - np.abs(obj_bbox.max_y))
         if self._is_plane:
-            # _, _, z = obj.get_position(self._boundary)
             if place_above_plane:
 
                 z = (-obj_bbox.min_z)+self._boundary_bbox.max_z+0.005

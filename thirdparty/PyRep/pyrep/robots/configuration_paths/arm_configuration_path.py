@@ -1,3 +1,8 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pyrep.robots.arms.arm import Arm
+
 from pyrep.backend import sim
 from pyrep.robots.configuration_paths.configuration_path import (
     ConfigurationPath)

@@ -163,12 +163,10 @@ class TaskEnvironment(object):
 
 
 
-            #                                         ignore_collisions))
 
 
 
 
-            #                                         ignore_collisions),
 
 
 
@@ -275,7 +273,6 @@ class TaskEnvironment(object):
 
                 # If the task succeeds while traversing path, then break early
 
-                #     break
                 # 
                 if success:
                     success_in_path.append(small_step)
@@ -578,9 +575,6 @@ class TaskEnvironment(object):
         # Execute for all path points, this part is commented out
 
 
-        #             continue
-
-        #         t_error, r_error = get_errors(target_pose, goal_tip_pose)
 
 
 
@@ -588,7 +582,7 @@ class TaskEnvironment(object):
 
 
 
-                #     break
+
         return success, new_action
             
     def enable_path_observations(self, value: bool) -> None:
@@ -700,17 +694,12 @@ class TaskEnvironment(object):
         """
 
 
-            # demos, success_all = self._get_live_demos(amount=1,record=False)
-
-
-            #     self._variation_number, max_attempts=_MAX_RESET_ATTEMPTS,
 
 
 
 
-        #         'Could not place the task %s in the scene. This should not '
-        #         'happen, please raise an issues on this task.'
-        #         % self._task.get_name()) from e
+
+
 
 
         return task_base, waypoint_sets, config

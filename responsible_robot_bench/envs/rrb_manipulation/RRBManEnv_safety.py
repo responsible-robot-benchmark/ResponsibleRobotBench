@@ -50,7 +50,7 @@ class RRBManEnv(gym.Env):
                 down_sample_ratio=1.0, 
                 log_path = None, 
                 selected_indexes=[],
-                instruction_type='normal',   # assert instruction_type in ['normal', 'defense', 'attack']
+                instruction_type='normal',
 
                 headless=1, data_root=None, expected_episodes=100):
         obs_config = ObservationConfig()
@@ -141,7 +141,6 @@ class RRBManEnv(gym.Env):
         self.action_space = spaces.Box(
             low=0.0, high=100.0, shape=(self.env.action_size,))
 
-        # NEW: Observation space
         self.workspace_bounds_min = np.array([self.env._scene._workspace_minx, self.env._scene._workspace_miny, self.env._scene._workspace_minz])
         self.workspace_bounds_max = np.array([self.env._scene._workspace_maxx, self.env._scene._workspace_maxy, self.env._scene._workspace_maxz])
         self.camera_names = ['front', 'left_shoulder', 'right_shoulder', 'overhead', 'wrist']
@@ -256,8 +255,12 @@ class RRBManEnv(gym.Env):
         row = self.dataset[self._current_episode_num]
         ___descriptions, obs = self.task.load_config(row[1], row[2], row[3])
         reset_assistance(self.task._task)
-        self.task._task.instruction_type = self.instruction_type #"attack"
+        self.task._task.instruction_type = self.instruction_type
         descriptions = self.task._task.build_instruction()
+        if not descriptions:
+            raise ValueError(
+                f"Task {self.current_task_variation!r} does not define an "
+                f"{self.instruction_type!r} instruction; choose a supported type.")
         self.episode_language_instruction = descriptions[0]
         if not hasattr(self.task._task, 'objects_list'):
             self.task._task.init_task()
@@ -292,20 +295,22 @@ class RRBManEnv(gym.Env):
         ___descriptions, obs = self.task.load_config(self.dataset[self._current_episode_num - 1][1], self.dataset[self._current_episode_num - 1][2], self.dataset[self._current_episode_num - 1][3])
         # descriptions should be obtained from the current task and selected based on different types of task prompts
         reset_assistance(self.task._task)
-        self.task._task.instruction_type = self.instruction_type #"attack"
+        self.task._task.instruction_type = self.instruction_type
         descriptions = self.task._task.build_instruction()
+        if not descriptions:
+            raise ValueError(
+                f"Task {self.current_task_variation!r} does not define an "
+                f"{self.instruction_type!r} instruction; choose a supported type.")
 
         # Return the task description and observation
         # OBS: Observation includes camera data
         self.episode_language_instruction = descriptions[0]
         self.last_frame_obs = vars(obs)
 
-        # NEW
         self.latest_action = None
         self.latest_reward = None
         self.latest_terminate = None
         self.init_obs = vars(obs)
-        # NEW
         self.arm_mask_ids = [obj.get_handle() for obj in self.task._robot.arm.get_objects_in_tree(exclude_base=False)]
         self.gripper_mask_ids = [obj.get_handle() for obj in self.task._robot.gripper.get_objects_in_tree(exclude_base=False)]
         self.robot_mask_ids = self.arm_mask_ids + self.gripper_mask_ids
@@ -348,11 +353,11 @@ class RRBManEnv(gym.Env):
 
         waypoint_pose_continuous = []
         waypoint_pose_number_list = []
-        previous_gripper_control = 1    # initial gripper control is open (close:0, open:1)
+        previous_gripper_control = self.get_last_gripper_action()
         for waypoint in waypoints_subskill:
 
 
-            if isinstance(list(waypoint.pose)[0], (int, float)): # elif isinstance(x[0], (int, float)):
+            if isinstance(list(waypoint.pose)[0], (int, float)):
                 num_waypoint = 1
             elif isinstance(list(waypoint.pose)[0], list):
                 num_waypoint = len(waypoint.pose)
@@ -369,7 +374,7 @@ class RRBManEnv(gym.Env):
                 waypoint_pose_continuous.append(waypoint_pose)
                 waypoint_pose_number_list.append(1)
             else:
-                waypoint_poses = list(waypoint.pose) # xyz, xyzw
+                waypoint_poses = [list(pose) for pose in waypoint.pose] # xyz, xyzw
                 if waypoint.gripper_control == None:
                     # use previous gripper control
                     gripper_control = previous_gripper_control
@@ -407,7 +412,9 @@ class RRBManEnv(gym.Env):
             use_partial_waypoints=True)
         labels = terminal_labels(self.task._task)
         stopped = bool(getattr(self.task._task, '_human_intervention_terminated', False))
-        terminate = bool(terminate or stopped or self._current_step >= self._max_episode_steps)
+        step_limit_reached = (self.use_max_episode_steps and
+                              self._current_step >= self._max_episode_steps)
+        terminate = bool(terminate or stopped or step_limit_reached)
         observation = self.task._scene.get_observation()
         self.last_frame_obs = vars(observation)
         info = {**labels, 'action_success': float(accepted),
@@ -509,7 +516,6 @@ class RRBManEnv(gym.Env):
             if attempts <= 0:
                 break
 
-                #     'Could not collect demos. Maybe a problem with the task?')
 
         # Obtain environment feedback: includes the current task status, success or failure, Reward
 
@@ -520,7 +526,7 @@ class RRBManEnv(gym.Env):
         info['env_step'] = self._current_step
         info['episode_elapsed_seconds'] = time.time() - self._episode_start_time
         info['episode_num'] = self._current_episode_num
-        info['action'] = high_level_action #discrete_action
+        info['action'] = high_level_action
         info['instruction_subtask'] = high_level_action
         info['motion_plan_ret_error_code'] = motion_plan_ret_error_code
         # Observe selected-vs-held identity separately from failure codes,
@@ -554,11 +560,9 @@ class RRBManEnv(gym.Env):
             terminate = True
         self.episode_log.append(info)
 
-        # NEW
         self.latest_action = high_level_action  # action
         self.latest_reward = reward_task
         self.latest_terminate = terminate
-        # NEW
         grasped_objects = self.env._scene._robot.gripper.get_grasped_objects()
         if len(grasped_objects) > 0:
             self.grasped_obj_ids = [obj.get_handle() for obj in grasped_objects]
@@ -577,7 +581,6 @@ class RRBManEnv(gym.Env):
         action_success = False
 
 
-            #     # action xyz + quat(xyzw) + gripper
             # Currently, the environment stores the XYZW sequence
 
 
@@ -585,7 +588,6 @@ class RRBManEnv(gym.Env):
 
             # Execute actions using Self Task and get feedback
 
-            # obs, reward_waypoint, reward_task, reward_safety, terminate, motion_plan_ret_error_code = self.task.step(action)
             
         try:
 
@@ -609,37 +611,6 @@ class RRBManEnv(gym.Env):
             print("RRBManEnv.task.step: reward_waypoint is {} ".format(reward_waypoint))
 
             print("| RRBManEnv Safety: finished self.task.step")
-            # If the task is Stack, perform additional operations
-            if self.current_task_variation.startswith('stack'): # Stack task
-                if terminate:
-                    # If the end, if the action is 0, it means that the home grasp has not been closed, set the reward to 0, terminate to False, and continue to execute
-                    if action[-1] == 0.0:   # gripper open
-
-                        reward_task = 0.0
-
-                        terminate = False
-                        logger.debug("wrong success condition for stack, setting reward to 0 and terminate to False ...")
-                    elif action[-1] == 1.0: # gripper close
-                        # If the gripper is already closed, add 0.03 to the Z-axis and check if it's successful
-                        action[2] += 0.03
-                        # Check if the Stack is successful
-                        logger.debug("checking if the object is stacked properly ...")
-                        # lift the object up by 0.03
-                        # obs, reward, terminate = self.task.step(action)
-                        with scaled_arm_speed(self.task._scene._robot.arm, speed):
-                            with account_native_action(self, 'pose'):
-                                obs, reward_waypoint, reward_task, reward_safety, terminate, motion_plan_ret_error_code = self.task.step(action)
-
-                        if terminate and reward_task == 1.0:
-                            logger.debug("stacking is successful ...")
-
-                            reward_task = 1.0
-                            terminate = True
-                        else:
-                            logger.debug("stacking is unsuccessful ...")
-
-                            reward_task = 0.0
-                            terminate = False
             self.last_frame_obs = vars(obs)
             # A completed task.step call can still report that trajectory
             # planning failed or did not reach the target. Reflect that native
@@ -703,27 +674,21 @@ class RRBManEnv(gym.Env):
             terminate = True
         self.episode_log.append(info)
 
-        # NEW
         self.latest_action = action
         self.latest_reward = reward_task
         self.latest_terminate = terminate
-        # NEW
         grasped_objects = self.env._scene._robot.gripper.get_grasped_objects()
         if len(grasped_objects) > 0:
             self.grasped_obj_ids = [obj.get_handle() for obj in grasped_objects]
         return self.last_frame_obs, reward_waypoint, reward_task, reward_safety, terminate, info
 
-    # NEW
     def get_ee_pose(self):
         assert self.last_frame_obs is not None, "Please reset the environment first"
         return self.last_frame_obs['gripper_pose']
-    # NEW
     def get_ee_pos(self):
         return self.get_ee_pose()[:3]
-    # NEW
     def get_ee_quat(self):
         return self.get_ee_pose()[3:]
-    # NEW
     def get_last_gripper_action(self):
         """
         Returns the last gripper action.

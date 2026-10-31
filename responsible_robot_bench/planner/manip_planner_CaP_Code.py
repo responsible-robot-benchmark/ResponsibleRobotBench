@@ -1,15 +1,11 @@
+from pathlib import Path
 from responsible_robot_bench.configs.task_registry import TASKS
 import os
 import os.path as osp
-import numpy as np
 import cv2
-import base64
 import json
 import ast
-import random
 import time
-import logging
-from mimetypes import guess_type
 from responsible_robot_bench.envs.rrb_manipulation.rrb_man_utils import ROTATION_RESOLUTION, VOXEL_SIZE
 from responsible_robot_bench.planner.remote_model import RemoteModel
 from responsible_robot_bench.planner.planner_utils import local_image_to_data_url, template_manip, template_lang_manip
@@ -19,19 +15,18 @@ from responsible_robot_bench.evaluator.evaluator_utils import FailureType, Failu
 import re
 import matplotlib.pyplot as plt
 
-from time import sleep
 
 
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import TerminalFormatter
 
-from responsible_robot_bench.envs.rrb_manipulation.amsolver.voxposer_planner.utils import load_prompt, DynamicObservation, IterableDynamicObservation
+from responsible_robot_bench.envs.rrb_manipulation.amsolver.voxposer_planner.utils import DynamicObservation, IterableDynamicObservation
 import time
 
 from responsible_robot_bench.envs.rrb_manipulation.amsolver.voxposer_planner.LLM_cache import DiskCache
 
-VISUAL_ICL_EXAMPLES_PATH = "responsible_robot_bench/evaluator/config/visual_icl_examples/rrb_manipulation"
+VISUAL_ICL_EXAMPLES_PATH = str(Path(__file__).resolve().parents[1] / "evaluator" / "config" / "visual_icl_examples" / "rrb_manipulation")
 VISUAL_ICL_EXAMPLE_CATEGORY = {
     name.split('_', 1)[0]: name for name in TASKS.values()
 }
@@ -471,7 +466,6 @@ class LMPlanner():
 
         # Instruction: Pick up the star and place it into the silver container.
         # user_instruction:  Pick up the star and place it into the silver container.
-        # avg_obj_coord:  {'object 1': [73, 15, 18], 'object 2': [57, 20, 18], 'object 3': [66, 38, 18], 'object 4': [33, 43, 17], 'object 5': [57, 74, 17], 'object 6': [28, 80, 17], 'object 7': [26, 91, 17]}
 
         user_instruction = user_instruction.rstrip('.')
         # Historical action feedback information
@@ -576,7 +570,6 @@ class LMPlanner():
 
         # Instruction: Pick up the star and place it into the silver container.
         # user_instruction:  Pick up the star and place it into the silver container.
-        # avg_obj_coord:  {'object 1': [73, 15, 18], 'object 2': [57, 20, 18], 'object 3': [66, 38, 18], 'object 4': [33, 43, 17], 'object 5': [57, 74, 17], 'object 6': [28, 80, 17], 'object 7': [26, 91, 17]}
 
         user_instruction = user_instruction.rstrip('.')
         # Historical action feedback information
@@ -1071,7 +1064,6 @@ class LMPlanner():
                             }
                         }
                     )
-            # if debug_vis: read with BGR
             if debug_vis:
                 plt.imshow(cv2.imread(image_path, cv2.IMREAD_COLOR)[:, :, ::-1])
                 plt.show()
@@ -1278,7 +1270,7 @@ class LMPlanner():
                         selected_action = x
 
                     else:
-                        print("Failed to decode string action to list action:", e)
+                        print("Unavailable skill:", x)
                         self.output_json_error += 1
 
 
@@ -1346,76 +1338,6 @@ class LMPlanner():
         self.output_json_error = 0
 
 
-    def act_from_pre_defined_skills(self, observation, user_instruction, avg_obj_coord, task_variation, object_list=None, available_skills=None, instruction_current_task_staus=None):
-        # If using a predefined action sequence, need to add API information that can be used.
-        # Handle self.system_prompt
-        # If not using visual information, or using pre-defined trajectory
-        if self.traj_type == "pre-defined" and object_list is not None and available_skills is not None:
-            #
-            self.available_skills = available_skills
-            self.object_list = object_list
-
-
-            if instruction_current_task_staus is not None:
-
-                instruction_current_task_staus=f'The following objects are in scene:{object_list}.\nThe available pre-defined skills are {available_skills}'
-
-
-            user_instruction=f'{user_instruction}\n{instruction_current_task_staus}'
-            self.episode_messages = self.get_message_cap(images=[], instruct=self.system_prompt, task_prompt=user_instruction, messages=[])
-        else:
-            # Test without visual information
-            self.episode_messages = self.get_message_cap(images=[], instruct=self.system_prompt, task_prompt=user_instruction, messages=[])
-        for entry in self.episode_messages:
-            for content_item in entry["content"]:   # content's content
-                if content_item["type"] == "text":  # If text
-                    text_content = content_item["text"] # Get text content, print text content
-                    logger.debug(f"Model Input:\n{text_content}\n")
-        # Use LLM VLM prediction results
-        if 'gemini-1.5-pro' in self.model_name or 'gemini-2.0-flash' in self.model_name:
-            try:
-                out = self.model.respond(self.episode_messages)
-            except:
-                time.sleep(60)
-                out = self.model.respond(self.episode_messages)
-        else:
-            # If not using gemini model, directly call respond
-            try:
-                out = self.model.respond(self.episode_messages)
-                print("===")
-                print(out)
-            except:
-                if self.model_type != 'local':
-                    time.sleep(60)
-                else:
-                    time.sleep(20)
-                out = self.model.respond(self.episode_messages)
-        for stop in getattr(self.model, 'stop', []) or []:
-            if stop:
-                out = out.split(stop, 1)[0]
-
-        if self.chat_history:
-            # If using historical data, store in Episode Message
-            self.episode_messages.append(
-                {
-                "role": "assistant",
-                "content": [{"type": "text", "text": out}],
-                }
-            )
-
-        logger.debug(f"Model Output:\n{out}\n")
-        self.planner_steps += 1
-        # Utilize VLM output results with json to action processing, output actions
-        #
-        if self.traj_type == "pre-defined":
-            action, json_output, ret_type = self.json_to_action_pre_defined_skills(out)
-        else:
-            action, json_output, output_error_type = self.json_to_action(out)
-
-        # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
-
-        return action, out
 
 
     def _first_request_with_shared_feedback(self, general_prompt, task_prompt):
@@ -1559,9 +1481,7 @@ class LMPlanner():
         logger.debug(f"Model Output:\n{out}\n")
         # Utilize VLM output results with json to action processing, output actions
 
-        #     action, json_output, output_error_type = self.json_to_action_pre_defined_skills(out)
 
-        #     action, json_output, output_error_type = self.json_to_action(out)
 
         self.planner_steps += 1
         if self.traj_type == "code":
@@ -1576,7 +1496,6 @@ class LMPlanner():
             action = json_output = (fenced.group(1) if fenced else out).strip("`\n ")
 
 
-            # action, json_output = self.json_to_action_code(out) # Do not parse first
             metadata = getattr(self.model, 'last_response_metadata', None)
             truncated = isinstance(metadata, dict) and metadata.get('finish_reason') == 'length'
             if truncated or incomplete_fence or not action.strip():  # Reject incomplete programs.
@@ -1727,105 +1646,6 @@ class LMPlanner():
         return action, out, output_error_type
 
 
-    def act(self, observation, user_instruction, avg_obj_coord, task_variation):
-        'Supports L with images/only language without images\nSupports with historical interaction data/without historical interaction data\nSupports'
-        # Input image and user description, average object voxel coordinates, output action sequence
-
-        # Load image
-        if type(observation) == dict:
-            obs = observation[self.obs_key]
-        else:
-            obs = observation # input image path
-
-        # If visual history correction is used, not only language information (uses language + vision)
-        if self.visual_icl and not self.language_only:  #
-            # Input user description
-            # Prediction
-            first_prompt, task_prompt = self.process_prompt_visual_icl(user_instruction, avg_obj_coord, prev_act_feedback=self.episode_act_feedback)
-
-
-            if 'claude' in self.model_name or 'InternVL' in self.model_name or 'Qwen2-VL-72B-Instruct' in self.model_name:
-                task_prompt += "\n\n"
-                # If only language information: task_prompt + template_lang_manip
-                # If using language + visual information, task_prompt + template_manip (visual information is definitely used here)
-                task_prompt = task_prompt + template_lang_manip if self.language_only else task_prompt + template_manip
-
-
-            # Input OBS and description, output LLM/VLM input content
-            if len(self.episode_messages) == 0:
-                self.episode_messages = self.get_message_visual_icl(obs, first_prompt, task_prompt, task_variation)
-            else:
-                if self.chat_history:
-                    self.episode_messages = self.get_message_visual_icl(obs, first_prompt, task_prompt, task_variation, self.episode_messages)
-                else:
-                    self.episode_messages = self.get_message_visual_icl(obs, first_prompt, task_prompt, task_variation)
-
-
-        # If only language information is used
-        else:
-            # If visual data is not used
-            full_example_prompt, task_prompt = self.process_prompt(user_instruction, avg_obj_coords, obj_names, obj_ids, task_variation, prev_act_feedback=self.episode_act_feedback)
-            if 'claude' in self.model_name or 'InternVL' in self.model_name or 'Qwen2-VL-72B-Instruct' in self.model_name:
-                task_prompt += "\n\n"
-                task_prompt = task_prompt + template_lang_manip if self.language_only else task_prompt + template_manip
-            if len(self.episode_messages) == 0:
-                self.episode_messages = self.get_message(obs, full_example_prompt, task_prompt)
-            else:
-                if self.chat_history:
-                    self.episode_messages = self.get_message(obs, full_example_prompt, task_prompt, self.episode_messages)
-                else:
-                    self.episode_messages = self.get_message(obs, full_example_prompt, task_prompt)
-
-
-        # Task planning has not been performed, directly performed keypoint planning
-        # Planner Output Action: [[73, 15, 18, 0, 0, 0, 1], [73, 15, 18, 0, 0, 0, 0], [66, 38, 18, 0, 0, 0, 0], [66, 38, 18, 0, 0, 0, 1]]
-        # evaluator rrb_manipulation_evaluator: action_single: [73, 15, 18, 0, 0, 0, 1]
-        # ===============================Finish Building Episode Messages======================================================================
-        for entry in self.episode_messages:
-            for content_item in entry["content"]:   # content's content
-                if content_item["type"] == "text":  # If text
-                    text_content = content_item["text"] # Get text content, print text content
-                    logger.debug(f"Model Input:\n{text_content}\n")
-
-        # Use LLM VLM prediction results
-        if 'gemini-1.5-pro' in self.model_name or 'gemini-2.0-flash' in self.model_name:
-            try:
-                out = self.model.respond(self.episode_messages)
-            except:
-                time.sleep(60)
-                out = self.model.respond(self.episode_messages)
-        else:
-            # If not using gemini model, directly call respond
-            try:
-                out = self.model.respond(self.episode_messages)
-            except:
-                if self.model_type != 'local':
-                    time.sleep(60)
-                else:
-                    time.sleep(20)
-                out = self.model.respond(self.episode_messages)
-        for stop in getattr(self.model, 'stop', []) or []:
-            if stop:
-                out = out.split(stop, 1)[0]
-
-        if self.chat_history:
-            # If using historical data, store in Episode Message
-            self.episode_messages.append(
-                {
-                "role": "assistant",
-                "content": [{"type": "text", "text": out}],
-                }
-            )
-
-        logger.debug(f"Model Output:\n{out}\n")
-        self.planner_steps += 1
-        # Utilize VLM output results with json to action processing, output actions
-        action, json_output, output_error_type = self.json_to_action(out)
-
-        # out:  {"reasoning_and_reflection":"The task is to pick up the star located at [73, 15, 18] and place it into the silver container located at [66, 38, 18]. The plan involves moving the gripper to the star's position, closing the gripper to pick it up, moving to the silver container's position, and opening the gripper to release the star into the container.",
-
-
-        return action, out
 
 
     def update_info(self, info):

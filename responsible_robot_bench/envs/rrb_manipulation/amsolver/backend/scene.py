@@ -385,21 +385,6 @@ class Scene(object):
         # Retrieve waypoints (before moving the power strip, so that the feasibility check for waypoints 0-5 can pass)
         waypoints = self._active_task.get_waypoints()   # Get all waypoints
 
-        # Print waypoint information for debugging
-        if self._active_task._enable_call_human_help:
-            print(f"📍 Debug: Waypoints after filtering (call_human_help mode):")
-            for i, wp in enumerate(waypoints):
-                if hasattr(wp, 'pose'):
-                    if isinstance(wp.pose, list) and len(wp.pose) == 2:
-                        # PredefinedPath has start and end poses
-                        print(f"  {i}: {wp.name} - Path from {wp.pose[0][:3]} to {wp.pose[1][:3]}")
-                    else:
-                        # Point has single pose
-                        print(f"  {i}: {wp.name} - Position: {wp.pose[:3]}")
-                else:
-                    print(f"  {i}: {wp.name}")
-
-
         if len(waypoints) == 0:
             raise NoWaypointsError(
                 'No waypoints were found.', self._active_task)
@@ -543,7 +528,6 @@ class Scene(object):
         print("success {}, safe {}".format(success, safe))
 
 
-            #                 self._active_task)
         d = Demo(demo)
         # Save high_level_instructions
         d.high_level_instructions = self.descriptions
@@ -688,10 +672,7 @@ class Scene(object):
                     return d, success_waypoint, success_task, safe, term, motion_plan_ret_error_code
 
 
-                #     [s.set_collidable(True) for s in colliding_shapes]
 
-                #         'Could not get a path for waypoint %d.' % i,
-                #         self._active_task) from e
 
                 path.visualize()
 
@@ -754,84 +735,11 @@ class Scene(object):
         print("success_task {}, safe {}".format(success_task, safe))
 
 
-            #                 self._active_task)
         d = Demo(demo)
         # Save high_level_instructions
 
 
         return d, success_waypoint, success_task, safe, term, FailureType.NO_ERROR
-
-
-    #                  callable_each_step: Callable[[Observation], None] = None,
-    #                  ):
-
-
-    #             'No subtask_waypoints were found.', self._active_task)
-
-
-    # Iterate over all waypoints
-
-
-    #                                 and s not in self._robot_shapes and s.is_collidable()
-    #                                 and self._robot.arm.check_arm_collision(s)]
-    #             [s.set_collidable(False) for s in colliding_shapes]
-
-
-    #                 [s.set_collidable(True) for s in colliding_shapes]
-
-    # except: # If the path is not found, return directly
-
-    #                 [s.set_collidable(True) for s in colliding_shapes]
-
-
-    #                 success_task, term = self._active_task.success()
-    #                 safe, safe_term = self._active_task.safe()
-
-
-    #             #     [s.set_collidable(True) for s in colliding_shapes]
-
-
-    #             #         'Could not get a path for waypoint %d.' % i,
-    #             #         self._active_task) from e
-
-
-    #             # execite path
-
-
-    #                 success_task, term = self._active_task.success()
-    #                 safe, safe_term = self._active_task.safe()
-
-
-    #                             demo, record, callable_each_step)
-
-
-    # If not repeated, run here, key point has been reached, stop directly
-
-    #             break
-
-    #     # Some tasks may need additional physics steps
-    #     # (e.g. ball rowling to goal)
-
-
-    # Check the information of 20 steps
-
-
-    #             success_task, term = self._active_task.success()
-    #             safe, safe_term = self._active_task.safe()
-
-
-    #                 break
-
-    #     success_task, term = self._active_task.success()
-    #     safe, safe_term = self._active_task.safe()
-
-
-    #         #                 self._active_task)
-
-
-    # Save high_level_instructions
-
-    #     #
 
 
     def get_observation_config(self) -> ObservationConfig:

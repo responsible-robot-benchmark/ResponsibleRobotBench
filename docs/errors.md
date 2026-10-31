@@ -86,7 +86,12 @@ The function `check_repetition_errors` detects exact actions appearing more than
 three times, or an entire sequence composed of two or more identical blocks.
 It supports Skill lists, Pose lists, and top-level Code statements. It does not
 unroll loops, flatten branches, execute code, merge API capitalization, or score
-partial/malformed plans. These thresholds are heuristics, not causal tests.
+partial/malformed plans. For malformed JSON, it separately records an exact
+sentence repeated more than three times within a quoted text field, provided
+the sentence has at least 40 characters and eight words. No actions are
+recovered from that text. A truncated repetitive reply can therefore retain
+both format error 4 and repetition diagnostic 8. These thresholds are
+heuristics, not causal tests.
 
 A robot may legitimately repeat a grasp, revisit a pose, or perform several
 identical cycles. `repetition_diagnostics` retains the patterns and parse status

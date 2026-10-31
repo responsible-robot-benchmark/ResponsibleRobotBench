@@ -10,7 +10,6 @@ import argparse
 import copy
 from enum import Enum
 import json
-import os
 from pathlib import Path
 
 import numpy as np
@@ -262,6 +261,10 @@ class RRB_ManipulationEvaluator(NativeEvaluator):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate task examples from reference scenes.')
+    parser.add_argument('--update_pose_examples', action='store_true',
+                        help='Update only numeric Pose action arrays in the original configuration from recorded waypoints.')
+    parser.add_argument('--dry_run', action='store_true',
+                        help='Preview --update_pose_examples without writing the configuration.')
     parser.add_argument('--copy_example_images', action='store_true',
                         help='Copy selected collected images to the fixed visual ICL directory; no model or simulation is run.')
     parser.add_argument('--model_name', default='gpt-4o-mini')
@@ -283,6 +286,22 @@ def main():
     parser.add_argument('--output_dir')
     parser.add_argument('--max_episode_steps', type=int, default=15)
     args = parser.parse_args()
+    if args.copy_example_images and args.update_pose_examples:
+        parser.error('Choose image copying or Pose updating in each invocation')
+    if args.dry_run and not args.update_pose_examples:
+        parser.error('--dry_run requires --update_pose_examples')
+    if args.update_pose_examples:
+        if not args.data_root or args.n_shots < 1:
+            parser.error('--update_pose_examples requires --data_root and a positive --n_shots')
+        indexes = args.selected_indexes or list(range(args.n_shots))
+        if len(indexes) != args.n_shots:
+            parser.error('Provide exactly --n_shots indexes in the existing example order')
+        from responsible_robot_bench.data.example_poses import update_pose_examples
+        result = update_pose_examples(args.data_root, args.eval_sets, indexes, dry_run=args.dry_run)
+        if args.dry_run:
+            print(result['diff'], end='')
+        print(f"{'Would update' if args.dry_run else 'Updated'} {result['changed_examples']} Pose examples; other text was preserved.")
+        return 0
     if args.copy_example_images:
         if not args.data_root:
             parser.error('--copy_example_images requires --data_root')

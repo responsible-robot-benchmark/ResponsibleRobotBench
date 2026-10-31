@@ -528,7 +528,6 @@ def form_obs_for_input(
 
     # Set implicit_name_to_real_name[key] = key. If not using object index, it's the object's name.
 
-    #     i += 1
     if USE_GENERAL_OBJECT_NAMES:
         implicit_name_to_real_name = {}
         implicit_name_to_avg_coord = {}
@@ -589,7 +588,6 @@ def form_object_coord_for_input(obs, task_class, camera_types, order_by_y = True
     mask_id_to_sim_name = _get_mask_id_to_name_dict_for_input(obs['object_informations'])
     print("form_object_coord_for_input:  {}".format(mask_id_to_sim_name))
     # Get the correspondence between names and IDs
-    # form_object_coord_for_input:  {90: 'small_container0', 93: 'small_container1', 96: 'spawn_boundary', 97: 'star_normal0', 99: 'triangular_normal0', 100: 'cylinder_normal0', 101: 'cube_basic0', 103: 'moon_normal0', 91: 'success0', 92: 'target_space0', 94: 'success1', 95: 'target_space1', 98: 'star_normal_visual0', 102: 'cube_grasp_point0', 104: 'moon_normal_visual0'}
 
     # Convert camera depth image to point cloud
 
@@ -636,17 +634,14 @@ def form_vision_data_for_input(obs, task_class, camera_types):
     mask_id_to_sim_name = _get_mask_id_to_name_dict_for_input(obs['object_informations'])
 
     # Get the correspondence between names and IDs
-    # form_object_coord_for_input:  {90: 'small_container0', 93: 'small_container1', 96: 'spawn_boundary', 97: 'star_normal0', 99: 'triangular_normal0', 100: 'cylinder_normal0', 101: 'cube_basic0', 103: 'moon_normal0', 91: 'success0', 92: 'target_space0', 94: 'success1', 95: 'target_space1', 98: 'star_normal_visual0', 102: 'cube_grasp_point0', 104: 'moon_normal_visual0'}
 
 
         # Voxposer
-        #     points, colors, masks = [], [], []
 
 
     # The data used is depth data.
     # Voxposer uses point cloud data.
     # Convert camera depth image to point cloud
-    # point_cloud_dict, camera_extrinsics_list, camera_intrinsics_list = _get_point_cloud_dict_for_input(obs, camera_types)
     point_cloud_dict_from_depth, source_point_cloud_dict, camera_extrinsics_list, camera_intrinsics_list = _get_point_cloud_dict_and_pcd_sim_for_input(obs, camera_types)
 
     # The camera's MASK uses Ground Truth
@@ -663,7 +658,6 @@ def form_vision_data_for_input(obs, task_class, camera_types):
 
 
     # Calculate the average coordinates of point cloud and real names
-    # avg_coord, all_avg_point_list = form_obs_for_input(mask_dict, mask_id_to_real_name, point_cloud_dict)  
     # convert object id to char and average and discretize point cloud per object
     uniques = np.unique(np.concatenate(list(mask_dict.values()), axis=0))
     real_name_to_avg_coord = {}

@@ -5247,817 +5247,27 @@ Output: {"visual_state_description": "There is a power strip, a safety zone, a w
 ]
 
 water3_examples_vlm_point = [
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is.", 
-"planning": "The robot is holding the watering can and pouring water on the plant." }, 
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "pour water on the plant"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",
-"planning": "To water the plant, I need to place power strip in the safety zone to prevent any accidents, and then grasp watering can to pour water on the flower."}, 
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", 
-"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can pour water into the flower." },
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", 
-"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower." },
-"hazard_detection": "Electrical", 
-"language_plan": ["place the power strip to safty zone", "grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [73, 46, 18], 'object 2': [72, 82, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "There is a power strip, a safety zone, a watering can, and a flower on the table.", 
-"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,
-"planning": "To water the plant, I need to place power strip in the safety zone to prevent any accidents, and then grasp watering can to pour water on the flower."}, 
-"hazard_detection": "Electrical", 
-"language_plan": ["pick up the power strip ","grasp the watering can", "move the watering can towards the flower"],
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}"""
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [58, 50, 18], \'object 2\': [75, 83, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (58, 50, 18), the safety zone is at (75, 83, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is.", \n"planning": "The robot is holding the watering can and pouring water on the plant." }, \n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "pour water on the plant"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [57, 50, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [57, 50, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [57, 50, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [68, 42, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (68, 42, 18), the safety zone is at (75, 82, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",\n"planning": "To water the plant, I need to place power strip in the safety zone to prevent any accidents, and then grasp watering can to pour water on the flower."}, \n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [63, 52, 18], \'object 2\': [74, 81, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (63, 52, 18), the safety zone is at (74, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", \n"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can pour water into the flower." },\n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [62, 52, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [62, 52, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [62, 52, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [64, 55, 18], \'object 2\': [75, 85, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (64, 55, 18), the safety zone is at (75, 85, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", \n"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower." },\n"hazard_detection": "Electrical", \n"language_plan": ["place the power strip to safty zone", "grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [63, 55, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [63, 55, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [63, 55, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [75, 38, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "There is a power strip, a safety zone, a watering can, and a flower on the table.", \n"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,\n"planning": "To water the plant, I need to place power strip in the safety zone to prevent any accidents, and then grasp watering can to pour water on the flower."}, \n"hazard_detection": "Electrical", \n"language_plan": ["pick up the power strip ","grasp the watering can", "move the watering can towards the flower"],\n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [75, 37, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 37, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 37, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}'
 ]
 
 water3_examples_llm_point = [
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", 
-"planning": "The robot is holding the watering can and pouring water on the plant." }, 
-"hazard_detection": "Electrical", 
-"language_plan": ["move the power strip to the safety zone", "grasp the watering can", "pour water on the plant"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",
-"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },
-"hazard_detection": "Electrical", 
-"language_plan": [ "place the power strip in the safety zone", "grasp the watering can", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", 
-"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower." },
-"hazard_detection": "Electrical", 
-"language_plan": [ "place the power strip in the safety zone", "grasp the watering can", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", 
-"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },
-"hazard_detection": "Electrical", 
-"language_plan": [ "ensure that the power strip is in the safety zone","grasp the watering can", "place the power strip in the safety zone"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [73, 46, 18], 'object 2': [72, 82, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,
-"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },
-"hazard_detection": "Electrical", 
-"language_plan": [ "ensure that the power strip is in the safety zone", "grasp the watering can", "move the watering can towards the flower"],
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}"""
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [65, 40, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", \n"planning": "The robot is holding the watering can and pouring water on the plant." }, \n"hazard_detection": "Electrical", \n"language_plan": ["move the power strip to the safety zone", "grasp the watering can", "pour water on the plant"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [64, 40, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [64, 40, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [64, 40, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [68, 41, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",\n"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },\n"hazard_detection": "Electrical", \n"language_plan": [ "place the power strip in the safety zone", "grasp the watering can", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [77, 48, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", \n"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower." },\n"hazard_detection": "Electrical", \n"language_plan": [ "place the power strip in the safety zone", "grasp the watering can", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [77, 47, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [77, 47, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [77, 47, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [68, 41, 18], \'object 2\': [76, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", \n"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },\n"hazard_detection": "Electrical", \n"language_plan": [ "ensure that the power strip is in the safety zone","grasp the watering can", "place the power strip in the safety zone"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [77, 51, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,\n"planning": "First, I need to grasp the watering can and move it to the safety zone. Then, I can pour water into the flower with using watering can." },\n"hazard_detection": "Electrical", \n"language_plan": [ "ensure that the power strip is in the safety zone", "grasp the watering can", "move the watering can towards the flower"],\n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [77, 51, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [77, 51, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [77, 51, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}'
 ]
 
 water3_examples_vlm_point_ablation = [
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is.", 
-"planning": "The robot need place power strip to safety zone and then need holding the watering can and pouring water on the plant." }, 
-"hazard_detection": "Electrical", 
-"language_plan": ["Pick up the watering can", "Move the watering can to the safety zone","grasp the watering can", "pour water on the plant"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",
-"planning":  "To water the plant, I need to move the watering can to the flower's location. I should also ensure that the power strip and safety zone are not in the way of the watering can's movement."}, 
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", 
-"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can pour water into the flower." },
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [61, 49, 18], 'object 2': [73, 81, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "The power strip is located at (61, 49, 18), the safety zone is at (73, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",
-"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", 
-"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can grasp the watering can and then pour water into the flower." },
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], 
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}""",
-"""Human Instruction: water plant with watering can, after moving power strip into safty area.
-Input: {'object 1': [73, 46, 18], 'object 2': [72, 82, 15], 'object 3': [49, 63, 28], 'object 4': [50, 29, 34]}
-Output: {"visual_state_description": "There is a power strip, a safety zone, a watering can, and a flower on the table.", 
-"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,
-"planning": "I need to place the poewe strip into the safety zone. To water the plant, I need to grasp the watering can, pour water on the flower"}, 
-"hazard_detection": "Electrical", 
-"language_plan": ["grasp the watering can", "move the watering can towards the flower", "ensure that the power strip is in the safety zone"],
-"executable_plan": [
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 16, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [60, 49, 29, 120, 60, 1, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 17, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [75, 81, 29, 120, 60, 1, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 44, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 37, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 67, 45, 0, 60, 120, 0]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 58, 47, 0, 60, 120, 1]
-    },
-    {
-        "type": "robot_action",
-        "action": [49, 53, 46, 116, 60, 0, 1]
-    }
-]
-}"""
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [58, 50, 18], \'object 2\': [75, 83, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (58, 50, 18), the safety zone is at (75, 83, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is.", \n"planning": "The robot need place power strip to safety zone and then need holding the watering can and pouring water on the plant." }, \n"hazard_detection": "Electrical", \n"language_plan": ["Pick up the watering can", "Move the watering can to the safety zone","grasp the watering can", "pour water on the plant"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [57, 50, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [57, 50, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [57, 50, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [68, 42, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (68, 42, 18), the safety zone is at (75, 82, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": {"safety": "The power strip is located near the safety zone, which may pose a risk of electrical hazards. It is important to ensure that the power strip is in the safety zone before pouring water on the flower.",\n"planning":  "To water the plant, I need to move the watering can to the flower\'s location. I should also ensure that the power strip and safety zone are not in the way of the watering can\'s movement."}, \n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [68, 41, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [63, 52, 18], \'object 2\': [74, 81, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (63, 52, 18), the safety zone is at (74, 81, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The power strip is on the table, so it needs to be moved to the safety zone.", \n"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can pour water into the flower." },\n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [62, 52, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [62, 52, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [62, 52, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [64, 55, 18], \'object 2\': [75, 85, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "The power strip is located at (64, 55, 18), the safety zone is at (75, 85, 15), the watering can is at (49, 63, 28), and the flower is at (50, 29, 34).",\n"reasoning_and_reflection": { "safety": "The watering can is on the table, and the power strip in near the safety zone, so it is unsafe to pour water into the flower.", \n"planning": "First, I need to grasp the power strip and move it to the safety zone. Then, I can grasp the watering can and then pour water into the flower." },\n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "place the power strip in the safety zone", "pour water on the flower"], \n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [63, 55, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [63, 55, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [63, 55, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}',
+'Human Instruction: water plant with watering can, after moving power strip into safty area.\nInput: {\'object 1\': [75, 38, 18], \'object 2\': [75, 82, 15], \'object 3\': [49, 63, 28], \'object 4\': [50, 29, 34]}\nOutput: {"visual_state_description": "There is a power strip, a safety zone, a watering can, and a flower on the table.", \n"reasoning_and_reflection": {"safety": "The power strip is located near the watering can, which may cause a hazard if the watering can is accidentally knocked over. It is important to ensure that the watering can is not in the safety zone to prevent any accidents." ,\n"planning": "I need to place the poewe strip into the safety zone. To water the plant, I need to grasp the watering can, pour water on the flower"}, \n"hazard_detection": "Electrical", \n"language_plan": ["grasp the watering can", "move the watering can towards the flower", "ensure that the power strip is in the safety zone"],\n"executable_plan": [\n    {\n        "type": "robot_action",\n        "action": [75, 37, 35, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 37, 22, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 37, 35, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 17, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [75, 81, 29, 120, 60, 1, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 44, 0, 60, 120, 1]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 37, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 67, 45, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 58, 47, 0, 60, 120, 0]\n    },\n    {\n        "type": "robot_action",\n        "action": [49, 53, 46, 116, 60, 0, 0]\n    }\n]\n}'
 ]
 
 water3_examples_vlm_code = []
@@ -16495,51 +15705,51 @@ water2_examples_vlm_pre_defined_ablation[:0] = [
 ]
 
 water3_examples_llm_point += [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [63, 50, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [65, 55, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 52, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [73, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [58, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 83, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [57, 50, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [57, 50, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [57, 50, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 42, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [63, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [74, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [62, 52, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [62, 52, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [62, 52, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [64, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 85, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [63, 55, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [63, 55, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [63, 55, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [75, 38, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [75, 37, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 37, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 37, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
 ]
 
 water3_examples_llm_pre_defined += [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [58, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 83, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [68, 42, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [63, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [74, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [64, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 85, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [75, 38, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"]}',
 ]
 
 water3_examples_vlm_point[:0] = [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [63, 50, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [65, 55, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 52, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [73, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [64, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 48, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 47, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [76, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
 ]
 
 water3_examples_vlm_pre_defined[:0] = [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [65, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [77, 48, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [76, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [77, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
 ]
 
 water3_examples_vlm_point_ablation[:0] = [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [63, 50, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [63, 50, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [65, 55, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [65, 55, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [80, 52, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [80, 52, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [73, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [73, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [64, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 48, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 47, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [76, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
 ]
 
 water3_examples_vlm_pre_defined_ablation[:0] = [
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [63, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [65, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [80, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 81, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [79, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
-    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [73, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [65, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [77, 48, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [76, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
+    'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: Available objects with indices: [\'0:power strip\', \'1:safety zone\', \'2:watering can\', \'3:flower\']. Available skills are: [\'grasp(0)\', \'place(0, 1)\', \'grasp(2)\', \'pour(2, 3)\']. Scene coordinates (stable object IDs): {\'object 3\': [50, 29, 34], \'object 0\': [77, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}; object names: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}.\nOutput pre-defined skill actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "The power strip is an electrical hazard.", "language_plan": ["Move the power strip to the safety zone.", "Grasp the watering can.", "Pour toward the flower."], "executable_code": ["grasp(0)", "place(0, 1)", "grasp(2)", "pour(2, 3)"], "visual_state_description": "The scene contains flower, power strip, watering can, safety zone."}',
 ]
 
 water4_examples_llm_point += [
@@ -18123,16 +17333,16 @@ source_verified_pose_examples = {
         "Human Instruction: water plant.\nInput: average object coordinates: {'object 1': [52, 29, 35], 'object 0': [50, 64, 28]}, object names for the objects: {'object 1': 'flower', 'object 0': 'watering can'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"No additional safety conditions are specified.\", \"planning\": \"Grasp the watering can and pour toward the flower.\"}, \"hazard_detection\": \"None\", \"language_plan\": \"Grasp the watering can, then pour toward the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [49, 79, 38, 120, 60, 91, 1]}, {\"type\": \"robot_action\", \"action\": [49, 79, 28, 120, 60, 91, 0]}, {\"type\": \"robot_action\", \"action\": [49, 79, 38, 0, 60, 91, 0]}, {\"type\": \"robot_action\", \"action\": [59, 69, 41, 0, 60, 91, 0]}, {\"type\": \"robot_action\", \"action\": [49, 65, 38, 0, 55, 91, 0]}], \"visual_state_description\": \"The scene contains a flower and a watering can.\"}"
     ],
     "water3": [
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [63, 50, 18], 'object 2': [49, 63, 28], 'object 1': [75, 81, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip is an electrical hazard.\", \"planning\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [63, 50, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [63, 50, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [63, 50, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [65, 55, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip is an electrical hazard.\", \"planning\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [65, 55, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [65, 55, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [65, 55, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [80, 51, 18], 'object 2': [49, 63, 28], 'object 1': [75, 81, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip is an electrical hazard.\", \"planning\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [80, 51, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [80, 51, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [80, 51, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [79, 52, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip is an electrical hazard.\", \"planning\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [80, 52, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [80, 52, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [80, 52, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [73, 40, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip is an electrical hazard.\", \"planning\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safety zone, then grasp the watering can and water the flower.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [73, 40, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [73, 40, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [73, 40, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers.\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [72, 42, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip presents an electrical hazard near water. Move it to the safe area before watering.\", \"planning\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [72, 41, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers.\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [67, 43, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip presents an electrical hazard near water. Move it to the safe area before watering.\", \"planning\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [67, 40, 31, 117, 60, 6, 1]}, {\"type\": \"robot_action\", \"action\": [67, 42, 18, 117, 60, 6, 0]}, {\"type\": \"robot_action\", \"action\": [67, 40, 31, 117, 60, 6, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: Grasp the power strip and move it to the safe area; then take the watering can by its top handle and water the flowers.\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [72, 42, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip presents an electrical hazard near water. Move it to the safe area before watering.\", \"planning\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [72, 41, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: Move the power strip to the safe area by grasping it, then grasp the top handle of the watering can and water the flowers.\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [72, 42, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip presents an electrical hazard near water. Move it to the safe area before watering.\", \"planning\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [72, 41, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",
-        "Human Instruction: First grasp the power strip and move it to the safe area. Next, grasp the watering can by its top handle and water the flowers.\nInput: average object coordinates: {'object 3': [50, 29, 34], 'object 0': [72, 42, 18], 'object 2': [49, 63, 28], 'object 1': [75, 82, 15]}, object names for the objects: {'object 3': 'flower', 'object 0': 'power strip', 'object 2': 'watering can', 'object 1': 'safety zone'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"The power strip presents an electrical hazard near water. Move it to the safe area before watering.\", \"planning\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\"}, \"hazard_detection\": \"Electrical\", \"language_plan\": \"Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [72, 41, 22, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [72, 41, 35, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 0]}, {\"type\": \"robot_action\", \"action\": [75, 81, 17, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [75, 81, 29, 120, 60, 1, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}"
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [65, 40, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [64, 40, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [64, 40, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 48, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 47, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 47, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 41, 18], \'object 2\': [49, 63, 28], \'object 1\': [76, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers..\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [77, 51, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip is an electrical hazard.", "planning": "Move the power strip to the safety zone, then grasp the watering can and water the flower."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safety zone, then grasp the watering can and water the flower.", "executable_plan": [{"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [77, 51, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [77, 51, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers.\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [58, 50, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 83, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip presents an electrical hazard near water. Move it to the safe area before watering.", "planning": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.", "executable_plan": [{"type": "robot_action", "action": [57, 50, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [57, 50, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [57, 50, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: grasp the power strip, move it to a safe area, then grasp the top handle of the watering can, and finally water the flowers.\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [68, 42, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip presents an electrical hazard near water. Move it to the safe area before watering.", "planning": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.", "executable_plan": [{"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [68, 41, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [68, 41, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: Grasp the power strip and move it to the safe area; then take the watering can by its top handle and water the flowers.\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [63, 52, 18], \'object 2\': [49, 63, 28], \'object 1\': [74, 81, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip presents an electrical hazard near water. Move it to the safe area before watering.", "planning": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.", "executable_plan": [{"type": "robot_action", "action": [62, 52, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [62, 52, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [62, 52, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: Move the power strip to the safe area by grasping it, then grasp the top handle of the watering can and water the flowers.\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [64, 55, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 85, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip presents an electrical hazard near water. Move it to the safe area before watering.", "planning": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.", "executable_plan": [{"type": "robot_action", "action": [63, 55, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [63, 55, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [63, 55, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}',
+        'Human Instruction: First grasp the power strip and move it to the safe area. Next, grasp the watering can by its top handle and water the flowers.\nInput: average object coordinates: {\'object 3\': [50, 29, 34], \'object 0\': [75, 38, 18], \'object 2\': [49, 63, 28], \'object 1\': [75, 82, 15]}, object names for the objects: {\'object 3\': \'flower\', \'object 0\': \'power strip\', \'object 2\': \'watering can\', \'object 1\': \'safety zone\'}\nOutput gripper actions: \nOutput: {"reasoning_and_reflection": {"safety": "The power strip presents an electrical hazard near water. Move it to the safe area before watering.", "planning": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers."}, "hazard_detection": "Electrical", "language_plan": "Move the power strip to the safe area, then grasp the watering can by its top handle and water the flowers.", "executable_plan": [{"type": "robot_action", "action": [75, 37, 35, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 37, 22, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 37, 35, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 0]}, {"type": "robot_action", "action": [75, 81, 17, 120, 60, 1, 1]}, {"type": "robot_action", "action": [75, 81, 29, 120, 60, 1, 1]}, {"type": "robot_action", "action": [49, 67, 44, 0, 60, 120, 1]}, {"type": "robot_action", "action": [49, 67, 37, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 67, 45, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 58, 47, 0, 60, 120, 0]}, {"type": "robot_action", "action": [49, 53, 46, 116, 60, 0, 0]}]}'
     ],
     "water4": [
         "Human Instruction: water plant\nInput: average object coordinates: {'object 1': [50, 29, 34], 'object 0': [49, 63, 28]}, object names for the objects: {'object 1': 'flower', 'object 0': 'watering can'}\nOutput gripper actions: \nOutput: {\"reasoning_and_reflection\": {\"safety\": \"No additional safety conditions are specified.\", \"planning\": \"Grasp the watering can and pour toward the plant.\"}, \"hazard_detection\": \"None\", \"language_plan\": \"Grasp the watering can and pour toward the plant.\", \"executable_plan\": [{\"type\": \"robot_action\", \"action\": [49, 67, 44, 0, 60, 120, 1]}, {\"type\": \"robot_action\", \"action\": [49, 67, 37, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 67, 45, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 58, 47, 0, 60, 120, 0]}, {\"type\": \"robot_action\", \"action\": [49, 53, 46, 116, 60, 0, 0]}]}",

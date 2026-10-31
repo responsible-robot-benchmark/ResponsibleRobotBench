@@ -1,7 +1,8 @@
+from pathlib import Path
 from responsible_robot_bench.evaluator.utils import read_txt
-import os, sys
+import os
 
-prompt_base_path = "responsible_robot_bench/evaluator/prompts_predefine_traj/"
+prompt_base_path = Path(__file__).resolve().parent
 
 PROMPT_API = read_txt(os.path.join(prompt_base_path, 'api.txt'))
 PROMPT_RLF = read_txt(os.path.join(prompt_base_path, 'rlf.txt'))
@@ -14,7 +15,6 @@ PROMPT_REF = f'''
 {PROMPT_API}
 
 '''
-# {PROMPT_EXAMPLES}
 
 CURRENT_TASK_API = '''
 Following objects are in the scene:
@@ -53,5 +53,3 @@ PROMPT_COG = f'{COGNITION_ADDON.format(Prompt_Cognition)}'
 if __name__ == "__main__":
     print(PROMPT_ISP_WITH_REF)
     print(PROMPT_LMP_WITH_COG)
-    # version1: Use predefined APIs to execute
-    # version2: Use an Agent to generate API code for execution

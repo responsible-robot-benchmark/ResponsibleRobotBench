@@ -218,7 +218,6 @@ class T0_ObtainControl(object):
             trial += 1
             post_grasp_pose = deepcopy(grasp_pose)
             post_grasp_pose[2, 3] += self.postgrasp_height
-            # grasp_pose[:3, 3] += grasp_pose[:3, 2] * 0.01
             waypoint_dumpy.set_matrix(grasp_pose)
             success, path0 = test_reachability(arm, pre_grasp_pose, try_ik_sampling=try_ik_sampling, linear = linear, ignore_collisions=ignore_collisions)
             moved = False
@@ -570,8 +569,6 @@ class T2_MoveObjectConstraints(T1_MoveObjectGoal):
                                             target_space_descriptions, focus_obj_id)
 
 
-        #                                     try_ik_sampling, linear, ignore_collisions, release,
-        #                                     target_space_descriptions, focus_obj_id)
         elif callable(spaces):
             path = self.get_path_from_func(spaces, manipulated_obj, self.target_space.space_args, 
                                             try_ik_sampling, linear, ignore_collisions, release,

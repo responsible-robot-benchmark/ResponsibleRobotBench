@@ -9,6 +9,7 @@ import ast
 from collections import Counter
 import json
 import math
+import re
 
 
 def _region_end(text, start):
@@ -37,7 +38,7 @@ def _region_end(text, start):
 def _responses(content):
     """Read complete JSON replies, including fenced/concatenated log entries."""
     if isinstance(content, dict):
-        return [content]
+        return [(content, None)]
     if isinstance(content, (list, tuple)):
         result = []
         for item in content:
@@ -56,10 +57,11 @@ def _responses(content):
         except (ValueError, RecursionError):
             # Preserve the attempt's position but do not infer actions from a
             # broken response, quoted reasoning, or its partial child objects.
-            result.append(None)
-            position = _region_end(content, start)
+            end = _region_end(content, start)
+            result.append((None, content[start:end]))
+            position = end
         else:
-            result.append(response)
+            result.append((response, None))
             position = end
     return result
 
@@ -126,6 +128,17 @@ def _actions(plan, key):
     raise ValueError('Unsupported executable plan')
 
 
+def _malformed_text_patterns(content):
+    """Inspect repeated prose in JSON strings without recovering a partial plan."""
+    patterns = []
+    for text in re.findall(r'"((?:\\.|[^"\\])*)(?:"|$)', content, re.DOTALL):
+        sentences = [sentence.strip() for sentence in re.findall(r'[^.!?]+[.!?]', text)]
+        for sentence, count in Counter(sentences).items():
+            if count > 3 and len(sentence) >= 40 and len(re.findall(r'\b[A-Za-z]+\b', sentence)) >= 8:
+                patterns.append(dict(kind='repeated_text', text=sentence, count=count))
+    return patterns
+
+
 def repetition_diagnostics(content):
     """Return one explicit diagnostic per complete/invalid response region.
 
@@ -133,15 +146,20 @@ def repetition_diagnostics(content):
     entire action sequence consisting of two or more copies of one block.
     These inherited thresholds are heuristic. Even a detected candidate has
     ``proves_hallucination=False``; no action, API, object, or hazard validity
-    can be inferred from it. Invalid or unsupported plans are left unscored.
+    can be inferred from it. Invalid plans are never recovered or action-scored.
+    Malformed JSON can separately retain exact repeated prose as text evidence.
     """
     diagnostics = []
-    for attempt, response in enumerate(_responses(content), 1):
+    for attempt, (response, raw) in enumerate(_responses(content), 1):
         result = dict(attempt=attempt, status='unscored', patterns=[], repeated=False,
                       proves_hallucination=False, semantics='static_repetition_candidate')
         diagnostics.append(result)
         if response is None:
             result['status'] = 'invalid_response'
+            result['patterns'] = _malformed_text_patterns(raw)
+            result['repeated'] = bool(result['patterns'])
+            if result['repeated']:
+                result['semantics'] = 'malformed_response_text_repetition_candidate'
             continue
         body = response.get('properties', response)
         if not isinstance(body, dict):
@@ -220,6 +238,8 @@ def check_repetition_errors(content):
         for pattern in diagnostic['patterns']:
             if pattern['kind'] == 'frequent_action':
                 message = f"Action appears {pattern['count']} times: {pattern['action']}"
+            elif pattern['kind'] == 'repeated_text':
+                message = f"Text appears {pattern['count']} times: {pattern['text']}"
             else:
                 message = (f"Complete block of {pattern['block_length']} actions appears "
                            f"{pattern['repetitions']} times")

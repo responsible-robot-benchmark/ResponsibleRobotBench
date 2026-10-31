@@ -239,9 +239,18 @@ def main(argv):
     [t.start() for t in processes]
     [t.join() for t in processes]
 
+    failures = []
+    for i, process in enumerate(processes):
+        report = result_dict.get(i)
+        if process.exitcode != 0:
+            failures.append(f'Worker {i} exited with code {process.exitcode}; see its traceback above.')
+        elif report is None:
+            failures.append(f'Worker {i} exited without a collection result.')
+        elif report:
+            failures.append(report)
+    if failures:
+        raise RuntimeError('Scene collection failed:\n' + '\n'.join(failures))
     print('Data collection done!')
-    for i in range(FLAGS.processes):
-        print(result_dict[i])
 
 
 if __name__ == '__main__':

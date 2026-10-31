@@ -66,7 +66,6 @@ class Water4Plants(Task):
         self.reachedOnce = False
 
 
-    #     power_strip_pos[2] += HEIGHT_PICK
 
 
     def build_instruction(self) -> list:
@@ -147,8 +146,6 @@ class Water4Plants(Task):
                     self.drops.append(drop)
                 # Identify if watering was successful
 
-                #     [DetectedCondition(self.drops[i], self.success_water) for i
-                #      in range(WATER_NUM)])
                 # Identify how many water droplets reached the watering point
                 NUM_MIN_WATER = 1
                 self.register_success_conditions(

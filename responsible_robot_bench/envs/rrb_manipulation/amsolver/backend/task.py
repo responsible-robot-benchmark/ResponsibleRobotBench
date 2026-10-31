@@ -38,7 +38,6 @@ class Task(object):
         self.robot = robot
         self._waypoints = None
         self._success_conditions = []
-        # SAP: added
         self._fail_conditions = []
         self._safe_conditions = []
         self._dangerous_conditions = []
@@ -264,7 +263,6 @@ class Task(object):
                 if self.idx+1<len(waypoints):
                     self.idx+=1
 
-                    # self.last_t_error, self.last_r_error = get_errors(next_point, self.robot)
                 else:
                     if self.should_repeat_waypoints():
                         self.idx=0
@@ -379,7 +377,6 @@ class Task(object):
         """
         self._fail_conditions = condition
 
-    ###########yz##############
     def register_safe_conditions(self, condition: List[Condition]):
         self._safe_conditions = condition
 
@@ -486,7 +483,6 @@ class Task(object):
     def get_high_level_descriptions(self, need_feasible=True):
 
 
-        #                                 'grasp_water_can', 'pour water from water_can to flower']
 
 
         # check if self.objects_list and self.high_level_descriptions are available

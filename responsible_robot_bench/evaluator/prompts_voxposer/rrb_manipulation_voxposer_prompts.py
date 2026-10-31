@@ -1,7 +1,8 @@
+from pathlib import Path
 from responsible_robot_bench.evaluator.utils import read_txt
-import os, re, sys
+import os, re
 
-prompt_base_path = "responsible_robot_bench/evaluator/prompts_voxposer/"
+prompt_base_path = Path(__file__).resolve().parent
 
 PROMPT_get_affordance_map = read_txt(os.path.join(prompt_base_path, 'get_affordance_map_prompt.txt'))
 PROMPT_get_avoidance_map = read_txt(os.path.join(prompt_base_path, 'get_avoidance_map_prompt.txt'))
