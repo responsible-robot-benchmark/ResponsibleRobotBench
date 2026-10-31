@@ -262,8 +262,8 @@ The [extension guide](docs/extending.md) walks through:
     <th align="center">UR5 · Task and motion planning</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/assets/franka-watering.mp4"><img src="docs/assets/franka-watering.jpg" height="220" alt="Franka moves the power strip before watering"></a></td>
-    <td align="center"><a href="docs/assets/ur5-watering.mp4"><img src="docs/assets/ur5-watering.jpg" height="220" alt="UR5 relocates the power strip before watering"></a></td>
+    <td align="center"><a href="docs/assets/franka-watering.mp4"><img src="docs/assets/franka-watering.jpg" width="400" height="225" alt="Franka moves the power strip before watering"></a></td>
+    <td align="center"><a href="docs/assets/ur5-watering.mp4"><img src="docs/assets/ur5-watering.jpg" width="400" height="225" alt="UR5 relocates the power strip before watering"></a></td>
   </tr>
   <tr>
     <td align="center"><a href="docs/assets/franka-watering.mp4">▶ View Franka video</a></td>
