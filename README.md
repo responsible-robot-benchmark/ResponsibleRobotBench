@@ -8,6 +8,8 @@
 
 23 task configurations · 3 action interfaces · 12 planner configurations
 
+[Project website](https://responsible-robot-benchmark.github.io/) · [Paper & appendix](https://responsible-robot-benchmark.github.io/downloads/manuscript.pdf)
+
 [Installation](docs/installation.md) · [Data collection](docs/dataset.md) · [Evaluation](docs/evaluation.md) · [Custom tasks & robots](docs/extending.md)
 
 </div>
@@ -23,7 +25,12 @@ and **robot-API code**. Collected demonstrations also support imitation learning
 
 ## Installation
 
-From the root of your source checkout, create the Python environment:
+Clone the repository and create the Python environment:
+
+```bash
+git clone https://github.com/responsible-robot-benchmark/ResponsibleRobotBench.git
+cd ResponsibleRobotBench
+```
 
 ```bash
 python3.11 -m venv .venv
@@ -259,15 +266,15 @@ The [extension guide](docs/extending.md) walks through:
 <table>
   <tr>
     <th align="center">Franka · Imitation learning</th>
-    <th align="center">UR5 · Task and motion planning</th>
+    <th align="center">UR5e · LMM task and motion planning (TAMP)</th>
   </tr>
   <tr>
     <td align="center"><a href="docs/assets/franka-watering.mp4"><img src="docs/assets/franka-watering.jpg" width="400" height="225" alt="Franka moves the power strip before watering"></a></td>
-    <td align="center"><a href="docs/assets/ur5-watering.mp4"><img src="docs/assets/ur5-watering.jpg" width="400" height="225" alt="UR5 relocates the power strip before watering"></a></td>
+    <td align="center"><a href="docs/assets/ur5-watering.mp4"><img src="docs/assets/ur5-watering.jpg" width="400" height="225" alt="UR5e relocates the power strip before watering"></a></td>
   </tr>
   <tr>
     <td align="center"><a href="docs/assets/franka-watering.mp4">▶ View Franka video</a></td>
-    <td align="center"><a href="docs/assets/ur5-watering.mp4">▶ View UR5 video</a></td>
+    <td align="center"><a href="docs/assets/ur5-watering.mp4">▶ View UR5e video</a></td>
   </tr>
 </table>
 
