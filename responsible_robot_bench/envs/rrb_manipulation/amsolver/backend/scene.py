@@ -35,6 +35,7 @@ class Scene(object):
         self._pyrep = pyrep
         self._robot = robot
         self._obs_config = obs_config
+        self._ee_ik = None
         self._active_task = None
         self._initial_task_state = None
         self._start_arm_joint_pos = robot.arm.get_joint_positions()
@@ -88,6 +89,7 @@ class Scene(object):
 
         :param task: The task to load in the scene.
         """
+        self._ee_ik = None
         task.load(ttms_folder)  # Load the task in to the scene
 
         # Set at the centre of the workspace
@@ -101,6 +103,7 @@ class Scene(object):
 
     def unload(self) -> None:
         """Clears the scene. i.e. removes all tasks. """
+        self._ee_ik = None
         if self._active_task is not None:
             self._robot.gripper.release()
             if self._has_init_task:
@@ -162,6 +165,7 @@ class Scene(object):
 
     def reset(self) -> None:
         """Resets the joint angles. """
+        self._ee_ik = None
         self._robot.gripper.release()
 
         arm, gripper = self._initial_robot_state

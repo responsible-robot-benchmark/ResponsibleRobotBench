@@ -16,6 +16,7 @@ from amsolver.action_modes import ArmActionMode, ActionMode
 from amsolver.backend.exceptions import BoundaryError, WaypointError
 from amsolver.backend.observation import Observation
 from amsolver.backend.robot import Robot
+from amsolver.backend.end_effector_ik import EndEffectorIK
 from amsolver.backend.scene import Scene
 from amsolver.backend.task import Task
 from amsolver.backend.utils import execute_path
@@ -130,32 +131,14 @@ class TaskEnvironment(object):
              for t in action])
         self._robot.arm.set_joint_forces(np.abs(action))
 
-    def _ee_action(self, action, relative_to=None):
+    def _ee_action(self, action, relative_to=None, hold=False):
         self._assert_unit_quaternion(action[3:])
+        if self._scene._ee_ik is None:
+            self._scene._ee_ik = EndEffectorIK(self._robot.arm, self._scene)
         try:
-            joint_positions = self._robot.arm.solve_ik_via_jacobian(
-                action[:3], quaternion=action[3:], relative_to=relative_to)
-            self._robot.arm.set_joint_target_positions(joint_positions)
-        except IKError as e:
-            raise InvalidActionError(
-                'Could not perform IK via Jacobian. This is because the current'
-                ' end-effector pose is too far from the given target pose. '
-                'Try limiting your action space, or sapping to an alternative '
-                'action mode, e.g. ABS_EE_POSE_PLAN_WORLD_FRAME') from e
-        done = False
-        prev_values = None
-        # Move until reached target joint positions or until we stop moving
-        # (e.g. when we collide wth something)
-        while not done:
-            self._scene.step()
-            cur_positions = self._robot.arm.get_joint_positions()
-            reached = np.allclose(cur_positions, joint_positions, atol=0.01)
-            not_moving = False
-            if prev_values is not None:
-                not_moving = np.allclose(
-                    cur_positions, prev_values, atol=0.001)
-            prev_values = cur_positions
-            done = reached or not_moving
+            return self._scene._ee_ik.execute(action, relative_to, hold)
+        except IKError as exc:
+            raise InvalidActionError(str(exc)) from exc
 
     def _path_action_get_path(self, action, collision_checking, relative_to):
         try:
@@ -294,8 +277,14 @@ class TaskEnvironment(object):
         record_native_action_entry('pose')
 
         # action should contain 1 extra value for gripper open close state
+        ik_target = None
         arm_action = np.array(action[:-1])
         ee_action = action[-1]
+        if self._action_mode.arm not in (
+                ArmActionMode.ABS_EE_POSE_WORLD_FRAME,
+                ArmActionMode.DELTA_EE_POSE_WORLD_FRAME,
+                ArmActionMode.EE_POSE_EE_FRAME):
+            self._scene._ee_ik = None
         print("moving to arm_action {}, ee_action {}".format(arm_action, ee_action))
 
         if 0.0 > ee_action or ee_action > 1.0:
@@ -382,7 +371,7 @@ class TaskEnvironment(object):
             elif self._action_mode.arm == ArmActionMode.ABS_EE_POSE_WORLD_FRAME:
 
                 self._assert_action_space(arm_action, (7,))
-                self._ee_action(list(arm_action))
+                ik_target = self._ee_action(list(arm_action))
             # Motion Mode: EE Absolute Motion, No Collision Detection, With Path Planning
             elif self._action_mode.arm == ArmActionMode.ABS_EE_POSE_PLAN_WORLD_FRAME:
 
@@ -445,14 +434,16 @@ class TaskEnvironment(object):
 
 
                 # Directly use Inverse Kinematics, no path planning required
-                self._ee_action(list(new_pose))
+                ik_target = self._ee_action(
+                    list(new_pose), hold=EndEffectorIK.is_zero_delta(arm_action))
 
             # Motion Mode: EE relative motion, end-effector coordinate system, no path planning
             elif self._action_mode.arm == ArmActionMode.EE_POSE_EE_FRAME:
 
                 self._assert_action_space(arm_action, (7,))
-                self._ee_action(
-                    list(arm_action), relative_to=self._robot.arm.get_tip())
+                ik_target = self._ee_action(
+                    list(arm_action), relative_to=self._robot.arm.get_tip(),
+                    hold=EndEffectorIK.is_zero_delta(arm_action))
 
             # Motion Mode: EE relative motion, end-effector coordinate system, with path planning, based on EE coordinate system, not world coordinate system
             elif self._action_mode.arm == ArmActionMode.EE_POSE_PLAN_EE_FRAME:
@@ -470,7 +461,8 @@ class TaskEnvironment(object):
             tcp_pos = self._robot.arm.get_tip().get_position()
 
 
-            position_error = np.linalg.norm(tcp_pos - arm_action[:3])
+            target_position = arm_action[:3] if ik_target is None else ik_target[:3]
+            position_error = np.linalg.norm(tcp_pos - target_position)
             threshold_position_error = 0.03 # 5cm
             if position_error > threshold_position_error:
                 motion_plan_ret_error_code = FailureType.TRAJ_PLANNING_NOT_ARRIVED
@@ -739,6 +731,7 @@ class TaskEnvironment(object):
         return task_base, waypoint_sets, config
     
     def load_config(self, task_base, waypoint_sets, config_path):
+        self._scene._ee_ik = None
         # Read the configuration file from config_path
         ctr_loop = self._robot.arm.joints[0].is_control_loop_enabled()
         self._scene._has_init_task = True

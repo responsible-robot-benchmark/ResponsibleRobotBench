@@ -65,7 +65,7 @@
     },
     {
       "path": "docs/extending.md",
-      "sha256": "832a0b609d54e610b9afc5a027b245025ff6a927ebf10d9cc083b792287c1cd5"
+      "sha256": "4da6d6d2384da8334c8f2269f455218994731f756385c8325a0a9e3fc0308d93"
     },
     {
       "path": "docs/installation.md",
@@ -196,6 +196,10 @@
       "sha256": "62b2e291cfe629eeccf9bd26e3ef19b3a8a9c0d8eeeb01d8c08c84847cdaf926"
     },
     {
+      "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/end_effector_ik.py",
+      "sha256": "02d39bc7092f0dc42cd8bee1d6eb00a511c6d0ec8f6607bdd3639e7108e5850f"
+    },
+    {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/exceptions.py",
       "sha256": "835e10b3bd1b76bccd8f24ff57d04a60dee2f5534d809ec6eb104bc019e77aba"
     },
@@ -209,7 +213,7 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/scene.py",
-      "sha256": "4f10a179c9a86e9411cab2f53cbd0c58c6c2bed5fdc84eb08831e9a6a4b6f362"
+      "sha256": "e37f46120861c6cec19106ed7708479e2b7c8a0d026aa2dc1b198efde5f52d84"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/backend/spawn_boundary.py",
@@ -293,11 +297,11 @@
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment.py",
-      "sha256": "7d872e62a834af14c4e93eff54d2690ddd57270ac2d2cc176012cd095f2b59f3"
+      "sha256": "569d1b8869f8886f260ce0705365c804df85c162968101cde63367b14f55010e"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/task_environment_for_data_generation.py",
-      "sha256": "316e2cca76e96090dacb5c3cb5674b9db02938565576428a87af3058cfc02ef0"
+      "sha256": "f7bc7ffb177cce23fdd5f957fed3581e9508355846ae15473c59506a9fce2970"
     },
     {
       "path": "responsible_robot_bench/envs/rrb_manipulation/amsolver/utils.py",

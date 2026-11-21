@@ -199,6 +199,41 @@ so their current path uses Panda. Alternative entries do not establish validated
 RRB support. `backend/Robot` is an arm/gripper state wrapper, not a hardware
 driver or a general robot-plugin API.
 
+### Direct Cartesian IK control
+
+The native arm modes are defined in
+[action_modes.py](../responsible_robot_bench/envs/rrb_manipulation/amsolver/action_modes.py).
+Modes 6, 7 and 11 execute a Cartesian target through IK and the simulator's
+dynamic joint motors:
+
+- Mode 6 accepts an absolute world-frame end-effector pose.
+- Mode 7 adds the translation to the measured world position and left-multiplies
+  the measured orientation by the rotation increment.
+- Mode 11 expresses both translation and orientation relative to the measured
+  end-effector frame. That frame is sampled once at command entry.
+
+Each arm action has seven values: position in metres followed by an
+`[qx, qy, qz, qw]` unit quaternion. Append the gripper value
+(`1` open, `0` closed) for `TaskEnvironment.step`. A zero pose increment is
+`[0, 0, 0, 0, 0, 0, 1]`, not seven zeros. Consecutive zero increments
+hold the world pose captured at the first zero command. A nonzero mode-7
+increment still uses the current measured pose; it is not integrated onto the
+previous commanded pose.
+
+The shared IK implementation regularizes redundant joints toward the posture
+at the episode's first IK command, applies joint-limit avoidance, and checks
+position and orientation after dynamic execution. Small motor tracking biases
+are compensated with bounded integral correction. Scene reset, replay
+configuration loading, and switching to other control modes clear controller
+state. Each solve is bounded to 60 numerical iterations and each motor
+convergence attempt to 200 physics steps. These are per-command convergence
+guards; they do not impose an episode time limit. An unreachable or
+nonconvergent command reports an action error and stops driving toward the
+failed target.
+
+Direct IK does not provide collision-free path planning. Modes with path
+planning retain their separate implementation; the PFM runner uses mode 8.
+
 ### Implement the integration in the fork
 
 Supply a PyRep arm/gripper pair and a matching `.ttm`, add its mapping to
